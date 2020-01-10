@@ -49,7 +49,7 @@ Public Class FrmProveedorManual
             Exit Sub
         End If
 
-        FrmRecepcion.CboCodigoProveedor.Text = Me.CboCodigoProveedor.Text
+        FrmRecepcion.TxtCodProductor.Text = Me.CboCodigoProveedor.Text
         FrmRecepcion.txtnombre.Text = Me.TxtNombre.Text
         Me.Close()
 
