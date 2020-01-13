@@ -113,7 +113,7 @@ Public Class FrmVehiculo
 
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
-            StrSqlUpdate = "INSERT INTO [Vehiculo] ([Placa],[Marca],[TipoVehiculo],[Activo]) VALUES ('" & Me.CboPlaca.Text & "' ,'" & Me.TxtMarca.Text & "' ,'" & Me.CboTipo.Text & "', '" & Activo & "' "
+            StrSqlUpdate = "INSERT INTO [Vehiculo] ([Placa],[Marca],[TipoVehiculo],[Activo]) VALUES ('" & Me.CboPlaca.Text & "' ,'" & Me.TxtMarca.Text & "' ,'" & Me.CboTipo.Text & "', '" & Activo & "') "
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery

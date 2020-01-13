@@ -25,23 +25,23 @@ Public Class FrmRecepcion
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
         DataSet.Reset()
 
-        sql = "SELECT IdDano, Dano, Activo FROM Dano WHERE (Activo = 1)"
-        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        DataAdapter.Fill(DataSet, "DanosCafe")
-        i = DataSet.Tables("DanosCafe").Rows.Count
-        Me.CboDano.DataSource = DataSet.Tables("DanosCafe")
-        Me.CboDano.Splits.Item(0).DisplayColumns(0).Visible = False
-        Me.CboDano.Splits.Item(0).DisplayColumns(2).Visible = False
-        Me.CboDano.SelectedValue = 3
+        'sql = "SELECT IdDano, Dano, Activo FROM Dano WHERE (Activo = 1)"
+        'DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
+        'DataAdapter.Fill(DataSet, "DanosCafe")
+        'i = DataSet.Tables("DanosCafe").Rows.Count
+        'Me.CboDano.DataSource = DataSet.Tables("DanosCafe")
+        'Me.CboDano.Splits.Item(0).DisplayColumns(0).Visible = False
+        'Me.CboDano.Splits.Item(0).DisplayColumns(2).Visible = False
+        'Me.CboDano.SelectedValue = 3
 
-        sql = "SELECT IdImperfeccion, Imperfeccion, activa FROM Imperfeccion  WHERE (activa = 1)"
-        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        DataAdapter.Fill(DataSet, "ImperfeccionCafe")
-        i = DataSet.Tables("ImperfeccionCafe").Rows.Count
-        Me.CboImperfeccion.DataSource = DataSet.Tables("ImperfeccionCafe")
-        Me.CboImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
-        Me.CboImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
-        Me.CboImperfeccion.SelectedValue = 7
+        'sql = "SELECT IdImperfeccion, Imperfeccion, activa FROM Imperfeccion  WHERE (activa = 1)"
+        'DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
+        'DataAdapter.Fill(DataSet, "ImperfeccionCafe")
+        'i = DataSet.Tables("ImperfeccionCafe").Rows.Count
+        'Me.CboImperfeccion.DataSource = DataSet.Tables("ImperfeccionCafe")
+        'Me.CboImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
+        'Me.CboImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
+        'Me.CboImperfeccion.SelectedValue = 7
 
         '///PARA QUE SIRVE ESTA VALIDACIONES
         'If Quien = "Recepcion" Then
@@ -94,8 +94,7 @@ Public Class FrmRecepcion
         End If
         Me.CboCodigoBodega.Columns(0).Caption = "Codigo"
         Me.CboCodigoBodega.Columns(1).Caption = "Nombre Bodega"
-        Me.CboImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
-        Me.CboImperfeccion.Splits.Item(0).DisplayColumns(1).Visible = False
+       
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '//////////////////////////CARGO LAS BODEGAS////////////////////////////////////////////////////////////////////
@@ -184,10 +183,39 @@ Public Class FrmRecepcion
         Año = Microsoft.VisualBasic.DateAndTime.Year(Now)
         Mes = Microsoft.VisualBasic.DateAndTime.Month(Now)
         Dia = Microsoft.VisualBasic.DateAndTime.Day(Now)
-        Me.CboTipoRecepcion.SelectedIndex = 1
+        Me.CboTipoPesada.SelectedIndex = 1
+
+        SqlString = "SELECT IdImperfeccion, Imperfeccion, activa,Porcentaje FROM Imperfeccion WHERE (activa = 1)"
+        MiConexion.Open()
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Imperfecciones")
+        If Not DataSet.Tables("Imperfecciones").Rows.Count = 0 Then
+            Me.BindingImperfeccion.DataSource = DataSet.Tables("Imperfecciones")
+            Me.TDGImperfeccion.DataSource = Me.BindingImperfeccion
+
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Locked = False
+
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Locked = False
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Width = 95
+
+
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
+
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).Width = 60
+
+            Me.TDGImperfeccion.Columns(3).Caption = "%"
+
+
+        End If
+        MiConexion.Close()
+
+
     End Sub
 
-    Private Sub CmdNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdNuevo.Click
+    Private Sub CmdNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LimpiaRecepcion()
     End Sub
 
@@ -195,7 +223,7 @@ Public Class FrmRecepcion
         Me.LblHora.Text = Date.Now.ToLongTimeString
     End Sub
 
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         '////////////////////////////////////////////////////////////////////////////////////////////////////
         '/////////////////////////////GRABO ENCABEZADO DE RECEPCION /////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
@@ -206,7 +234,7 @@ Public Class FrmRecepcion
             MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")
         End If
 
-        If Me.CboTipoRecepcion.Text = "RePesaje" Then
+        If Me.CboTipoPesada.Text = "RePesaje" Then
             Me.Close()
         End If
     End Sub
@@ -216,7 +244,6 @@ Public Class FrmRecepcion
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand 'iResultado As Integer
         Dim SqlProductos As String, SqlString As String, Codigo As String
-
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '//////////////////////////CARGO LOS CONDUCTORES////////////////////////////////////////////////////////////////////
         '////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,7 +256,6 @@ Public Class FrmRecepcion
         End If
         Me.CboConductor.Columns(0).Caption = "Codigo"
         'Me.CboCodigoBodega.Columns(1).Caption = "Placa"
-
         MiConexion.Close()
     End Sub
 
@@ -248,19 +274,19 @@ Public Class FrmRecepcion
         If Not DataSet.Tables("Placa").Rows.Count = 0 Then
             Me.TxtMarca.Text = DataSet.Tables("Placa").Rows(0)("Marca")
         End If
-        Me.CboPlaca.Columns(0).Caption = "Placa"
+
     End Sub
-    Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
+    Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         My.Forms.FrmPuertos.ShowDialog()
     End Sub
 
-    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.sp.Close()
         Me.LblEstado.Text = "DESCONECTADO"
         Me.LblEstado.ForeColor = Color.Black
     End Sub
 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim SQL As New DataDynamics.ActiveReports.DataSources.SqlDBDataSource, SqlString As String
         Dim ArepRecepcion As New ArepRecepcion, CodigoProducto As String, Sqldatos As String, RutaLogo As String
         Dim oDataRow As DataRow, Fecha As String, Registros As Double, i As Double, Buscar_Fila() As DataRow, Criterios As String = ""
@@ -277,7 +303,7 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Reporte")
 
-        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "') ORDER BY Cod_Productos DESC"
+        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') ORDER BY Cod_Productos DESC"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Recepcion")
         Registros = DataSet.Tables("Recepcion").Rows.Count
@@ -339,10 +365,10 @@ Public Class FrmRecepcion
         ArepRecepcion.LblNotas.Text = Me.txtobservaciones.Text
         ArepRecepcion.LblOrden.Text = Me.TxtNumeroEnsamble.Text
         ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
-        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoRecepcion.Text
+        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
         'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
         ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
-        ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
+        'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
         'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
@@ -361,7 +387,7 @@ Public Class FrmRecepcion
 
     End Sub
 
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 
@@ -385,13 +411,13 @@ Public Class FrmRecepcion
 
         Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
 
-        SQLProveedor = "SELECT  *  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "') AND (id_Eventos = " & CodigoLinea & ")"
+        SQLProveedor = "SELECT  *  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') AND (id_Eventos = " & CodigoLinea & ")"
         DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
         DataAdapter.Fill(DataSet, "Deducciones")
         If Not DataSet.Tables("Deducciones").Rows.Count = 0 Then
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
             MiConexion.Close()
-            StrSqlUpdate = "DELETE FROM [Detalle_Recepcion] WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "') AND (id_Eventos = " & CodigoLinea & ")"
+            StrSqlUpdate = "DELETE FROM [Detalle_Recepcion] WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') AND (id_Eventos = " & CodigoLinea & ")"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -403,7 +429,7 @@ Public Class FrmRecepcion
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '///////////////////////////////CARGO EL DETALLE DE COMPRAS/////////////////////////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        Sql = "SELECT  id_Eventos As Linea, Cod_Productos, Descripcion_Producto, Calidad, Estado, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, QQ As Saco, Precio  FROM Detalle_Recepcion   WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "') "
+        Sql = "SELECT  id_Eventos As Linea, Cod_Productos, Descripcion_Producto, Calidad, Estado, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, QQ As Saco, Precio  FROM Detalle_Recepcion   WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') "
         DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         Me.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
@@ -588,7 +614,7 @@ Public Class FrmRecepcion
             MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")
         End If
 
-        If Me.CboTipoRecepcion.Text = "RePesaje" Then
+        If Me.CboTipoPesada.Text = "RePesaje" Then
             Me.Close()
         End If
     End Sub
@@ -617,7 +643,7 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Reporte")
 
-        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "') ORDER BY Cod_Productos DESC"
+        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') ORDER BY Cod_Productos DESC"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Recepcion")
         Registros = DataSet.Tables("Recepcion").Rows.Count
@@ -674,10 +700,10 @@ Public Class FrmRecepcion
         ArepRecepcion.LblNotas.Text = Me.txtobservaciones.Text
         ArepRecepcion.LblOrden.Text = Me.TxtNumeroEnsamble.Text
         ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
-        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoRecepcion.Text
+        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
         'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
         ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
-        ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
+        'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
         'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
@@ -699,7 +725,6 @@ Public Class FrmRecepcion
         Dim StrSqlSelect As String, Sql As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-
         StrSqlSelect = "SELECT  IdPlantillo, Plantillo, IdFinca, IdVariedad, Activo   FROM    Plantillo   WHERE     (IdFinca = '" & Me.CboFinca.SelectedValue & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "ListaPlantillos")
@@ -708,7 +733,7 @@ Public Class FrmRecepcion
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(2).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(3).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(4).Visible = False
-        Me.CboPlantillo.Text = "SELECCIONE"
+        Me.CboPlantillo.Text = "SELECCIONAR"
     End Sub
 
     Private Sub BtnBuscarRecep_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBuscarRecep.Click
@@ -725,17 +750,15 @@ Public Class FrmRecepcion
         Dim StrSqlSelect As String, Sql As String, i As Integer
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-        StrSqlSelect = "SELECT  NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado, FechaHora, IdFinca, IdProducto, IdPlantillo, IdConductor, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & CodigoRecepcion & "')  "
+        StrSqlSelect = "SELECT    Recepcion.NumeroRecepcion, Recepcion.TipoRecepcion, Recepcion.Fecha, Recepcion.Cod_Proveedor, Recepcion.Conductor, Recepcion.Id_identificacion, Recepcion.Id_Placa, Recepcion.Cod_Bodega,                           Recepcion.Observaciones, Recepcion.SubTotal, Recepcion.Peso, Recepcion.Lote, Recepcion.FechaHora, Recepcion.IdVehiculo, Recepcion.IdFinca, Recepcion.IdProducto, Recepcion.IdPlantillo, Recepcion.TipoPesada,                           Conductor.Nombre, Conductor.Cedula, Finca.NomFinca, Plantillo.Plantillo, Vehiculo.Marca FROM            Recepcion INNER JOIN                          Finca ON Recepcion.IdFinca = Finca.IdFinca INNER JOIN                          Plantillo ON Finca.IdFinca = Plantillo.IdFinca INNER JOIN                          Vehiculo ON Recepcion.IdVehiculo = Vehiculo.IdVehiculo INNER JOIN   Conductor ON Recepcion.Conductor = Conductor.Nombre Where  (NumeroRecepcion = N'" & CodigoRecepcion & "')  "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "SeleccionRecep")
         If DataSet.Tables("SeleccionRecep").Rows.Count > 0 Then
-
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
-                If DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion") = "PESADA MANUAL" Then
-                    Me.CboTipoRecepcion.SelectedIndex = 0
-                ElseIf DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion") = "PESADA AUTOMATICA" Then
-                    Me.CboTipoRecepcion.SelectedIndex = 1
-                End If
+                CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
+                CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Fecha")) Then
                 DTPFecha.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Fecha")
@@ -744,26 +767,23 @@ Public Class FrmRecepcion
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("FechaHora")) Then
                 LblHora.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("FechaHora")).Substring(11)
             End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("FechaHora")) Then
-                LblHora.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("FechaHora")).Substring(11)
-            End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")) Then
-                Me.CmbSerie.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")).Substring(0, 2)
+                Me.CmbSerie.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")).Substring(0, 1)
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Proveedor")) Then
                 Me.TxtCodProductor.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Proveedor")
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")) Then
-                Me.CboFinca.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")
+                Me.CboFinca.Text = DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")) Then
-                Me.CboFinca.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")
+                Me.CboPlantillo.Text = DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")
             End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdConductor")) Then
-                Me.CboConductor.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdConductor")
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")) Then
+                Me.CboPlaca.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")
             End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdConductor")) Then
-                Me.CboConductor.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdConductor")
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Conductor")) Then
+                Me.CboConductor.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Conductor")
             End If
         End If
     End Sub
@@ -775,56 +795,51 @@ Public Class FrmRecepcion
     Private Sub TxtCodProductor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCodProductor.TextChanged
         Dim SqlProveedor As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlSelect As String
+        Me.TxtCodProductor.Text = ""
 
-        SqlProveedor = "SELECT  * FROM Proveedor  WHERE (IdProductor = '" & Me.TxtCodProductor.Text & "')"
+        SqlProveedor = "SELECT  Cod_Proveedor, Nombre_Proveedor + ' ' + Apellido_Proveedor AS Proveedor, Direccion_Proveedor, Telefono, Cod_Cuenta_Proveedor, Cod_Cuenta_Pagar, Cod_Cuenta_Cobrar, Merma, InventarioFisico, IdProductor FROM  Proveedor  WHERE (IdProductor = '" & Me.TxtCodProductor.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlProveedor, MiConexion)
         DataAdapter.Fill(DataSet, "Proveedor")
         If Not DataSet.Tables("Proveedor").Rows.Count = 0 Then
-            Me.txtnombre.Text = DataSet.Tables("Proveedor").Rows(0)("Nombre_Proveedor")
-            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Apellido_Proveedor")) Then
-                Me.txtnombre.Text = DataSet.Tables("Proveedor").Rows(0)("Nombre_Proveedor") & " " & DataSet.Tables("Proveedor").Rows(0)("Apellido_Proveedor")
+            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Proveedor")) Then
+                Me.txtnombre.Text = DataSet.Tables("Proveedor").Rows(0)("Proveedor")
             End If
             '////////////////////////////////////////////////BUSCO DATOS DEL CONDUCTOR ///////////////////////////////////
-
             StrSqlSelect = "SELECT  IdFinca, IdProductor, NomFinca, IdComarca, Altitud, NotasdeCata, Emblaje, FechaActualizacion, Activo  FROM   Finca   WHERE   (IdProductor = '" & Me.TxtCodProductor.Text & "')"
             DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
             DataAdapter.Fill(DataSet, "ListaFinca")
             Me.CboFinca.DataSource = DataSet.Tables("ListaFinca")
-            Me.CboFinca.Splits.Item(0).DisplayColumns(0).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(1).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(3).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(4).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(5).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(6).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(7).Visible = False
-            Me.CboFinca.Splits.Item(0).DisplayColumns(8).Visible = False
-            Me.CboFinca.Text = "SELECCIONE"
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(0).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(1).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(3).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(4).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(5).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(6).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(7).Visible = False
+            'Me.CboFinca.Splits.Item(0).DisplayColumns(8).Visible = False
 
-            SqlProveedor = "SELECT DISTINCT Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono,Cod_SubProveedor  FROM Recepcion WHERE (Cod_Proveedor = '" & Me.TxtCodProductor.Text & "') ORDER BY Conductor"
-            DataAdapter = New SqlClient.SqlDataAdapter(SqlProveedor, MiConexion)
-            DataAdapter.Fill(DataSet, "Datos")
-            If Not DataSet.Tables("Datos").Rows.Count = 0 Then
-                If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Conductor")) Then
-                    Me.CboConductor.Text = DataSet.Tables("Datos").Rows(0)("Conductor")
-                End If
-                If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Id_identificacion")) Then
-                    Me.TxtCodProducto.Text = DataSet.Tables("Datos").Rows(0)("Id_identificacion")
-                End If
-
-                If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Id_Placa")) Then
-                    Me.CboPlaca.Text = DataSet.Tables("Datos").Rows(0)("Id_Placa")
-                End If
-                If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Cod_SubProveedor")) Then
-                    'CodigoSubProveedor = DataSet.Tables("Datos").Rows(0)("Cod_SubProveedor")
-                End If
-            End If
+            'SqlProveedor = "SELECT DISTINCT Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono,Cod_SubProveedor  FROM Recepcion WHERE (Cod_Proveedor = '" & Me.TxtCodProductor.Text & "') ORDER BY Conductor"
+            'DataAdapter = New SqlClient.SqlDataAdapter(SqlProveedor, MiConexion)
+            'DataAdapter.Fill(DataSet, "Datos")
+            'If Not DataSet.Tables("Datos").Rows.Count = 0 Then
+            '    If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Conductor")) Then
+            '        Me.CboConductor.Text = DataSet.Tables("Datos").Rows(0)("Conductor")
+            '    End If
+            '    If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Id_identificacion")) Then
+            '        Me.TxtCodProducto.Text = DataSet.Tables("Datos").Rows(0)("Id_identificacion")
+            '    End If
+            '    If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Id_Placa")) Then
+            '        Me.CboPlaca.Text = DataSet.Tables("Datos").Rows(0)("Id_Placa")
+            '    End If
+            '    If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Cod_SubProveedor")) Then
+            '        CodigoSubProveedor = DataSet.Tables("Datos").Rows(0)("Cod_SubProveedor")
+            '    End If
+            'End If
         End If
+
+
+
     End Sub
-
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
-
-    End Sub
-
     Private Sub BtnBusPlaca_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBusPlaca.Click
         Quien = "ConsultaPlacaRecepción"
         My.Forms.FrmConsultas.Text = "Consulta Placa Recepción"
@@ -834,12 +849,12 @@ Public Class FrmRecepcion
         End If
     End Sub
 
-    Private Sub txtid_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCodProducto.TextChanged
+    Private Sub txtid_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand 'iResultado As Integer
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String
 
-        SqlProductos = "SELECT Cod_Productos, Descripcion_Producto FROM Productos WHERE (Tipo_Producto <> 'Servicio') AND (Tipo_Producto <> 'Descuento') AND (Cod_Productos = '" & Me.TxtCodProducto.Text & "')"
+        'SqlProductos = "SELECT Cod_Productos, Descripcion_Producto FROM Productos WHERE (Tipo_Producto <> 'Servicio') AND (Tipo_Producto <> 'Descuento') AND (Cod_Productos = '" & Me.TxtCodProducto.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlProductos, MiConexion)
         DataAdapter.Fill(DataSet, "ListaProductos")
         If Not DataSet.Tables("ListaProductos").Rows.Count = 0 Then
@@ -847,17 +862,10 @@ Public Class FrmRecepcion
         End If
     End Sub
 
-    Private Sub BtnTclCodProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnTclCodProv.Click
+    Private Sub BtnTclCodProd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         FrmTeclado.ShowDialog()
         If FrmTeclado.Numero <> 0 Then
-            Me.TxtCodProductor.Text = FrmTeclado.Numero
-        End If
-    End Sub
-
-    Private Sub BtnTclCodProd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnTclCodProd.Click
-        FrmTeclado.ShowDialog()
-        If FrmTeclado.Numero <> 0 Then
-            Me.TxtCodProducto.Text = FrmTeclado.Numero
+            ''Me.TxtCodProducto.Text = FrmTeclado.Numero
         End If
     End Sub
 
@@ -870,16 +878,37 @@ Public Class FrmRecepcion
         End If
     End Sub
 
-    Private Sub BtnConsProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConsProducto.Click
+    Private Sub BtnConsProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Quien = "ConsultaProductoRecepcion"
         My.Forms.FrmConsultas.Text = "Consulta Producto Recepcion"
         My.Forms.FrmConsultas.ShowDialog()
         If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
-            Me.TxtCodProducto.Text = FrmConsultas.Codigo
+            'Me.TxtCodProducto.Text = FrmConsultas.Codigo
         End If
     End Sub
 
-    Private Sub CboImperfeccion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboImperfeccion.TextChanged
+    Private Sub GroupBox6_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox6.Enter
+
+    End Sub
+
+    Private Sub CboFinca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboFinca.TextChanged
+
+    End Sub
+
+    Private Sub C1Combo2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1Combo2.TextChanged
+
+    End Sub
+
+    Private Sub CboCodigoBodega_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboCodigoBodega.TextChanged
+
+    End Sub
+
+    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
+
 
     End Sub
 End Class
