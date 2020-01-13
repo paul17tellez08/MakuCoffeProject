@@ -50,7 +50,7 @@ Public Class FrmProveedorManual
         End If
 
         FrmRecepcion.TxtCodProductor.Text = Me.CboCodigoProveedor.Text
-        FrmRecepcion.txtnombre.Text = Me.TxtNombre.Text
+        FrmRecepcion.TxtRConacafe.Text = Me.TxtNombre.Text
         Me.Close()
 
     End Sub

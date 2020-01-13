@@ -2,46 +2,43 @@ Public Class FrmRecepcion
     Public MiConexion As New SqlClient.SqlConnection(Conexion), Año As String, Mes As String, Dia As String, ConsecutivoFacturaSerie As Boolean = False
     Public CodigoRecepcion As String
     Delegate Sub delegado(ByVal data As String)
-    Private Sub Siguiente()
-        If Me.TxtNombreProducto.RowCount <> 0 Then
-            Dim Iposicion As Double
-            Iposicion = Me.TxtNombreProducto.RowCount
-            Me.TxtNombreProducto.Row = Iposicion
-            'Me.TrueDBGridComponentes.Columns(1).Text = Me.CboCodigoProducto.Columns(0).Text
-            'Me.TrueDBGridComponentes.Columns(2).Text = Me.CboCodigoProducto.Columns(1).Text
-            Me.TxtNombreProducto.Col = 5
+    Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
+        Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
+
+        DataSet.Reset()
+        '*CARGO LOS DATOS DE LA EMPRESA
+
+        sql = "SELECT * FROM DatosEmpresa"
+        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
+        DataAdapter.Fill(DataSet, "DatosEmpresa")
+        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
+            ConsecutivoFacturaSerie = DataSet.Tables("DatosEmpresa").Rows(0)("ConsecutivoFacSerie")
         End If
 
-    End Sub
+        'CARGO LAS SERIES EN CASO DE QUE LA EMPRESA PERMITA ESE DATO
+        If Me.ConsecutivoFacturaSerie = True Then
+            Me.CmbSerie.Visible = True
+            SqlString = "SELECT DISTINCT Serie FROM ConsecutivoSerie ORDER BY Serie DESC"
+            'MiConexion.Open()
+            DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+            DataAdapter.Fill(DataSet, "ConsecutivoSerie")
+            If Not DataSet.Tables("ConsecutivoSerie").Rows.Count = 0 Then
+                Me.CmbSerie.DataSource = DataSet.Tables("ConsecutivoSerie")
+                Me.CmbSerie.Text = DataSet.Tables("ConsecutivoSerie").Rows(0)("Serie")
+            End If
+        End If
 
-    Private Sub FrmRecepcion_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-        Me.Button10_Click(sender, e)
-    End Sub
 
-
-    Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
-        Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand 'iResultado As Integer
-        Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
-        DataSet.Reset()
-
-        'sql = "SELECT IdDano, Dano, Activo FROM Dano WHERE (Activo = 1)"
-        'DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        'DataAdapter.Fill(DataSet, "DanosCafe")
-        'i = DataSet.Tables("DanosCafe").Rows.Count
-        'Me.CboDano.DataSource = DataSet.Tables("DanosCafe")
-        'Me.CboDano.Splits.Item(0).DisplayColumns(0).Visible = False
-        'Me.CboDano.Splits.Item(0).DisplayColumns(2).Visible = False
-        'Me.CboDano.SelectedValue = 3
-
-        'sql = "SELECT IdImperfeccion, Imperfeccion, activa FROM Imperfeccion  WHERE (activa = 1)"
-        'DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        'DataAdapter.Fill(DataSet, "ImperfeccionCafe")
-        'i = DataSet.Tables("ImperfeccionCafe").Rows.Count
-        'Me.CboImperfeccion.DataSource = DataSet.Tables("ImperfeccionCafe")
-        'Me.CboImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
-        'Me.CboImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
-        'Me.CboImperfeccion.SelectedValue = 7
+        SqlString = "SELECT   IdVehiculo, Placa FROM Vehiculo WHERE(Activo = 1)"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Vehiculo")
+        If Not DataSet.Tables("Vehiculo").Rows.Count = 0 Then
+            Me.CboPlaca.DataSource = DataSet.Tables("Vehiculo")
+            Me.CboPlaca.Text = DataSet.Tables("Vehiculo").Rows(0)("Placa")
+        End If
 
         '///PARA QUE SIRVE ESTA VALIDACIONES
         'If Quien = "Recepcion" Then
@@ -73,13 +70,8 @@ Public Class FrmRecepcion
         '    Me.CboCodigoProveedor.Columns(1).Caption = "Proveedor"
         '    Me.CboCodigoProveedor.Columns(2).Caption = "Origen"
         'End If
-        MiConexion.Open()
-        sql = "SELECT * FROM DatosEmpresa"
-        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        DataAdapter.Fill(DataSet, "DatosEmpresa")
-        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-            ConsecutivoFacturaSerie = DataSet.Tables("DatosEmpresa").Rows(0)("ConsecutivoFacSerie")
-        End If
+     
+       
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '//////////////////////////CARGO LAS BODEGAS////////////////////////////////////////////////////////////////////
@@ -94,20 +86,13 @@ Public Class FrmRecepcion
         End If
         Me.CboCodigoBodega.Columns(0).Caption = "Codigo"
         Me.CboCodigoBodega.Columns(1).Caption = "Nombre Bodega"
-       
+
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '//////////////////////////CARGO LAS BODEGAS////////////////////////////////////////////////////////////////////
         '////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        SqlString = "SELECT Placa, Marca, TipoVehiculo FROM Vehiculo WHERE(Activo = 1)"
-        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Placa")
-        Me.CboPlaca.DataSource = DataSet.Tables("Placa")
-        If Not DataSet.Tables("Placa").Rows.Count = 0 Then
-            Me.CboPlaca.Text = DataSet.Tables("Placa").Rows(0)("Placa")
-        End If
-        Me.CboPlaca.Columns(0).Caption = "Placa"
+
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '//////////////////////////CARGO LOS CONDUCTORES////////////////////////////////////////////////////////////////////
@@ -127,18 +112,7 @@ Public Class FrmRecepcion
         ''///////////////////////CARGO LOS SERIES////////////////////////////////////////////////////////////////////////////////////////
         ''//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        SqlString = "SELECT DISTINCT Serie FROM ConsecutivoSerie ORDER BY Serie DESC"
-        MiConexion.Open()
-        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "ConsecutivoSerie")
-        CmbSerie.DataSource = DataSet.Tables("ConsecutivoSerie")
-        If Not DataSet.Tables("ConsecutivoSerie").Rows.Count = 0 Then
-            Me.CmbSerie.Text = DataSet.Tables("ConsecutivoSerie").Rows(0)("Serie")
-        End If
-        MiConexion.Close()
-        If Me.ConsecutivoFacturaSerie = True Then
-            Me.CmbSerie.Visible = True
-        End If
+        
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '///////////////////////////////CARGO EL DETALLE DE COMPRAS/////////////////////////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -204,7 +178,7 @@ Public Class FrmRecepcion
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
 
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).Width = 60
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).Width = 63
 
             Me.TDGImperfeccion.Columns(3).Caption = "%"
 
@@ -215,6 +189,24 @@ Public Class FrmRecepcion
 
     End Sub
 
+    Private Sub Siguiente()
+        If Me.TxtNombreProducto.RowCount <> 0 Then
+            Dim Iposicion As Double
+            Iposicion = Me.TxtNombreProducto.RowCount
+            Me.TxtNombreProducto.Row = Iposicion
+            'Me.TrueDBGridComponentes.Columns(1).Text = Me.CboCodigoProducto.Columns(0).Text
+            'Me.TrueDBGridComponentes.Columns(2).Text = Me.CboCodigoProducto.Columns(1).Text
+            Me.TxtNombreProducto.Col = 5
+        End If
+
+    End Sub
+
+    Private Sub FrmRecepcion_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+        Me.Button10_Click(sender, e)
+    End Sub
+
+
+   
     Private Sub CmdNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LimpiaRecepcion()
     End Sub
@@ -252,7 +244,7 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Conductor")
         If Not DataSet.Tables("Conductor").Rows.Count = 0 Then
-            Me.TxtCedula.Text = DataSet.Tables("Conductor").Rows(0)("Cedula")
+            Me.TxtCedulaConductor.Text = DataSet.Tables("Conductor").Rows(0)("Cedula")
         End If
         Me.CboConductor.Columns(0).Caption = "Codigo"
         'Me.CboCodigoBodega.Columns(1).Caption = "Placa"
@@ -367,7 +359,7 @@ Public Class FrmRecepcion
         ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
         ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
         'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
-        ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
+        ArepRecepcion.LblNombres.Text = Me.TxtRConacafe.Text
         'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
         'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
@@ -702,7 +694,7 @@ Public Class FrmRecepcion
         ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
         ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
         'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
-        ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
+        ArepRecepcion.LblNombres.Text = Me.TxtRConacafe.Text
         'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
         'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
@@ -802,7 +794,7 @@ Public Class FrmRecepcion
         DataAdapter.Fill(DataSet, "Proveedor")
         If Not DataSet.Tables("Proveedor").Rows.Count = 0 Then
             If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Proveedor")) Then
-                Me.txtnombre.Text = DataSet.Tables("Proveedor").Rows(0)("Proveedor")
+                Me.TxtRConacafe.Text = DataSet.Tables("Proveedor").Rows(0)("Proveedor")
             End If
             '////////////////////////////////////////////////BUSCO DATOS DEL CONDUCTOR ///////////////////////////////////
             StrSqlSelect = "SELECT  IdFinca, IdProductor, NomFinca, IdComarca, Altitud, NotasdeCata, Emblaje, FechaActualizacion, Activo  FROM   Finca   WHERE   (IdProductor = '" & Me.TxtCodProductor.Text & "')"
@@ -895,7 +887,7 @@ Public Class FrmRecepcion
 
     End Sub
 
-    Private Sub C1Combo2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1Combo2.TextChanged
+    Private Sub C1Combo2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -907,7 +899,14 @@ Public Class FrmRecepcion
 
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckMohoso.CheckedChanged
+
+
+    End Sub
+
+
+    Private Sub BtnVehiculoAgre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnVehiculoAgre.Click
+        My.Forms.FrmVehiculo.ShowDialog()
 
 
     End Sub

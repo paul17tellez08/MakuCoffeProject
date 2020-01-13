@@ -1441,7 +1441,7 @@ Module Funciones
         'FrmRecepcion.TxtNumeroRecibo.Text = "-----0-----"
         FrmRecepcion.txtobservaciones.Text = ""
         FrmRecepcion.txtsubtotal.Text = ""
-        FrmRecepcion.txtnombre.Text = ""
+        FrmRecepcion.TxtRConacafe.Text = ""
         FrmRecepcion.LblPeso.Text = "0.00"
 
         'FrmRecepcion.TxtEqOreado.Text = "0.00"
@@ -1518,7 +1518,7 @@ Module Funciones
         'FrmRecepcion.CboFinca.Enabled = True
         'FrmRecepcion.TxtNumeroCedula.Enabled = True
         'FrmRecepcion.TxtFinca.Enabled = True
-        FrmRecepcion.txtnombre.Enabled = True
+        FrmRecepcion.TxtRConacafe.Enabled = True
         'FrmRecepcion.CmdProductorManual.Enabled = True
         FrmRecepcion.BtnBsquedaProductor.Enabled = True
         ' BtnSalirRec.Button14.Enabled = True
