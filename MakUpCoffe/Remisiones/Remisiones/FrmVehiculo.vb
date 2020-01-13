@@ -7,84 +7,121 @@ Public Class FrmVehiculo
         'Me.CboPlaca.Text = My.Forms.FrmConsultas.Codigo
     End Sub
 
-    Private Sub CboPlaca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboPlaca.TextChanged
-        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Activo As Boolean
+    Private Sub Vehiculo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-
-        '////////////////////////////////////////////////BUSCO DATOS DEL CONDUCTOR ///////////////////////////////////
-        SqlString = "SELECT  Placa, Marca, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & Me.CboPlaca.Text & "')"
+        SqlString = "SELECT Placa FROM Vehiculo WHERE (Activo = 1)"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Datos")
-        If Not DataSet.Tables("Datos").Rows.Count = 0 Then
-            If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Marca")) Then
-                Me.TxtMarca.Text = DataSet.Tables("Datos").Rows(0)("Marca")
-            End If
+        DataAdapter.Fill(DataSet, "Placa")
+        If Not DataSet.Tables("Placa").Rows.Count = 0 Then
+            Me.CboPlaca.DataSource = DataSet.Tables("Placa")
+            Me.CboPlaca.Text = DataSet.Tables("Placa").Rows(0)("Placa")
+        End If
 
-            If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("Activo")) Then
-                Activo = DataSet.Tables("Datos").Rows(0)("Activo")
-                If Activo = True Then
-                    Me.CboActivo.Text = "Activo"
-                Else
-                    Me.CboActivo.Text = "Inactivo"
-                End If
 
-            End If
-            If Not IsDBNull(DataSet.Tables("Datos").Rows(0)("TipoVehiculo")) Then
-                Me.CboTipo.Text = DataSet.Tables("Datos").Rows(0)("TipoVehiculo")
-            End If
+        SqlString = "SELECT DISTINCT Marca FROM Vehiculo WHERE(Activo = 1)"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Marca")
+        If Not DataSet.Tables("Marca").Rows.Count = 0 Then
+            Me.CboMarca.DataSource = DataSet.Tables("Marca")
+            Me.CboMarca.Text = DataSet.Tables("Marca").Rows(0)("Marca")
+        End If
+
+
+        SqlString = "SELECT DISTINCT Modelo FROM Vehiculo WHERE(Activo = 1)"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Modelo")
+        If Not DataSet.Tables("Modelo").Rows.Count = 0 Then
+            Me.CboModelo.DataSource = DataSet.Tables("Modelo")
+            Me.CboModelo.Text = DataSet.Tables("Modelo").Rows(0)("Modelo")
+        End If
+
+        SqlString = "SELECT DISTINCT TipoVehiculo FROM Vehiculo WHERE(Activo = 1)"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "TipoVehiculo")
+        If Not DataSet.Tables("TipoVehiculo").Rows.Count = 0 Then
+            Me.CboTipo.DataSource = DataSet.Tables("TipoVehiculo")
+            Me.CboTipo.Text = DataSet.Tables("TipoVehiculo").Rows(0)("TipoVehiculo")
+        End If
+
+
+        SqlString = "SELECT DISTINCT Color FROM Vehiculo WHERE(Activo = 1)"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Color")
+        If Not DataSet.Tables("Color").Rows.Count = 0 Then
+            Me.CboColor.DataSource = DataSet.Tables("Color")
+            Me.CboColor.Text = DataSet.Tables("Color").Rows(0)("Color")
         End If
 
 
 
     End Sub
+    Private Sub CboPlaca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboPlaca.TextChanged
+        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Activo As Boolean
 
-    Private Sub Vehiculo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
-
-        SqlString = "SELECT Placa, Marca, TipoVehiculo FROM Vehiculo "
+        '////////////////////////////////////////////////BUSCO DATOS DEL CONDUCTOR ///////////////////////////////////
+        SqlString = "SELECT   IdVehiculo, Placa, Marca, Modelo, Color, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & Me.CboPlaca.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Placa")
-        Me.CboPlaca.DataSource = DataSet.Tables("Placa")
-        'If Not DataSet.Tables("Placa").Rows.Count = 0 Then
-        '    Me.CboPlaca.Text = DataSet.Tables("Placa").Rows(0)("Placa")
-        'End If
-        'Me.CboPlaca.Columns(0).Caption = "Placa"
+        DataAdapter.Fill(DataSet, "DatosVehiculo")
+        If Not DataSet.Tables("DatosVehiculo").Rows.Count = 0 Then
 
-        SqlString = "SELECT DISTINCT TipoVehiculo FROM Vehiculo WHERE(Activo = 1)"
-        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Tipo")
-        Me.CboTipo.DataSource = DataSet.Tables("Tipo")
-        'If Not DataSet.Tables("Tipo").Rows.Count = 0 Then
-        '    Me.CboTipo.Text = DataSet.Tables("Tipo").Rows(0)("TipoVehiculo")
-        'End If
-        'Me.CboPlaca.Columns(0).Caption = "Placa"
+            If Not IsDBNull(DataSet.Tables("DatosVehiculo").Rows(0)("Marca")) Then
+                Me.CboMarca.Text = DataSet.Tables("DatosVehiculo").Rows(0)("Marca")
+            End If
 
+            If Not IsDBNull(DataSet.Tables("DatosVehiculo").Rows(0)("Modelo")) Then
+                Me.CboModelo.Text = DataSet.Tables("DatosVehiculo").Rows(0)("Modelo")
+            End If
 
+            If Not IsDBNull(DataSet.Tables("DatosVehiculo").Rows(0)("TipoVehiculo")) Then
+                Me.CboTipo.Text = DataSet.Tables("DatosVehiculo").Rows(0)("TipoVehiculo")
+            End If
 
+            If Not IsDBNull(DataSet.Tables("DatosVehiculo").Rows(0)("Color")) Then
+                Me.CboColor.Text = DataSet.Tables("DatosVehiculo").Rows(0)("Color")
+            End If
+
+            If Not IsDBNull(DataSet.Tables("DatosVehiculo").Rows(0)("Activo")) Then
+                Me.CheckBox1.Checked = DataSet.Tables("DatosVehiculo").Rows(0)("Activo")
+            End If
+        Else
+        End If
     End Sub
 
-    Public Sub LimpiaVehiculo()
-        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+    Private Sub CboMarca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboMarca.TextChanged
+        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Activo As Boolean
 
-        SqlString = "SELECT Placa, Marca, TipoVehiculo FROM Vehiculo "
+        SqlString = "SELECT  DISTINCT  Modelo FROM Vehiculo WHERE (Marca = '" & Me.CboMarca.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Placa")
-        Me.CboPlaca.DataSource = DataSet.Tables("Placa")
-        'If Not DataSet.Tables("Placa").Rows.Count = 0 Then
-        '    Me.CboPlaca.Text = DataSet.Tables("Placa").Rows(0)("Placa")
-        'End If
-        'Me.CboPlaca.Columns(0).Caption = "Placa"
+        DataAdapter.Fill(DataSet, "VehiculoModelo")
+        If Not DataSet.Tables("VehiculoModelo").Rows.Count = 0 Then
+            If Not IsDBNull(DataSet.Tables("VehiculoModelo").Rows(0)("Modelo")) Then
+                Me.CboModelo.DataSource = DataSet.Tables("VehiculoModelo")
+                Me.CboModelo.Text = DataSet.Tables("VehiculoModelo").Rows(0)("Modelo")
+            End If
+        End If
+    End Sub
+    Private Sub CboModelo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboModelo.TextChanged
+        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Activo As Boolean
 
-
-        Me.CboPlaca.Text = ""
-        Me.TxtMarca.Text = ""
-        Me.CboTipo.Text = ""
-        Me.CboActivo.Text = "Activo"
+        SqlString = "SELECT  DISTINCT  TipoVehiculo FROM Vehiculo WHERE (Modelo = '" & Me.CboModelo.Text & "')"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "VehiculoTipo")
+        If Not DataSet.Tables("VehiculoTipo").Rows.Count = 0 Then
+            If Not IsDBNull(DataSet.Tables("VehiculoTipo").Rows(0)("TipoVehiculo")) Then
+                Me.CboTipo.DataSource = DataSet.Tables("VehiculoTipo")
+                Me.CboTipo.Text = DataSet.Tables("VehiculoTipo").Rows(0)("TipoVehiculo")
+            End If
+        End If
     End Sub
 
     Private Sub CmdNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdNuevo.Click
-        Me.LimpiaVehiculo()
+        Me.CboPlaca.Text = ""
+        Me.CboMarca.Text = ""
+        Me.CboModelo.Text = ""
+        Me.CboTipo.Text = ""
+        Me.CboColor.Text = ""
+        Me.CheckBox1.Checked = False
     End Sub
 
     Private Sub CmdGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdGrabar.Click
@@ -92,39 +129,31 @@ Public Class FrmVehiculo
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
 
-
         SQLString = "SELECT  Placa, Marca, TipoVehiculo, Activo FROM Vehiculo WHERE (Activo = 1) AND (Placa = '" & Me.CboPlaca.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SQLString, MiConexion)
         DataAdapter.Fill(DataSet, "Clientes")
         If Not DataSet.Tables("Clientes").Rows.Count = 0 Then
-
-            If Me.CboActivo.Text = "Activo" Then
-                Activo = 1
-            Else
-                Activo = 0
-            End If
-
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
-            StrSqlUpdate = "UPDATE [Vehiculo]  SET [Marca] = '" & Me.TxtMarca.Text & "',[TipoVehiculo] = '" & Me.CboTipo.Text & "' ,[Activo] = " & Activo & "  WHERE (Activo = 1) AND (Placa = '" & Me.CboPlaca.Text & "')"
+            StrSqlUpdate = "UPDATE [Vehiculo]  SET [Marca] = '" & Me.CboMarca.Text & "',[Modelo] = '" & Me.CboModelo.Text & "',[Color] = '" & Me.CboColor.Text & "',[TipoVehiculo] = '" & Me.CboTipo.Text & "' ,[Activo] = '" & Me.CheckBox1.Checked & "'  WHERE (Placa = '" & Me.CboPlaca.Text & "')"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
-            StrSqlUpdate = "INSERT INTO [Vehiculo] ([Placa],[Marca],[TipoVehiculo],[Activo]) VALUES ('" & Me.CboPlaca.Text & "' ,'" & Me.TxtMarca.Text & "' ,'" & Me.CboTipo.Text & "', '" & Activo & "' "
+            StrSqlUpdate = "INSERT INTO [Vehiculo] ([Placa],[Marca], [Modelo], [Color],[TipoVehiculo],[Activo]) VALUES ('" & Me.CboPlaca.Text & "' ,'" & Me.CboMarca.Text & "','" & Me.CboModelo.Text & "','" & Me.CboColor.Text & "' ,'" & Me.CboTipo.Text & "', '" & Me.CheckBox1.Checked & "') "
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+            If iResultado = 1 Then
+                MsgBox("VEHICULO GUARDADO CON EXITO", MsgBoxStyle.Exclamation, "Vehiculo")
+            Else
+                MsgBox("ALGO SALIO MAL ASEGURESE QUE LA INFORMACION ESTA CORRECTA, CONTACTESE CON SOPORTE", MsgBoxStyle.Exclamation, "Vehiculo")
+                Exit Sub
+            End If
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         End If
-
-
-        LimpiaVehiculo()
-
-
+        CmdNuevo_Click(Sender,e)
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
@@ -136,43 +165,29 @@ Public Class FrmVehiculo
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
         Dim Resultado As String, StrSQl As String
-
         Resultado = MsgBox("¿Esta Seguro de Eliminar el Usuario?", MsgBoxStyle.OkCancel, "Sistema de Facturacion")
-
         If Not Resultado = "1" Then
             Exit Sub
         End If
-
-
-
-
-        SqlString = "SELECT  Placa, Marca, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & Me.CboPlaca.Text & "')"
+        SQLString = "SELECT  Placa, Marca, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & Me.CboPlaca.Text & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SQLString, MiConexion)
         DataAdapter.Fill(DataSet, "Clientes")
         If Not DataSet.Tables("Clientes").Rows.Count = 0 Then
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
-
             '---------------ANTES DE BORRAR VERIFICO SI EXISTE PLACAS PARA LA RECEPCION ---------------------
             SQLString = "SELECT  NumeroRecepcion FROM Recepcion WHERE  (Id_Placa = '" & Me.CboPlaca.Text & "')"
             DataAdapter = New SqlClient.SqlDataAdapter(SQLString, MiConexion)
             DataAdapter.Fill(DataSet, "ConsultaRec")
             If Not DataSet.Tables("ConsultaRec").Rows.Count = 0 Then
-                MsgBox("Existen Registros en Recepciones", MsgBoxStyle.Critical, "Zeus Facturacion")
+                MsgBox("EXISTEN REGISTROS DE NOTAS DE PESO CON EL VEHICULO : " & Me.CboPlaca.Text & "", MsgBoxStyle.Critical, "Vehiculo")
                 Exit Sub
             End If
-
-
             StrSqlUpdate = "DELETE FROM [Vehiculo] WHERE (Placa = '" & Me.CboPlaca.Text & "')"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
-
         End If
-
-        'Bitacora(Now, NombreUsuario, "Clientes", "Borro el vehiculo: " & Me.CboPlaca.Text)
-        LimpiaVehiculo()
-
+        CmdNuevo_Click(sender, e)
     End Sub
 End Class

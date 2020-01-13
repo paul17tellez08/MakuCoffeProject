@@ -68,51 +68,53 @@ Public Class FrmComarMunici
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnArriba.Click
-        'Dim PosicionInicial As Integer
-        'PosicionInicial = DgvComarcas.CurrentRow.Index()
-        'If PosicionInicial = 0 Then
+        Dim PosicionInicial As Integer
+        PosicionInicial = DgvComarcas.CurrentRow.Index()
+        If PosicionInicial = 0 Then
 
-        '    MsgBox("ESTE ES EL LIMITE SUPERIOR", MsgBoxStyle.Critical, "Municipios y Comarcas")
-        'Else
-        '    DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        '    DgvComarcas.CurrentCell = DgvComarcas.Rows(PosicionInicial - 1).Cells(0)
-        'End If
+            MsgBox("ESTE ES EL LIMITE SUPERIOR", MsgBoxStyle.Critical, "Municipios y Comarcas")
+        Else
+            DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DgvComarcas.CurrentCell = DgvComarcas.Rows(PosicionInicial - 1).Cells(0)
+        End If
     End Sub
 
     Private Sub BtnAbajo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAbajo.Click
-        'Dim PosicionInicial As Integer
-        'PosicionInicial = DgvComarcas.CurrentRow.Index()
-        'If PosicionInicial = DgvComarcas.Rows.Count - 1 Then
-        '    MsgBox("ESTE ES EL LIMITE INFERIOR", MsgBoxStyle.Critical, "Municipios y Comarcas")
-        'Else
-        '    DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        '    DgvComarcas.CurrentCell = DgvComarcas.Rows(PosicionInicial + 1).Cells(0)
-        'End If
+        Dim PosicionInicial As Integer
+        PosicionInicial = DgvComarcas.CurrentRow.Index()
+        If PosicionInicial = DgvComarcas.Rows.Count - 1 Then
+            MsgBox("ESTE ES EL LIMITE INFERIOR", MsgBoxStyle.Critical, "Municipios y Comarcas")
+        Else
+            DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DgvComarcas.CurrentCell = DgvComarcas.Rows(PosicionInicial + 1).Cells(0)
+        End If
     End Sub
     Private Sub BtnNuevaFila_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNuevaFila.Click
-        'Dim temp_string As String = "0,"
-        'Dim temp_Array() As String = temp_string.Split(",")
-        'DgvComarcas.Rows.Add(temp_Array)
-        'DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        'DgvComarcas.CurrentCell = DgvComarcas.Rows(DgvComarcas.Rows.Count - 1).Cells(0)
-        'Me.DgvComarcas.Rows(DgvComarcas.CurrentRow.Index()).Cells(2).Value = 1
+        Dim temp_string As String = "0,"
+        Dim temp_Array() As String = temp_string.Split(",")
+        DgvComarcas.Rows.Add(temp_Array)
+        DgvComarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DgvComarcas.CurrentCell = DgvComarcas.Rows(DgvComarcas.Rows.Count - 1).Cells(0)
+        Me.DgvComarcas.Rows(DgvComarcas.CurrentRow.Index()).Cells(2).Value = 1
     End Sub
 
     Private Sub BtnEliminarfila_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEliminarfila.Click
-        'Dim result As DialogResult = MessageBox.Show("Desea eliminar esta comarca?", "Comarcas", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        'If (result = MsgBoxResult.Yes) Then
-        '    If Me.DgvComarcas.Rows(DgvComarcas.CurrentRow.Index()).Cells(0).Value = 0 Then
-        '        Me.DgvComarcas.Rows.RemoveAt(DgvComarcas.CurrentRow.Index())
-        '    Else
-        '        StrSqlUpdate = " UPDATE [dbo].[Comarca] SET [Activo] = 0 WHERE (IdComarca = '" & Me.DgvComarcas.Rows.Item(DgvComarcas.CurrentRow.Index()).Cells("CodComarca").Value & "')"
-        '        MiConexion.Open()
-        '        ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
-        '        iResultado = ComandoUpdate.ExecuteNonQuery
-        '        MiConexion.Close()
-        '        Me.DgvComarcas.Rows.RemoveAt(DgvComarcas.CurrentRow.Index())
-        '    End If
-        'End If
-   End Sub
+        If Me.DgvComarcas.Rows.Count > 0 Then
+            Dim result As DialogResult = MessageBox.Show("Desea eliminar esta comarca?", "Comarcas", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If (result = MsgBoxResult.Yes) Then
+                If Me.DgvComarcas.Rows(DgvComarcas.CurrentRow.Index()).Cells(0).Value = 0 Then
+                    Me.DgvComarcas.Rows.RemoveAt(DgvComarcas.CurrentRow.Index())
+                Else
+                    StrSqlUpdate = " UPDATE [dbo].[Comarca] SET [Activo] = 0 WHERE (IdComarca = '" & Me.DgvComarcas.Rows.Item(DgvComarcas.CurrentRow.Index()).Cells("CodComarca").Value & "')"
+                    MiConexion.Open()
+                    ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+                    iResultado = ComandoUpdate.ExecuteNonQuery
+                    MiConexion.Close()
+                    Me.DgvComarcas.Rows.RemoveAt(DgvComarcas.CurrentRow.Index())
+                End If
+            End If
+        End If
+    End Sub
     Private Sub ButtonGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonGuardar.Click
         Dim Count As Integer, i As Integer
         Count = Me.DgvComarcas.Rows.Count

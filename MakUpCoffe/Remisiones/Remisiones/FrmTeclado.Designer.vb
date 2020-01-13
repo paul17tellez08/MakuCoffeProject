@@ -81,9 +81,9 @@ Partial Class FrmTeclado
         '
         'BtnPunto
         '
-        Me.BtnPunto.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.BtnPunto.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BtnPunto.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnPunto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.BtnPunto.ForeColor = System.Drawing.Color.White
         Me.BtnPunto.Location = New System.Drawing.Point(261, 296)
         Me.BtnPunto.Name = "BtnPunto"
         Me.BtnPunto.Size = New System.Drawing.Size(119, 91)
@@ -93,9 +93,9 @@ Partial Class FrmTeclado
         '
         'C1Button2
         '
-        Me.C1Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.C1Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.C1Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.C1Button2.ForeColor = System.Drawing.Color.White
         Me.C1Button2.Location = New System.Drawing.Point(389, 301)
         Me.C1Button2.Name = "C1Button2"
         Me.C1Button2.Size = New System.Drawing.Size(122, 86)
@@ -105,9 +105,9 @@ Partial Class FrmTeclado
         '
         'C1Button1
         '
-        Me.C1Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.C1Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.C1Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.C1Button1.ForeColor = System.Drawing.Color.White
         Me.C1Button1.Location = New System.Drawing.Point(389, 20)
         Me.C1Button1.Name = "C1Button1"
         Me.C1Button1.Size = New System.Drawing.Size(122, 184)
@@ -117,9 +117,9 @@ Partial Class FrmTeclado
         '
         'C1Button10
         '
-        Me.C1Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.C1Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.C1Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Button10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.C1Button10.ForeColor = System.Drawing.Color.White
         Me.C1Button10.Location = New System.Drawing.Point(389, 206)
         Me.C1Button10.Name = "C1Button10"
         Me.C1Button10.Size = New System.Drawing.Size(122, 89)
@@ -129,9 +129,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton0
         '
-        Me.CmdBoton0.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton0.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton0.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton0.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton0.ForeColor = System.Drawing.Color.White
         Me.CmdBoton0.Location = New System.Drawing.Point(141, 296)
         Me.CmdBoton0.Name = "CmdBoton0"
         Me.CmdBoton0.Size = New System.Drawing.Size(119, 91)
@@ -141,9 +141,9 @@ Partial Class FrmTeclado
         '
         'C1Button12
         '
-        Me.C1Button12.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.C1Button12.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.C1Button12.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Button12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.C1Button12.ForeColor = System.Drawing.Color.White
         Me.C1Button12.Location = New System.Drawing.Point(20, 296)
         Me.C1Button12.Name = "C1Button12"
         Me.C1Button12.Size = New System.Drawing.Size(119, 91)
@@ -153,9 +153,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton9
         '
-        Me.CmdBoton9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton9.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton9.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton9.ForeColor = System.Drawing.Color.White
         Me.CmdBoton9.Location = New System.Drawing.Point(261, 204)
         Me.CmdBoton9.Name = "CmdBoton9"
         Me.CmdBoton9.Size = New System.Drawing.Size(119, 91)
@@ -165,9 +165,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton8
         '
-        Me.CmdBoton8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton8.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton8.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton8.ForeColor = System.Drawing.Color.White
         Me.CmdBoton8.Location = New System.Drawing.Point(140, 204)
         Me.CmdBoton8.Name = "CmdBoton8"
         Me.CmdBoton8.Size = New System.Drawing.Size(119, 91)
@@ -177,9 +177,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton7
         '
-        Me.CmdBoton7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton7.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton7.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton7.ForeColor = System.Drawing.Color.White
         Me.CmdBoton7.Location = New System.Drawing.Point(20, 204)
         Me.CmdBoton7.Name = "CmdBoton7"
         Me.CmdBoton7.Size = New System.Drawing.Size(119, 91)
@@ -189,9 +189,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton6
         '
-        Me.CmdBoton6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton6.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton6.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton6.ForeColor = System.Drawing.Color.White
         Me.CmdBoton6.Location = New System.Drawing.Point(261, 112)
         Me.CmdBoton6.Name = "CmdBoton6"
         Me.CmdBoton6.Size = New System.Drawing.Size(119, 91)
@@ -201,9 +201,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton5
         '
-        Me.CmdBoton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton5.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton5.ForeColor = System.Drawing.Color.White
         Me.CmdBoton5.Location = New System.Drawing.Point(140, 112)
         Me.CmdBoton5.Name = "CmdBoton5"
         Me.CmdBoton5.Size = New System.Drawing.Size(119, 91)
@@ -213,9 +213,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton4
         '
-        Me.CmdBoton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton4.ForeColor = System.Drawing.Color.White
         Me.CmdBoton4.Location = New System.Drawing.Point(20, 112)
         Me.CmdBoton4.Name = "CmdBoton4"
         Me.CmdBoton4.Size = New System.Drawing.Size(119, 91)
@@ -225,9 +225,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton3
         '
-        Me.CmdBoton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton3.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton3.ForeColor = System.Drawing.Color.White
         Me.CmdBoton3.Location = New System.Drawing.Point(261, 19)
         Me.CmdBoton3.Name = "CmdBoton3"
         Me.CmdBoton3.Size = New System.Drawing.Size(119, 91)
@@ -237,9 +237,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton2
         '
-        Me.CmdBoton2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton2.ForeColor = System.Drawing.Color.White
         Me.CmdBoton2.Location = New System.Drawing.Point(141, 19)
         Me.CmdBoton2.Name = "CmdBoton2"
         Me.CmdBoton2.Size = New System.Drawing.Size(119, 91)
@@ -249,9 +249,9 @@ Partial Class FrmTeclado
         '
         'CmdBoton1
         '
-        Me.CmdBoton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdBoton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmdBoton1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.CmdBoton1.ForeColor = System.Drawing.Color.White
         Me.CmdBoton1.Location = New System.Drawing.Point(20, 19)
         Me.CmdBoton1.Name = "CmdBoton1"
         Me.CmdBoton1.Size = New System.Drawing.Size(119, 91)
@@ -295,11 +295,12 @@ Partial Class FrmTeclado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(553, 474)
         Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.TxtNumero)
+        Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmTeclado"
         Me.Opacity = 0.9

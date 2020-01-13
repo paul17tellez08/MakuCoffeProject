@@ -22,7 +22,6 @@ Partial Class FrmVehiculo
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmVehiculo))
         Me.LblTitulo = New System.Windows.Forms.Label
         Me.LblApellido = New System.Windows.Forms.Label
-        Me.TxtMarca = New System.Windows.Forms.TextBox
         Me.LblNombre = New System.Windows.Forms.Label
         Me.LblCodigo = New System.Windows.Forms.Label
         Me.CboPlaca = New C1.Win.C1List.C1Combo
@@ -36,18 +35,24 @@ Partial Class FrmVehiculo
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog
         Me.Label1 = New System.Windows.Forms.Label
-        Me.CboActivo = New System.Windows.Forms.ComboBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.CboModelo = New C1.Win.C1List.C1Combo
+        Me.CboMarca = New C1.Win.C1List.C1Combo
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox
+        Me.CboColor = New C1.Win.C1List.C1Combo
         CType(Me.CboPlaca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CboTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CboModelo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CboMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CboColor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LblTitulo
         '
         Me.LblTitulo.AutoSize = True
-        Me.LblTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.LblTitulo.BackColor = System.Drawing.Color.White
         Me.LblTitulo.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTitulo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.LblTitulo.Location = New System.Drawing.Point(120, 22)
@@ -61,19 +66,11 @@ Partial Class FrmVehiculo
         Me.LblApellido.AutoSize = True
         Me.LblApellido.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.LblApellido.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.LblApellido.Location = New System.Drawing.Point(12, 145)
+        Me.LblApellido.Location = New System.Drawing.Point(12, 173)
         Me.LblApellido.Name = "LblApellido"
         Me.LblApellido.Size = New System.Drawing.Size(94, 15)
         Me.LblApellido.TabIndex = 154
         Me.LblApellido.Text = "Tipo Vehiculo"
-        '
-        'TxtMarca
-        '
-        Me.TxtMarca.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtMarca.Location = New System.Drawing.Point(123, 112)
-        Me.TxtMarca.Name = "TxtMarca"
-        Me.TxtMarca.Size = New System.Drawing.Size(255, 23)
-        Me.TxtMarca.TabIndex = 148
         '
         'LblNombre
         '
@@ -82,9 +79,9 @@ Partial Class FrmVehiculo
         Me.LblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.LblNombre.Location = New System.Drawing.Point(12, 116)
         Me.LblNombre.Name = "LblNombre"
-        Me.LblNombre.Size = New System.Drawing.Size(44, 15)
+        Me.LblNombre.Size = New System.Drawing.Size(52, 15)
         Me.LblNombre.TabIndex = 152
-        Me.LblNombre.Text = "Marca"
+        Me.LblNombre.Text = "Marca :"
         '
         'LblCodigo
         '
@@ -93,9 +90,9 @@ Partial Class FrmVehiculo
         Me.LblCodigo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.LblCodigo.Location = New System.Drawing.Point(12, 86)
         Me.LblCodigo.Name = "LblCodigo"
-        Me.LblCodigo.Size = New System.Drawing.Size(39, 15)
+        Me.LblCodigo.Size = New System.Drawing.Size(47, 15)
         Me.LblCodigo.TabIndex = 151
-        Me.LblCodigo.Text = "Placa"
+        Me.LblCodigo.Text = "Placa :"
         '
         'CboPlaca
         '
@@ -142,7 +139,7 @@ Partial Class FrmVehiculo
         Me.CboTipo.EditorHeight = 15
         Me.CboTipo.Images.Add(CType(resources.GetObject("CboTipo.Images"), System.Drawing.Image))
         Me.CboTipo.ItemHeight = 15
-        Me.CboTipo.Location = New System.Drawing.Point(123, 141)
+        Me.CboTipo.Location = New System.Drawing.Point(123, 169)
         Me.CboTipo.MatchEntryTimeout = CType(2000, Long)
         Me.CboTipo.MaxDropDownItems = CType(5, Short)
         Me.CboTipo.MaxLength = 32767
@@ -151,7 +148,7 @@ Partial Class FrmVehiculo
         Me.CboTipo.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboTipo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboTipo.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.CboTipo.Size = New System.Drawing.Size(255, 21)
+        Me.CboTipo.Size = New System.Drawing.Size(212, 21)
         Me.CboTipo.TabIndex = 254
         Me.CboTipo.PropBag = resources.GetString("CboTipo.PropBag")
         '
@@ -163,7 +160,7 @@ Partial Class FrmVehiculo
         Me.CmdGrabar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.CmdGrabar.Image = Global.Remisiones.My.Resources.Resources.Save4821
         Me.CmdGrabar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdGrabar.Location = New System.Drawing.Point(101, 205)
+        Me.CmdGrabar.Location = New System.Drawing.Point(101, 237)
         Me.CmdGrabar.Name = "CmdGrabar"
         Me.CmdGrabar.Size = New System.Drawing.Size(78, 68)
         Me.CmdGrabar.TabIndex = 250
@@ -180,7 +177,7 @@ Partial Class FrmVehiculo
         Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
         Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonBorrar.Location = New System.Drawing.Point(207, 208)
+        Me.ButtonBorrar.Location = New System.Drawing.Point(207, 240)
         Me.ButtonBorrar.Name = "ButtonBorrar"
         Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
         Me.ButtonBorrar.TabIndex = 251
@@ -197,7 +194,7 @@ Partial Class FrmVehiculo
         Me.CmdNuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.CmdNuevo.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus48
         Me.CmdNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdNuevo.Location = New System.Drawing.Point(10, 206)
+        Me.CmdNuevo.Location = New System.Drawing.Point(10, 238)
         Me.CmdNuevo.Name = "CmdNuevo"
         Me.CmdNuevo.Size = New System.Drawing.Size(75, 67)
         Me.CmdNuevo.TabIndex = 249
@@ -213,7 +210,7 @@ Partial Class FrmVehiculo
         Me.Button8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Button8.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.Button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button8.Location = New System.Drawing.Point(303, 207)
+        Me.Button8.Location = New System.Drawing.Point(303, 239)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 66)
         Me.Button8.TabIndex = 252
@@ -226,7 +223,7 @@ Partial Class FrmVehiculo
         Me.C1Button2.FlatAppearance.BorderSize = 0
         Me.C1Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.C1Button2.Image = Global.Remisiones.My.Resources.Resources.Lupa32
-        Me.C1Button2.Location = New System.Drawing.Point(341, 74)
+        Me.C1Button2.Location = New System.Drawing.Point(341, 76)
         Me.C1Button2.Name = "C1Button2"
         Me.C1Button2.Size = New System.Drawing.Size(32, 32)
         Me.C1Button2.TabIndex = 248
@@ -234,7 +231,7 @@ Partial Class FrmVehiculo
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
         Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Carro100
         Me.PictureBox2.Location = New System.Drawing.Point(0, -9)
         Me.PictureBox2.Name = "PictureBox2"
@@ -245,11 +242,11 @@ Partial Class FrmVehiculo
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(400, 60)
+        Me.PictureBox1.Size = New System.Drawing.Size(385, 60)
         Me.PictureBox1.TabIndex = 111
         Me.PictureBox1.TabStop = False
         '
@@ -258,40 +255,135 @@ Partial Class FrmVehiculo
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(12, 171)
+        Me.Label1.Location = New System.Drawing.Point(12, 199)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 15)
         Me.Label1.TabIndex = 255
         Me.Label1.Text = "Color"
         '
-        'CboActivo
+        'Label2
         '
-        Me.CboActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CboActivo.FormattingEnabled = True
-        Me.CboActivo.Items.AddRange(New Object() {"Activo", "Inactivo"})
-        Me.CboActivo.Location = New System.Drawing.Point(303, 170)
-        Me.CboActivo.Name = "CboActivo"
-        Me.CboActivo.Size = New System.Drawing.Size(75, 21)
-        Me.CboActivo.TabIndex = 253
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(12, 143)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(61, 15)
+        Me.Label2.TabIndex = 257
+        Me.Label2.Text = "Modelo :"
         '
-        'TextBox1
+        'CboModelo
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TextBox1.Location = New System.Drawing.Point(123, 169)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(159, 23)
-        Me.TextBox1.TabIndex = 256
+        Me.CboModelo.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.CboModelo.Caption = ""
+        Me.CboModelo.CaptionHeight = 17
+        Me.CboModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.CboModelo.ColumnCaptionHeight = 17
+        Me.CboModelo.ColumnFooterHeight = 17
+        Me.CboModelo.ContentHeight = 15
+        Me.CboModelo.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.CboModelo.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.CboModelo.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboModelo.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.CboModelo.EditorHeight = 15
+        Me.CboModelo.Images.Add(CType(resources.GetObject("CboModelo.Images"), System.Drawing.Image))
+        Me.CboModelo.ItemHeight = 15
+        Me.CboModelo.Location = New System.Drawing.Point(123, 140)
+        Me.CboModelo.MatchEntryTimeout = CType(2000, Long)
+        Me.CboModelo.MaxDropDownItems = CType(5, Short)
+        Me.CboModelo.MaxLength = 32767
+        Me.CboModelo.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.CboModelo.Name = "CboModelo"
+        Me.CboModelo.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.CboModelo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.CboModelo.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.CboModelo.Size = New System.Drawing.Size(212, 21)
+        Me.CboModelo.TabIndex = 258
+        Me.CboModelo.PropBag = resources.GetString("CboModelo.PropBag")
+        '
+        'CboMarca
+        '
+        Me.CboMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.CboMarca.Caption = ""
+        Me.CboMarca.CaptionHeight = 17
+        Me.CboMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.CboMarca.ColumnCaptionHeight = 17
+        Me.CboMarca.ColumnFooterHeight = 17
+        Me.CboMarca.ContentHeight = 15
+        Me.CboMarca.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.CboMarca.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.CboMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.CboMarca.EditorHeight = 15
+        Me.CboMarca.Images.Add(CType(resources.GetObject("CboMarca.Images"), System.Drawing.Image))
+        Me.CboMarca.ItemHeight = 15
+        Me.CboMarca.Location = New System.Drawing.Point(123, 112)
+        Me.CboMarca.MatchEntryTimeout = CType(2000, Long)
+        Me.CboMarca.MaxDropDownItems = CType(5, Short)
+        Me.CboMarca.MaxLength = 32767
+        Me.CboMarca.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.CboMarca.Name = "CboMarca"
+        Me.CboMarca.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.CboMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.CboMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.CboMarca.Size = New System.Drawing.Size(212, 21)
+        Me.CboMarca.TabIndex = 259
+        Me.CboMarca.PropBag = resources.GetString("CboMarca.PropBag")
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CheckBox1.ForeColor = System.Drawing.Color.White
+        Me.CheckBox1.Location = New System.Drawing.Point(266, 198)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(66, 19)
+        Me.CheckBox1.TabIndex = 260
+        Me.CheckBox1.Text = "Activo"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'CboColor
+        '
+        Me.CboColor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.CboColor.Caption = ""
+        Me.CboColor.CaptionHeight = 17
+        Me.CboColor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.CboColor.ColumnCaptionHeight = 17
+        Me.CboColor.ColumnFooterHeight = 17
+        Me.CboColor.ContentHeight = 15
+        Me.CboColor.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.CboColor.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.CboColor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboColor.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.CboColor.EditorHeight = 15
+        Me.CboColor.Images.Add(CType(resources.GetObject("CboColor.Images"), System.Drawing.Image))
+        Me.CboColor.ItemHeight = 15
+        Me.CboColor.Location = New System.Drawing.Point(123, 196)
+        Me.CboColor.MatchEntryTimeout = CType(2000, Long)
+        Me.CboColor.MaxDropDownItems = CType(5, Short)
+        Me.CboColor.MaxLength = 32767
+        Me.CboColor.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.CboColor.Name = "CboColor"
+        Me.CboColor.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.CboColor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.CboColor.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.CboColor.Size = New System.Drawing.Size(133, 21)
+        Me.CboColor.TabIndex = 261
+        Me.CboColor.PropBag = resources.GetString("CboColor.PropBag")
         '
         'FrmVehiculo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(400, 281)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(385, 312)
+        Me.Controls.Add(Me.CboColor)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.CboMarca)
+        Me.Controls.Add(Me.CboModelo)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CboTipo)
-        Me.Controls.Add(Me.CboActivo)
         Me.Controls.Add(Me.CmdGrabar)
         Me.Controls.Add(Me.ButtonBorrar)
         Me.Controls.Add(Me.CmdNuevo)
@@ -299,7 +391,6 @@ Partial Class FrmVehiculo
         Me.Controls.Add(Me.C1Button2)
         Me.Controls.Add(Me.LblApellido)
         Me.Controls.Add(Me.CboPlaca)
-        Me.Controls.Add(Me.TxtMarca)
         Me.Controls.Add(Me.LblNombre)
         Me.Controls.Add(Me.LblCodigo)
         Me.Controls.Add(Me.LblTitulo)
@@ -314,6 +405,9 @@ Partial Class FrmVehiculo
         CType(Me.CboTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CboModelo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CboMarca, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CboColor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -322,7 +416,6 @@ Partial Class FrmVehiculo
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents LblTitulo As System.Windows.Forms.Label
     Friend WithEvents LblApellido As System.Windows.Forms.Label
-    Friend WithEvents TxtMarca As System.Windows.Forms.TextBox
     Friend WithEvents LblNombre As System.Windows.Forms.Label
     Friend WithEvents LblCodigo As System.Windows.Forms.Label
     Friend WithEvents C1Button2 As C1.Win.C1Input.C1Button
@@ -334,6 +427,9 @@ Partial Class FrmVehiculo
     Friend WithEvents CboTipo As C1.Win.C1List.C1Combo
     Friend WithEvents ColorDialog1 As System.Windows.Forms.ColorDialog
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CboActivo As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents CboModelo As C1.Win.C1List.C1Combo
+    Friend WithEvents CboMarca As C1.Win.C1List.C1Combo
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CboColor As C1.Win.C1List.C1Combo
 End Class

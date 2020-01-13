@@ -516,6 +516,7 @@
     <None Include="Resources\icons8-exit-36.png" />
     <None Include="Resources\icons8-comentarios-36.png" />
     <None Include="Resources\icons8-comentarios-40.png" />
+    <None Include="Resources\icons8-plus-36.png" />
     <Content Include="Resources\icons8-print-48.png" />
     <None Include="Resources\icons8-print-481.png" />
     <None Include="Resources\icons8-transaction-48.png" />

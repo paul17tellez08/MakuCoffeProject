@@ -431,6 +431,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property icons8_plus_36() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icons8-plus-36", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property icons8_print_48() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icons8-print-48", resourceCulture)
