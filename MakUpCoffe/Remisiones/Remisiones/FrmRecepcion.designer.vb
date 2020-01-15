@@ -108,7 +108,7 @@ Partial Class FrmRecepcion
         Me.BtnImpriRec = New System.Windows.Forms.Button
         Me.BtnConectarRec = New System.Windows.Forms.Button
         Me.TDGImperfeccion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.TxtNombreProducto = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.TrueDBDetalleNP = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
         Me.BindingDetalle = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingImperfeccion = New System.Windows.Forms.BindingSource(Me.components)
         Me.CheckMohoso = New System.Windows.Forms.CheckBox
@@ -134,7 +134,7 @@ Partial Class FrmRecepcion
         CType(Me.CboCodigoBodega, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.TDGImperfeccion, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TxtNombreProducto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrueDBDetalleNP, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingImperfeccion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
@@ -403,7 +403,6 @@ Partial Class FrmRecepcion
         Me.CboRecibimosde.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.CboRecibimosde.ColumnCaptionHeight = 17
         Me.CboRecibimosde.ColumnFooterHeight = 17
-        Me.CboRecibimosde.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.CboRecibimosde.ContentHeight = 18
         Me.CboRecibimosde.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.CboRecibimosde.DisplayMember = "RecibimosDe"
@@ -643,7 +642,7 @@ Partial Class FrmRecepcion
         Me.TxtNumeroEnsamble.Name = "TxtNumeroEnsamble"
         Me.TxtNumeroEnsamble.Size = New System.Drawing.Size(103, 20)
         Me.TxtNumeroEnsamble.TabIndex = 177
-        Me.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - - "
+        Me.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -"
         Me.TxtNumeroEnsamble.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label15
@@ -1405,27 +1404,27 @@ Partial Class FrmRecepcion
         Me.TDGImperfeccion.Text = "C1TrueDBGrid1"
         Me.TDGImperfeccion.PropBag = resources.GetString("TDGImperfeccion.PropBag")
         '
-        'TxtNombreProducto
+        'TrueDBDetalleNP
         '
-        Me.TxtNombreProducto.AllowAddNew = True
-        Me.TxtNombreProducto.AllowColMove = False
-        Me.TxtNombreProducto.AllowDelete = True
-        Me.TxtNombreProducto.AlternatingRows = True
-        Me.TxtNombreProducto.Caption = "LISTADOS DE PESADAS"
-        Me.TxtNombreProducto.CaptionHeight = 17
-        Me.TxtNombreProducto.CollapseColor = System.Drawing.Color.DimGray
-        Me.TxtNombreProducto.GroupByCaption = "Drag a column header here to group by that column"
-        Me.TxtNombreProducto.Images.Add(CType(resources.GetObject("TxtNombreProducto.Images"), System.Drawing.Image))
-        Me.TxtNombreProducto.Location = New System.Drawing.Point(4, 41)
-        Me.TxtNombreProducto.Name = "TxtNombreProducto"
-        Me.TxtNombreProducto.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.TxtNombreProducto.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.TxtNombreProducto.PreviewInfo.ZoomFactor = 75
-        Me.TxtNombreProducto.PrintInfo.PageSettings = CType(resources.GetObject("TxtNombreProducto.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.TxtNombreProducto.Size = New System.Drawing.Size(987, 185)
-        Me.TxtNombreProducto.TabIndex = 224
-        Me.TxtNombreProducto.Text = "C1TrueDBGrid1"
-        Me.TxtNombreProducto.PropBag = resources.GetString("TxtNombreProducto.PropBag")
+        Me.TrueDBDetalleNP.AllowAddNew = True
+        Me.TrueDBDetalleNP.AllowColMove = False
+        Me.TrueDBDetalleNP.AllowDelete = True
+        Me.TrueDBDetalleNP.AlternatingRows = True
+        Me.TrueDBDetalleNP.Caption = "LISTADOS DE PESADAS"
+        Me.TrueDBDetalleNP.CaptionHeight = 17
+        Me.TrueDBDetalleNP.CollapseColor = System.Drawing.Color.DimGray
+        Me.TrueDBDetalleNP.GroupByCaption = "Drag a column header here to group by that column"
+        Me.TrueDBDetalleNP.Images.Add(CType(resources.GetObject("TrueDBDetalleNP.Images"), System.Drawing.Image))
+        Me.TrueDBDetalleNP.Location = New System.Drawing.Point(4, 41)
+        Me.TrueDBDetalleNP.Name = "TrueDBDetalleNP"
+        Me.TrueDBDetalleNP.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.TrueDBDetalleNP.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.TrueDBDetalleNP.PreviewInfo.ZoomFactor = 75
+        Me.TrueDBDetalleNP.PrintInfo.PageSettings = CType(resources.GetObject("TxtNombreProducto.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.TrueDBDetalleNP.Size = New System.Drawing.Size(987, 185)
+        Me.TrueDBDetalleNP.TabIndex = 224
+        Me.TrueDBDetalleNP.Text = "C1TrueDBGrid1"
+        Me.TrueDBDetalleNP.PropBag = resources.GetString("TrueDBDetalleNP.PropBag")
         '
         'CheckMohoso
         '
@@ -1516,7 +1515,7 @@ Partial Class FrmRecepcion
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lbltipo)
-        Me.Controls.Add(Me.TxtNombreProducto)
+        Me.Controls.Add(Me.TrueDBDetalleNP)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.BtnBuscarCodProv)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
@@ -1550,7 +1549,7 @@ Partial Class FrmRecepcion
         CType(Me.CboCodigoBodega, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         CType(Me.TDGImperfeccion, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TxtNombreProducto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrueDBDetalleNP, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingImperfeccion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox7.ResumeLayout(False)
@@ -1560,7 +1559,7 @@ Partial Class FrmRecepcion
 
     End Sub
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TxtNombreProducto As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents TrueDBDetalleNP As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents lbldatosre As System.Windows.Forms.Label
     Friend WithEvents DTPFecha As System.Windows.Forms.Label
     Friend WithEvents LblHora As System.Windows.Forms.Label

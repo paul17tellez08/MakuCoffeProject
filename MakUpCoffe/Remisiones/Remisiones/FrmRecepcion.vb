@@ -56,38 +56,8 @@ Public Class FrmRecepcion
         DataAdapter.Fill(DataSet, "RecibimosDe")
         Me.CboRecibimosde.DataSource = DataSet.Tables("RecibimosDe")
 
-        '///////////////////////////////CARGO EL DETALLE DE COMPRAS/////////////////////////////////////////////////////
-        sql = "SELECT  id_Eventos As Linea, Cod_Productos, Descripcion_Producto, Calidad, Estado, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, QQ As Saco, Precio  FROM Detalle_Recepcion  WHERE (NumeroRecepcion = N'-100000')"
-        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        DataAdapter.Fill(DataSet, "DetalleRecepcion")
-        Me.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
-        Me.TxtNombreProducto.DataSource = Me.BindingDetalle
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Width = 40
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Locked = True
-        Me.TxtNombreProducto.Columns(0).Caption = "Psda"
-        Me.TxtNombreProducto.Columns(1).Caption = "Código"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        Me.TxtNombreProducto.Columns(2).Caption = "Descripción"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Width = 300
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Locked = True
-        Me.TxtNombreProducto.Columns(3).Caption = "Calidad"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns("Calidad").Visible = False
-        Me.TxtNombreProducto.Columns(4).Caption = "Estado"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns("Estado").Visible = False
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(5).Width = 75
-        Me.TxtNombreProducto.Columns(5).Caption = "PesoLb"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Width = 85
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Width = 75
+        '///////////////////////////////CARGO EL DETALLE DE PESADAS/////////////////////////////////////////////////////
+        LimpiarGridPesada()
 
         Me.DTPFecha.Text = Format(Now, "dd/MM/yyyy")
         Año = Microsoft.VisualBasic.DateAndTime.Year(Now)
@@ -125,6 +95,62 @@ Public Class FrmRecepcion
         End If
         MiConexion.Close()
     End Sub
+    Private Sub LimpiarGridPesada()
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
+
+        sql = "SELECT  id_Eventos As Linea, Cod_Productos, Descripcion_Producto, Calidad, Estado, QQ As Saco, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, Precio  FROM Detalle_Recepcion  WHERE (NumeroRecepcion = N'-100000')"
+        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
+        DataAdapter.Fill(DataSet, "DetalleRecepcion")
+        Me.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
+        Me.TrueDBDetalleNP.DataSource = Me.BindingDetalle
+
+        Me.TrueDBDetalleNP.Columns(0).Caption = "N°"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
+
+        Me.TrueDBDetalleNP.Columns(1).Caption = "VARIEDAD"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Visible = False
+
+        Me.TrueDBDetalleNP.Columns(2).Caption = "VARIEDAD"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 300
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
+
+        Me.TrueDBDetalleNP.Columns(3).Caption = "CALIDAD"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("CALIDAD").Visible = False
+
+        Me.TrueDBDetalleNP.Columns(4).Caption = "ESTADO"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("ESTADO").Visible = False
+
+        Me.TrueDBDetalleNP.Columns(5).Caption = "SACOS"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 50
+
+        Me.TrueDBDetalleNP.Columns(6).Caption = "PESO/lb"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 75
+
+        Me.TrueDBDetalleNP.Columns(7).Caption = "PESO/kg"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 85
+
+        Me.TrueDBDetalleNP.Columns(8).Caption = "TARA"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
+
+        Me.TrueDBDetalleNP.Columns(9).Caption = "P.NETO/lb"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+
+        Me.TrueDBDetalleNP.Columns(10).Caption = "P.NETO/kg"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 75
+
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Visible = False
+
+    End Sub
     Private Sub CargarPlacas()
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand, SqlString As String
@@ -149,6 +175,8 @@ Public Class FrmRecepcion
         If DataSet.Tables("Productores").Rows.Count = 0 Then
             If Not IsDBNull(DataSet.Tables("Productores").Rows(0)("Nombre")) Then
                 Me.CboProductor.Text = DataSet.Tables("Productores").Rows(0)("Nombre")
+                Me.CboProductor.DisplayMember = "IdProductor"
+                Me.CboProductor.SelectedValue = "Nombre"
             End If
         End If
         Me.CboProductor.Splits.Item(0).DisplayColumns(0).Visible = False
@@ -173,13 +201,13 @@ Public Class FrmRecepcion
         Me.CboConductor.Columns(0).Caption = "Codigo"
     End Sub
     Private Sub Siguiente()
-        If Me.TxtNombreProducto.RowCount <> 0 Then
+        If Me.TrueDBDetalleNP.RowCount <> 0 Then
             Dim Iposicion As Double
-            Iposicion = Me.TxtNombreProducto.RowCount
-            Me.TxtNombreProducto.Row = Iposicion
+            Iposicion = Me.TrueDBDetalleNP.RowCount
+            Me.TrueDBDetalleNP.Row = Iposicion
             'Me.TrueDBGridComponentes.Columns(1).Text = Me.CboCodigoProducto.Columns(0).Text
             'Me.TrueDBGridComponentes.Columns(2).Text = Me.CboCodigoProducto.Columns(1).Text
-            Me.TxtNombreProducto.Col = 5
+            Me.TrueDBDetalleNP.Col = 5
         End If
 
     End Sub
@@ -405,35 +433,35 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         Me.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
-        Me.TxtNombreProducto.DataSource = Me.BindingDetalle
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Width = 40
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Locked = True
-        Me.TxtNombreProducto.Columns(0).Caption = "Psda"
+        Me.TrueDBDetalleNP.DataSource = Me.BindingDetalle
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
+        Me.TrueDBDetalleNP.Columns(0).Caption = "Psda"
 
-        Me.TxtNombreProducto.Columns(1).Caption = "Código"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        Me.TxtNombreProducto.Columns(2).Caption = "Descripción"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Width = 200
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Locked = True
-        Me.TxtNombreProducto.Columns(3).Caption = "Calidad"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        Me.TxtNombreProducto.Columns(4).Caption = "Estado"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(5).Width = 75
-        Me.TxtNombreProducto.Columns(5).Caption = "PesoLb"
+        Me.TrueDBDetalleNP.Columns(1).Caption = "Código"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = True
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
+        Me.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
+        Me.TrueDBDetalleNP.Columns(3).Caption = "Calidad"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
+        Me.TrueDBDetalleNP.Columns(4).Caption = "Estado"
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
+        Me.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(4).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Width = 85
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(2).Button = True
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(3).Button = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
 
     End Sub
 
@@ -505,67 +533,67 @@ Public Class FrmRecepcion
         End If
 
         'Posicion = Me.BindingDetalle.Position
-        Posicion = Me.TxtNombreProducto.Row
-        Me.TxtNombreProducto.Columns(5).Text = Pesada
+        Posicion = Me.TrueDBDetalleNP.Row
+        Me.TrueDBDetalleNP.Columns(5).Text = Pesada
         'Me.LblPeso.Text = Pesada & " Kg"
         My.Application.DoEvents()
         GrabaLecturaPeso(Pesada)
         'Me.BindingDetalle.Position = Posicion + 1
-        Me.TxtNombreProducto.Row = Posicion + 1
+        Me.TrueDBDetalleNP.Row = Posicion + 1
     End Sub
 
     Private Sub CmdPesada_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPesada.Click
         Dim Pesada As Double, Posicion As Double
-        Posicion = Me.TxtNombreProducto.Row
+
+        Posicion = Me.TrueDBDetalleNP.Row
         FrmTeclado.ShowDialog()
         Pesada = FrmTeclado.Numero
         Me.LblPeso.Text = Pesada & " Kg"
-        'Pesada = 100
-        Me.TxtNombreProducto.Columns(5).Text = Pesada
+        Me.TrueDBDetalleNP.Columns(6).Text = Pesada
         My.Application.DoEvents()
         GrabaLecturaPeso(Pesada)
-        Me.TxtNombreProducto.Row = Posicion + 1
+        Me.TrueDBDetalleNP.Row = Posicion + 1
 
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Width = 40
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Locked = True
-        Me.TxtNombreProducto.Columns(0).Caption = "Psda"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns("Precio").Visible = False
-        Me.TxtNombreProducto.Columns(1).Caption = "Código"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = False
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        Me.TxtNombreProducto.Columns(2).Caption = "Descripción"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Width = 200
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Locked = True
-        Me.TxtNombreProducto.Columns(3).Caption = "Categ"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        Me.TxtNombreProducto.Columns(4).Caption = "Estado"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(5).Width = 75
-        Me.TxtNombreProducto.Columns(5).Caption = "PesoLb"
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns("Cantidad").Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Width = 85
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Button = False
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Width = 50
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Locked = True
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Width = 75
-        Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
+        'Me.TrueDBDetalleNP.Columns(0).Caption = "Psda"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("Precio").Visible = False
+        'Me.TrueDBDetalleNP.Columns(1).Caption = "Código"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = False
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
+        'Me.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
+        'Me.TrueDBDetalleNP.Columns(3).Caption = "Categ"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
+        'Me.TrueDBDetalleNP.Columns(4).Caption = "Estado"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
+        'Me.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("Cantidad").Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Button = False
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Locked = True
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
+        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Locked = True
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBsquedaProductor.Click
         Quien = "BusquedaProductor"
         My.Forms.FrmConsultas.Text = "Consulta Productor Recepción"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             Me.TxtCodProductor.Text = FrmConsultas.Codigo
         End If
     End Sub
@@ -712,7 +740,7 @@ Public Class FrmRecepcion
         Quien = "RecepcionBusqueda"
         My.Forms.FrmConsultas.Text = "Consulta Recibo"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             CodigoRecepcion = FrmConsultas.Codigo
             Me.TxtNumeroEnsamble.Text = CodigoRecepcion.Substring(2)
         End If
@@ -768,7 +796,7 @@ Public Class FrmRecepcion
         Quien = "ConsultaPlacaRecepción"
         My.Forms.FrmConsultas.Text = "Consulta Placa Recepción"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             Me.CboPlaca.Text = FrmConsultas.Codigo
         End If
     End Sub
@@ -782,7 +810,7 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(SqlProductos, MiConexion)
         DataAdapter.Fill(DataSet, "ListaProductos")
         If Not DataSet.Tables("ListaProductos").Rows.Count = 0 Then
-            Me.TxtNombreProducto.Text = DataSet.Tables("ListaProductos").Rows(0)("Descripcion_Producto")
+            Me.TrueDBDetalleNP.Text = DataSet.Tables("ListaProductos").Rows(0)("Descripcion_Producto")
         End If
     End Sub
 
@@ -797,7 +825,7 @@ Public Class FrmRecepcion
         Quien = "ConsultaConductorRecepcion"
         My.Forms.FrmConsultas.Text = "Consulta Conductor Recepcion"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             Me.CboConductor.Text = FrmConsultas.Codigo
         End If
     End Sub
@@ -806,7 +834,7 @@ Public Class FrmRecepcion
         Quien = "ConsultaProductoRecepcion"
         My.Forms.FrmConsultas.Text = "Consulta Producto Recepcion"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             'Me.TxtCodProducto.Text = FrmConsultas.Codigo
         End If
     End Sub
@@ -907,7 +935,7 @@ Public Class FrmRecepcion
         Quien = "BusquedaProductor"
         My.Forms.FrmConsultas.Text = "Consulta Productor"
         My.Forms.FrmConsultas.ShowDialog()
-        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
             Me.CboProductor.Text = FrmConsultas.Descripcion
         End If
     End Sub

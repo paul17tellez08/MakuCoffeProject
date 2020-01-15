@@ -63,9 +63,12 @@ Public Class FrmVehiculo
     End Sub
     Private Sub CboPlaca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboPlaca.TextChanged
         Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Activo As Boolean
+        Dim placa As String
+
+        placa = Replace(Me.CboPlaca.Text, "'", "")
 
         '////////////////////////////////////////////////BUSCO DATOS DEL CONDUCTOR ///////////////////////////////////
-        SqlString = "SELECT   IdVehiculo, Placa, Marca, Modelo, Color, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & Me.CboPlaca.Text & "')"
+        SqlString = "SELECT   IdVehiculo, Placa, Marca, Modelo, Color, TipoVehiculo, Activo FROM Vehiculo WHERE (Placa = '" & placa & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "DatosVehiculo")
         If Not DataSet.Tables("DatosVehiculo").Rows.Count = 0 Then

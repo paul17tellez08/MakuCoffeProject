@@ -896,7 +896,6 @@ Module Funciones
         '/////////////////////////////////////////////////////////////////////////////////////////
         '///////////////////////BUSCO EL CONSECUTIVO COMPONENTES/////////////////////////////////
         '////////////////////////////////////////////////////////////////////////////////////////
-
         '//////////////////7BUSCO LA LOCALIDAD ////////////////////////////////////////
         SqlString = "SELECT LugarAcopio.* FROM LugarAcopio WHERE (CodLugarAcopio = " & CodLugarAcopio & ") AND (Activo = 1)"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
@@ -904,8 +903,6 @@ Module Funciones
         If DataSet.Tables("LugarAcopio").Rows.Count <> 0 Then
             IdLugarAcopio = DataSet.Tables("LugarAcopio").Rows(0)("IdLugarAcopio")
         End If
-
-
 
         BuscaConsecutivo = 0
 
@@ -1282,8 +1279,7 @@ Module Funciones
         '    TipoProceso = "EXPASA"
         'End If
 
-        Dim DateFecha As DateTime = FrmRecepcion.DTPFecha.Text
-
+       
         'If FrmRecepcion.CboTipoIngresoBascula.Text = DescripcionTipoIngreso("BA") Then
         '    Fecha = Format(DateFecha, "yyyy-MM-dd") & " " & FrmRecepcion.LblHora.Text
         'Else
@@ -1293,6 +1289,8 @@ Module Funciones
         'Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "yyyy-MM-dd")
         'Lote = FrmRecepcion.TxtAno.Text & "-" & FrmRecepcion.TxtMes.Text & "-" & FrmRecepcion.TxtDia.Text & "-" & FrmRecepcion.TxtProveedor.Text & "-" & FrmRecepcion.TxtOrigen.Text & "-" & FrmRecepcion.TxtPila.Text
 
+        Dim DateFecha As DateTime = FrmRecepcion.DTPFecha.Text
+
         If FrmRecepcion.txtsubtotal.Text <> "" Then
             Subtotal = FrmRecepcion.txtsubtotal.Text
         Else
@@ -1300,37 +1298,29 @@ Module Funciones
         End If
 
         MiConexion.Close()
-        SqlCompras = "SELECT Recepcion.* FROM Recepcion WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (TipoRecepcion = '" & FrmRecepcion.CboTipoPesada.Text & "')"
+        SqlCompras = "SELECT Recepcion.* FROM Recepcion WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlCompras, MiConexion)
         DataAdapter.Fill(DataSet, "Recepcion")
         If DataSet.Tables("Recepcion").Rows.Count = 0 Then
-
-            'If FrmRecepcion.TxtNumeroEnsamble.Text = "-----0-----" Then
-            '//////////////////////////////////////////////////////////////////////////////////////////////
-            '////////////////////////////AGREGO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
-            '/////////////////////////////////////////////////////////////////////////////////////////////////
-            'SqlCompras = "INSERT INTO Recepcion ([NumeroRecepcion],[Fecha],[TipoRecepcion],[Cod_Proveedor],[Conductor] ,[Id_identificacion] ,[Id_Placa],[Cod_Bodega],[Observaciones],[SubTotal],[Lote],[TipoProceso],[IdLugarAcopio],[FechaHora]) " & _
-            '             "VALUES ('" & ConsecutivoRecepcion & "','" & Format(CDate(Fecha), "dd/MM/yyyy") & "', '" & My.Forms.FrmRecepcion.CboTipoRecepcion.Text & "' ,'" & My.Forms.FrmRecepcion.CboCodigoProveedor.Columns(0).Text & "' ,'" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,'" & My.Forms.FrmRecepcion.txtid.Text & "' ,'" & My.Forms.FrmRecepcion.txtplaca.Text & "' ,'" & FrmRecepcion.CboCodigoBodega.Text & "' ,'" & FrmRecepcion.txtobservaciones.Text & "' ,'" & Subtotal & "' ,'" & Lote & "','" & TipoProceso & "', " & IdLugarAcopio & ", '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "' ) "
-
-            'SqlCompras = "INSERT INTO [Recepcion] ([NumeroRecepcion],[Fecha],[TipoRecepcion],[Cod_Proveedor],[Conductor],[Id_identificacion],[Id_Placa],[Cod_Bodega],[Observaciones],[SubTotal],[Lote]) " & _
-            '             "VALUES ('" & ConsecutivoRecepcion & "','" & Format(FrmRecepcion.DTPFecha.Value, "dd/MM/yyyy") & "','" & FrmRecepcion.CboTipoRecepcion.Text & "','" & FrmRecepcion.CboCodigoProveedor.Columns(0).Text & "','" & FrmRecepcion.CboConductor.Text & "', '" & FrmRecepcion.txtid.Text & "','" & FrmRecepcion.txtplaca.Text & "','" & FrmRecepcion.CboCodigoBodega.Columns(0).Text & "','" & FrmRecepcion.txtobservaciones.Text & "','" & Subtotal & "','" & Lote & "')"
-            MiConexion.Open()
-            ComandoUpdate = New SqlClient.SqlCommand(SqlCompras, MiConexion)
-            iResultado = ComandoUpdate.ExecuteNonQuery
-            MiConexion.Close()
-
-        Else
-            '//////////////////////////////////////////////////////////////////////////////////////////////
-            '////////////////////////////EDITO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
-            '/////////////////////////////////////////////////////////////////////////////////////////////////
-            'SqlCompras = "UPDATE [Recepcion] SET [Cod_Proveedor] = '" & FrmRecepcion.CboCodigoProveedor.Columns(0).Text & "',[Conductor] = '" & FrmRecepcion.CboConductor.Text & "',[Id_identificacion] ='" & FrmRecepcion.txtid.Text & "',[Id_Placa] = '" & FrmRecepcion.txtplaca.Text & "',[Observaciones] = '" & FrmRecepcion.txtobservaciones.Text & "',[SubTotal] = '" & Subtotal & "',[Lote] = '" & Lote & "',[TipoProceso] = '" & TipoProceso & "',[IdLugarAcopio] = " & IdLugarAcopio & " " & _
-            '             "WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (TipoRecepcion = '" & FrmRecepcion.CboTipoRecepcion.Text & "')"
-            'MiConexion.Open()
-            'ComandoUpdate = New SqlClient.SqlCommand(SqlCompras, MiConexion)
-            'iResultado = ComandoUpdate.ExecuteNonQuery
-            'MiConexion.Close()
+            If FrmRecepcion.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -" Then
+                '//////////////////////////////////////////////////////////////////////////////////////////////
+                '////////////////////////////AGREGO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
+                '///////////////////////////////////////////////////////////////////////////////////////////////// 
+                SqlCompras = "INSERT INTO [dbo].[Recepcion]([NumeroRecepcion],[TipoRecepcion] ,[Fecha],[Cod_Proveedor],[Cod_SubProveedor],[Conductor],[Id_identificacion],[Id_Placa],[Cod_Bodega],[Observaciones],[SubTotal],[Telefono],[Cancelar],[Peso],[Lote],[Contabilizado],[FechaHora],[RecibimosDe],[IdFinca],[Calidad] ,[Fermentado],[Moho],[Estado],[Idvariedad],[IdPlantillo],[TipoPesada],[Seleccion],[Activo]) " & _
+                             "VALUES ('" & ConsecutivoRecepcion & "','Recepcion','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & My.Forms.FrmRecepcion.CboProductor.SelectedValue & "','Ninguno' ,'" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,'-9999991','" & My.Forms.FrmRecepcion.CboPlaca.Text & "' ,'" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,'" & My.Forms.FrmRecepcion.txtobservaciones.Text & "' ,'" & CDbl(FrmRecepcion.txtsubtotal.Text) & "' ,'12345678' , 0 ,0,'Ninguno', 0, '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "','" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "','" & My.Forms.FrmRecepcion.CboCalidad.Text & "','" & My.Forms.FrmRecepcion.CheckFermento.Checked & "','" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "','" & My.Forms.FrmRecepcion.CboEstado.Text & "','" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "','" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "',0,1)"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlCompras, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+            Else
+                '//////////////////////////////////////////////////////////////////////////////////////////////
+                '////////////////////////////EDITO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
+                '/////////////////////////////////////////////////////////////////////////////////////////////////
+                SqlCompras = "UPDATE [Recepcion] SET [Cod_Proveedor] = '" & FrmRecepcion.CboCodigoProveedor.Columns(0).Text & "',[Conductor] = '" & FrmRecepcion.CboConductor.Text & "',[Id_identificacion] ='" & FrmRecepcion.txtid.Text & "',[Id_Placa] = '" & FrmRecepcion.txtplaca.Text & "',[Observaciones] = '" & FrmRecepcion.txtobservaciones.Text & "',[SubTotal] = '" & Subtotal & "',[Lote] = '" & Lote & "',[TipoProceso] = '" & TipoProceso & "',[IdLugarAcopio] = " & IdLugarAcopio & " " & _
+                             "WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (TipoRecepcion = '" & FrmRecepcion.CboTipoRecepcion.Text & "')" 
+                MiConexion.Close()
+            End If
         End If
-
     End Sub
     Public Sub ActualizaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal TipoRecepcion As String)
 
@@ -1350,39 +1340,39 @@ Module Funciones
         DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         My.Forms.FrmRecepcion.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
-        My.Forms.FrmRecepcion.TxtNombreProducto.DataSource = My.Forms.FrmRecepcion.BindingDetalle
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Width = 40
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(0).Caption = "Psda"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.DataSource = My.Forms.FrmRecepcion.BindingDetalle
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(0).Caption = "Psda"
 
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(1).Caption = "Código"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(2).Caption = "Descripción"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Width = 200
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(3).Caption = "Categ"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(4).Caption = "Estado"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(5).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(5).Caption = "PesoLb"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(1).Caption = "Código"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(3).Caption = "Categ"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(4).Caption = "Estado"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Width = 85
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(2).Button = True
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(3).Button = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
     End Sub
 
 
-    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal CodigoProducto As String, ByVal Cantidad As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Tara As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double, ByVal CalidadCafe As String)
+    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal CodigoProducto As String, ByVal Cantidad As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Tara As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double)
         Dim Sqldetalle As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
         Dim Fecha As String, MiConexion As New SqlClient.SqlConnection(Conexion), SqlUpdate As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, PesoNetoLb As Double
@@ -1405,7 +1395,7 @@ Module Funciones
             '//////////////////////////////////////////////////////////////////////////////////////////////
             '////////////////////////////EDITO EL DETALLE DE COMPRAS///////////////////////////////////
             '/////////////////////////////////////////////////////////////////////////////////////////////////
-            SqlUpdate = "UPDATE [Detalle_Recepcion] SET [Cod_Productos] = '" & CodigoProducto & "',[Descripcion_Producto] = '" & Descripcion & "',[Cantidad] = " & Cantidad & ",[PesoKg] = " & PesoKg & ", [Calidad] = '" & Calidad & "', [Estado] = '" & Estado & "', [Precio] = " & Precio & ", [Tara] = " & Tara & ", [PesoNetoLb] = " & PesoNetoLb & ", [PesoNetoKg] = " & PesoNetoKg & " , [QQ] = " & QQ & ", [Calidad_Cafe] = '" & CalidadCafe & "' " & _
+            SqlUpdate = "UPDATE [Detalle_Recepcion] SET [Cod_Productos] = '" & CodigoProducto & "',[Descripcion_Producto] = '" & Descripcion & "',[Cantidad] = " & Cantidad & ",[PesoKg] = " & PesoKg & ", [Calidad] = '" & Calidad & "', [Estado] = '" & Estado & "', [Precio] = " & Precio & ", [Tara] = " & Tara & ", [PesoNetoLb] = " & PesoNetoLb & ", [PesoNetoKg] = " & PesoNetoKg & " , [QQ] = " & QQ & " " & _
                         "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "  'AND (Cod_Productos = '" & CodigoProducto & "')
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
@@ -1414,8 +1404,8 @@ Module Funciones
 
         Else
 
-            SqlUpdate = "INSERT INTO [Detalle_Recepcion] ([id_Eventos],[NumeroRecepcion],[Fecha],[TipoRecepcion],[Cod_Productos],[Descripcion_Producto],[Cantidad],[PesoKg],[Calidad],[Estado],[Precio],[Tara],[PesoNetoLb],[PesoNetoKg],[QQ],[Calidad_Cafe]) " & _
-                        "VALUES (" & Linea & " ,'" & ConsecutivoRecepcion & "','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "','" & CodigoProducto & "','" & Descripcion & "'," & Cantidad & "," & PesoKg & ", '" & Calidad & "','" & Estado & "', " & Precio & ", " & Tara & ", " & PesoNetoLb & ", " & PesoNetoKg & ", " & QQ & ", '" & CalidadCafe & "')"
+            SqlUpdate = "INSERT INTO [Detalle_Recepcion] ([id_Eventos],[NumeroRecepcion],[Fecha],[TipoRecepcion],[Cod_Productos],[Descripcion_Producto],[Cantidad],[PesoKg],[Calidad],[Estado],[Precio],[Tara],[PesoNetoLb],[PesoNetoKg],[QQ]) " & _
+                        "VALUES (" & Linea & " ,'" & ConsecutivoRecepcion & "','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "','" & CodigoProducto & "','" & Descripcion & "'," & Cantidad & "," & PesoKg & ", '" & Calidad & "','" & Estado & "', " & Precio & ", " & Tara & ", " & PesoNetoLb & ", " & PesoNetoKg & ", " & QQ & ")"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -1471,40 +1461,40 @@ Module Funciones
         DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         My.Forms.FrmRecepcion.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
-        My.Forms.FrmRecepcion.TxtNombreProducto.DataSource = My.Forms.FrmRecepcion.BindingDetalle
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Width = 40
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(0).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(0).Caption = "Psda"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.DataSource = My.Forms.FrmRecepcion.BindingDetalle
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(0).Caption = "Psda"
 
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(1).Caption = "Código"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(2).Caption = "Descripción"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Width = 200
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(2).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(3).Caption = "Categ"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(4).Caption = "Estado"
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(5).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Columns(5).Caption = "PesoLb"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(1).Caption = "Código"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(3).Caption = "Categ"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(4).Caption = "Estado"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(6).Width = 85
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(2).Button = True
         'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(3).Button = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(7).Locked = True
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(8).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(9).Width = 75
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(10).Width = 50
-        My.Forms.FrmRecepcion.TxtNombreProducto.Splits.Item(0).DisplayColumns(11).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
 
 
         'FrmRecepcion.CboEstadoDocumeto.Text = "Editable"
         'FrmRecepcion.CboEstadoDocumeto.Enabled = True
-        FrmRecepcion.TxtNombreProducto.Enabled = True
+        FrmRecepcion.TrueDBDetalleNP.Enabled = True
         'FrmRecepcion.CboTipoCafe.Enabled = True
         'FrmRecepcion.CboTipoCalidad.Enabled = True
         FrmRecepcion.TxtCodProductor.Enabled = True
@@ -1650,30 +1640,30 @@ Module Funciones
 
         'Categoria = FrmRecepcion.CboCategoria.Text
         'Estado = FrmRecepcion.CboEstado.Text
-        Registro = FrmRecepcion.TxtNombreProducto.RowCount
+        Registro = FrmRecepcion.TrueDBDetalleNP.RowCount
         i = 0
-        FrmRecepcion.TxtNombreProducto.Row = i
+        FrmRecepcion.TrueDBDetalleNP.Row = i
         SubTotal = 0
         Do While Registro > i
-            If FrmRecepcion.TxtNombreProducto.Columns(10).Text = "" Then
+            If FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = "" Then
                 Exit Do
             End If
 
-            QQ = FrmRecepcion.TxtNombreProducto.Columns(10).Text
+            QQ = FrmRecepcion.TrueDBDetalleNP.Columns(10).Text
             Tara = Factor * QQ
-            PesoKg = FrmRecepcion.TxtNombreProducto.Columns(6).Text
+            PesoKg = FrmRecepcion.TrueDBDetalleNP.Columns(6).Text
             PesoNetoKg = Format((PesoKg - Tara), "##,##0.0000")
             PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
 
-            FrmRecepcion.TxtNombreProducto.Columns(3).Text = Categoria
-            FrmRecepcion.TxtNombreProducto.Columns(4).Text = Estado
-            FrmRecepcion.TxtNombreProducto.Columns(7).Text = Format(Tara, "##,##0.00")
-            FrmRecepcion.TxtNombreProducto.Columns(8).Text = Format(PesoNetoLb, "##,##0.0000")
-            FrmRecepcion.TxtNombreProducto.Columns(9).Text = Format(PesoNetoKg, "##,##0.0000")
+            FrmRecepcion.TrueDBDetalleNP.Columns(3).Text = Categoria
+            FrmRecepcion.TrueDBDetalleNP.Columns(4).Text = Estado
+            FrmRecepcion.TrueDBDetalleNP.Columns(7).Text = Format(Tara, "##,##0.00")
+            FrmRecepcion.TrueDBDetalleNP.Columns(8).Text = Format(PesoNetoLb, "##,##0.0000")
+            FrmRecepcion.TrueDBDetalleNP.Columns(9).Text = Format(PesoNetoKg, "##,##0.0000")
 
             SubTotal = PesoNetoKg + SubTotal
             i = i + 1
-            FrmRecepcion.TxtNombreProducto.Row = i
+            FrmRecepcion.TrueDBDetalleNP.Row = i
         Loop
 
 
@@ -1700,42 +1690,29 @@ Module Funciones
         Dim DataSet As New DataSet, DataAdapterProductos As New SqlClient.SqlDataAdapter, PesoKg As Double, Precio As Double, DataAdapter As New SqlClient.SqlDataAdapter
         Dim Tara As Double = 0, PesoNetoLb As Double = 0, PesoNetoKg As Double = 0, QQ As Double = 0, LugarAcopio As Integer, SubTotal As Double = 0
         Dim HumedadxDefecto As Double = 0, HumedadReal As Double = 0, Consecutivo As Double, NumeroRecibo As String, Cadena As String, CadenaDiv() As String
-        Dim CodLugarAcopio As Double
-
-
-        'SqlString = "SELECT  LugarAcopio.* FROM LugarAcopio WHERE  (IdLugarAcopio = " & FrmRecepcion.IdLugarAcopio & " ) AND (Activo = 1)"
-        'DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        'DataAdapter.Fill(DataSet, "ConsultaLugarAcopio")
-        'If DataSet.Tables("ConsultaLugarAcopio").Rows.Count <> 0 Then
-        '    CodLugarAcopio = DataSet.Tables("ConsultaLugarAcopio").Rows(0)("CodLugarAcopio")
-        'Else
-        '    'CodLugarAcopio = FrmRecepcion.TxtIdLocalidad.Text
-        'End If
-
-
 
         '////////////////////////////////////////////////////////////////////////////////////////////////////
         '/////////////////////////////BUSCO EL CONSECUTIVO DE LA COMPRA /////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
-        If FrmRecepcion.TxtNumeroEnsamble.Text = "-----0-----" Then
-            Select Case FrmRecepcion.CboTipoPesada.Text
-                Case "Recepcion"
-                    ConsecutivoCompra = BuscaConsecutivo("Recepcion", CodLugarAcopio)
 
-                Case "RePesaje"
-                    ConsecutivoCompra = BuscaConsecutivo("ReImprime", CodLugarAcopio)
-                Case "Lote"
-                    ConsecutivoCompra = BuscaConsecutivo("Lote", CodLugarAcopio)
-            End Select
-
-            NumeroRecepcion = CodLugarAcopio & "-" & Format(ConsecutivoCompra, "00000#")
-        Else
-            NumeroRecepcion = FrmRecepcion.TxtNumeroEnsamble.Text
-        End If
+        'If FrmRecepcion.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -" Then
+        '    Select Case FrmRecepcion.CboTipoPesada.Text
+        '        Case "Recepcion"
+        '            ConsecutivoCompra = BuscaConsecutivo("Recepcion", CodLugarAcopio)
+        '        Case "RePesaje"
+        '            ConsecutivoCompra = BuscaConsecutivo("ReImprime", CodLugarAcopio)
+        '        Case "Lote"
+        '            ConsecutivoCompra = BuscaConsecutivo("Lote", CodLugarAcopio)
+        '    End Select
+        '    NumeroRecepcion = CodLugarAcopio & "-" & Format(ConsecutivoCompra, "00000#")
+        'Else
+        '    NumeroRecepcion = FrmRecepcion.TxtNumeroEnsamble.Text
+        'End If
 
         '////////////////////////////////////////////////////////////////////////////////////////////////////////
         '/////////////////////////////////BUSCO EL CONSECUTIVO DEL RECIBO ///////////////////////////////////////
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         'If FrmRecepcion.TxtNumeroRecibo.Text = "-----0-----" Then
         '    SqlString = "SELECT Codigo FROM ReciboCafePergamino WHERE (IdCosecha = " & FrmRecepcion.IdCosecha & ") AND (IdLocalidad = " & FrmRecepcion.IdLugarAcopio & ") AND (IdTipoCompra = " & FrmRecepcion.IdTipoCompra & ") AND (IdTipoCafe = " & FrmRecepcion.IdTipoCafe & ")  AND (LEN(Codigo) > 9) AND (Codigo LIKE '%" & CodLugarAcopio & "%') ORDER BY Codigo DESC"
         '    DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
@@ -1750,28 +1727,28 @@ Module Funciones
         '    Else
         '        Consecutivo = 1
         '    End If
-
         '    NumeroRecibo = Format(Consecutivo, "00000#")
         '    'FrmRecepcion.TxtNumeroRecibo.Text = NumeroRecibo
-
         'Else
         '    'NumeroRecibo = FrmRecepcion.TxtNumeroRecibo.Text
         'End If
 
         '////////////////////////////////////////////////////////////////////////////////////////////////////
-        '/////////////////////////////GRABO ENCABEZADO DE RECEPCION /////////////////////////////////////////////
-        '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
-        GrabaRecepcion(NumeroRecepcion)
+        '/////////////////////////////GRABO ENCABEZADO DE RECEPCION /////////////////////////////////////////
+        '////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        GrabaRecepcion(My.Forms.FrmRecepcion.TxtNumeroEnsamble.Text)
 
         '////////////////////////////////////////////////////////////////////////////////////////////////////
         '/////////////////////////////GRABO EL DETALLE DE LA RECEPCION /////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
+
         Registros = FrmRecepcion.BindingDetalle.Count
         Iposicion = FrmRecepcion.BindingDetalle.Position
-        If My.Forms.FrmRecepcion.TxtNombreProducto.Columns(0).Text = "" Then
+        If My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(0).Text = "" Then
             Linea = BuscaLinea(NumeroRecepcion, CDate(My.Forms.FrmRecepcion.DTPFecha.Text), My.Forms.FrmRecepcion.CboTipoPesada.Text)
         Else
-            Linea = FrmRecepcion.TxtNombreProducto.Columns(0).Text
+            Linea = FrmRecepcion.TrueDBDetalleNP.Columns(0).Text
         End If
 
         'CodigoProducto = FrmRecepcion.CboIngresoBascula.Columns(0).Text
@@ -1806,7 +1783,6 @@ Module Funciones
         '    End Select
 
         'End If
-
         'Precio = PrecioVenta(CodigoProducto, FrmRecepcion.IdLugarAcopio, FrmRecepcion.CboCategoria.Text, CDate(FrmRecepcion.DTPFecha.Text))
         'Precio = PrecioVenta(FrmRecepcion.IdLugarAcopio, FrmRecepcion.IdCalidad, FrmRecepcion.CboCategoria.Text)
 
@@ -1888,31 +1864,31 @@ Module Funciones
         PesoNetoKg = Format((PesoKg - Tara), "##,##0.0000")
         PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
 
-        'GrabaDetalleRecepcion(NumeroRecepcion, CodigoProducto, Cantidad, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, QQ, FrmRecepcion.CboTipoCalidad.Text)
+        GrabaDetalleRecepcion(NumeroRecepcion, CodigoProducto, Cantidad, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, QQ)
         ActualizaDetalleRecepcion(NumeroRecepcion, FrmRecepcion.CboTipoPesada.Text)
 
 
-        FrmRecepcion.TxtNombreProducto.Columns(1).Text = CodigoProducto
-        FrmRecepcion.TxtNombreProducto.Columns(2).Text = Descripcion
-        FrmRecepcion.TxtNombreProducto.Columns(3).Text = Calidad
-        FrmRecepcion.TxtNombreProducto.Columns(4).Text = Estado
-        FrmRecepcion.TxtNombreProducto.Columns(5).Text = Cantidad
-        FrmRecepcion.TxtNombreProducto.Columns(6).Text = PesoKg
-        FrmRecepcion.TxtNombreProducto.Columns(7).Text = Tara
-        FrmRecepcion.TxtNombreProducto.Columns(8).Text = PesoNetoLb
-        FrmRecepcion.TxtNombreProducto.Columns(9).Text = PesoNetoKg
-        FrmRecepcion.TxtNombreProducto.Columns(10).Text = QQ
-        FrmRecepcion.TxtNombreProducto.Columns(11).Text = Precio
-        FrmRecepcion.TxtNombreProducto.Columns(0).Text = Linea
+        FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
+        FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = Descripcion
+        FrmRecepcion.TrueDBDetalleNP.Columns(3).Text = Calidad
+        FrmRecepcion.TrueDBDetalleNP.Columns(4).Text = Estado
+        FrmRecepcion.TrueDBDetalleNP.Columns(5).Text = Cantidad
+        FrmRecepcion.TrueDBDetalleNP.Columns(6).Text = PesoKg
+        FrmRecepcion.TrueDBDetalleNP.Columns(7).Text = Tara
+        FrmRecepcion.TrueDBDetalleNP.Columns(8).Text = PesoNetoLb
+        FrmRecepcion.TrueDBDetalleNP.Columns(9).Text = PesoNetoKg
+        FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = QQ
+        FrmRecepcion.TrueDBDetalleNP.Columns(11).Text = Precio
+        FrmRecepcion.TrueDBDetalleNP.Columns(0).Text = Linea
         FrmRecepcion.TxtNumeroEnsamble.Text = NumeroRecepcion
         'FrmRecepcion.TxtNumeroRecibo.Text = NumeroRecibo
 
 
-        Iposicion = FrmRecepcion.TxtNombreProducto.Row
-        FrmRecepcion.TxtNombreProducto.Row = FrmRecepcion.TxtNombreProducto.Row + 1
-        FrmRecepcion.TxtNombreProducto.Columns(1).Text = CodigoProducto
-        FrmRecepcion.TxtNombreProducto.Columns(2).Text = Descripcion
-        FrmRecepcion.TxtNombreProducto.Col = 5
+        Iposicion = FrmRecepcion.TrueDBDetalleNP.Row
+        FrmRecepcion.TrueDBDetalleNP.Row = FrmRecepcion.TrueDBDetalleNP.Row + 1
+        FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
+        FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = Descripcion
+        FrmRecepcion.TrueDBDetalleNP.Col = 5
 
 
         FrmRecepcion.txtsubtotal.Text = TotalRecepcion(FrmRecepcion.TxtNumeroEnsamble.Text, FrmRecepcion.DTPFecha.Text, FrmRecepcion.CboTipoPesada.Text)

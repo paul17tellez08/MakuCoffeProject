@@ -61,54 +61,54 @@ Partial Class FrmQQ
         Me.GroupBox2.Controls.Add(Me.TxtMinutos)
         Me.GroupBox2.Controls.Add(Me.TxtHora)
         Me.GroupBox2.Controls.Add(Me.TxtBarra)
-        Me.GroupBox2.Location = New System.Drawing.Point(319, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 80)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(541, 400)
+        Me.GroupBox2.Size = New System.Drawing.Size(503, 396)
         Me.GroupBox2.TabIndex = 233
         Me.GroupBox2.TabStop = False
         '
         'C1Button2
         '
-        Me.C1Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.C1Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.C1Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.C1Button2.ForeColor = System.Drawing.Color.White
-        Me.C1Button2.Location = New System.Drawing.Point(387, 206)
+        Me.C1Button2.Location = New System.Drawing.Point(374, 204)
         Me.C1Button2.Name = "C1Button2"
-        Me.C1Button2.Size = New System.Drawing.Size(142, 182)
+        Me.C1Button2.Size = New System.Drawing.Size(121, 182)
         Me.C1Button2.TabIndex = 17
         Me.C1Button2.Text = "SALIR"
         Me.C1Button2.UseVisualStyleBackColor = False
         '
         'C1Button1
         '
-        Me.C1Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.C1Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.C1Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.C1Button1.ForeColor = System.Drawing.Color.White
-        Me.C1Button1.Location = New System.Drawing.Point(389, 22)
+        Me.C1Button1.Location = New System.Drawing.Point(374, 19)
         Me.C1Button1.Name = "C1Button1"
-        Me.C1Button1.Size = New System.Drawing.Size(140, 182)
+        Me.C1Button1.Size = New System.Drawing.Size(121, 182)
         Me.C1Button1.TabIndex = 16
         Me.C1Button1.Text = "ACEPTAR"
         Me.C1Button1.UseVisualStyleBackColor = False
         '
         'C1Button10
         '
-        Me.C1Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.C1Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.C1Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.C1Button10.ForeColor = System.Drawing.Color.White
-        Me.C1Button10.Location = New System.Drawing.Point(262, 297)
+        Me.C1Button10.Location = New System.Drawing.Point(249, 295)
         Me.C1Button10.Name = "C1Button10"
         Me.C1Button10.Size = New System.Drawing.Size(119, 91)
         Me.C1Button10.TabIndex = 15
-        Me.C1Button10.Text = "Borrar"
+        Me.C1Button10.Text = "BORRAR"
         Me.C1Button10.UseVisualStyleBackColor = False
         '
         'CmdBoton0
         '
-        Me.CmdBoton0.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton0.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton0.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton0.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton0.Location = New System.Drawing.Point(141, 296)
+        Me.CmdBoton0.Location = New System.Drawing.Point(128, 294)
         Me.CmdBoton0.Name = "CmdBoton0"
         Me.CmdBoton0.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton0.TabIndex = 14
@@ -117,10 +117,10 @@ Partial Class FrmQQ
         '
         'C1Button12
         '
-        Me.C1Button12.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.C1Button12.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.C1Button12.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.C1Button12.ForeColor = System.Drawing.Color.White
-        Me.C1Button12.Location = New System.Drawing.Point(20, 296)
+        Me.C1Button12.Location = New System.Drawing.Point(7, 294)
         Me.C1Button12.Name = "C1Button12"
         Me.C1Button12.Size = New System.Drawing.Size(119, 91)
         Me.C1Button12.TabIndex = 10
@@ -129,10 +129,10 @@ Partial Class FrmQQ
         '
         'CmdBoton9
         '
-        Me.CmdBoton9.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton9.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton9.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton9.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton9.Location = New System.Drawing.Point(261, 205)
+        Me.CmdBoton9.Location = New System.Drawing.Point(248, 203)
         Me.CmdBoton9.Name = "CmdBoton9"
         Me.CmdBoton9.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton9.TabIndex = 13
@@ -141,10 +141,10 @@ Partial Class FrmQQ
         '
         'CmdBoton8
         '
-        Me.CmdBoton8.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton8.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton8.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton8.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton8.Location = New System.Drawing.Point(140, 204)
+        Me.CmdBoton8.Location = New System.Drawing.Point(127, 202)
         Me.CmdBoton8.Name = "CmdBoton8"
         Me.CmdBoton8.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton8.TabIndex = 12
@@ -153,10 +153,10 @@ Partial Class FrmQQ
         '
         'CmdBoton7
         '
-        Me.CmdBoton7.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton7.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton7.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton7.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton7.Location = New System.Drawing.Point(20, 204)
+        Me.CmdBoton7.Location = New System.Drawing.Point(7, 202)
         Me.CmdBoton7.Name = "CmdBoton7"
         Me.CmdBoton7.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton7.TabIndex = 11
@@ -165,10 +165,10 @@ Partial Class FrmQQ
         '
         'CmdBoton6
         '
-        Me.CmdBoton6.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton6.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton6.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton6.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton6.Location = New System.Drawing.Point(261, 113)
+        Me.CmdBoton6.Location = New System.Drawing.Point(248, 111)
         Me.CmdBoton6.Name = "CmdBoton6"
         Me.CmdBoton6.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton6.TabIndex = 10
@@ -177,10 +177,10 @@ Partial Class FrmQQ
         '
         'CmdBoton5
         '
-        Me.CmdBoton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton5.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton5.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton5.Location = New System.Drawing.Point(140, 112)
+        Me.CmdBoton5.Location = New System.Drawing.Point(127, 110)
         Me.CmdBoton5.Name = "CmdBoton5"
         Me.CmdBoton5.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton5.TabIndex = 9
@@ -189,10 +189,10 @@ Partial Class FrmQQ
         '
         'CmdBoton4
         '
-        Me.CmdBoton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton4.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton4.Location = New System.Drawing.Point(20, 112)
+        Me.CmdBoton4.Location = New System.Drawing.Point(7, 110)
         Me.CmdBoton4.Name = "CmdBoton4"
         Me.CmdBoton4.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton4.TabIndex = 8
@@ -201,10 +201,10 @@ Partial Class FrmQQ
         '
         'CmdBoton3
         '
-        Me.CmdBoton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton3.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton3.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton3.Location = New System.Drawing.Point(261, 20)
+        Me.CmdBoton3.Location = New System.Drawing.Point(248, 18)
         Me.CmdBoton3.Name = "CmdBoton3"
         Me.CmdBoton3.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton3.TabIndex = 7
@@ -213,10 +213,10 @@ Partial Class FrmQQ
         '
         'CmdBoton2
         '
-        Me.CmdBoton2.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton2.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton2.Location = New System.Drawing.Point(141, 19)
+        Me.CmdBoton2.Location = New System.Drawing.Point(128, 17)
         Me.CmdBoton2.Name = "CmdBoton2"
         Me.CmdBoton2.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton2.TabIndex = 6
@@ -225,10 +225,10 @@ Partial Class FrmQQ
         '
         'CmdBoton1
         '
-        Me.CmdBoton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.CmdBoton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.CmdBoton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdBoton1.ForeColor = System.Drawing.Color.White
-        Me.CmdBoton1.Location = New System.Drawing.Point(20, 19)
+        Me.CmdBoton1.Location = New System.Drawing.Point(7, 17)
         Me.CmdBoton1.Name = "CmdBoton1"
         Me.CmdBoton1.Size = New System.Drawing.Size(119, 91)
         Me.CmdBoton1.TabIndex = 5
@@ -272,26 +272,26 @@ Partial Class FrmQQ
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(12, 24)
+        Me.Label1.Location = New System.Drawing.Point(12, 11)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(90, 25)
+        Me.Label1.Size = New System.Drawing.Size(249, 25)
         Me.Label1.TabIndex = 234
-        Me.Label1.Text = "SACOS"
+        Me.Label1.Text = "CANTIDAD DE SACOS"
         '
         'TxtQQ
         '
         Me.TxtQQ.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtQQ.Location = New System.Drawing.Point(17, 52)
+        Me.TxtQQ.Location = New System.Drawing.Point(17, 39)
         Me.TxtQQ.Name = "TxtQQ"
-        Me.TxtQQ.Size = New System.Drawing.Size(257, 35)
+        Me.TxtQQ.Size = New System.Drawing.Size(498, 35)
         Me.TxtQQ.TabIndex = 235
         '
         'FrmQQ
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(864, 420)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(522, 479)
         Me.Controls.Add(Me.TxtQQ)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox2)
@@ -299,7 +299,7 @@ Partial Class FrmQQ
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FrmQQ"
-        Me.Text = "NUMERO DE SACOS"
+        Me.Text = "Cantidad de sacos"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
