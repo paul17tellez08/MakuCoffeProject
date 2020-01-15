@@ -1526,7 +1526,7 @@ Module Funciones
         'FrmRecepcion.CboLocalidad.Enabled = True
         'FrmRecepcion.CboLiquidarLocalidad.Enabled = True
         'FrmRecepcion.Button16.Enabled = True
-        FrmRecepcion.CmdPesada.Enabled = True
+        FrmRecepcion.BtnPesada.Enabled = True
         'FrmRecepcion.TxtHumedad.Enabled = True
         'FrmRecepcion.TxtImperfecion.Enabled = True
         'FrmRecepcion.CmdObservaciones.Enabled = True

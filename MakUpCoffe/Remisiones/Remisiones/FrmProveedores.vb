@@ -1,18 +1,16 @@
 Public Class FrmProveedores
     Public MiConexion As New SqlClient.SqlConnection(Conexion)
+    Public Llamada As String
     Private Sub FrmProveedores_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim Sql As String = "SELECT * FROM Proveedor"
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "ListaProveedores")
         Me.CboCodigoProveedor.DataSource = DataSet.Tables("ListaProveedores")
 
-
+        If Llamada = "BusquedaProductor" Then
+            Me.ButtonBorrar.Enabled = False
+        End If
     End Sub
-
-    Private Sub CboCodigoProveedor_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         Me.Close()
     End Sub
@@ -21,21 +19,7 @@ Public Class FrmProveedores
         Me.CboCodigoProveedor.Text = ""
     End Sub
 
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-
-    End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
     Private Sub CmdGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdGrabar.Click
-
         Dim SQLProveedor As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, Reintegro As Double, Exonerado As Double, Exclusivo As Double
@@ -57,8 +41,6 @@ Public Class FrmProveedores
         Else
             Exclusivo = 0
         End If
-
-
         SQLProveedor = "SELECT TOP (1) PERCENT dbo.Proveedor.* FROM Proveedor WHERE (Cod_Proveedor = '" & Me.CboCodigoProveedor.Text & "') ORDER BY Cod_Proveedor"
          DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
         DataAdapter.Fill(DataSet, "Proveedores")
@@ -70,7 +52,6 @@ Public Class FrmProveedores
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
             StrSqlUpdate = "INSERT INTO [Proveedor] ([Cod_Proveedor],[Nombre_Proveedor],[Apellido_Proveedor],[Direccion_Proveedor],[Telefono],[Cod_Cuenta_Pagar],[Cod_Cuenta_Cobrar],[Merma],[Reintegro],[Exonerado],[Exclusivo]) " & _
@@ -79,7 +60,6 @@ Public Class FrmProveedores
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         End If
         SQLProveedor = "SELECT TOP (100) PERCENT dbo.Proveedor.* FROM Proveedor"
         DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
@@ -130,16 +110,6 @@ Public Class FrmProveedores
 
         Me.CboCodigoProveedor.Text = ""
     End Sub
-
-    Private Sub CboCodigoProveedor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CboCodigoProveedor.Click
-        FrmTeclado.ShowDialog()
-        Me.CboCodigoProveedor.Text = FrmTeclado.Numero
-    End Sub
-
-    Private Sub CboCodigoProveedor_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CboCodigoProveedor.GotFocus
-
-    End Sub
-
 
     Private Sub CboCodigoProveedor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboCodigoProveedor.TextChanged
         Dim SqlProveedor As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -198,12 +168,7 @@ Public Class FrmProveedores
             Else
                 Me.ChkExclusivo.Checked = False
             End If
-
-
-
-
         Else
-
             Me.TxtNombre.Text = ""
             Me.TxtApellido.Text = ""
             Me.TxtDireccion.Text = ""
@@ -215,20 +180,12 @@ Public Class FrmProveedores
         End If
     End Sub
 
-    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdConsulta.Click
-        Quien = "CodigoProveedor"
-    End Sub
-
-    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Quien = "CuentaPagar"
-    End Sub
-
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Quien = "CuentaCobrar"
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        FrmTeclado.ShowDialog()
-        Me.CboCodigoProveedor.Text = FrmTeclado.Numero
+    Private Sub BtnConsulta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConsulta.Click
+        Quien = "BusquedaProductor"
+        My.Forms.FrmConsultas.Text = "Consulta Productor"
+        My.Forms.FrmConsultas.ShowDialog()
+        If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
+            Me.CboCodigoProveedor.Text = FrmConsultas.Codigo
+        End If
     End Sub
 End Class

@@ -12,7 +12,6 @@ Public Class FrmConsultas
         Dim DataAdapter As New SqlClient.SqlDataAdapter, SQlProductos As String
         Select Case Quien
             Case "RecepcionBusqueda"
-
                 SQlProductos = "SELECT Recepcion.NumeroRecepcion, Recepcion.Fecha, Recepcion.TipoRecepcion, Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor AS Productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa, Recepcion.Cod_Bodega AS Bodega, Recepcion.Observaciones, Recepcion.SubTotal, Recepcion.Lote, Recepcion.Peso, Recepcion.Activo  FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.IdProductor WHERE (Recepcion.Activo = 1) "
                 MiConexion.Open()
                 DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
@@ -54,7 +53,16 @@ Public Class FrmConsultas
                 Me.BindingConsultas.DataSource = DataSet.Tables("Consultas")
                 Me.TrueDBGridConsultas.DataSource = Me.BindingConsultas
                 MiConexion.Close()
-
+            Case "ConsultaConductorRecepcion"
+                SQlProductos = "SELECT Codigo, Nombre, Cedula, Licencia, Activo, ListaNegra, RazonListaNegra  FROM  Conductor  WHERE (Activo = 1) ORDER BY Codigo DESC"
+                MiConexion.Open()
+                DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
+                DataSet.Reset()
+                DataAdapter.Fill(DataSet, "Consultas")
+                Me.BindingConsultas.DataSource = DataSet.Tables("Consultas")
+                Me.TrueDBGridConsultas.DataSource = Me.BindingConsultas
+                ' Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(0).Visible = False
+                MiConexion.Close()
         End Select
     End Sub
 
@@ -68,12 +76,16 @@ Public Class FrmConsultas
             Case "BusquedaProductor"
                 Posicion = Me.BindingConsultas.Position
                 Codigo = Me.BindingConsultas.Item(Posicion)("IdProductor")
+                Descripcion = Me.BindingConsultas.Item(Posicion)("Nombre")
             Case "ConsultaPlacaRecepción"
                 Posicion = Me.BindingConsultas.Position
                 Codigo = Me.BindingConsultas.Item(Posicion)("Placa")
             Case "ConsultaProductoRecepcion"
                 Posicion = Me.BindingConsultas.Position
                 Codigo = Me.BindingConsultas.Item(Posicion)("Cod_Productos")
+            Case "ConsultaConductorRecepcion"
+                Posicion = Me.BindingConsultas.Position
+                Codigo = Me.BindingConsultas.Item(Posicion)("Codigo")
         End Select
         If Codigo = "- - - - - 0 - - - - -" Then
             MsgBox("Seleccione un resgitro para continuar", MsgBoxStyle.Critical, "MakuCoffe")

@@ -22,6 +22,7 @@ Partial Class FrmFincaPlantillo
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFincaPlantillo))
         Me.BtnEliminarMuni = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
@@ -32,7 +33,7 @@ Partial Class FrmFincaPlantillo
         Me.Label9 = New System.Windows.Forms.Label
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.CheckActivo = New System.Windows.Forms.CheckBox
         Me.CboFinca = New C1.Win.C1List.C1Combo
         Me.Label19 = New System.Windows.Forms.Label
         Me.CboComarca = New C1.Win.C1List.C1Combo
@@ -52,15 +53,14 @@ Partial Class FrmFincaPlantillo
         Me.ColCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.ColPlantillo = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.Panel3 = New System.Windows.Forms.Panel
-        Me.Label11 = New System.Windows.Forms.Label
+        Me.LbPlantillo = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.BtnArriba = New System.Windows.Forms.Button
         Me.BtnAbajo = New System.Windows.Forms.Button
         Me.BtnEliminarfila = New System.Windows.Forms.Button
         Me.BtnNuevaFila = New System.Windows.Forms.Button
-        Me.TxtCodfinca = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
         Me.Panel2 = New System.Windows.Forms.Panel
+        Me.ButtonBorrar = New System.Windows.Forms.Button
         Me.CmdNuevo = New System.Windows.Forms.Button
         Me.BtnSalir = New System.Windows.Forms.Button
         Me.ButtonGuardar = New System.Windows.Forms.Button
@@ -81,6 +81,7 @@ Partial Class FrmFincaPlantillo
         Me.Button3 = New System.Windows.Forms.Button
         Me.Button4 = New System.Windows.Forms.Button
         Me.Button5 = New System.Windows.Forms.Button
+        Me.BindingFinca = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.CboMunicipio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CboDepartamento, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -98,6 +99,7 @@ Partial Class FrmFincaPlantillo
         CType(Me.C1Combo5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingFinca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnEliminarMuni
@@ -220,10 +222,10 @@ Partial Class FrmFincaPlantillo
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label9.BackColor = System.Drawing.Color.White
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(166, 26)
+        Me.Label9.Location = New System.Drawing.Point(95, 26)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(307, 18)
         Me.Label9.TabIndex = 211
@@ -238,13 +240,13 @@ Partial Class FrmFincaPlantillo
         Me.TabControl1.Location = New System.Drawing.Point(0, 71)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(595, 284)
+        Me.TabControl1.Size = New System.Drawing.Size(427, 313)
         Me.TabControl1.TabIndex = 224
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.TabPage1.Controls.Add(Me.Button1)
+        Me.TabPage1.Controls.Add(Me.CheckActivo)
         Me.TabPage1.Controls.Add(Me.CboFinca)
         Me.TabPage1.Controls.Add(Me.Label19)
         Me.TabPage1.Controls.Add(Me.CboComarca)
@@ -264,18 +266,23 @@ Partial Class FrmFincaPlantillo
         Me.TabPage1.Location = New System.Drawing.Point(4, 24)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(587, 256)
+        Me.TabPage1.Size = New System.Drawing.Size(419, 285)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Finca"
         '
-        'Button1
+        'CheckActivo
         '
-        Me.Button1.Location = New System.Drawing.Point(376, 27)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(118, 23)
-        Me.Button1.TabIndex = 221
-        Me.Button1.Text = "Eliminar Finca"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CheckActivo.AutoSize = True
+        Me.CheckActivo.Checked = True
+        Me.CheckActivo.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckActivo.ForeColor = System.Drawing.Color.White
+        Me.CheckActivo.Location = New System.Drawing.Point(307, 251)
+        Me.CheckActivo.Name = "CheckActivo"
+        Me.CheckActivo.Size = New System.Drawing.Size(67, 22)
+        Me.CheckActivo.TabIndex = 221
+        Me.CheckActivo.Text = "Activo"
+        Me.CheckActivo.UseVisualStyleBackColor = True
         '
         'CboFinca
         '
@@ -287,17 +294,17 @@ Partial Class FrmFincaPlantillo
         Me.CboFinca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.CboFinca.ColumnCaptionHeight = 10
         Me.CboFinca.ColumnFooterHeight = 10
-        Me.CboFinca.ContentHeight = 21
+        Me.CboFinca.ContentHeight = 18
         Me.CboFinca.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.CboFinca.DisplayMember = "NomFinca"
         Me.CboFinca.DropDownWidth = 230
         Me.CboFinca.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.CboFinca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboFinca.EditorFont = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.CboFinca.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.CboFinca.EditorHeight = 21
+        Me.CboFinca.EditorHeight = 18
         Me.CboFinca.Images.Add(CType(resources.GetObject("CboFinca.Images"), System.Drawing.Image))
         Me.CboFinca.ItemHeight = 35
-        Me.CboFinca.Location = New System.Drawing.Point(81, 24)
+        Me.CboFinca.Location = New System.Drawing.Point(134, 24)
         Me.CboFinca.MatchEntryTimeout = CType(2000, Long)
         Me.CboFinca.MaxDropDownItems = CType(5, Short)
         Me.CboFinca.MaxLength = 32767
@@ -306,7 +313,7 @@ Partial Class FrmFincaPlantillo
         Me.CboFinca.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboFinca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboFinca.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.CboFinca.Size = New System.Drawing.Size(230, 27)
+        Me.CboFinca.Size = New System.Drawing.Size(241, 24)
         Me.CboFinca.TabIndex = 220
         Me.CboFinca.ValueMember = "IdFinca"
         Me.CboFinca.VisualStyle = C1.Win.C1List.VisualStyle.System
@@ -317,7 +324,7 @@ Partial Class FrmFincaPlantillo
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label19.Location = New System.Drawing.Point(3, 29)
+        Me.Label19.Location = New System.Drawing.Point(14, 29)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(76, 15)
         Me.Label19.TabIndex = 219
@@ -341,7 +348,7 @@ Partial Class FrmFincaPlantillo
         Me.CboComarca.EditorHeight = 17
         Me.CboComarca.Images.Add(CType(resources.GetObject("CboComarca.Images"), System.Drawing.Image))
         Me.CboComarca.ItemHeight = 15
-        Me.CboComarca.Location = New System.Drawing.Point(81, 122)
+        Me.CboComarca.Location = New System.Drawing.Point(134, 91)
         Me.CboComarca.MatchEntryTimeout = CType(2000, Long)
         Me.CboComarca.MaxDropDownItems = CType(5, Short)
         Me.CboComarca.MaxLength = 32767
@@ -350,7 +357,7 @@ Partial Class FrmFincaPlantillo
         Me.CboComarca.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboComarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboComarca.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.CboComarca.Size = New System.Drawing.Size(230, 23)
+        Me.CboComarca.Size = New System.Drawing.Size(241, 23)
         Me.CboComarca.TabIndex = 217
         Me.CboComarca.ValueMember = "IdComarca"
         Me.CboComarca.PropBag = resources.GetString("CboComarca.PropBag")
@@ -365,17 +372,17 @@ Partial Class FrmFincaPlantillo
         Me.CboProductor.ColumnCaptionHeight = 10
         Me.CboProductor.ColumnFooterHeight = 10
         Me.CboProductor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.CboProductor.ContentHeight = 21
+        Me.CboProductor.ContentHeight = 18
         Me.CboProductor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.CboProductor.DisplayMember = "Nombre"
         Me.CboProductor.DropDownWidth = 182
         Me.CboProductor.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.CboProductor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboProductor.EditorFont = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.CboProductor.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.CboProductor.EditorHeight = 21
+        Me.CboProductor.EditorHeight = 18
         Me.CboProductor.Images.Add(CType(resources.GetObject("CboProductor.Images"), System.Drawing.Image))
         Me.CboProductor.ItemHeight = 35
-        Me.CboProductor.Location = New System.Drawing.Point(81, 73)
+        Me.CboProductor.Location = New System.Drawing.Point(134, 58)
         Me.CboProductor.MatchEntryTimeout = CType(2000, Long)
         Me.CboProductor.MaxDropDownItems = CType(5, Short)
         Me.CboProductor.MaxLength = 32767
@@ -384,7 +391,7 @@ Partial Class FrmFincaPlantillo
         Me.CboProductor.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboProductor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboProductor.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.CboProductor.Size = New System.Drawing.Size(230, 27)
+        Me.CboProductor.Size = New System.Drawing.Size(241, 24)
         Me.CboProductor.TabIndex = 216
         Me.CboProductor.ValueMember = "IdProductor"
         Me.CboProductor.VisualStyle = C1.Win.C1List.VisualStyle.System
@@ -393,10 +400,10 @@ Partial Class FrmFincaPlantillo
         'TxtNotasCata
         '
         Me.TxtNotasCata.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtNotasCata.Location = New System.Drawing.Point(376, 94)
+        Me.TxtNotasCata.Location = New System.Drawing.Point(133, 183)
         Me.TxtNotasCata.Multiline = True
         Me.TxtNotasCata.Name = "TxtNotasCata"
-        Me.TxtNotasCata.Size = New System.Drawing.Size(205, 139)
+        Me.TxtNotasCata.Size = New System.Drawing.Size(243, 62)
         Me.TxtNotasCata.TabIndex = 137
         '
         'Label18
@@ -404,7 +411,7 @@ Partial Class FrmFincaPlantillo
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label18.Location = New System.Drawing.Point(377, 72)
+        Me.Label18.Location = New System.Drawing.Point(8, 188)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(103, 15)
         Me.Label18.TabIndex = 136
@@ -413,9 +420,9 @@ Partial Class FrmFincaPlantillo
         'TxtEmbalaje
         '
         Me.TxtEmbalaje.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtEmbalaje.Location = New System.Drawing.Point(81, 209)
+        Me.TxtEmbalaje.Location = New System.Drawing.Point(133, 153)
         Me.TxtEmbalaje.Name = "TxtEmbalaje"
-        Me.TxtEmbalaje.Size = New System.Drawing.Size(230, 23)
+        Me.TxtEmbalaje.Size = New System.Drawing.Size(241, 23)
         Me.TxtEmbalaje.TabIndex = 131
         '
         'Label10
@@ -423,7 +430,7 @@ Partial Class FrmFincaPlantillo
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label10.Location = New System.Drawing.Point(6, 213)
+        Me.Label10.Location = New System.Drawing.Point(13, 157)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(75, 15)
         Me.Label10.TabIndex = 130
@@ -432,9 +439,9 @@ Partial Class FrmFincaPlantillo
         'TxtAltitud
         '
         Me.TxtAltitud.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtAltitud.Location = New System.Drawing.Point(81, 166)
+        Me.TxtAltitud.Location = New System.Drawing.Point(133, 122)
         Me.TxtAltitud.Name = "TxtAltitud"
-        Me.TxtAltitud.Size = New System.Drawing.Size(230, 23)
+        Me.TxtAltitud.Size = New System.Drawing.Size(241, 23)
         Me.TxtAltitud.TabIndex = 129
         '
         'Label7
@@ -442,7 +449,7 @@ Partial Class FrmFincaPlantillo
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(3, 169)
+        Me.Label7.Location = New System.Drawing.Point(13, 125)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(78, 15)
         Me.Label7.TabIndex = 128
@@ -453,7 +460,7 @@ Partial Class FrmFincaPlantillo
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(2, 124)
+        Me.Label6.Location = New System.Drawing.Point(13, 93)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(78, 15)
         Me.Label6.TabIndex = 126
@@ -463,10 +470,10 @@ Partial Class FrmFincaPlantillo
         '
         Me.BtnAgregarProductor.FlatAppearance.BorderSize = 0
         Me.BtnAgregarProductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAgregarProductor.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus48
-        Me.BtnAgregarProductor.Location = New System.Drawing.Point(317, 70)
+        Me.BtnAgregarProductor.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnAgregarProductor.Location = New System.Drawing.Point(381, 55)
         Me.BtnAgregarProductor.Name = "BtnAgregarProductor"
-        Me.BtnAgregarProductor.Size = New System.Drawing.Size(32, 32)
+        Me.BtnAgregarProductor.Size = New System.Drawing.Size(30, 30)
         Me.BtnAgregarProductor.TabIndex = 125
         Me.BtnAgregarProductor.UseVisualStyleBackColor = True
         '
@@ -476,9 +483,9 @@ Partial Class FrmFincaPlantillo
         Me.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnBuscar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.BtnBuscar.Image = Global.Remisiones.My.Resources.Resources.Lupa32
-        Me.BtnBuscar.Location = New System.Drawing.Point(317, 22)
+        Me.BtnBuscar.Location = New System.Drawing.Point(381, 21)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(32, 32)
+        Me.BtnBuscar.Size = New System.Drawing.Size(32, 30)
         Me.BtnBuscar.TabIndex = 119
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
@@ -487,7 +494,7 @@ Partial Class FrmFincaPlantillo
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(2, 77)
+        Me.Label3.Location = New System.Drawing.Point(13, 62)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 15)
         Me.Label3.TabIndex = 8
@@ -502,7 +509,7 @@ Partial Class FrmFincaPlantillo
         Me.TabPage2.Location = New System.Drawing.Point(4, 24)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(587, 256)
+        Me.TabPage2.Size = New System.Drawing.Size(419, 285)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Plantillos"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -517,7 +524,7 @@ Partial Class FrmFincaPlantillo
         Me.DgvPlantillos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvPlantillos.Location = New System.Drawing.Point(3, 33)
         Me.DgvPlantillos.Name = "DgvPlantillos"
-        Me.DgvPlantillos.Size = New System.Drawing.Size(525, 220)
+        Me.DgvPlantillos.Size = New System.Drawing.Size(357, 249)
         Me.DgvPlantillos.TabIndex = 227
         '
         'ColCodigo
@@ -534,23 +541,23 @@ Partial Class FrmFincaPlantillo
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.Label11)
+        Me.Panel3.Controls.Add(Me.LbPlantillo)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(3, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(525, 30)
+        Me.Panel3.Size = New System.Drawing.Size(357, 30)
         Me.Panel3.TabIndex = 226
         '
-        'Label11
+        'LbPlantillo
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label11.Location = New System.Drawing.Point(5, 8)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(144, 15)
-        Me.Label11.TabIndex = 224
-        Me.Label11.Text = "Plantillos de la Finca :"
+        Me.LbPlantillo.AutoSize = True
+        Me.LbPlantillo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.LbPlantillo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.LbPlantillo.Location = New System.Drawing.Point(5, 8)
+        Me.LbPlantillo.Name = "LbPlantillo"
+        Me.LbPlantillo.Size = New System.Drawing.Size(144, 15)
+        Me.LbPlantillo.TabIndex = 224
+        Me.LbPlantillo.Text = "Plantillos de la Finca :"
         '
         'Panel1
         '
@@ -559,9 +566,9 @@ Partial Class FrmFincaPlantillo
         Me.Panel1.Controls.Add(Me.BtnEliminarfila)
         Me.Panel1.Controls.Add(Me.BtnNuevaFila)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(528, 3)
+        Me.Panel1.Location = New System.Drawing.Point(360, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(56, 250)
+        Me.Panel1.Size = New System.Drawing.Size(56, 279)
         Me.Panel1.TabIndex = 225
         '
         'BtnArriba
@@ -572,7 +579,7 @@ Partial Class FrmFincaPlantillo
         Me.BtnArriba.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnArriba.Image = Global.Remisiones.My.Resources.Resources.up
         Me.BtnArriba.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnArriba.Location = New System.Drawing.Point(3, 10)
+        Me.BtnArriba.Location = New System.Drawing.Point(3, 12)
         Me.BtnArriba.Name = "BtnArriba"
         Me.BtnArriba.Size = New System.Drawing.Size(58, 53)
         Me.BtnArriba.TabIndex = 219
@@ -587,7 +594,7 @@ Partial Class FrmFincaPlantillo
         Me.BtnAbajo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnAbajo.Image = Global.Remisiones.My.Resources.Resources.down
         Me.BtnAbajo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnAbajo.Location = New System.Drawing.Point(3, 71)
+        Me.BtnAbajo.Location = New System.Drawing.Point(3, 81)
         Me.BtnAbajo.Name = "BtnAbajo"
         Me.BtnAbajo.Size = New System.Drawing.Size(58, 53)
         Me.BtnAbajo.TabIndex = 220
@@ -602,7 +609,7 @@ Partial Class FrmFincaPlantillo
         Me.BtnEliminarfila.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnEliminarfila.Image = Global.Remisiones.My.Resources.Resources.Eliminar48
         Me.BtnEliminarfila.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnEliminarfila.Location = New System.Drawing.Point(3, 193)
+        Me.BtnEliminarfila.Location = New System.Drawing.Point(3, 213)
         Me.BtnEliminarfila.Name = "BtnEliminarfila"
         Me.BtnEliminarfila.Size = New System.Drawing.Size(58, 53)
         Me.BtnEliminarfila.TabIndex = 222
@@ -617,46 +624,40 @@ Partial Class FrmFincaPlantillo
         Me.BtnNuevaFila.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnNuevaFila.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.BtnNuevaFila.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnNuevaFila.Location = New System.Drawing.Point(3, 132)
+        Me.BtnNuevaFila.Location = New System.Drawing.Point(3, 148)
         Me.BtnNuevaFila.Name = "BtnNuevaFila"
         Me.BtnNuevaFila.Size = New System.Drawing.Size(58, 53)
         Me.BtnNuevaFila.TabIndex = 221
         Me.BtnNuevaFila.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnNuevaFila.UseVisualStyleBackColor = True
         '
-        'TxtCodfinca
-        '
-        Me.TxtCodfinca.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtCodfinca.Location = New System.Drawing.Point(575, 40)
-        Me.TxtCodfinca.Name = "TxtCodfinca"
-        Me.TxtCodfinca.Size = New System.Drawing.Size(13, 23)
-        Me.TxtCodfinca.TabIndex = 138
-        Me.TxtCodfinca.Visible = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(496, 44)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(76, 15)
-        Me.Label4.TabIndex = 120
-        Me.Label4.Text = "Código     :"
-        Me.Label4.Visible = False
-        '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.ButtonBorrar)
         Me.Panel2.Controls.Add(Me.CmdNuevo)
         Me.Panel2.Controls.Add(Me.BtnSalir)
         Me.Panel2.Controls.Add(Me.ButtonGuardar)
-        Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.TxtCodfinca)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 355)
+        Me.Panel2.Location = New System.Drawing.Point(0, 384)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(595, 68)
+        Me.Panel2.Size = New System.Drawing.Size(427, 68)
         Me.Panel2.TabIndex = 225
+        '
+        'ButtonBorrar
+        '
+        Me.ButtonBorrar.FlatAppearance.BorderSize = 0
+        Me.ButtonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonBorrar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
+        Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonBorrar.Location = New System.Drawing.Point(240, 1)
+        Me.ButtonBorrar.Name = "ButtonBorrar"
+        Me.ButtonBorrar.Size = New System.Drawing.Size(75, 66)
+        Me.ButtonBorrar.TabIndex = 216
+        Me.ButtonBorrar.Text = "Eliminar"
+        Me.ButtonBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonBorrar.UseVisualStyleBackColor = True
         '
         'CmdNuevo
         '
@@ -682,7 +683,7 @@ Partial Class FrmFincaPlantillo
         Me.BtnSalir.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnSalir.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnSalir.Location = New System.Drawing.Point(200, 0)
+        Me.BtnSalir.Location = New System.Drawing.Point(340, 0)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(75, 66)
         Me.BtnSalir.TabIndex = 215
@@ -698,7 +699,7 @@ Partial Class FrmFincaPlantillo
         Me.ButtonGuardar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.ButtonGuardar.Image = Global.Remisiones.My.Resources.Resources.Save4811
         Me.ButtonGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonGuardar.Location = New System.Drawing.Point(102, 0)
+        Me.ButtonGuardar.Location = New System.Drawing.Point(123, 0)
         Me.ButtonGuardar.Name = "ButtonGuardar"
         Me.ButtonGuardar.Size = New System.Drawing.Size(75, 67)
         Me.ButtonGuardar.TabIndex = 214
@@ -893,7 +894,7 @@ Partial Class FrmFincaPlantillo
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
         Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Mundi
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Name = "PictureBox2"
@@ -904,11 +905,11 @@ Partial Class FrmFincaPlantillo
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(595, 71)
+        Me.PictureBox1.Size = New System.Drawing.Size(427, 71)
         Me.PictureBox1.TabIndex = 210
         Me.PictureBox1.TabStop = False
         '
@@ -950,7 +951,7 @@ Partial Class FrmFincaPlantillo
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(595, 423)
+        Me.ClientSize = New System.Drawing.Size(427, 452)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.BtnEliminarMuni)
@@ -978,12 +979,12 @@ Partial Class FrmFincaPlantillo
         Me.Panel3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         CType(Me.C1Combo3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Combo4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Combo5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingFinca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1005,7 +1006,6 @@ Partial Class FrmFincaPlantillo
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents BtnBuscar As System.Windows.Forms.Button
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents BtnAgregarProductor As System.Windows.Forms.Button
@@ -1030,11 +1030,10 @@ Partial Class FrmFincaPlantillo
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents TxtNotasCata As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents TxtCodfinca As System.Windows.Forms.TextBox
     Friend WithEvents CboProductor As C1.Win.C1List.C1Combo
     Friend WithEvents CboComarca As C1.Win.C1List.C1Combo
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents LbPlantillo As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents BtnArriba As System.Windows.Forms.Button
     Friend WithEvents BtnAbajo As System.Windows.Forms.Button
@@ -1045,5 +1044,7 @@ Partial Class FrmFincaPlantillo
     Friend WithEvents ColCodigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ColPlantillo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CboFinca As C1.Win.C1List.C1Combo
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ButtonBorrar As System.Windows.Forms.Button
+    Friend WithEvents CheckActivo As System.Windows.Forms.CheckBox
+    Friend WithEvents BindingFinca As System.Windows.Forms.BindingSource
 End Class

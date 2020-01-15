@@ -333,6 +333,8 @@ Partial Class FrmVehiculo
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Checked = True
+        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.CheckBox1.ForeColor = System.Drawing.Color.White
         Me.CheckBox1.Location = New System.Drawing.Point(266, 198)
@@ -398,8 +400,11 @@ Partial Class FrmVehiculo
         Me.Controls.Add(Me.PictureBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(401, 351)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(401, 351)
         Me.Name = "FrmVehiculo"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Vehiculo"
         CType(Me.CboPlaca, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CboTipo, System.ComponentModel.ISupportInitialize).EndInit()
