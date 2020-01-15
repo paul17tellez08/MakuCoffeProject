@@ -115,6 +115,15 @@ Public Class FrmRecepcion
             Me.TDGImperfeccion.Columns(3).Caption = "%"
         End If
         MiConexion.Close()
+
+        SqlString = "SELECT IdVariedad, Variedad  FROM  Variedad"
+        MiConexion.Open()
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Variedades")
+        If Not DataSet.Tables("Variedades").Rows.Count = 0 Then
+            Me.CboVariedad.DataSource = DataSet.Tables("Variedades")
+        End If
+        MiConexion.Close()
     End Sub
     Private Sub CargarPlacas()
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -930,5 +939,29 @@ Public Class FrmRecepcion
         ElseIf Me.CboEstado.Text = "HUMEDO" Then
             Me.TxtHumedad.Text = "0.08"
         End If
+    End Sub
+
+    Private Sub TDGImperfeccion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TDGImperfeccion.Click
+
+    End Sub
+
+    Private Sub TDGImperfeccion_AfterColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.AfterColUpdate
+        sumagriddistribucion()
+    End Sub
+    Public Sub sumagriddistribucion()
+        Dim Registros As Double, TotalProcentaje As Double, i As Integer
+
+        Registros = Me.TDGImperfeccion.RowCount
+        i = 0
+        Do While Registros > i
+            'VALIDAMOS EL NUMERO DE LIQUIDACION DE RECIBOS DIRECTOS AUTOMATICOS  
+            '__________________________________________________________________
+            If IsDBNull(Me.TDGImperfeccion.Item(i)(3)) = True Or Me.TDGImperfeccion.Item(i)(3).ToString().Trim(" ") = "" Then
+                Me.TDGImperfeccion.Item(i)(3) = 0.0
+            End If
+            TotalProcentaje = Me.TDGImperfeccion.Item(i)(3) + TotalProcentaje
+            i = i + 1
+        Loop
+        Me.TxtImperfec.Text = TotalProcentaje
     End Sub
 End Class
