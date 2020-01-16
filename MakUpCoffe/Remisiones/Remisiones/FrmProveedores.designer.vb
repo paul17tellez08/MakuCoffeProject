@@ -53,6 +53,8 @@ Partial Class FrmProveedores
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Button1 = New System.Windows.Forms.Button
         Me.BindingHistoricoCompras = New System.Windows.Forms.BindingSource(Me.components)
+        Me.txtCedula = New System.Windows.Forms.TextBox
+        Me.Label10 = New System.Windows.Forms.Label
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.CboCodigoProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,12 +82,14 @@ Partial Class FrmProveedores
         Me.TabControl1.Location = New System.Drawing.Point(12, 64)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(390, 204)
+        Me.TabControl1.Size = New System.Drawing.Size(390, 229)
         Me.TabControl1.TabIndex = 94
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.TabPage1.Controls.Add(Me.txtCedula)
+        Me.TabPage1.Controls.Add(Me.Label10)
         Me.TabPage1.Controls.Add(Me.ChkExclusivo)
         Me.TabPage1.Controls.Add(Me.ChkExonerado)
         Me.TabPage1.Controls.Add(Me.ChkReintegro)
@@ -105,14 +109,14 @@ Partial Class FrmProveedores
         Me.TabPage1.Location = New System.Drawing.Point(4, 21)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(382, 179)
+        Me.TabPage1.Size = New System.Drawing.Size(382, 204)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Registro Productores"
         '
         'ChkExclusivo
         '
         Me.ChkExclusivo.AutoSize = True
-        Me.ChkExclusivo.Location = New System.Drawing.Point(296, 209)
+        Me.ChkExclusivo.Location = New System.Drawing.Point(296, 234)
         Me.ChkExclusivo.Name = "ChkExclusivo"
         Me.ChkExclusivo.Size = New System.Drawing.Size(75, 16)
         Me.ChkExclusivo.TabIndex = 115
@@ -123,7 +127,7 @@ Partial Class FrmProveedores
         'ChkExonerado
         '
         Me.ChkExonerado.AutoSize = True
-        Me.ChkExonerado.Location = New System.Drawing.Point(198, 209)
+        Me.ChkExonerado.Location = New System.Drawing.Point(198, 234)
         Me.ChkExonerado.Name = "ChkExonerado"
         Me.ChkExonerado.Size = New System.Drawing.Size(82, 16)
         Me.ChkExonerado.TabIndex = 114
@@ -134,7 +138,7 @@ Partial Class FrmProveedores
         'ChkReintegro
         '
         Me.ChkReintegro.AutoSize = True
-        Me.ChkReintegro.Location = New System.Drawing.Point(198, 188)
+        Me.ChkReintegro.Location = New System.Drawing.Point(198, 231)
         Me.ChkReintegro.Name = "ChkReintegro"
         Me.ChkReintegro.Size = New System.Drawing.Size(76, 16)
         Me.ChkReintegro.TabIndex = 113
@@ -192,7 +196,7 @@ Partial Class FrmProveedores
         '
         'TxtMerma
         '
-        Me.TxtMerma.Location = New System.Drawing.Point(122, 189)
+        Me.TxtMerma.Location = New System.Drawing.Point(122, 232)
         Me.TxtMerma.Name = "TxtMerma"
         Me.TxtMerma.Size = New System.Drawing.Size(48, 20)
         Me.TxtMerma.TabIndex = 100
@@ -201,7 +205,7 @@ Partial Class FrmProveedores
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(17, 189)
+        Me.Label6.Location = New System.Drawing.Point(17, 232)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(51, 12)
         Me.Label6.TabIndex = 110
@@ -211,23 +215,21 @@ Partial Class FrmProveedores
         'TxtTelefono
         '
         Me.TxtTelefono.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.TxtTelefono.Location = New System.Drawing.Point(124, 147)
+        Me.TxtTelefono.Location = New System.Drawing.Point(123, 147)
         Me.TxtTelefono.Name = "TxtTelefono"
         Me.TxtTelefono.Size = New System.Drawing.Size(251, 23)
         Me.TxtTelefono.TabIndex = 98
-        Me.TxtTelefono.Visible = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(19, 147)
+        Me.Label4.Location = New System.Drawing.Point(19, 149)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(62, 15)
         Me.Label4.TabIndex = 108
         Me.Label4.Text = "Telefono"
-        Me.Label4.Visible = False
         '
         'TxtDireccion
         '
@@ -334,7 +336,7 @@ Partial Class FrmProveedores
         Me.CmdGrabar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.CmdGrabar.Image = Global.Remisiones.My.Resources.Resources.Save4811
         Me.CmdGrabar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdGrabar.Location = New System.Drawing.Point(113, 282)
+        Me.CmdGrabar.Location = New System.Drawing.Point(113, 301)
         Me.CmdGrabar.Name = "CmdGrabar"
         Me.CmdGrabar.Size = New System.Drawing.Size(78, 68)
         Me.CmdGrabar.TabIndex = 12
@@ -350,7 +352,7 @@ Partial Class FrmProveedores
         Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
         Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonBorrar.Location = New System.Drawing.Point(224, 284)
+        Me.ButtonBorrar.Location = New System.Drawing.Point(224, 303)
         Me.ButtonBorrar.Name = "ButtonBorrar"
         Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
         Me.ButtonBorrar.TabIndex = 13
@@ -376,7 +378,7 @@ Partial Class FrmProveedores
         Me.CmdNuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.CmdNuevo.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus48
         Me.CmdNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdNuevo.Location = New System.Drawing.Point(18, 282)
+        Me.CmdNuevo.Location = New System.Drawing.Point(18, 301)
         Me.CmdNuevo.Name = "CmdNuevo"
         Me.CmdNuevo.Size = New System.Drawing.Size(75, 67)
         Me.CmdNuevo.TabIndex = 11
@@ -392,7 +394,7 @@ Partial Class FrmProveedores
         Me.Button8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Button8.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.Button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button8.Location = New System.Drawing.Point(323, 284)
+        Me.Button8.Location = New System.Drawing.Point(323, 303)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 66)
         Me.Button8.TabIndex = 14
@@ -414,9 +416,10 @@ Partial Class FrmProveedores
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.White
-        Me.PictureBox1.Location = New System.Drawing.Point(0, -2)
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(417, 60)
+        Me.PictureBox1.Size = New System.Drawing.Size(420, 60)
         Me.PictureBox1.TabIndex = 68
         Me.PictureBox1.TabStop = False
         '
@@ -430,12 +433,31 @@ Partial Class FrmProveedores
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
+        'txtCedula
+        '
+        Me.txtCedula.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.txtCedula.Location = New System.Drawing.Point(122, 175)
+        Me.txtCedula.Name = "txtCedula"
+        Me.txtCedula.Size = New System.Drawing.Size(251, 23)
+        Me.txtCedula.TabIndex = 116
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label10.Location = New System.Drawing.Point(19, 178)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(50, 15)
+        Me.Label10.TabIndex = 117
+        Me.Label10.Text = "Cedula"
+        '
         'FrmProveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(414, 357)
+        Me.ClientSize = New System.Drawing.Size(420, 376)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.CmdGrabar)
         Me.Controls.Add(Me.ButtonBorrar)
@@ -497,4 +519,6 @@ Partial Class FrmProveedores
     Friend WithEvents ChkReintegro As System.Windows.Forms.CheckBox
     Friend WithEvents ChkExonerado As System.Windows.Forms.CheckBox
     Friend WithEvents ChkExclusivo As System.Windows.Forms.CheckBox
+    Friend WithEvents txtCedula As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class

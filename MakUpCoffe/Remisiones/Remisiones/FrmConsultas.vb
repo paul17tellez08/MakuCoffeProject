@@ -75,7 +75,7 @@ Public Class FrmConsultas
                 Codigo = Me.BindingConsultas.Item(Posicion)("NumeroRecepcion")
             Case "BusquedaProductor"
                 Posicion = Me.BindingConsultas.Position
-                Codigo = Me.BindingConsultas.Item(Posicion)("IdProductor")
+                Codigo = Me.BindingConsultas.Item(Posicion)("Cod_Proveedor")
                 Descripcion = Me.BindingConsultas.Item(Posicion)("Nombre")
             Case "ConsultaPlacaRecepción"
                 Posicion = Me.BindingConsultas.Position

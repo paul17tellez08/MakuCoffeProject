@@ -46,7 +46,7 @@ Public Class FrmProveedores
         DataAdapter.Fill(DataSet, "Proveedores")
         If Not DataSet.Tables("Proveedores").Rows.Count = 0 Then
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
-            StrSqlUpdate = "UPDATE [Proveedor] SET [Nombre_Proveedor] = '" & Me.TxtNombre.Text & "',[Apellido_Proveedor] = '" & Me.TxtApellido.Text & "',[Direccion_Proveedor] = '" & Me.TxtDireccion.Text & "',[Telefono] = '" & Me.TxtTelefono.Text & "',[Cod_Cuenta_Pagar] = '" & Me.TxtCtaxPagar.Text & "',[Cod_Cuenta_Cobrar] = '" & Me.TxtCtaxPagar.Text & "',[Merma] = '" & Me.TxtMerma.Text & "',[Reintegro] = " & Reintegro & ",[Exonerado] = " & Exonerado & ",[Exclusivo] = " & Exclusivo & "  WHERE Cod_Proveedor= '" & Me.CboCodigoProveedor.Text & "'"
+            StrSqlUpdate = "UPDATE [Proveedor] SET [Nombre_Proveedor] = '" & Me.TxtNombre.Text & "',[Apellido_Proveedor] = '" & Me.TxtApellido.Text & "',[Direccion_Proveedor] = '" & Me.TxtDireccion.Text & "',[Telefono] = '" & Me.TxtTelefono.Text & "',[Cod_Cuenta_Pagar] = '" & Me.TxtCtaxPagar.Text & "',[Cod_Cuenta_Cobrar] = '" & Me.TxtCtaxPagar.Text & "',[Merma] = '" & Me.TxtMerma.Text & "',[CedulaProveedor]= '" & Me.txtCedula.Text & "' WHERE Cod_Proveedor= '" & Me.CboCodigoProveedor.Text & "'"
 
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
@@ -54,8 +54,8 @@ Public Class FrmProveedores
             MiConexion.Close()
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
-            StrSqlUpdate = "INSERT INTO [Proveedor] ([Cod_Proveedor],[Nombre_Proveedor],[Apellido_Proveedor],[Direccion_Proveedor],[Telefono],[Cod_Cuenta_Pagar],[Cod_Cuenta_Cobrar],[Merma],[Reintegro],[Exonerado],[Exclusivo]) " & _
-                               "VALUES ('" & Me.CboCodigoProveedor.Text & "','" & Me.TxtNombre.Text & "','" & Me.TxtApellido.Text & "','" & Me.TxtDireccion.Text & "','" & Me.TxtTelefono.Text & "','" & Me.TxtCtaxPagar.Text & "','" & Me.TxtCtaxCobrar.Text & "','" & Me.TxtMerma.Text & "'," & Reintegro & "," & Exonerado & ", " & Exclusivo & ")"
+            StrSqlUpdate = "INSERT INTO [Proveedor] ([Cod_Proveedor],[Nombre_Proveedor],[Apellido_Proveedor],[Direccion_Proveedor],[Telefono],[Cod_Cuenta_Pagar],[Cod_Cuenta_Cobrar],[Merma],[CedulaProveedor]) " & _
+                               "VALUES ('" & Me.CboCodigoProveedor.Text & "','" & Me.TxtNombre.Text & "','" & Me.TxtApellido.Text & "','" & Me.TxtDireccion.Text & "','" & Me.TxtTelefono.Text & "','" & Me.TxtCtaxPagar.Text & "','" & Me.TxtCtaxCobrar.Text & "','" & Me.TxtMerma.Text & "','" & Me.txtCedula.Text & "')"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -67,9 +67,7 @@ Public Class FrmProveedores
         If Not DataSet.Tables("ListaProveedores").Rows.Count = 0 Then
             Me.CboCodigoProveedor.DataSource = DataSet.Tables("ListaProveedores")
         End If
-
         Me.CboCodigoProveedor.Text = ""
-
     End Sub
 
     Private Sub ButtonBorrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonBorrar.Click
@@ -139,35 +137,35 @@ Public Class FrmProveedores
                 Me.TxtCtaxPagar.Text = DataSet.Tables("Proveedor").Rows(0)("Cod_Cuenta_Pagar")
             End If
 
-            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Reintegro")) Then
-                If DataSet.Tables("Proveedor").Rows(0)("Reintegro") = True Then
-                    Me.ChkReintegro.Checked = True
-                Else
-                    Me.ChkReintegro.Checked = False
-                End If
-            Else
-                Me.ChkReintegro.Checked = False
-            End If
+            'If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Reintegro")) Then
+            '    If DataSet.Tables("Proveedor").Rows(0)("Reintegro") = True Then
+            '        Me.ChkReintegro.Checked = True
+            '    Else
+            '        Me.ChkReintegro.Checked = False
+            '    End If
+            'Else
+            '    Me.ChkReintegro.Checked = False
+            'End If
 
-            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Exonerado")) Then
-                If DataSet.Tables("Proveedor").Rows(0)("Exonerado") = True Then
-                    Me.ChkExonerado.Checked = True
-                Else
-                    Me.ChkExonerado.Checked = False
-                End If
-            Else
-                Me.ChkExonerado.Checked = False
-            End If
+            'If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Exonerado")) Then
+            '    If DataSet.Tables("Proveedor").Rows(0)("Exonerado") = True Then
+            '        Me.ChkExonerado.Checked = True
+            '    Else
+            '        Me.ChkExonerado.Checked = False
+            '    End If
+            'Else
+            '    Me.ChkExonerado.Checked = False
+            'End If
 
-            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Exclusivo")) Then
-                If DataSet.Tables("Proveedor").Rows(0)("Exclusivo") = True Then
-                    Me.ChkExclusivo.Checked = True
-                Else
-                    Me.ChkExclusivo.Checked = False
-                End If
-            Else
-                Me.ChkExclusivo.Checked = False
-            End If
+            'If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Exclusivo")) Then
+            '    If DataSet.Tables("Proveedor").Rows(0)("Exclusivo") = True Then
+            '        Me.ChkExclusivo.Checked = True
+            '    Else
+            '        Me.ChkExclusivo.Checked = False
+            '    End If
+            'Else
+            '    Me.ChkExclusivo.Checked = False
+            'End If
         Else
             Me.TxtNombre.Text = ""
             Me.TxtApellido.Text = ""
@@ -187,5 +185,9 @@ Public Class FrmProveedores
         If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - - " Then
             Me.CboCodigoProveedor.Text = FrmConsultas.Codigo
         End If
+    End Sub
+
+    Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabPage1.Click
+
     End Sub
 End Class

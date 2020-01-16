@@ -228,7 +228,7 @@ Public Class FrmRecepcion
         '/////////////////////////////GRABO ENCABEZADO DE RECEPCION /////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
         If Me.BindingDetalle.Count <> 0 Then
-            GrabaRecepcion(Me.TxtNumeroEnsamble.Text)
+            GrabaRecepcion(Me.TxtNumeroEnsamble.Text, False)
             LimpiaRecepcion()
         Else
             MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")
@@ -537,21 +537,20 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Columns(5).Text = Pesada
         'Me.LblPeso.Text = Pesada & " Kg"
         My.Application.DoEvents()
-        GrabaLecturaPeso(Pesada)
+        GrabaLecturaPeso(Pesada, True)
         'Me.BindingDetalle.Position = Posicion + 1
         Me.TrueDBDetalleNP.Row = Posicion + 1
     End Sub
 
     Private Sub CmdPesada_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPesada.Click
         Dim Pesada As Double, Posicion As Double
-
         Posicion = Me.TrueDBDetalleNP.Row
         FrmTeclado.ShowDialog()
         Pesada = FrmTeclado.Numero
         Me.LblPeso.Text = Pesada & " Kg"
         Me.TrueDBDetalleNP.Columns(6).Text = Pesada
         My.Application.DoEvents()
-        GrabaLecturaPeso(Pesada)
+        GrabaLecturaPeso(Pesada, False)
         Me.TrueDBDetalleNP.Row = Posicion + 1
 
         'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
@@ -608,7 +607,7 @@ Public Class FrmRecepcion
 
     Private Sub BtnGuardarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardarRec.Click
         If Me.BindingDetalle.Count <> 0 Then
-            GrabaRecepcion(Me.TxtNumeroEnsamble.Text)
+            GrabaRecepcion(Me.TxtNumeroEnsamble.Text, False)
             LimpiaRecepcion()
         Else
             MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")

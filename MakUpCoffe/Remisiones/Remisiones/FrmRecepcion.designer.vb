@@ -90,6 +90,8 @@ Partial Class FrmRecepcion
         Me.Label14 = New System.Windows.Forms.Label
         Me.Button6 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.CboEstado = New System.Windows.Forms.ComboBox
+        Me.CboCalidad = New System.Windows.Forms.ComboBox
         Me.Label22 = New System.Windows.Forms.Label
         Me.CboVariedad = New C1.Win.C1List.C1Combo
         Me.Label9 = New System.Windows.Forms.Label
@@ -115,8 +117,6 @@ Partial Class FrmRecepcion
         Me.CheckFermento = New System.Windows.Forms.CheckBox
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
         Me.Label13 = New System.Windows.Forms.Label
-        Me.CboCalidad = New System.Windows.Forms.ComboBox
-        Me.CboEstado = New System.Windows.Forms.ComboBox
         Me.GroupBox6.SuspendLayout()
         CType(Me.CboFinca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CboPlantillo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1098,6 +1098,30 @@ Partial Class FrmRecepcion
         Me.GroupBox1.TabIndex = 240
         Me.GroupBox1.TabStop = False
         '
+        'CboEstado
+        '
+        Me.CboEstado.BackColor = System.Drawing.Color.White
+        Me.CboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CboEstado.FormattingEnabled = True
+        Me.CboEstado.Items.AddRange(New Object() {"OREADO", "MOJADO", "HUMEDO"})
+        Me.CboEstado.Location = New System.Drawing.Point(447, 48)
+        Me.CboEstado.Name = "CboEstado"
+        Me.CboEstado.Size = New System.Drawing.Size(142, 23)
+        Me.CboEstado.TabIndex = 276
+        '
+        'CboCalidad
+        '
+        Me.CboCalidad.BackColor = System.Drawing.Color.White
+        Me.CboCalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboCalidad.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CboCalidad.FormattingEnabled = True
+        Me.CboCalidad.Items.AddRange(New Object() {"PRIMERA PERGAMINO", "SEGUNDA PERGAMINO", "OTRO"})
+        Me.CboCalidad.Location = New System.Drawing.Point(121, 19)
+        Me.CboCalidad.Name = "CboCalidad"
+        Me.CboCalidad.Size = New System.Drawing.Size(197, 23)
+        Me.CboCalidad.TabIndex = 275
+        '
         'Label22
         '
         Me.Label22.AutoSize = True
@@ -1161,6 +1185,7 @@ Partial Class FrmRecepcion
         Me.TxtHumedad.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtHumedad.Location = New System.Drawing.Point(593, 47)
         Me.TxtHumedad.Name = "TxtHumedad"
+        Me.TxtHumedad.ReadOnly = True
         Me.TxtHumedad.Size = New System.Drawing.Size(49, 25)
         Me.TxtHumedad.TabIndex = 252
         Me.TxtHumedad.Text = " 0.00"
@@ -1195,6 +1220,7 @@ Partial Class FrmRecepcion
         Me.TxtImperfec.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtImperfec.Location = New System.Drawing.Point(593, 75)
         Me.TxtImperfec.Name = "TxtImperfec"
+        Me.TxtImperfec.ReadOnly = True
         Me.TxtImperfec.Size = New System.Drawing.Size(49, 25)
         Me.TxtImperfec.TabIndex = 251
         Me.TxtImperfec.Text = " 0.00"
@@ -1420,7 +1446,7 @@ Partial Class FrmRecepcion
         Me.TrueDBDetalleNP.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.TrueDBDetalleNP.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.TrueDBDetalleNP.PreviewInfo.ZoomFactor = 75
-        Me.TrueDBDetalleNP.PrintInfo.PageSettings = CType(resources.GetObject("TxtNombreProducto.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.TrueDBDetalleNP.PrintInfo.PageSettings = CType(resources.GetObject("TrueDBDetalleNP.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.TrueDBDetalleNP.Size = New System.Drawing.Size(987, 185)
         Me.TrueDBDetalleNP.TabIndex = 224
         Me.TrueDBDetalleNP.Text = "C1TrueDBGrid1"
@@ -1473,30 +1499,6 @@ Partial Class FrmRecepcion
         Me.Label13.Size = New System.Drawing.Size(180, 17)
         Me.Label13.TabIndex = 273
         Me.Label13.Text = "              Daño             "
-        '
-        'CboCalidad
-        '
-        Me.CboCalidad.BackColor = System.Drawing.Color.White
-        Me.CboCalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CboCalidad.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CboCalidad.FormattingEnabled = True
-        Me.CboCalidad.Items.AddRange(New Object() {"PRIMERA PERGAMINO", "SEGUNDA PERGAMINO", "OTRO"})
-        Me.CboCalidad.Location = New System.Drawing.Point(121, 19)
-        Me.CboCalidad.Name = "CboCalidad"
-        Me.CboCalidad.Size = New System.Drawing.Size(197, 23)
-        Me.CboCalidad.TabIndex = 275
-        '
-        'CboEstado
-        '
-        Me.CboEstado.BackColor = System.Drawing.Color.White
-        Me.CboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CboEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CboEstado.FormattingEnabled = True
-        Me.CboEstado.Items.AddRange(New Object() {"OREADO", "MOJADO", "HUMEDO"})
-        Me.CboEstado.Location = New System.Drawing.Point(447, 48)
-        Me.CboEstado.Name = "CboEstado"
-        Me.CboEstado.Size = New System.Drawing.Size(142, 23)
-        Me.CboEstado.TabIndex = 276
         '
         'FrmRecepcion
         '
