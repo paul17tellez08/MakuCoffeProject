@@ -472,6 +472,7 @@ Partial Class FrmRecepcion
         Me.CboProductor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboProductor.Size = New System.Drawing.Size(300, 24)
         Me.CboProductor.TabIndex = 271
+        Me.CboProductor.ValueMember = "Cod_Proveedor"
         Me.CboProductor.PropBag = resources.GetString("CboProductor.PropBag")
         '
         'TxtCedulaProductor
@@ -1271,9 +1272,9 @@ Partial Class FrmRecepcion
         Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
         Me.BtnPesada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPesada.Location = New System.Drawing.Point(687, 14)
+        Me.BtnPesada.Location = New System.Drawing.Point(648, 47)
         Me.BtnPesada.Name = "BtnPesada"
-        Me.BtnPesada.Size = New System.Drawing.Size(112, 112)
+        Me.BtnPesada.Size = New System.Drawing.Size(151, 79)
         Me.BtnPesada.TabIndex = 245
         Me.BtnPesada.Text = " PESADA"
         Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.MiddleRight

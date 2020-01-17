@@ -12,7 +12,8 @@ Public Class FrmConsultas
         Dim DataAdapter As New SqlClient.SqlDataAdapter, SQlProductos As String
         Select Case Quien
             Case "RecepcionBusqueda"
-                SQlProductos = "SELECT Recepcion.NumeroRecepcion, Recepcion.Fecha, Recepcion.TipoRecepcion, Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor AS Productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa, Recepcion.Cod_Bodega AS Bodega, Recepcion.Observaciones, Recepcion.SubTotal, Recepcion.Lote, Recepcion.Peso, Recepcion.Activo  FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.IdProductor WHERE (Recepcion.Activo = 1) "
+                MiConexion.Close()
+                SQlProductos = "SELECT Recepcion.NumeroRecepcion, Recepcion.Fecha, Recepcion.TipoRecepcion, Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor AS Productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa, Recepcion.Cod_Bodega AS Bodega, Recepcion.Observaciones, Recepcion.SubTotal, Recepcion.Lote, Recepcion.Peso, Recepcion.Activo  FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.Cod_Proveedor WHERE (Recepcion.Activo = 1) "
                 MiConexion.Open()
                 DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
                 DataSet.Reset()

@@ -9,10 +9,10 @@ Module Funciones
         Dim ConsecutivoCompra As Double, NumeroRecepcion As String, Registros As Double, Iposicion As Double
         Dim Linea As Double, CodigoProducto As String, Cantidad As Double, Descripcion As String, CodigoBeams As String, UnidadMedida As String = ""
         Dim CodigoBeamsOrigen As String = "", CodigoRecepcionBin As String = "", SqlConsecutivo As String, Estado As String, SqlString As String
-        Dim DataSet As New DataSet, DataAdapterProductos As New SqlClient.SqlDataAdapter, PesoKg As Double, Precio As Double, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim DataSet As New DataSet, DataAdapterProductos As New SqlClient.SqlDataAdapter, PesoKg As Double, Precio As Double = 0.0, DataAdapter As New SqlClient.SqlDataAdapter
         Dim Tara As Double = 0, TaraSaco As Double = 0, PesoNetoLb As Double = 0, PesoNetoKg As Double = 0, CantidadSacos As Double = 0, LugarAcopio As Integer, SubTotal As Double = 0
         Dim HumedadxDefecto As Double = 0, HumedadReal As Double = 0, Consecutivo As Double, NumeroNotaPeso As String, Cadena As String, CadenaDiv() As String
-        Dim ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, Calidad As String
+        Dim ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, Calidad As String, Fecha As Date
         Dim FactorSacolb As Double = 0, FactorSacokg As Double = 0, FactorEstado As Double = 0, IdEsdoFisico As Double = 0, IdCalidad As Double = 0, IdTipoLugarAcopio As Double = 0
 
         '////////////////////////////BUSCO EL CONSECUTIVO DEL RECIBO X  SERIE ///////////////////////////////////
@@ -35,6 +35,7 @@ Module Funciones
         'Else
         '    CodConsecutivo = 1
         'End If
+        Fecha = CDate(My.Forms.FrmRecepcion.DTPFecha.Text)
 
         If SerieUse = True Then
             If FrmRecepcion.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -" Then
@@ -102,30 +103,31 @@ Module Funciones
         PesoNetoKg = PesoNetoLb * 0.453592
         PesoNetoKg = PesoKg - (PesoKg * FactorEstado) - FactorSacokg
 
-        GrabaDetalleRecepcion(NumeroNotaPeso, FrmRecepcion.CboVariedad.SelectedValue, Peso, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos)
-        ActualizaDetalleRecepcion(NumeroRecepcion, FrmRecepcion.CboTipoPesada.Text)
+        GrabaDetalleRecepcion(NumeroNotaPeso, FrmRecepcion.CboVariedad.SelectedValue, Peso, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos, Fecha)
+        '  ActualizaDetalleRecepcion(NumeroRecepcion, Fecha)
 
-        FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
-        FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = Descripcion
-        FrmRecepcion.TrueDBDetalleNP.Columns(3).Text = Calidad
-        FrmRecepcion.TrueDBDetalleNP.Columns(4).Text = Estado
-        FrmRecepcion.TrueDBDetalleNP.Columns(5).Text = Cantidad
-        FrmRecepcion.TrueDBDetalleNP.Columns(6).Text = PesoKg
-        FrmRecepcion.TrueDBDetalleNP.Columns(7).Text = Tara
-        FrmRecepcion.TrueDBDetalleNP.Columns(8).Text = PesoNetoLb
-        FrmRecepcion.TrueDBDetalleNP.Columns(9).Text = PesoNetoKg
-        FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = CantidadSacos
-        FrmRecepcion.TrueDBDetalleNP.Columns(11).Text = Precio
         FrmRecepcion.TrueDBDetalleNP.Columns(0).Text = Linea
+        FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = FrmRecepcion.CboVariedad.SelectedValue
+        FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = FrmRecepcion.CboVariedad.Text
+        FrmRecepcion.TrueDBDetalleNP.Columns(3).Text = FrmRecepcion.CboCalidad.Text
+        FrmRecepcion.TrueDBDetalleNP.Columns(4).Text = FrmRecepcion.CboEstado.Text
+        FrmRecepcion.TrueDBDetalleNP.Columns(5).Text = CantidadSacos
+        FrmRecepcion.TrueDBDetalleNP.Columns(6).Text = Peso
+        FrmRecepcion.TrueDBDetalleNP.Columns(7).Text = PesoKg
+        FrmRecepcion.TrueDBDetalleNP.Columns(8).Text = Tara
+        FrmRecepcion.TrueDBDetalleNP.Columns(9).Text = PesoNetoLb
+        FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = PesoNetoKg
+        FrmRecepcion.TrueDBDetalleNP.Columns(11).Text = Precio
+
         FrmRecepcion.TxtNumeroEnsamble.Text = NumeroRecepcion
-        'FrmRecepcion.TxtNumeroRecibo.Text = NumeroRecibo
-        Iposicion = FrmRecepcion.TrueDBDetalleNP.Row
-        FrmRecepcion.TrueDBDetalleNP.Row = FrmRecepcion.TrueDBDetalleNP.Row + 1
-        FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
-        FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = Descripcion
-        FrmRecepcion.TrueDBDetalleNP.Col = 5
-        FrmRecepcion.txtsubtotal.Text = TotalRecepcion(FrmRecepcion.TxtNumeroEnsamble.Text, FrmRecepcion.DTPFecha.Text, FrmRecepcion.CboTipoPesada.Text)
-        SubTotal = FrmRecepcion.txtsubtotal.Text
+        ''FrmRecepcion.TxtNumeroRecibo.Text = NumeroRecibo
+        'Iposicion = FrmRecepcion.TrueDBDetalleNP.Row
+        'FrmRecepcion.TrueDBDetalleNP.Row = FrmRecepcion.TrueDBDetalleNP.Row + 1
+        'FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
+        'FrmRecepcion.TrueDBDetalleNP.Columns(2).Text = Descripcion
+        'FrmRecepcion.TrueDBDetalleNP.Col = 5
+        'FrmRecepcion.txtsubtotal.Text = TotalRecepcion(FrmRecepcion.TxtNumeroEnsamble.Text, FrmRecepcion.DTPFecha.Text, FrmRecepcion.CboTipoPesada.Text)
+        'SubTotal = FrmRecepcion.txtsubtotal.Text
     End Sub
 
     Public Sub GrabaRecepcion(ByVal ConsecutivoRecepcion As String, ByVal ActualizarSerie As Boolean)
@@ -152,8 +154,8 @@ Module Funciones
             '//////////////////////////////////////////////////////////////////////////////////////////////
             '////////////////////////////AGREGO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
             '///////////////////////////////////////////////////////////////////////////////////////////////// 
-            SqlCompras = "INSERT INTO [dbo].[Recepcion]([NumeroRecepcion],[TipoRecepcion] ,[Fecha],[Cod_Proveedor],[Cod_SubProveedor],[Conductor],[Id_identificacion],[Id_Placa],[Cod_Bodega],[Observaciones],[SubTotal],[Telefono],[Cancelar],[Peso],[Lote],[Contabilizado],[FechaHora],[RecibimosDe],[IdFinca],[Calidad] ,[Fermentado],[Moho],[Estado],[Idvariedad],[IdPlantillo],[TipoPesada],[Seleccion],[Activo]) " & _
-                         "VALUES ('" & ConsecutivoRecepcion & "','Recepcion','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & FrmRecepcion.TxtCodProductor.Text & "','Ninguno','" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,'-9999991','" & My.Forms.FrmRecepcion.CboPlaca.Text & "' ,'" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,'" & My.Forms.FrmRecepcion.txtobservaciones.Text & "' ,'" & CDbl(Subtotal) & "' ,'12345678' , 0 ,0,'Ninguno', 0, '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "','" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "','" & My.Forms.FrmRecepcion.CboCalidad.Text & "','" & My.Forms.FrmRecepcion.CheckFermento.Checked & "','" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "','" & My.Forms.FrmRecepcion.CboEstado.Text & "','" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "','" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "',0,1)"
+            SqlCompras = "INSERT INTO [dbo].[Recepcion]([NumeroRecepcion],[TipoRecepcion] ,[Fecha],[Cod_Proveedor],[Cod_SubProveedor],[Conductor],[Id_identificacion],[Id_Placa],[Cod_Bodega],[Observaciones],[SubTotal],[Telefono],[Cancelar],[Peso],[Lote],[Contabilizado],[FechaHora],[RecibimosDe],[IdFinca],[Calidad] ,[Fermentado],[Moho],[Estado],[Idvariedad],[IdPlantillo],[TipoPesada],[Seleccion],[CodRemision],[CodConacafe],[Activo]) " & _
+                         "VALUES ('" & ConsecutivoRecepcion & "','Recepcion','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & FrmRecepcion.TxtCodProductor.Text & "','Ninguno','" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,'-9999991','" & My.Forms.FrmRecepcion.CboPlaca.Text & "' ,'" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,'" & My.Forms.FrmRecepcion.txtobservaciones.Text & "' ,'" & CDbl(Subtotal) & "' ,'12345678' , 0 ,0,'Ninguno', 0, '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "','" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "','" & My.Forms.FrmRecepcion.CboCalidad.Text & "','" & My.Forms.FrmRecepcion.CheckFermento.Checked & "','" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "','" & My.Forms.FrmRecepcion.CboEstado.Text & "','" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "','" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "',0,'" & FrmRecepcion.TxtRemision.Text & "','" & FrmRecepcion.TxtRConacafe.Text & "',1)"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlCompras, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -162,7 +164,7 @@ Module Funciones
             '//////////////////////////////////////////////////////////////////////////////////////////////
             '////////////////////////////EDITO EL ENCABEZADO DE LA COMPRA///////////////////////////////////
             '/////////////////////////////////////////////////////////////////////////////////////////////////                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   0,1)"                                                                      
-            SqlCompras = "UPDATE [dbo].[Recepcion]SET [TipoRecepcion] ='Recepcion' ,[Fecha] ='" & Format(CDate(Fecha), "dd/MM/yyyy") & "',[Cod_Proveedor] ='" & My.Forms.FrmRecepcion.CboProductor.SelectedValue & "',[Cod_SubProveedor] ='Ninguno' ,[Conductor] ='" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,[Id_identificacion] ='-9999991' ,[Id_Placa] ='" & My.Forms.FrmRecepcion.CboPlaca.Text & "'  ,[Cod_Bodega] ='" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,[Observaciones] = '" & My.Forms.FrmRecepcion.txtobservaciones.Text & "',[SubTotal] = '" & CDbl(FrmRecepcion.txtsubtotal.Text) & "' ,[Telefono] ='12345678' ,[Cancelar] = '0' ,[Peso] ='0'  ,[Lote] ='Ninguno'  ,[Contabilizado] = '0' ,[FechaHora] ='" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "' ,[RecibimosDe] = '" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "',[IdFinca] = '" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "',[Calidad] ='" & My.Forms.FrmRecepcion.CboCalidad.Text & "' ,[Fermentado] ='" & My.Forms.FrmRecepcion.CheckFermento.Checked & "' ,[Moho] = '" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "',[Estado] ='" & My.Forms.FrmRecepcion.CboEstado.Text & "' ,[Idvariedad] ='" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "' ,[IdPlantillo]= '" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "' ,[TipoPesada] ='" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "' ,[Seleccion] ='0'  ,[Activo] = '1' WHERE " & _
+            SqlCompras = "UPDATE [dbo].[Recepcion]SET [TipoRecepcion] ='Recepcion' ,[Fecha] ='" & Format(CDate(Fecha), "dd/MM/yyyy") & "',[Cod_Proveedor] ='" & My.Forms.FrmRecepcion.CboProductor.SelectedValue & "',[Cod_SubProveedor] ='Ninguno' ,[Conductor] ='" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,[Id_identificacion] ='-9999991' ,[Id_Placa] ='" & My.Forms.FrmRecepcion.CboPlaca.Text & "'  ,[Cod_Bodega] ='" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,[Observaciones] = '" & My.Forms.FrmRecepcion.txtobservaciones.Text & "',[SubTotal] = '" & CDbl(FrmRecepcion.txtsubtotal.Text) & "' ,[Telefono] ='12345678' ,[Cancelar] = '0' ,[Peso] ='0'  ,[Lote] ='Ninguno'  ,[Contabilizado] = '0' ,[FechaHora] ='" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "' ,[RecibimosDe] = '" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "',[IdFinca] = '" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "',[Calidad] ='" & My.Forms.FrmRecepcion.CboCalidad.Text & "' ,[Fermentado] ='" & My.Forms.FrmRecepcion.CheckFermento.Checked & "' ,[Moho] = '" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "',[Estado] ='" & My.Forms.FrmRecepcion.CboEstado.Text & "' ,[Idvariedad] ='" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "' ,[IdPlantillo]= '" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "' ,[TipoPesada] ='" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "' ,[Seleccion] ='0', [CodRemision]='" & FrmRecepcion.TxtRemision.Text & "',[CodConacafe]='" & FrmRecepcion.TxtRConacafe.Text & "' ,[Activo] = '1' WHERE " & _
                          "WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "'))"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlCompras, MiConexion)
@@ -180,28 +182,20 @@ Module Funciones
         End If
     End Sub
 
-    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoNotaPesa As String, ByVal CodigoProducto As String, ByVal Peso As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Taralb As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double)
+    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoNotaPesa As String, ByVal CodigoProducto As String, ByVal Peso As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Taralb As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double, ByVal Fecha As Date)
         Dim Sqldetalle As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
-        Dim Fecha As String, MiConexion As New SqlClient.SqlConnection(Conexion), SqlUpdate As String
+        Dim MiConexion As New SqlClient.SqlConnection(Conexion), SqlUpdate As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, PesoNetoLb As Double
 
-
-        'PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
-
-        'If FrmRecepcion.CboTipoDocumento.Text = "Recibo Bascula Manual" Then
-        '    Fecha = Format(CDate(FrmRecepcion.DtpFechaManual.Text), "yyyy-MM-dd")
-        'Else
-        '    Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "yyyy-MM-dd")
-        'End If
-
         Sqldetalle = "SELECT Detalle_Recepcion.* FROM Detalle_Recepcion " & _
-                     "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "   'AND (Cod_Productos = '" & CodigoProducto & "')
+                     "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102))"
         DataAdapter = New SqlClient.SqlDataAdapter(Sqldetalle, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         If Not DataSet.Tables("DetalleRecepcion").Rows.Count = 0 Then
             '////////////////////////////EDITO EL DETALLE DE COMPRAS///////////////////////////////////
-            SqlUpdate = "UPDATE [Detalle_Recepcion] SET [Cod_Productos] = '" & CodigoProducto & "',[Descripcion_Producto] = '" & Descripcion & "',[Cantidad] = " & Cantidad & ",[PesoKg] = " & PesoKg & ", [Calidad] = '" & Calidad & "', [Estado] = '" & Estado & "', [Precio] = " & Precio & ", [Tara] = " & Tara & ", [PesoNetoLb] = " & PesoNetoLb & ", [PesoNetoKg] = " & PesoNetoKg & " , [QQ] = " & QQ & " " & _
-                        "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "  'AND (Cod_Productos = '" & CodigoProducto & "')
+
+            SqlUpdate = "UPDATE [dbo].[Detalle_Recepcion] SET [id_Eventos] ='" & Linea & "',[NumeroRecepcion] ='" & ConsecutivoNotaPesa & "',[TipoRecepcion] ='Recepcion',[Cod_Productos] ='" & FrmRecepcion.CboVariedad.SelectedValue & "',[Descripcion_Producto] ='" & FrmRecepcion.CboVariedad.Text & "',[Cantidad] ='" & Peso & "',[Unidad_Medida] ='Kg' ,[Transferido] = 0 ,[Estado] ='" & FrmRecepcion.CboEstado.Text & "',[Precio] = '0.00' ,[PesoKg] ='" & PesoKg & "',[Tara] ='" & Taralb & "',[PesoNetoLb] =" & PesoNetoLb & ",[PesoNetoKg] =" & PesoNetoKg & " ,[QQ] = " & QQ & ",[Liquidado] = '0',[Codigo_Beams] ='999999',[Codigo_BeamsOrigen] ='999999',[RecepcionBin] ='999999',[Calidad] ='" & FrmRecepcion.CboCalidad.Text & "',[Fecha] = '" & Format(CDate(Fecha), "yyyy-MM-dd") & "' " & _
+                        "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102))"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -216,53 +210,67 @@ Module Funciones
         End If
     End Sub
 
-    Public Sub ActualizaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal TipoRecepcion As String)
+    Public Sub ActualizaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal Fecha As Date)
 
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim Sql As String
         Dim MiConexion As New SqlClient.SqlConnection(Conexion)
-        Dim Fecha As String
-
-        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "yyyy-MM-dd")
 
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         '///////////////////////////////CARGO EL DETALLE DE COMPRAS/////////////////////////////////////////////////////////////////
         '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Sql = "SELECT  id_Eventos As Linea, Cod_Productos, Descripcion_Producto, Calidad, Estado, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, QQ As Saco, Precio  FROM Detalle_Recepcion  " & _
-              "WHERE  (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "
+              "WHERE  (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102))"
 
         DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         My.Forms.FrmRecepcion.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
         My.Forms.FrmRecepcion.TrueDBDetalleNP.DataSource = My.Forms.FrmRecepcion.BindingDetalle
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(0).Caption = "N°"
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(0).Caption = "Psda"
 
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(1).Caption = "Código"
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(1).Caption = "VARIEDAD"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Visible = False
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(2).Caption = "VARIEDAD"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 300
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(3).Caption = "Categ"
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(4).Caption = "Estado"
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
-        'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(4).Locked = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
-        'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(2).Button = True
-        'Me.TrueDBGridComponentes.Splits.Item(0).DisplayColumns(3).Button = True
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(3).Caption = "CALIDAD"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("CALIDAD").Visible = False
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(4).Caption = "ESTADO"
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
+        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("ESTADO").Visible = False
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(5).Caption = "SACOS"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 50
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(6).Caption = "PESO/lb"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 75
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(7).Caption = "PESO/kg"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 85
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(8).Caption = "TARA/lb"
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(9).Caption = "P.NETO/lb"
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
-        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
+
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Columns(10).Caption = "P.NETO/kg"
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 75
+
         My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
+        My.Forms.FrmRecepcion.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Visible = False
     End Sub
 
     Public Function ConsecutivoRecepcion() As Double

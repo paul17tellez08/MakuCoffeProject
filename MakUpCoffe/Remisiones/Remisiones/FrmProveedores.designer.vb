@@ -24,6 +24,8 @@ Partial Class FrmProveedores
         Me.Label9 = New System.Windows.Forms.Label
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.txtCedula = New System.Windows.Forms.TextBox
+        Me.Label10 = New System.Windows.Forms.Label
         Me.ChkExclusivo = New System.Windows.Forms.CheckBox
         Me.ChkExonerado = New System.Windows.Forms.CheckBox
         Me.ChkReintegro = New System.Windows.Forms.CheckBox
@@ -53,8 +55,6 @@ Partial Class FrmProveedores
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Button1 = New System.Windows.Forms.Button
         Me.BindingHistoricoCompras = New System.Windows.Forms.BindingSource(Me.components)
-        Me.txtCedula = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.CboCodigoProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +112,25 @@ Partial Class FrmProveedores
         Me.TabPage1.Size = New System.Drawing.Size(382, 204)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Registro Productores"
+        '
+        'txtCedula
+        '
+        Me.txtCedula.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.txtCedula.Location = New System.Drawing.Point(122, 175)
+        Me.txtCedula.Name = "txtCedula"
+        Me.txtCedula.Size = New System.Drawing.Size(251, 23)
+        Me.txtCedula.TabIndex = 116
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label10.Location = New System.Drawing.Point(19, 178)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(50, 15)
+        Me.Label10.TabIndex = 117
+        Me.Label10.Text = "Cedula"
         '
         'ChkExclusivo
         '
@@ -432,25 +451,6 @@ Partial Class FrmProveedores
         Me.Button1.TabIndex = 103
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
-        '
-        'txtCedula
-        '
-        Me.txtCedula.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.txtCedula.Location = New System.Drawing.Point(122, 175)
-        Me.txtCedula.Name = "txtCedula"
-        Me.txtCedula.Size = New System.Drawing.Size(251, 23)
-        Me.txtCedula.TabIndex = 116
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label10.Location = New System.Drawing.Point(19, 178)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(50, 15)
-        Me.Label10.TabIndex = 117
-        Me.Label10.Text = "Cedula"
         '
         'FrmProveedores
         '

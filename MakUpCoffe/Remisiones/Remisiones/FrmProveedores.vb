@@ -59,6 +59,9 @@ Public Class FrmProveedores
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
+            If Llamada = "BusquedaProductor" Then
+                Me.Close()
+            End If
             MiConexion.Close()
         End If
         SQLProveedor = "SELECT TOP (100) PERCENT dbo.Proveedor.* FROM Proveedor"
@@ -135,6 +138,9 @@ Public Class FrmProveedores
             End If
             If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Cod_Cuenta_Pagar")) Then
                 Me.TxtCtaxPagar.Text = DataSet.Tables("Proveedor").Rows(0)("Cod_Cuenta_Pagar")
+            End If
+            If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("CedulaProveedor")) Then
+                Me.txtCedula.Text = DataSet.Tables("Proveedor").Rows(0)("CedulaProveedor")
             End If
 
             'If Not IsDBNull(DataSet.Tables("Proveedor").Rows(0)("Reintegro")) Then

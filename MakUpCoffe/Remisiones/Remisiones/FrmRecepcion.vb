@@ -109,7 +109,7 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
 
-        Me.TrueDBDetalleNP.Columns(1).Caption = "VARIEDAD"
+        Me.TrueDBDetalleNP.Columns(1).Caption = "CODVARIEDAD"
         'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
         'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Visible = False
@@ -746,10 +746,10 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub TxtNumeroEnsamble_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtNumeroEnsamble.TextChanged
-        Dim StrSqlSelect As String, Sql As String, i As Integer
+        Dim StrSqlSelect As String, Sql As String, i As Integer, Numero As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-        StrSqlSelect = "SELECT        Recepcion.NumeroRecepcion, Recepcion.TipoRecepcion, Recepcion.Fecha, Recepcion.Cod_Proveedor, Recepcion.Conductor, Recepcion.Id_identificacion, Recepcion.Cod_Bodega, Recepcion.Observaciones,                          Recepcion.SubTotal, Recepcion.Peso, Recepcion.Lote, Recepcion.FechaHora, Recepcion.IdFinca, Recepcion.IdPlantillo, Recepcion.TipoPesada, Conductor.Nombre, Conductor.Cedula, Finca.NomFinca, Plantillo.Plantillo,                           Vehiculo.Marca, Recepcion.Id_Placa, Recepcion.Calidad, Recepcion.Fermentado, Recepcion.Moho, Recepcion.Estado, Recepcion.Idvariedad FROM            Recepcion INNER JOIN                          Finca ON Recepcion.IdFinca = Finca.IdFinca INNER JOIN                          Plantillo ON Finca.IdFinca = Plantillo.IdFinca INNER JOIN                          Conductor ON Recepcion.Conductor = Conductor.Nombre INNER JOIN                          Vehiculo ON Recepcion.Id_Placa = Vehiculo.Placa WHERE        (Recepcion.NumeroRecepcion = N'" & CodigoRecepcion & "')  "
+        StrSqlSelect = "SELECT     NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado,   FechaHora, RecibimosDe, IdFinca, Calidad, Fermentado, Moho, Estado, Idvariedad, IdPlantillo, TipoPesada, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & CodigoRecepcion & "')  "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "SeleccionRecep")
         If DataSet.Tables("SeleccionRecep").Rows.Count > 0 Then
@@ -767,24 +767,68 @@ Public Class FrmRecepcion
                 LblHora.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("FechaHora")).Substring(11)
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")) Then
-                Me.CmbSerie.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")).Substring(0, 1)
+                Numero = Len(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion"))
+                If Numero > 6 Then
+                    Me.CmbSerie.Text = CStr(DataSet.Tables("SeleccionRecep").Rows(0)("NumeroRecepcion")).Substring(0, 1)
+                Else
+                    Me.CmbSerie.Enabled = False
+                    Me.CmbSerie.Visible = False
+                End If
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Proveedor")) Then
-                Me.TxtCodProductor.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Proveedor")
-            End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")) Then
-                Me.CboFinca.Text = DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")
-            End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")) Then
-                Me.CboPlantillo.Text = DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")
-            End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")) Then
-                Me.CboPlaca.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")
+                Me.CboProductor.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Proveedor")
             End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Conductor")) Then
                 Me.CboConductor.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Conductor")
             End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")) Then
+                Me.CboPlaca.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Id_Placa")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")) Then
+                Me.CboFinca.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdFinca")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")) Then
+                Me.CboPlantillo.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Bodega")) Then
+                Me.CboCodigoBodega.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("Cod_Bodega")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Observaciones")) Then
+                Me.txtobservaciones.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Observaciones")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("RecibimosDe")) Then
+                Me.CboRecibimosde.Text = DataSet.Tables("SeleccionRecep").Rows(0)("RecibimosDe")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Calidad")) Then
+                Me.CboCalidad.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Calidad")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Fermentado")) Then
+                Me.CheckFermento.Checked = DataSet.Tables("SeleccionRecep").Rows(0)("Fermentado")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Moho")) Then
+                Me.CheckMohoso.Checked = DataSet.Tables("SeleccionRecep").Rows(0)("Moho")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Estado")) Then
+                Me.CboEstado.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Estado")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Idvariedad")) Then
+                Me.CboVariedad.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("Idvariedad")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")) Then
+                Me.CboPlantillo.SelectedValue = DataSet.Tables("SeleccionRecep").Rows(0)("IdPlantillo")
+            End If
+            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoPesada")) Then
+                Me.CboTipoPesada.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoPesada")
+            End If
+
+
+
+
+
         End If
+
+
+
     End Sub
 
     Private Sub BtnRecpSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnRecpSalir.Click
