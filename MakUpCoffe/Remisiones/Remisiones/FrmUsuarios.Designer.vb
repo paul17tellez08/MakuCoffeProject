@@ -24,143 +24,98 @@ Partial Class FrmUsuarios
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmUsuarios))
         Me.TxtNivel = New System.Windows.Forms.ComboBox
-        Me.ButtonBorrar = New System.Windows.Forms.Button
         Me.Label9 = New System.Windows.Forms.Label
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.TxtConfirmar = New System.Windows.Forms.TextBox
         Me.LblConfirmar = New System.Windows.Forms.Label
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.CmdGrabar = New System.Windows.Forms.Button
         Me.TxtContraseña = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.CboUsuario = New C1.Win.C1List.C1Combo
         Me.ChkAdministrador = New System.Windows.Forms.CheckBox
+        Me.ButtonBorrar = New System.Windows.Forms.Button
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.CmdGrabar = New System.Windows.Forms.Button
+        Me.Button1 = New System.Windows.Forms.Button
+        CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtNivel
         '
+        Me.TxtNivel.Font = New System.Drawing.Font("Lucida Sans", 12.0!)
         Me.TxtNivel.FormattingEnabled = True
         Me.TxtNivel.Items.AddRange(New Object() {"Administrador", "Punto Control", "Entrada/Salida", "Planta"})
-        Me.TxtNivel.Location = New System.Drawing.Point(96, 109)
+        Me.TxtNivel.Location = New System.Drawing.Point(144, 125)
         Me.TxtNivel.Name = "TxtNivel"
-        Me.TxtNivel.Size = New System.Drawing.Size(203, 21)
+        Me.TxtNivel.Size = New System.Drawing.Size(203, 26)
         Me.TxtNivel.TabIndex = 84
-        '
-        'ButtonBorrar
-        '
-        Me.ButtonBorrar.Image = CType(resources.GetObject("ButtonBorrar.Image"), System.Drawing.Image)
-        Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonBorrar.Location = New System.Drawing.Point(97, 195)
-        Me.ButtonBorrar.Name = "ButtonBorrar"
-        Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
-        Me.ButtonBorrar.TabIndex = 83
-        Me.ButtonBorrar.Text = "Eliminar"
-        Me.ButtonBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonBorrar.UseVisualStyleBackColor = True
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(161, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(75, 28)
+        Me.Label9.BackColor = System.Drawing.Color.White
+        Me.Label9.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.Label9.Location = New System.Drawing.Point(96, 26)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(160, 13)
+        Me.Label9.Size = New System.Drawing.Size(244, 22)
         Me.Label9.TabIndex = 82
         Me.Label9.Text = "REGISTRO DE USUARIOS"
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(161, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(1, 1)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(57, 60)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 81
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(161, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.PictureBox1.Location = New System.Drawing.Point(1, 1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(315, 60)
-        Me.PictureBox1.TabIndex = 80
-        Me.PictureBox1.TabStop = False
-        '
         'TxtConfirmar
         '
-        Me.TxtConfirmar.Location = New System.Drawing.Point(96, 166)
+        Me.TxtConfirmar.Font = New System.Drawing.Font("Lucida Sans", 12.0!)
+        Me.TxtConfirmar.Location = New System.Drawing.Point(144, 191)
         Me.TxtConfirmar.Name = "TxtConfirmar"
-        Me.TxtConfirmar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TxtConfirmar.Size = New System.Drawing.Size(203, 20)
+        Me.TxtConfirmar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
+        Me.TxtConfirmar.Size = New System.Drawing.Size(203, 26)
         Me.TxtConfirmar.TabIndex = 79
         Me.TxtConfirmar.Visible = False
         '
         'LblConfirmar
         '
         Me.LblConfirmar.AutoSize = True
-        Me.LblConfirmar.Location = New System.Drawing.Point(14, 166)
+        Me.LblConfirmar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblConfirmar.ForeColor = System.Drawing.Color.White
+        Me.LblConfirmar.Location = New System.Drawing.Point(14, 196)
         Me.LblConfirmar.Name = "LblConfirmar"
-        Me.LblConfirmar.Size = New System.Drawing.Size(51, 13)
+        Me.LblConfirmar.Size = New System.Drawing.Size(70, 14)
         Me.LblConfirmar.TabIndex = 78
         Me.LblConfirmar.Text = "Confirmar"
         Me.LblConfirmar.Visible = False
         '
-        'Button2
-        '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(222, 194)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(78, 68)
-        Me.Button2.TabIndex = 77
-        Me.Button2.Text = "Cancelar"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'CmdGrabar
-        '
-        Me.CmdGrabar.Image = CType(resources.GetObject("CmdGrabar.Image"), System.Drawing.Image)
-        Me.CmdGrabar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdGrabar.Location = New System.Drawing.Point(8, 194)
-        Me.CmdGrabar.Name = "CmdGrabar"
-        Me.CmdGrabar.Size = New System.Drawing.Size(78, 68)
-        Me.CmdGrabar.TabIndex = 76
-        Me.CmdGrabar.Text = "Grabar"
-        Me.CmdGrabar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.CmdGrabar.UseVisualStyleBackColor = True
-        '
         'TxtContraseña
         '
-        Me.TxtContraseña.Location = New System.Drawing.Point(96, 136)
+        Me.TxtContraseña.Font = New System.Drawing.Font("Lucida Sans", 12.0!)
+        Me.TxtContraseña.Location = New System.Drawing.Point(144, 158)
         Me.TxtContraseña.Name = "TxtContraseña"
-        Me.TxtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TxtContraseña.Size = New System.Drawing.Size(203, 20)
+        Me.TxtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
+        Me.TxtContraseña.Size = New System.Drawing.Size(203, 26)
         Me.TxtContraseña.TabIndex = 75
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(14, 139)
+        Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(14, 164)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 13)
+        Me.Label3.Size = New System.Drawing.Size(78, 14)
         Me.Label3.TabIndex = 74
         Me.Label3.Text = "Contraseña"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(14, 112)
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(14, 130)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(31, 13)
+        Me.Label2.Size = New System.Drawing.Size(38, 14)
         Me.Label2.TabIndex = 73
         Me.Label2.Text = "Nivel"
         Me.Label2.Visible = False
@@ -168,9 +123,11 @@ Partial Class FrmUsuarios
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 82)
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(10, 96)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(83, 13)
+        Me.Label1.Size = New System.Drawing.Size(108, 14)
         Me.Label1.TabIndex = 72
         Me.Label1.Text = "Nombre Usuario"
         '
@@ -182,15 +139,15 @@ Partial Class FrmUsuarios
         Me.CboUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.CboUsuario.ColumnCaptionHeight = 17
         Me.CboUsuario.ColumnFooterHeight = 17
-        Me.CboUsuario.ContentHeight = 15
+        Me.CboUsuario.ContentHeight = 21
         Me.CboUsuario.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.CboUsuario.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.CboUsuario.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboUsuario.EditorFont = New System.Drawing.Font("Lucida Sans", 12.0!)
         Me.CboUsuario.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.CboUsuario.EditorHeight = 15
+        Me.CboUsuario.EditorHeight = 21
         Me.CboUsuario.Images.Add(CType(resources.GetObject("CboUsuario.Images"), System.Drawing.Image))
         Me.CboUsuario.ItemHeight = 15
-        Me.CboUsuario.Location = New System.Drawing.Point(97, 80)
+        Me.CboUsuario.Location = New System.Drawing.Point(145, 91)
         Me.CboUsuario.MatchEntryTimeout = CType(2000, Long)
         Me.CboUsuario.MaxDropDownItems = CType(5, Short)
         Me.CboUsuario.MaxLength = 32767
@@ -199,14 +156,14 @@ Partial Class FrmUsuarios
         Me.CboUsuario.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboUsuario.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboUsuario.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.CboUsuario.Size = New System.Drawing.Size(202, 21)
+        Me.CboUsuario.Size = New System.Drawing.Size(202, 27)
         Me.CboUsuario.TabIndex = 85
         Me.CboUsuario.PropBag = resources.GetString("CboUsuario.PropBag")
         '
         'ChkAdministrador
         '
         Me.ChkAdministrador.AutoSize = True
-        Me.ChkAdministrador.Location = New System.Drawing.Point(116, 314)
+        Me.ChkAdministrador.Location = New System.Drawing.Point(219, 351)
         Me.ChkAdministrador.Name = "ChkAdministrador"
         Me.ChkAdministrador.Size = New System.Drawing.Size(128, 17)
         Me.ChkAdministrador.TabIndex = 86
@@ -214,11 +171,98 @@ Partial Class FrmUsuarios
         Me.ChkAdministrador.UseVisualStyleBackColor = True
         Me.ChkAdministrador.Visible = False
         '
+        'ButtonBorrar
+        '
+        Me.ButtonBorrar.FlatAppearance.BorderSize = 0
+        Me.ButtonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonBorrar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonBorrar.ForeColor = System.Drawing.Color.White
+        Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar45
+        Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonBorrar.Location = New System.Drawing.Point(191, 248)
+        Me.ButtonBorrar.Name = "ButtonBorrar"
+        Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
+        Me.ButtonBorrar.TabIndex = 83
+        Me.ButtonBorrar.Text = "Eliminar"
+        Me.ButtonBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonBorrar.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
+        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.icons8_user_account_100
+        Me.PictureBox2.Location = New System.Drawing.Point(1, 1)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(74, 73)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 81
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(361, 74)
+        Me.PictureBox1.TabIndex = 80
+        Me.PictureBox1.TabStop = False
+        '
+        'Button2
+        '
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Image = Global.Remisiones.My.Resources.Resources.exit48
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button2.Location = New System.Drawing.Point(278, 247)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(78, 68)
+        Me.Button2.TabIndex = 77
+        Me.Button2.Text = "Cancelar"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'CmdGrabar
+        '
+        Me.CmdGrabar.FlatAppearance.BorderSize = 0
+        Me.CmdGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CmdGrabar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmdGrabar.ForeColor = System.Drawing.Color.White
+        Me.CmdGrabar.Image = Global.Remisiones.My.Resources.Resources.Save4811
+        Me.CmdGrabar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.CmdGrabar.Location = New System.Drawing.Point(98, 247)
+        Me.CmdGrabar.Name = "CmdGrabar"
+        Me.CmdGrabar.Size = New System.Drawing.Size(78, 68)
+        Me.CmdGrabar.TabIndex = 76
+        Me.CmdGrabar.Text = "Grabar"
+        Me.CmdGrabar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.CmdGrabar.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus481
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(14, 248)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 67)
+        Me.Button1.TabIndex = 87
+        Me.Button1.Text = "Nuevo"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrmUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(311, 268)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(361, 333)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ChkAdministrador)
         Me.Controls.Add(Me.CboUsuario)
         Me.Controls.Add(Me.TxtNivel)
@@ -234,11 +278,12 @@ Partial Class FrmUsuarios
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmUsuarios"
-        Me.Text = "FrmUsuarios"
+        Me.Text = "Agregar usuarios"
+        CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -258,4 +303,5 @@ Partial Class FrmUsuarios
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents CboUsuario As C1.Win.C1List.C1Combo
     Friend WithEvents ChkAdministrador As System.Windows.Forms.CheckBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

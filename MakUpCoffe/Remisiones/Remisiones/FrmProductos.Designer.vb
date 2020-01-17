@@ -21,37 +21,19 @@ Partial Class FrmProductos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmProductos))
-        Me.CmdINgresoAjuste = New System.Windows.Forms.Button
-        Me.CmdGastosAjuste = New System.Windows.Forms.Button
         Me.TxtGastoAjuste = New System.Windows.Forms.TextBox
         Me.Label25 = New System.Windows.Forms.Label
         Me.TxtIngresoAjuste = New System.Windows.Forms.TextBox
         Me.Label16 = New System.Windows.Forms.Label
         Me.TxtDescuento = New System.Windows.Forms.TextBox
         Me.Label7 = New System.Windows.Forms.Label
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Label9 = New System.Windows.Forms.Label
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.Button8 = New System.Windows.Forms.Button
-        Me.CmdNuevo = New System.Windows.Forms.Button
-        Me.ButtonBorrar = New System.Windows.Forms.Button
-        Me.ButtonAgregar = New System.Windows.Forms.Button
         Me.CboCodigoProducto = New C1.Win.C1List.C1Combo
-        Me.Button6 = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
         Me.TxtNombreProducto = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog
-        Me.BindingBodegas = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button7 = New System.Windows.Forms.Button
-        Me.Button9 = New System.Windows.Forms.Button
-        Me.C1TrueDBGrid3 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.BindingComponentes = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingHistoricoCompras = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingHistoricosVentas = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingImpuestos = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button
         Me.TabControl = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
@@ -79,15 +61,25 @@ Partial Class FrmProductos
         Me.CmdAgregar = New System.Windows.Forms.Button
         Me.CmdBorrarFoto = New System.Windows.Forms.Button
         Me.ImgFoto = New System.Windows.Forms.PictureBox
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.CmdINgresoAjuste = New System.Windows.Forms.Button
+        Me.CmdGastosAjuste = New System.Windows.Forms.Button
+        Me.Button6 = New System.Windows.Forms.Button
+        Me.ButtonBorrar = New System.Windows.Forms.Button
+        Me.ButtonAgregar = New System.Windows.Forms.Button
+        Me.CmdNuevo = New System.Windows.Forms.Button
+        Me.Button8 = New System.Windows.Forms.Button
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.BindingBodegas = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Button7 = New System.Windows.Forms.Button
+        Me.Button9 = New System.Windows.Forms.Button
+        Me.C1TrueDBGrid3 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.BindingComponentes = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingHistoricoCompras = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingHistoricosVentas = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingImpuestos = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.CboCodigoProducto, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingComponentes, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingHistoricoCompras, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingHistoricosVentas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingImpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -95,27 +87,15 @@ Partial Class FrmProductos
         Me.TabPage2.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.ImgFoto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingComponentes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingHistoricoCompras, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingHistoricosVentas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingImpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'CmdINgresoAjuste
-        '
-        Me.CmdINgresoAjuste.Image = CType(resources.GetObject("CmdINgresoAjuste.Image"), System.Drawing.Image)
-        Me.CmdINgresoAjuste.Location = New System.Drawing.Point(1017, 225)
-        Me.CmdINgresoAjuste.Name = "CmdINgresoAjuste"
-        Me.CmdINgresoAjuste.Size = New System.Drawing.Size(37, 38)
-        Me.CmdINgresoAjuste.TabIndex = 29
-        Me.CmdINgresoAjuste.UseVisualStyleBackColor = True
-        Me.CmdINgresoAjuste.Visible = False
-        '
-        'CmdGastosAjuste
-        '
-        Me.CmdGastosAjuste.Image = CType(resources.GetObject("CmdGastosAjuste.Image"), System.Drawing.Image)
-        Me.CmdGastosAjuste.Location = New System.Drawing.Point(1017, 267)
-        Me.CmdGastosAjuste.Name = "CmdGastosAjuste"
-        Me.CmdGastosAjuste.Size = New System.Drawing.Size(37, 38)
-        Me.CmdGastosAjuste.TabIndex = 27
-        Me.CmdGastosAjuste.UseVisualStyleBackColor = True
-        Me.CmdGastosAjuste.Visible = False
         '
         'TxtGastoAjuste
         '
@@ -173,102 +153,17 @@ Partial Class FrmProductos
         Me.Label7.Text = "Descuento"
         Me.Label7.Visible = False
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(640, 71)
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.BackColor = System.Drawing.Color.White
+        Me.Label9.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(186, 29)
+        Me.Label9.Location = New System.Drawing.Point(145, 28)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(295, 13)
+        Me.Label9.Size = New System.Drawing.Size(392, 18)
         Me.Label9.TabIndex = 4
         Me.Label9.Text = "MANTENIMIENTO DE PRODUCTOS Y SERVICIOS"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(12, -1)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(70, 71)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 5
-        Me.PictureBox2.TabStop = False
-        '
-        'Button8
-        '
-        Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Button8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Button8.Image = Global.Remisiones.My.Resources.Resources.exit48
-        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button8.Location = New System.Drawing.Point(543, 339)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 66)
-        Me.Button8.TabIndex = 21
-        Me.Button8.Text = "Salir"
-        Me.Button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'CmdNuevo
-        '
-        Me.CmdNuevo.FlatAppearance.BorderSize = 0
-        Me.CmdNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CmdNuevo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CmdNuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.CmdNuevo.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus48
-        Me.CmdNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdNuevo.Location = New System.Drawing.Point(11, 341)
-        Me.CmdNuevo.Name = "CmdNuevo"
-        Me.CmdNuevo.Size = New System.Drawing.Size(75, 67)
-        Me.CmdNuevo.TabIndex = 18
-        Me.CmdNuevo.Text = "Nuevo"
-        Me.CmdNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.CmdNuevo.UseVisualStyleBackColor = True
-        '
-        'ButtonBorrar
-        '
-        Me.ButtonBorrar.FlatAppearance.BorderSize = 0
-        Me.ButtonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonBorrar.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
-        Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonBorrar.Location = New System.Drawing.Point(173, 341)
-        Me.ButtonBorrar.Name = "ButtonBorrar"
-        Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
-        Me.ButtonBorrar.TabIndex = 20
-        Me.ButtonBorrar.Text = "Eliminar"
-        Me.ButtonBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonBorrar.UseVisualStyleBackColor = True
-        '
-        'ButtonAgregar
-        '
-        Me.ButtonAgregar.FlatAppearance.BorderSize = 0
-        Me.ButtonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonAgregar.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.ButtonAgregar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.ButtonAgregar.Image = Global.Remisiones.My.Resources.Resources.Save4811
-        Me.ButtonAgregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonAgregar.Location = New System.Drawing.Point(92, 341)
-        Me.ButtonAgregar.Name = "ButtonAgregar"
-        Me.ButtonAgregar.Size = New System.Drawing.Size(75, 67)
-        Me.ButtonAgregar.TabIndex = 19
-        Me.ButtonAgregar.Text = "Guardar"
-        Me.ButtonAgregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonAgregar.UseVisualStyleBackColor = True
         '
         'CboCodigoProducto
         '
@@ -301,22 +196,11 @@ Partial Class FrmProductos
         Me.CboCodigoProducto.TabIndex = 0
         Me.CboCodigoProducto.PropBag = resources.GetString("CboCodigoProducto.PropBag")
         '
-        'Button6
-        '
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Image = Global.Remisiones.My.Resources.Resources.Lupa32
-        Me.Button6.Location = New System.Drawing.Point(233, 87)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(32, 32)
-        Me.Button6.TabIndex = 1
-        Me.Button6.UseVisualStyleBackColor = True
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(8, 74)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(112, 15)
@@ -334,7 +218,7 @@ Partial Class FrmProductos
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(319, 74)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(117, 15)
@@ -344,59 +228,6 @@ Partial Class FrmProductos
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'Button7
-        '
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button7.Location = New System.Drawing.Point(73, 216)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(55, 49)
-        Me.Button7.TabIndex = 131
-        Me.Button7.Text = "Quitar"
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button9
-        '
-        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
-        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button9.Location = New System.Drawing.Point(12, 216)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(55, 49)
-        Me.Button9.TabIndex = 130
-        Me.Button9.Text = "Agregar"
-        Me.Button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'C1TrueDBGrid3
-        '
-        Me.C1TrueDBGrid3.AlternatingRows = True
-        Me.C1TrueDBGrid3.Caption = "Listado de Almacen"
-        Me.C1TrueDBGrid3.FilterBar = True
-        Me.C1TrueDBGrid3.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid3.Images.Add(CType(resources.GetObject("C1TrueDBGrid3.Images"), System.Drawing.Image))
-        Me.C1TrueDBGrid3.Location = New System.Drawing.Point(6, 19)
-        Me.C1TrueDBGrid3.Name = "C1TrueDBGrid3"
-        Me.C1TrueDBGrid3.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid3.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid3.PreviewInfo.ZoomFactor = 75
-        Me.C1TrueDBGrid3.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid3.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid3.Size = New System.Drawing.Size(308, 185)
-        Me.C1TrueDBGrid3.TabIndex = 129
-        Me.C1TrueDBGrid3.Text = "C1TrueDBGrid1"
-        Me.C1TrueDBGrid3.PropBag = resources.GetString("C1TrueDBGrid3.PropBag")
-        '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.Teclado32
-        Me.Button1.Location = New System.Drawing.Point(197, 87)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(32, 32)
-        Me.Button1.TabIndex = 117
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'TabControl
         '
@@ -431,7 +262,7 @@ Partial Class FrmProductos
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.TxtDescuento)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(306, 14)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(284, 151)
@@ -509,7 +340,7 @@ Partial Class FrmProductos
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.TxtUbicacion)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(3, 13)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(297, 152)
@@ -682,6 +513,175 @@ Partial Class FrmProductos
         Me.ImgFoto.TabIndex = 1
         Me.ImgFoto.TabStop = False
         '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.Teclado32
+        Me.Button1.Location = New System.Drawing.Point(197, 87)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(32, 32)
+        Me.Button1.TabIndex = 117
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'CmdINgresoAjuste
+        '
+        Me.CmdINgresoAjuste.Image = CType(resources.GetObject("CmdINgresoAjuste.Image"), System.Drawing.Image)
+        Me.CmdINgresoAjuste.Location = New System.Drawing.Point(1017, 225)
+        Me.CmdINgresoAjuste.Name = "CmdINgresoAjuste"
+        Me.CmdINgresoAjuste.Size = New System.Drawing.Size(37, 38)
+        Me.CmdINgresoAjuste.TabIndex = 29
+        Me.CmdINgresoAjuste.UseVisualStyleBackColor = True
+        Me.CmdINgresoAjuste.Visible = False
+        '
+        'CmdGastosAjuste
+        '
+        Me.CmdGastosAjuste.Image = CType(resources.GetObject("CmdGastosAjuste.Image"), System.Drawing.Image)
+        Me.CmdGastosAjuste.Location = New System.Drawing.Point(1017, 267)
+        Me.CmdGastosAjuste.Name = "CmdGastosAjuste"
+        Me.CmdGastosAjuste.Size = New System.Drawing.Size(37, 38)
+        Me.CmdGastosAjuste.TabIndex = 27
+        Me.CmdGastosAjuste.UseVisualStyleBackColor = True
+        Me.CmdGastosAjuste.Visible = False
+        '
+        'Button6
+        '
+        Me.Button6.FlatAppearance.BorderSize = 0
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Image = Global.Remisiones.My.Resources.Resources.Lupa32
+        Me.Button6.Location = New System.Drawing.Point(233, 87)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(32, 32)
+        Me.Button6.TabIndex = 1
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ButtonBorrar
+        '
+        Me.ButtonBorrar.FlatAppearance.BorderSize = 0
+        Me.ButtonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonBorrar.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
+        Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonBorrar.Location = New System.Drawing.Point(202, 341)
+        Me.ButtonBorrar.Name = "ButtonBorrar"
+        Me.ButtonBorrar.Size = New System.Drawing.Size(75, 67)
+        Me.ButtonBorrar.TabIndex = 20
+        Me.ButtonBorrar.Text = "Eliminar"
+        Me.ButtonBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonBorrar.UseVisualStyleBackColor = True
+        '
+        'ButtonAgregar
+        '
+        Me.ButtonAgregar.FlatAppearance.BorderSize = 0
+        Me.ButtonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonAgregar.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.ButtonAgregar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonAgregar.Image = Global.Remisiones.My.Resources.Resources.Save4811
+        Me.ButtonAgregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonAgregar.Location = New System.Drawing.Point(102, 339)
+        Me.ButtonAgregar.Name = "ButtonAgregar"
+        Me.ButtonAgregar.Size = New System.Drawing.Size(75, 67)
+        Me.ButtonAgregar.TabIndex = 19
+        Me.ButtonAgregar.Text = "Guardar"
+        Me.ButtonAgregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonAgregar.UseVisualStyleBackColor = True
+        '
+        'CmdNuevo
+        '
+        Me.CmdNuevo.FlatAppearance.BorderSize = 0
+        Me.CmdNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CmdNuevo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CmdNuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.CmdNuevo.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus48
+        Me.CmdNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.CmdNuevo.Location = New System.Drawing.Point(12, 338)
+        Me.CmdNuevo.Name = "CmdNuevo"
+        Me.CmdNuevo.Size = New System.Drawing.Size(75, 67)
+        Me.CmdNuevo.TabIndex = 18
+        Me.CmdNuevo.Text = "Nuevo"
+        Me.CmdNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.CmdNuevo.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.Button8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Button8.Image = Global.Remisiones.My.Resources.Resources.exit48
+        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button8.Location = New System.Drawing.Point(543, 339)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 66)
+        Me.Button8.TabIndex = 21
+        Me.Button8.Text = "Salir"
+        Me.Button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
+        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.icons8_coffee_beans_100
+        Me.PictureBox2.Location = New System.Drawing.Point(12, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(70, 70)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 5
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(640, 71)
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'Button7
+        '
+        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
+        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button7.Location = New System.Drawing.Point(73, 216)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(55, 49)
+        Me.Button7.TabIndex = 131
+        Me.Button7.Text = "Quitar"
+        Me.Button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
+        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button9.Location = New System.Drawing.Point(12, 216)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(55, 49)
+        Me.Button9.TabIndex = 130
+        Me.Button9.Text = "Agregar"
+        Me.Button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'C1TrueDBGrid3
+        '
+        Me.C1TrueDBGrid3.AlternatingRows = True
+        Me.C1TrueDBGrid3.Caption = "Listado de Almacen"
+        Me.C1TrueDBGrid3.FilterBar = True
+        Me.C1TrueDBGrid3.GroupByCaption = "Drag a column header here to group by that column"
+        Me.C1TrueDBGrid3.Images.Add(CType(resources.GetObject("C1TrueDBGrid3.Images"), System.Drawing.Image))
+        Me.C1TrueDBGrid3.Location = New System.Drawing.Point(6, 19)
+        Me.C1TrueDBGrid3.Name = "C1TrueDBGrid3"
+        Me.C1TrueDBGrid3.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.C1TrueDBGrid3.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.C1TrueDBGrid3.PreviewInfo.ZoomFactor = 75
+        Me.C1TrueDBGrid3.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid3.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.C1TrueDBGrid3.Size = New System.Drawing.Size(308, 185)
+        Me.C1TrueDBGrid3.TabIndex = 129
+        Me.C1TrueDBGrid3.Text = "C1TrueDBGrid1"
+        Me.C1TrueDBGrid3.PropBag = resources.GetString("C1TrueDBGrid3.PropBag")
+        '
         'FrmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -713,15 +713,7 @@ Partial Class FrmProductos
         Me.Name = "FrmProductos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro de Productos"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CboCodigoProducto, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingBodegas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingComponentes, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingHistoricoCompras, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingHistoricosVentas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingImpuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
@@ -732,6 +724,14 @@ Partial Class FrmProductos
         Me.TabPage2.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         CType(Me.ImgFoto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingBodegas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingComponentes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingHistoricoCompras, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingHistoricosVentas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingImpuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

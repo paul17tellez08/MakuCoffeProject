@@ -31,6 +31,8 @@ Partial Class FrmConductor
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.TxtMotivo = New System.Windows.Forms.TextBox
+        Me.CheckActivo = New System.Windows.Forms.CheckBox
+        Me.CheckListaNegra = New System.Windows.Forms.CheckBox
         Me.ButtonGrabar = New System.Windows.Forms.Button
         Me.ButtonBorrar = New System.Windows.Forms.Button
         Me.ButtonNuevo = New System.Windows.Forms.Button
@@ -38,8 +40,6 @@ Partial Class FrmConductor
         Me.C1Button2 = New C1.Win.C1Input.C1Button
         Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.CheckActivo = New System.Windows.Forms.CheckBox
-        Me.CheckListaNegra = New System.Windows.Forms.CheckBox
         CType(Me.CboCodigoConductor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,7 +49,7 @@ Partial Class FrmConductor
         '
         Me.LblApellido.AutoSize = True
         Me.LblApellido.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.LblApellido.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.LblApellido.ForeColor = System.Drawing.Color.White
         Me.LblApellido.Location = New System.Drawing.Point(11, 124)
         Me.LblApellido.Name = "LblApellido"
         Me.LblApellido.Size = New System.Drawing.Size(50, 15)
@@ -98,7 +98,7 @@ Partial Class FrmConductor
         '
         Me.LblNombre.AutoSize = True
         Me.LblNombre.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.LblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.LblNombre.ForeColor = System.Drawing.Color.White
         Me.LblNombre.Location = New System.Drawing.Point(12, 98)
         Me.LblNombre.Name = "LblNombre"
         Me.LblNombre.Size = New System.Drawing.Size(57, 15)
@@ -109,10 +109,10 @@ Partial Class FrmConductor
         '
         Me.LblCodigo.AutoSize = True
         Me.LblCodigo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.LblCodigo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.LblCodigo.ForeColor = System.Drawing.Color.White
         Me.LblCodigo.Location = New System.Drawing.Point(12, 72)
         Me.LblCodigo.Name = "LblCodigo"
-        Me.LblCodigo.Size = New System.Drawing.Size(53, 15)
+        Me.LblCodigo.Size = New System.Drawing.Size(52, 15)
         Me.LblCodigo.TabIndex = 260
         Me.LblCodigo.Text = "Codigo"
         '
@@ -148,10 +148,10 @@ Partial Class FrmConductor
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(11, 149)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 15)
+        Me.Label1.Size = New System.Drawing.Size(58, 15)
         Me.Label1.TabIndex = 270
         Me.Label1.Text = "Licencia"
         '
@@ -159,10 +159,10 @@ Partial Class FrmConductor
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(8, 203)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(80, 30)
+        Me.Label4.Size = New System.Drawing.Size(81, 30)
         Me.Label4.TabIndex = 275
         Me.Label4.Text = "Motivo lista" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "negra"
         Me.Label4.Visible = False
@@ -176,12 +176,36 @@ Partial Class FrmConductor
         Me.TxtMotivo.TabIndex = 276
         Me.TxtMotivo.Visible = False
         '
+        'CheckActivo
+        '
+        Me.CheckActivo.AutoSize = True
+        Me.CheckActivo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CheckActivo.ForeColor = System.Drawing.Color.White
+        Me.CheckActivo.Location = New System.Drawing.Point(107, 177)
+        Me.CheckActivo.Name = "CheckActivo"
+        Me.CheckActivo.Size = New System.Drawing.Size(66, 19)
+        Me.CheckActivo.TabIndex = 278
+        Me.CheckActivo.Text = "Activo"
+        Me.CheckActivo.UseVisualStyleBackColor = True
+        '
+        'CheckListaNegra
+        '
+        Me.CheckListaNegra.AutoSize = True
+        Me.CheckListaNegra.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CheckListaNegra.ForeColor = System.Drawing.Color.White
+        Me.CheckListaNegra.Location = New System.Drawing.Point(266, 177)
+        Me.CheckListaNegra.Name = "CheckListaNegra"
+        Me.CheckListaNegra.Size = New System.Drawing.Size(97, 19)
+        Me.CheckListaNegra.TabIndex = 279
+        Me.CheckListaNegra.Text = "Lista Negra"
+        Me.CheckListaNegra.UseVisualStyleBackColor = True
+        '
         'ButtonGrabar
         '
         Me.ButtonGrabar.FlatAppearance.BorderSize = 0
         Me.ButtonGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonGrabar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ButtonGrabar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonGrabar.ForeColor = System.Drawing.Color.White
         Me.ButtonGrabar.Image = Global.Remisiones.My.Resources.Resources.Save4811
         Me.ButtonGrabar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ButtonGrabar.Location = New System.Drawing.Point(100, 271)
@@ -198,7 +222,7 @@ Partial Class FrmConductor
         Me.ButtonBorrar.FlatAppearance.BorderSize = 0
         Me.ButtonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonBorrar.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ButtonBorrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonBorrar.ForeColor = System.Drawing.Color.White
         Me.ButtonBorrar.Image = Global.Remisiones.My.Resources.Resources.Eliminar42
         Me.ButtonBorrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ButtonBorrar.Location = New System.Drawing.Point(204, 272)
@@ -215,7 +239,7 @@ Partial Class FrmConductor
         Me.ButtonNuevo.FlatAppearance.BorderSize = 0
         Me.ButtonNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonNuevo.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ButtonNuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.ButtonNuevo.ForeColor = System.Drawing.Color.White
         Me.ButtonNuevo.Image = Global.Remisiones.My.Resources.Resources.CirculoPlus481
         Me.ButtonNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ButtonNuevo.Location = New System.Drawing.Point(9, 272)
@@ -231,7 +255,7 @@ Partial Class FrmConductor
         Me.Button8.FlatAppearance.BorderSize = 0
         Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button8.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Button8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Button8.ForeColor = System.Drawing.Color.White
         Me.Button8.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.Button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button8.Location = New System.Drawing.Point(300, 272)
@@ -256,7 +280,7 @@ Partial Class FrmConductor
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.White
-        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Conductor100
+        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.icons8_driver_100
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(63, 60)
@@ -273,30 +297,6 @@ Partial Class FrmConductor
         Me.PictureBox1.Size = New System.Drawing.Size(380, 60)
         Me.PictureBox1.TabIndex = 255
         Me.PictureBox1.TabStop = False
-        '
-        'CheckActivo
-        '
-        Me.CheckActivo.AutoSize = True
-        Me.CheckActivo.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CheckActivo.ForeColor = System.Drawing.Color.White
-        Me.CheckActivo.Location = New System.Drawing.Point(107, 177)
-        Me.CheckActivo.Name = "CheckActivo"
-        Me.CheckActivo.Size = New System.Drawing.Size(66, 19)
-        Me.CheckActivo.TabIndex = 278
-        Me.CheckActivo.Text = "Activo"
-        Me.CheckActivo.UseVisualStyleBackColor = True
-        '
-        'CheckListaNegra
-        '
-        Me.CheckListaNegra.AutoSize = True
-        Me.CheckListaNegra.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CheckListaNegra.ForeColor = System.Drawing.Color.White
-        Me.CheckListaNegra.Location = New System.Drawing.Point(266, 177)
-        Me.CheckListaNegra.Name = "CheckListaNegra"
-        Me.CheckListaNegra.Size = New System.Drawing.Size(96, 19)
-        Me.CheckListaNegra.TabIndex = 279
-        Me.CheckListaNegra.Text = "Lista Negra"
-        Me.CheckListaNegra.UseVisualStyleBackColor = True
         '
         'FrmConductor
         '

@@ -75,7 +75,6 @@ Public Class MDIParent1
         DataAdapter.Fill(DataSet, "Localidad")
         ContLocalidad = DataSet.Tables("Localidad").Rows.Count
         Do While ContLocalidad > i
-
             idLocalidad = DataSet.Tables("Localidad").Rows(i)("IdLugarAcopio")
             CreaCortePrecios(idLocalidad, Now)
             i = i + 1
@@ -125,5 +124,10 @@ Public Class MDIParent1
     Private Sub RibbonButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton2.Click
         My.Forms.FrmFincaPlantillo().MdiParent = Me
         My.Forms.FrmFincaPlantillo().Show()
+    End Sub
+
+    Private Sub RibonUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibonUsuarios.Click
+        My.Forms.FrmUsuarios().MdiParent = Me
+        My.Forms.FrmUsuarios().Show()
     End Sub
 End Class

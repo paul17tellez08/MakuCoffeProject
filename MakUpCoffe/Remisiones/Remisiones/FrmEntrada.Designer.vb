@@ -24,44 +24,45 @@ Partial Class FrmEntrada
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmEntrada))
         Me.CboUsuario = New C1.Win.C1List.C1Combo
-        Me.Label9 = New System.Windows.Forms.Label
         Me.txtPassword = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.PicSalir = New System.Windows.Forms.PictureBox
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.cmdEntrar = New System.Windows.Forms.Button
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
         CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
+        CType(Me.PicSalir, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CboUsuario
         '
         Me.CboUsuario.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.CboUsuario.AlternatingRows = True
+        Me.CboUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CboUsuario.Caption = ""
         Me.CboUsuario.CaptionHeight = 17
         Me.CboUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.CboUsuario.ColumnCaptionHeight = 17
         Me.CboUsuario.ColumnFooterHeight = 17
         Me.CboUsuario.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.CboUsuario.ContentHeight = 15
+        Me.CboUsuario.ContentHeight = 21
         Me.CboUsuario.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.CboUsuario.DefColWidth = 179
         Me.CboUsuario.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.CboUsuario.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboUsuario.EditorFont = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
         Me.CboUsuario.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.CboUsuario.EditorHeight = 15
+        Me.CboUsuario.EditorHeight = 21
         Me.CboUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboUsuario.Images.Add(CType(resources.GetObject("CboUsuario.Images"), System.Drawing.Image))
         Me.CboUsuario.ItemHeight = 15
-        Me.CboUsuario.Location = New System.Drawing.Point(177, 106)
+        Me.CboUsuario.Location = New System.Drawing.Point(258, 78)
         Me.CboUsuario.MatchEntryTimeout = CType(2000, Long)
         Me.CboUsuario.MaxDropDownItems = CType(5, Short)
         Me.CboUsuario.MaxLength = 32767
@@ -70,171 +71,165 @@ Partial Class FrmEntrada
         Me.CboUsuario.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboUsuario.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboUsuario.RowSubDividerColor = System.Drawing.Color.Black
-        Me.CboUsuario.Size = New System.Drawing.Size(179, 21)
+        Me.CboUsuario.Size = New System.Drawing.Size(223, 27)
         Me.CboUsuario.TabIndex = 0
         Me.CboUsuario.VisualStyle = C1.Win.C1List.VisualStyle.System
         Me.CboUsuario.PropBag = resources.GetString("CboUsuario.PropBag")
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(111, 18)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(220, 20)
-        Me.Label9.TabIndex = 28
-        Me.Label9.Text = "INGRESO DE USUARIOS"
         '
         'txtPassword
         '
         Me.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPassword.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
         Me.txtPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.txtPassword.Location = New System.Drawing.Point(177, 138)
+        Me.txtPassword.Location = New System.Drawing.Point(258, 145)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
-        Me.txtPassword.Size = New System.Drawing.Size(179, 22)
+        Me.txtPassword.Size = New System.Drawing.Size(223, 26)
         Me.txtPassword.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(47, 140)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(95, 16)
-        Me.Label3.TabIndex = 23
-        Me.Label3.Text = "Contraseña :"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label1.Location = New System.Drawing.Point(48, 111)
+        Me.Label1.Location = New System.Drawing.Point(337, 54)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(94, 16)
+        Me.Label1.Size = New System.Drawing.Size(73, 16)
         Me.Label1.TabIndex = 22
-        Me.Label1.Text = "Usuario       :"
+        Me.Label1.Text = "USUARIO"
         '
-        'Panel1
+        'Label3
         '
-        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel1.Controls.Add(Me.PictureBox2)
-        Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 27)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(405, 60)
-        Me.Panel1.TabIndex = 31
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label3.Location = New System.Drawing.Point(320, 124)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(108, 16)
+        Me.Label3.TabIndex = 23
+        Me.Label3.Text = "CONTRASEÑA"
         '
-        'PictureBox2
+        'Label2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Security01
-        Me.PictureBox2.Location = New System.Drawing.Point(4, 1)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(54, 58)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 29
-        Me.PictureBox2.TabStop = False
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.White
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(12, 18)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(196, 18)
+        Me.Label2.TabIndex = 32
+        Me.Label2.Text = "INGRESO DE USUARIOS"
         '
-        'Panel2
+        'Label4
         '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(405, 27)
-        Me.Panel2.TabIndex = 32
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label4.Location = New System.Drawing.Point(400, 228)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(65, 16)
+        Me.Label4.TabIndex = 35
+        Me.Label4.Text = "CANCEL"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label5.Location = New System.Drawing.Point(243, 229)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(64, 16)
+        Me.Label5.TabIndex = 36
+        Me.Label5.Text = "INICIAR"
+        '
+        'PicSalir
+        '
+        Me.PicSalir.BackColor = System.Drawing.Color.Transparent
+        Me.PicSalir.Image = Global.Remisiones.My.Resources.Resources.buttonlog
+        Me.PicSalir.Location = New System.Drawing.Point(370, 214)
+        Me.PicSalir.Name = "PicSalir"
+        Me.PicSalir.Size = New System.Drawing.Size(120, 44)
+        Me.PicSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PicSalir.TabIndex = 34
+        Me.PicSalir.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Image = Global.Remisiones.My.Resources.Resources.SALIR02
-        Me.PictureBox1.Location = New System.Drawing.Point(374, 0)
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.Remisiones.My.Resources.Resources.buttonlog
+        Me.PictureBox1.Location = New System.Drawing.Point(216, 214)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(31, 27)
+        Me.PictureBox1.Size = New System.Drawing.Size(120, 44)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 30
+        Me.PictureBox1.TabIndex = 33
         Me.PictureBox1.TabStop = False
         '
-        'Button2
+        'PictureBox3
         '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Button2.Image = Global.Remisiones.My.Resources.Resources.Close02
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(288, 190)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(111, 49)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Salir"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.PictureBox3.BackColor = System.Drawing.Color.White
+        Me.PictureBox3.Image = Global.Remisiones.My.Resources.Resources.UseersLog
+        Me.PictureBox3.Location = New System.Drawing.Point(1, 55)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(157, 153)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 31
+        Me.PictureBox3.TabStop = False
         '
-        'cmdEntrar
+        'PictureBox2
         '
-        Me.cmdEntrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.cmdEntrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.cmdEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdEntrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdEntrar.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.cmdEntrar.Image = Global.Remisiones.My.Resources.Resources.llave021
-        Me.cmdEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdEntrar.Location = New System.Drawing.Point(4, 190)
-        Me.cmdEntrar.Name = "cmdEntrar"
-        Me.cmdEntrar.Size = New System.Drawing.Size(115, 49)
-        Me.cmdEntrar.TabIndex = 2
-        Me.cmdEntrar.Text = "Aceptar"
-        Me.cmdEntrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdEntrar.UseVisualStyleBackColor = False
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Login
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(481, 271)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 29
+        Me.PictureBox2.TabStop = False
         '
         'FrmEntrada
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(405, 241)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
+        Me.ClientSize = New System.Drawing.Size(500, 270)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.PicSalir)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.CboUsuario)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.cmdEntrar)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmEntrada"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmEntrada"
         CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
+        CType(Me.PicSalir, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents CboUsuario As C1.Win.C1List.C1Combo
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents cmdEntrar As System.Windows.Forms.Button
+    Friend WithEvents PicSalir As System.Windows.Forms.PictureBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class

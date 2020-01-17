@@ -178,4 +178,11 @@ Public Class FrmUsuarios
             Me.LblConfirmar.Visible = True
         End If
     End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        CboUsuario.Text = ""
+        TxtNivel.Text = ""
+        TxtContraseña.Text = ""
+        TxtConfirmar.Text = ""
+    End Sub
 End Class

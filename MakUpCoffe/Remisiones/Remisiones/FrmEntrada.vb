@@ -38,7 +38,31 @@ Public Class FrmEntrada
         MiConexion.Close()
     End Sub
 
-    Private Sub cmdEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEntrar.Click
+    Private Sub cmdEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub FrmEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
+        'cmdEntrar.PerformClick()
+    End Sub
+
+    Private Sub txtPassword_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPassword.KeyPress
+        If (e.KeyChar = (Convert.ToChar(Keys.Enter))) Then
+            PictureBox1_Click_1(sender, e)
+        End If
+    End Sub
+
+    Private Sub CboUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CboUsuario.KeyPress
+        If (e.KeyChar = (Convert.ToChar(Keys.Enter))) Then
+            PictureBox1_Click_1(sender, e)
+        End If
+    End Sub
+
+    Private Sub PicSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PicSalir.Click
+        Me.Close()
+    End Sub
+
+    Private Sub PictureBox1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
         Dim DataSetUsuario As New DataSet
         Dim DataAdapterUsuario As New SqlClient.SqlDataAdapter
         Dim SqlUsuario As String
@@ -88,27 +112,50 @@ Public Class FrmEntrada
             Exit Sub
         End If
     End Sub
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+    Private Sub PictureBox1_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.MouseHover
+        PictureBox1.Image = My.Resources.buttonpress()
+        Label5.BackColor = Color.FromArgb(88, 47, 47)
+    End Sub
+
+    Private Sub PictureBox1_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.MouseLeave
+        PictureBox1.Image = My.Resources.buttonlog()
+        Label5.BackColor = Color.FromArgb(61, 30, 30)
+    End Sub
+
+    Private Sub PicSalir_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PicSalir.MouseHover
+        PicSalir.Image = My.Resources.buttonpress()
+        Label4.BackColor = Color.FromArgb(88, 47, 47)
+    End Sub
+
+    Private Sub PicSalir_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PicSalir.MouseLeave
+        PicSalir.Image = My.Resources.buttonlog()
+        Label4.BackColor = Color.FromArgb(61, 30, 30)
+    End Sub
+
+    Private Sub Label5_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.MouseHover
+        PictureBox1.Image = My.Resources.buttonpress()
+        Label5.BackColor = Color.FromArgb(88, 47, 47)
+    End Sub
+    Private Sub Label5_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.MouseLeave
+        PictureBox1.Image = My.Resources.buttonlog()
+        Label5.BackColor = Color.FromArgb(61, 30, 30)
+    End Sub
+    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
+        PictureBox1_Click_1(sender, e)
+    End Sub
+
+    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
         Me.Close()
     End Sub
 
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-        Me.Close()
+    Private Sub Label4_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.MouseHover
+        PicSalir.Image = My.Resources.buttonpress()
+        Label4.BackColor = Color.FromArgb(88, 47, 47)
     End Sub
 
-    Private Sub FrmEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
-        'cmdEntrar.PerformClick()
-    End Sub
-
-    Private Sub txtPassword_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPassword.KeyPress
-        If (e.KeyChar = (Convert.ToChar(Keys.Enter))) Then
-            cmdEntrar_Click(sender, e)
-        End If
-    End Sub
-
-    Private Sub CboUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CboUsuario.KeyPress
-        If (e.KeyChar = (Convert.ToChar(Keys.Enter))) Then
-            cmdEntrar_Click(sender, e)
-        End If
+    Private Sub Label4_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.MouseLeave
+        PicSalir.Image = My.Resources.buttonlog()
+        Label4.BackColor = Color.FromArgb(61, 30, 30)
     End Sub
 End Class

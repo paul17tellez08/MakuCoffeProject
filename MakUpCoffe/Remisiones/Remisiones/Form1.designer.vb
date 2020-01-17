@@ -32,6 +32,7 @@ Partial Class MDIParent1
         Me.RibbonQat1 = New C1.Win.C1Ribbon.RibbonQat
         Me.RibbonTab1 = New C1.Win.C1Ribbon.RibbonTab
         Me.RibbonGroup4 = New C1.Win.C1Ribbon.RibbonGroup
+        Me.RibbonButton4 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonButton1 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonTab2 = New C1.Win.C1Ribbon.RibbonTab
         Me.RibbonGroup6 = New C1.Win.C1Ribbon.RibbonGroup
@@ -43,6 +44,7 @@ Partial Class MDIParent1
         Me.RbtnProveedores = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonButton3 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonButton2 = New C1.Win.C1Ribbon.RibbonButton
+        Me.RibonUsuarios = New C1.Win.C1Ribbon.RibbonButton
         Me.C1StatusBar1 = New C1.Win.C1Ribbon.C1StatusBar
         Me.RibbonLabel1 = New C1.Win.C1Ribbon.RibbonLabel
         CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,13 +126,21 @@ Partial Class MDIParent1
         '
         Me.RibbonGroup4.ID = "RibbonGroup4"
         Me.RibbonGroup4.Image = Global.Remisiones.My.Resources.Resources.exit48
+        Me.RibbonGroup4.Items.Add(Me.RibbonButton4)
         Me.RibbonGroup4.Items.Add(Me.RibbonButton1)
         Me.RibbonGroup4.Text = "Salir"
+        '
+        'RibbonButton4
+        '
+        Me.RibbonButton4.ID = "RibbonButton4"
+        Me.RibbonButton4.LargeImage = Global.Remisiones.My.Resources.Resources.weight_station_48
+        Me.RibbonButton4.Text = "Notas_de_peso"
+        Me.RibbonButton4.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'RibbonButton1
         '
         Me.RibbonButton1.ID = "RibbonButton1"
-        Me.RibbonButton1.LargeImage = Global.Remisiones.My.Resources.Resources.exit48
+        Me.RibbonButton1.LargeImage = Global.Remisiones.My.Resources.Resources.shutdown_48
         Me.RibbonButton1.SmallImage = CType(resources.GetObject("RibbonButton1.SmallImage"), System.Drawing.Image)
         Me.RibbonButton1.Text = "Salir"
         Me.RibbonButton1.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
@@ -150,9 +160,9 @@ Partial Class MDIParent1
         'RbtonRecepción
         '
         Me.RbtonRecepción.ID = "RbtonRecepción"
-        Me.RbtonRecepción.LargeImage = CType(resources.GetObject("RbtonRecepción.LargeImage"), System.Drawing.Image)
+        Me.RbtonRecepción.LargeImage = Global.Remisiones.My.Resources.Resources.weight_station_48
         Me.RbtonRecepción.SmallImage = CType(resources.GetObject("RbtonRecepción.SmallImage"), System.Drawing.Image)
-        Me.RbtonRecepción.Text = "Recepción-Cafe"
+        Me.RbtonRecepción.Text = "Notas_de_peso"
         Me.RbtonRecepción.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'RibbonTab3
@@ -164,18 +174,19 @@ Partial Class MDIParent1
         'RibbonGroup1
         '
         Me.RibbonGroup1.ID = "RibbonGroup1"
-        Me.RibbonGroup1.Image = CType(resources.GetObject("RibbonGroup1.Image"), System.Drawing.Image)
+        Me.RibbonGroup1.Image = Global.Remisiones.My.Resources.Resources.icons8_user_account_48
         Me.RibbonGroup1.Items.Add(Me.RbtnVehiculo)
         Me.RibbonGroup1.Items.Add(Me.RbtnConductor)
         Me.RibbonGroup1.Items.Add(Me.RbtnProveedores)
         Me.RibbonGroup1.Items.Add(Me.RibbonButton3)
         Me.RibbonGroup1.Items.Add(Me.RibbonButton2)
+        Me.RibbonGroup1.Items.Add(Me.RibonUsuarios)
         Me.RibbonGroup1.Text = "Catálogo"
         '
         'RbtnVehiculo
         '
         Me.RbtnVehiculo.ID = "RbtnVehiculo"
-        Me.RbtnVehiculo.LargeImage = CType(resources.GetObject("RbtnVehiculo.LargeImage"), System.Drawing.Image)
+        Me.RbtnVehiculo.LargeImage = Global.Remisiones.My.Resources.Resources.Transit_48
         Me.RbtnVehiculo.SmallImage = CType(resources.GetObject("RbtnVehiculo.SmallImage"), System.Drawing.Image)
         Me.RbtnVehiculo.Text = "Vehiculo"
         Me.RbtnVehiculo.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
@@ -183,7 +194,7 @@ Partial Class MDIParent1
         'RbtnConductor
         '
         Me.RbtnConductor.ID = "RbtnConductor"
-        Me.RbtnConductor.LargeImage = CType(resources.GetObject("RbtnConductor.LargeImage"), System.Drawing.Image)
+        Me.RbtnConductor.LargeImage = Global.Remisiones.My.Resources.Resources.driver_48
         Me.RbtnConductor.SmallImage = CType(resources.GetObject("RbtnConductor.SmallImage"), System.Drawing.Image)
         Me.RbtnConductor.Text = "Conductor"
         Me.RbtnConductor.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
@@ -191,7 +202,7 @@ Partial Class MDIParent1
         'RbtnProveedores
         '
         Me.RbtnProveedores.ID = "RbtnProveedores"
-        Me.RbtnProveedores.LargeImage = CType(resources.GetObject("RbtnProveedores.LargeImage"), System.Drawing.Image)
+        Me.RbtnProveedores.LargeImage = Global.Remisiones.My.Resources.Resources.farmer_48
         Me.RbtnProveedores.SmallImage = CType(resources.GetObject("RbtnProveedores.SmallImage"), System.Drawing.Image)
         Me.RbtnProveedores.Text = "Proveedores"
         Me.RbtnProveedores.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
@@ -199,22 +210,30 @@ Partial Class MDIParent1
         'RibbonButton3
         '
         Me.RibbonButton3.ID = "RibbonButton3"
-        Me.RibbonButton3.LargeImage = CType(resources.GetObject("RibbonButton3.LargeImage"), System.Drawing.Image)
+        Me.RibbonButton3.LargeImage = Global.Remisiones.My.Resources.Resources.Country_48
         Me.RibbonButton3.SmallImage = CType(resources.GetObject("RibbonButton3.SmallImage"), System.Drawing.Image)
-        Me.RibbonButton3.Text = "Municipio y Comarca"
+        Me.RibbonButton3.Text = "MunicipioComarca"
         Me.RibbonButton3.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'RibbonButton2
         '
         Me.RibbonButton2.ID = "RibbonButton2"
-        Me.RibbonButton2.LargeImage = CType(resources.GetObject("RibbonButton2.LargeImage"), System.Drawing.Image)
+        Me.RibbonButton2.LargeImage = Global.Remisiones.My.Resources.Resources.farm_with_silo_48
         Me.RibbonButton2.SmallImage = CType(resources.GetObject("RibbonButton2.SmallImage"), System.Drawing.Image)
-        Me.RibbonButton2.Text = "Finca y Plantillos"
+        Me.RibbonButton2.Text = "Finca-Plantillo"
         Me.RibbonButton2.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
+        'RibonUsuarios
+        '
+        Me.RibonUsuarios.ID = "RibonUsuarios"
+        Me.RibonUsuarios.LargeImage = Global.Remisiones.My.Resources.Resources.icons8_user_account_48
+        Me.RibonUsuarios.SmallImage = CType(resources.GetObject("RibonUsuarios.SmallImage"), System.Drawing.Image)
+        Me.RibonUsuarios.Text = "Usuarios"
+        Me.RibonUsuarios.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'C1StatusBar1
         '
-        Me.C1StatusBar1.Location = New System.Drawing.Point(0, 526)
+        Me.C1StatusBar1.Location = New System.Drawing.Point(0, 518)
         Me.C1StatusBar1.Name = "C1StatusBar1"
         Me.C1StatusBar1.RightPaneItems.Add(Me.RibbonLabel1)
         Me.C1StatusBar1.Size = New System.Drawing.Size(1150, 22)
@@ -229,10 +248,13 @@ Partial Class MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1150, 548)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.BackgroundImage = Global.Remisiones.My.Resources.Resources.Makusplas1
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1150, 540)
         Me.Controls.Add(Me.C1StatusBar1)
         Me.Controls.Add(Me.C1Ribbon1)
+        Me.DoubleBuffered = True
         Me.IsMdiContainer = True
         Me.Name = "MDIParent1"
         Me.Text = "Sistema de Recepcion"
@@ -269,5 +291,7 @@ Partial Class MDIParent1
     Friend WithEvents RbtnProveedores As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibbonButton2 As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibbonButton3 As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibbonButton4 As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibonUsuarios As C1.Win.C1Ribbon.RibbonButton
 
 End Class

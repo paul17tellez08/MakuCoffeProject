@@ -11,8 +11,7 @@
     <RootNamespace>Remisiones</RootNamespace>
     <AssemblyName>ReciboCafe</AssemblyName>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>logoMakupCoffe1.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -469,8 +468,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="list_edit.ico" />
-    <Content Include="Resources\Beams.png" />
-    <None Include="Resources\Compelmento.png" />
+    <Content Include="logoMakupCoffe1.ico" />
+    <None Include="Resources\buttonpress.png" />
+    <None Include="Resources\buttonlog.png" />
+    <None Include="Resources\UseersLog.png" />
+    <None Include="Resources\icons8-user-shield-100.png" />
+    <None Include="Resources\Login.png" />
+    <None Include="Resources\icons8-user-account-48.png" />
+    <None Include="Resources\icons8-user-account-100.png" />
+    <None Include="Resources\icons8-coffee-beans-100.png" />
+    <None Include="Resources\icons8paste-48.png" />
     <None Include="Resources\Close01.png" />
     <None Include="Resources\Close02.png" />
     <None Include="Resources\Búsqueda48.png" />
@@ -488,78 +495,32 @@
     <None Include="Resources\Carro100.png" />
     <None Include="Resources\Conductor100.png" />
     <None Include="Resources\down.png" />
-    <Content Include="Resources\Exit-48.png" />
-    <Content Include="Resources\Exit-64.png" />
-    <None Include="Resources\Exit-641.png" />
-    <None Include="Resources\exportea32.png" />
-    <None Include="Resources\exit48.png" />
     <None Include="Resources\exit68.png" />
-    <Content Include="Resources\Filter-48.png" />
-    <None Include="Resources\Filter-481.png" />
-    <Content Include="Resources\Filter48.png" />
-    <Content Include="Resources\Filtrar_48.png" />
-    <None Include="Resources\icons8-borrar-fila-36.png" />
-    <None Include="Resources\FondoMDI.jpg" />
-    <None Include="Resources\icons8-búsqueda-de-propiedad-48.png" />
-    <Content Include="Resources\icons8-checkmark-48.png" />
-    <None Include="Resources\icons8-exchange-80.png" />
-    <None Include="Resources\icons8-exchange-32.png" />
-    <None Include="Resources\icons8-exchange-48.png" />
-    <None Include="Resources\icons8-multiple-choice-48.png" />
-    <None Include="Resources\icons8-initiate-money-transfer-48.png" />
-    <None Include="Resources\icons8-micro-sd-32.png" />
-    <None Include="Resources\icons8-cierre-de-sesión-redondeado-48.png" />
-    <None Include="Resources\icons8-cierre-de-sesión-redondeado-38.png" />
-    <None Include="Resources\icons8-clasificar-arriba-48.png" />
-    <None Include="Resources\icons8-clasificar-abajo-38.png" />
-    <None Include="Resources\icons8-clasificar-abajo-48.png" />
-    <None Include="Resources\icons8-data-grid-36.png" />
-    <None Include="Resources\icons8-exit-36.png" />
-    <None Include="Resources\icons8-comentarios-36.png" />
-    <None Include="Resources\icons8-comentarios-40.png" />
     <None Include="Resources\icons8-plus-36.png" />
-    <Content Include="Resources\icons8-print-48.png" />
-    <None Include="Resources\icons8-print-481.png" />
-    <None Include="Resources\icons8-transaction-48.png" />
-    <None Include="Resources\LiquidacionPerga.png" />
     <None Include="Resources\logoMakupCoffesinfondo.png" />
     <None Include="Resources\logoMakupCoffeSF.png" />
     <None Include="Resources\Lupa32.png" />
     <None Include="Resources\Mundi.png" />
-    <Content Include="Resources\New32.png" />
-    <Content Include="Resources\New48 %282%29.png" />
     <None Include="Resources\llave02.png" />
-    <None Include="Resources\New48 %282%291.png" />
-    <None Include="Resources\New48 %282%292.png" />
-    <Content Include="Resources\New64.png" />
     <None Include="Resources\Print48.png" />
     <None Include="Resources\Print68.png" />
     <None Include="Resources\Pesaje32.png" />
     <None Include="Resources\productor100.png" />
-    <Content Include="Resources\Refresh48.png" />
-    <None Include="Resources\Refresh481.png" />
-    <None Include="Resources\save.png" />
+    <None Include="Resources\Recepcion-48.png" />
     <None Include="Resources\Security01.png" />
     <None Include="Resources\SALIR02.png" />
     <None Include="Resources\Save482.png" />
     <None Include="Resources\Save68.png" />
-    <Content Include="Resources\Seen48.png" />
+    <None Include="Resources\farm-with-silo-48.png" />
+    <None Include="Resources\Makusplas.png" />
+    <None Include="Resources\icons8-driver-100.png" />
+    <None Include="Resources\Opera-glasses-100.png" />
+    <None Include="Resources\shutdown-48.png" />
     <None Include="Resources\up.png" />
     <None Include="Resources\Teclado32.png" />
     <None Include="Resources\Tikect68.png" />
     <None Include="Resources\Tikect48.png" />
-    <None Include="Resources\Seen482.png" />
-    <None Include="Resources\Seen481.png" />
-    <None Include="Resources\configurar punto.png" />
-    <None Include="Resources\icons8-mapa-waypoint-70.png" />
-    <None Include="Resources\icons8-cancelar-70.png" />
-    <None Include="Resources\eliminar .png" />
-    <None Include="Resources\Borrar.png" />
-    <None Include="Resources\punto1.png" />
-    <None Include="Resources\Punto.png" />
     <None Include="Resources\Sin tilo.png" />
-    <None Include="Resources\Sin titulo.png" />
-    <None Include="Resources\camion .png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ActiveReportsExcelExport">
