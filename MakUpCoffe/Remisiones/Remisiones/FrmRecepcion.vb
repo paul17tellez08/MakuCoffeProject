@@ -106,7 +106,8 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.DataSource = Me.BindingDetalle
 
         Me.TrueDBDetalleNP.Columns(0).Caption = "N°"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 90
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
 
         Me.TrueDBDetalleNP.Columns(1).Caption = "CODVARIEDAD"
@@ -116,6 +117,7 @@ Public Class FrmRecepcion
 
         Me.TrueDBDetalleNP.Columns(2).Caption = "VARIEDAD"
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 300
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
 
         Me.TrueDBDetalleNP.Columns(3).Caption = "CALIDAD"
@@ -129,25 +131,40 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("ESTADO").Visible = False
 
         Me.TrueDBDetalleNP.Columns(5).Caption = "SACOS"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 50
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 95
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Locked = True
+
 
         Me.TrueDBDetalleNP.Columns(6).Caption = "PESO/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 95
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Locked = True
 
         Me.TrueDBDetalleNP.Columns(7).Caption = "PESO/kg"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 85
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 94
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
+
 
         Me.TrueDBDetalleNP.Columns(8).Caption = "TARA/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 95
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
 
         Me.TrueDBDetalleNP.Columns(9).Caption = "P.NETO/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 95
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Locked = True
 
         Me.TrueDBDetalleNP.Columns(10).Caption = "P.NETO/kg"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 95
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Locked = True
 
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 93
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Locked = True
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Visible = False
 
     End Sub
@@ -162,6 +179,7 @@ Public Class FrmRecepcion
             Me.CboPlaca.DataSource = DataSet.Tables("Vehiculo")
             Me.CboPlaca.Text = DataSet.Tables("Vehiculo").Rows(DataSet.Tables("Vehiculo").Rows.Count - 1)("Placa")
         End If
+
     End Sub
     Private Sub CargarProductor()
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -749,7 +767,7 @@ Public Class FrmRecepcion
         Dim StrSqlSelect As String, Sql As String, i As Integer, Numero As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-        StrSqlSelect = "SELECT     NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado,   FechaHora, RecibimosDe, IdFinca, Calidad, Fermentado, Moho, Estado, Idvariedad, IdPlantillo, TipoPesada, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & CodigoRecepcion & "')  "
+        StrSqlSelect = "SELECT     NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado,   FechaHora, RecibimosDe, IdFinca, Calidad, Fermentado, Moho, Estado, Idvariedad, IdPlantillo, TipoPesada, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & Me.TxtNumeroEnsamble.Text & "')  "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "SeleccionRecep")
         If DataSet.Tables("SeleccionRecep").Rows.Count > 0 Then

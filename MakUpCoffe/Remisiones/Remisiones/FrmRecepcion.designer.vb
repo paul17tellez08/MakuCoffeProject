@@ -923,7 +923,6 @@ Partial Class FrmRecepcion
         'CboPlaca
         '
         Me.CboPlaca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.CboPlaca.AlternatingRows = True
         Me.CboPlaca.Caption = ""
         Me.CboPlaca.CaptionHeight = 17
         Me.CboPlaca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal

@@ -119,7 +119,7 @@ Module Funciones
         FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = PesoNetoKg
         FrmRecepcion.TrueDBDetalleNP.Columns(11).Text = Precio
 
-        FrmRecepcion.TxtNumeroEnsamble.Text = NumeroRecepcion
+        FrmRecepcion.TxtNumeroEnsamble.Text = NumeroNotaPeso
         ''FrmRecepcion.TxtNumeroRecibo.Text = NumeroRecibo
         'Iposicion = FrmRecepcion.TrueDBDetalleNP.Row
         'FrmRecepcion.TrueDBDetalleNP.Row = FrmRecepcion.TrueDBDetalleNP.Row + 1
@@ -137,15 +137,14 @@ Module Funciones
         Dim MiConexion As New SqlClient.SqlConnection(Conexion)
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim Subtotal As Double, Lote As String, TipoProceso As String = "", IdLugarAcopio As Double
-        Dim DateFecha As DateTime = FrmRecepcion.DTPFecha.Text
+        Dim DateFecha As DateTime
 
         If FrmRecepcion.txtsubtotal.Text <> "" Then
             Subtotal = FrmRecepcion.txtsubtotal.Text
         Else
             Subtotal = 0
         End If
-        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "yyyy-MM-dd")
-
+        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "dd/MM/yyyy") & " " & FrmRecepcion.LblHora.Text
         MiConexion.Close()
         SqlCompras = "SELECT Recepcion.* FROM Recepcion WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlCompras, MiConexion)

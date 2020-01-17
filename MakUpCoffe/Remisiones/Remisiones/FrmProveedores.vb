@@ -7,7 +7,7 @@ Public Class FrmProveedores
         DataAdapter.Fill(DataSet, "ListaProveedores")
         Me.CboCodigoProveedor.DataSource = DataSet.Tables("ListaProveedores")
 
-        If Llamada = "BusquedaProductor" Then
+        If Llamada = "RecepcionProductores" Then
             Me.ButtonBorrar.Enabled = False
         End If
     End Sub
@@ -59,7 +59,7 @@ Public Class FrmProveedores
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
-            If Llamada = "BusquedaProductor" Then
+            If Llamada = "RecepcionProductores" Then
                 Me.Close()
             End If
             MiConexion.Close()
@@ -180,7 +180,7 @@ Public Class FrmProveedores
             Me.TxtMerma.Text = ""
             Me.TxtCtaxCobrar.Text = ""
             Me.TxtCtaxPagar.Text = ""
-
+            Me.txtCedula.Text = ""
         End If
     End Sub
 
