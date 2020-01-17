@@ -87,7 +87,7 @@ Module Funciones
             Linea = FrmRecepcion.TrueDBDetalleNP.Columns(0).Text
         End If
 
-        '/////////////////////////////CONVERTIR DE LIBRAS A KG ///////////////////////////////////////////////
+        '/////////////////////////////CONVERTIR DE LIBRAS A KG ////////////////////////////////////////////
         PesoKg = Format((Peso * 0.453592), "##,##0.00")
 
         '//////////////////////CONSULTO LAS TARAS /////////////////////////////////////////////////////////
@@ -96,12 +96,13 @@ Module Funciones
 
         FactorSacolb = CInt(Math.Ceiling(CantidadSacos * 0.5))
         FactorSacokg = CInt(Math.Ceiling((CantidadSacos * 0.5)) * 0.453592)
+        Tara = (Peso * FactorEstado) + FactorSacolb
 
-        PesoNetoLb = Peso - (Peso * FactorEstado) - FactorSacolb
+        PesoNetoLb = Peso - Tara
         PesoNetoKg = PesoNetoLb * 0.453592
         PesoNetoKg = PesoKg - (PesoKg * FactorEstado) - FactorSacokg
 
-        GrabaDetalleRecepcion(NumeroRecepcion, CodigoProducto, Cantidad, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos)
+        GrabaDetalleRecepcion(NumeroNotaPeso, FrmRecepcion.CboVariedad.SelectedValue, Peso, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos)
         ActualizaDetalleRecepcion(NumeroRecepcion, FrmRecepcion.CboTipoPesada.Text)
 
         FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
@@ -179,7 +180,7 @@ Module Funciones
         End If
     End Sub
 
-    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal CodigoProducto As String, ByVal Cantidad As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Tara As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double)
+    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoNotaPesa As String, ByVal CodigoProducto As String, ByVal Peso As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Taralb As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double)
         Dim Sqldetalle As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
         Dim Fecha As String, MiConexion As New SqlClient.SqlConnection(Conexion), SqlUpdate As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, PesoNetoLb As Double
@@ -193,33 +194,26 @@ Module Funciones
         '    Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "yyyy-MM-dd")
         'End If
 
-
         Sqldetalle = "SELECT Detalle_Recepcion.* FROM Detalle_Recepcion " & _
-                     "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "   'AND (Cod_Productos = '" & CodigoProducto & "')
+                     "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "   'AND (Cod_Productos = '" & CodigoProducto & "')
         DataAdapter = New SqlClient.SqlDataAdapter(Sqldetalle, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleRecepcion")
         If Not DataSet.Tables("DetalleRecepcion").Rows.Count = 0 Then
-            '//////////////////////////////////////////////////////////////////////////////////////////////
             '////////////////////////////EDITO EL DETALLE DE COMPRAS///////////////////////////////////
-            '/////////////////////////////////////////////////////////////////////////////////////////////////
             SqlUpdate = "UPDATE [Detalle_Recepcion] SET [Cod_Productos] = '" & CodigoProducto & "',[Descripcion_Producto] = '" & Descripcion & "',[Cantidad] = " & Cantidad & ",[PesoKg] = " & PesoKg & ", [Calidad] = '" & Calidad & "', [Estado] = '" & Estado & "', [Precio] = " & Precio & ", [Tara] = " & Tara & ", [PesoNetoLb] = " & PesoNetoLb & ", [PesoNetoKg] = " & PesoNetoKg & " , [QQ] = " & QQ & " " & _
-                        "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoRecepcion & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "  'AND (Cod_Productos = '" & CodigoProducto & "')
+                        "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102)) AND (TipoRecepcion = '" & TipoRecepcion & "') "  'AND (Cod_Productos = '" & CodigoProducto & "')
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         Else
-
-            SqlUpdate = "INSERT INTO [Detalle_Recepcion] ([id_Eventos],[NumeroRecepcion],[Fecha],[TipoRecepcion],[Cod_Productos],[Descripcion_Producto],[Cantidad],[PesoKg],[Calidad],[Estado],[Precio],[Tara],[PesoNetoLb],[PesoNetoKg],[QQ]) " & _
-                        "VALUES (" & Linea & " ,'" & ConsecutivoRecepcion & "','" & Format(CDate(Fecha), "dd/MM/yyyy") & "','" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "','" & CodigoProducto & "','" & Descripcion & "'," & Cantidad & "," & PesoKg & ", '" & Calidad & "','" & Estado & "', " & Precio & ", " & Tara & ", " & PesoNetoLb & ", " & PesoNetoKg & ", " & QQ & ")"
+            SqlUpdate = "INSERT INTO [dbo].[Detalle_Recepcion]([id_Eventos],[NumeroRecepcion],[TipoRecepcion],[Cod_Productos],[Descripcion_Producto],[Cantidad],[Unidad_Medida],[Transferido],[Estado],[Precio],[PesoKg],[Tara],[PesoNetoLb],[PesoNetoKg],[QQ],[Liquidado],[Codigo_Beams],[Codigo_BeamsOrigen],[RecepcionBin],[Calidad],[Fecha])" & _
+                        "VALUES (" & Linea & ",'" & ConsecutivoNotaPesa & "','Recepcion','" & FrmRecepcion.CboVariedad.SelectedValue & "','" & FrmRecepcion.CboVariedad.Text & "','" & Peso & "','Kg',0,'" & FrmRecepcion.CboEstado.Text & "','0.00'," & PesoKg & ", '" & Taralb & "', " & PesoNetoLb & ", " & PesoNetoKg & ", " & QQ & ",'0','999999','999999','999999','" & FrmRecepcion.CboCalidad.Text & "','" & Format(CDate(Fecha), "yyyy-MM-dd") & "')"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             MiConexion.Close()
-
         End If
-
     End Sub
 
     Public Sub ActualizaDetalleRecepcion(ByVal ConsecutivoRecepcion As String, ByVal TipoRecepcion As String)

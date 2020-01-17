@@ -137,7 +137,7 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Columns(7).Caption = "PESO/kg"
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 85
 
-        Me.TrueDBDetalleNP.Columns(8).Caption = "TARA"
+        Me.TrueDBDetalleNP.Columns(8).Caption = "TARA/lb"
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
 
