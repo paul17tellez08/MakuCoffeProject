@@ -10,9 +10,10 @@ Module Funciones
         Dim Linea As Double, CodigoProducto As String, Cantidad As Double, Descripcion As String, CodigoBeams As String, UnidadMedida As String = ""
         Dim CodigoBeamsOrigen As String = "", CodigoRecepcionBin As String = "", SqlConsecutivo As String, Estado As String, SqlString As String
         Dim DataSet As New DataSet, DataAdapterProductos As New SqlClient.SqlDataAdapter, PesoKg As Double, Precio As Double, DataAdapter As New SqlClient.SqlDataAdapter
-        Dim Tara As Double = 0, TaraSaco As Double = 0, PesoNetoLb As Double = 0, PesoNetoKg As Double = 0, QQ As Double = 0, LugarAcopio As Integer, SubTotal As Double = 0
+        Dim Tara As Double = 0, TaraSaco As Double = 0, PesoNetoLb As Double = 0, PesoNetoKg As Double = 0, CantidadSacos As Double = 0, LugarAcopio As Integer, SubTotal As Double = 0
         Dim HumedadxDefecto As Double = 0, HumedadReal As Double = 0, Consecutivo As Double, NumeroNotaPeso As String, Cadena As String, CadenaDiv() As String
         Dim ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, Calidad As String
+        Dim FactorSacolb As Double = 0, FactorSacokg As Double = 0, FactorEstado As Double = 0, IdEsdoFisico As Double = 0, IdCalidad As Double = 0, IdTipoLugarAcopio As Double = 0
 
         '////////////////////////////BUSCO EL CONSECUTIVO DEL RECIBO X  SERIE ///////////////////////////////////
 
@@ -49,7 +50,6 @@ Module Funciones
                         NumeroNotaPeso = My.Forms.FrmRecepcion.CmbSerie.Text & "-" & Format(1, "00000#")
                     End If
                     '*************************ACTUALIZO EL CONSECUTIVO************************
-
                 Else
                     NumeroNotaPeso = 0
                 End If
@@ -76,7 +76,7 @@ Module Funciones
 
         '///////////////////////////PREGUNTO LOS QUINTALES///////////////////////////////////////////////////
         My.Forms.FrmQQ.ShowDialog()
-        QQ = My.Forms.FrmQQ.QQ
+        CantidadSacos = My.Forms.FrmQQ.QQ
 
         '/////////////////////////////GRABO EL DETALLE DE LA RECEPCION //////////////////////////////////////
         Registros = FrmRecepcion.BindingDetalle.Count
@@ -88,19 +88,20 @@ Module Funciones
         End If
 
         '/////////////////////////////CONVERTIR DE LIBRAS A KG ///////////////////////////////////////////////
-        PesoKg = Cantidad
-        Cantidad = Format((Cantidad / 46) * 100, "##,##0.00")
-
-        Dim Factor As Double = 0, IdEsdoFisico As Double = 0, IdCalidad As Double = 0, IdTipoLugarAcopio As Double = 0
+        PesoKg = Format((Peso * 0.453592), "##,##0.00")
 
         '//////////////////////CONSULTO LAS TARAS /////////////////////////////////////////////////////////
 
-        Factor = CDbl(FrmRecepcion.TxtHumedad.Text)
-        Tara = Factor * QQ
-        PesoNetoKg = Format((PesoKg - Tara), "##,##0.0000")
-        PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
+        FactorEstado = CDbl(FrmRecepcion.TxtHumedad.Text)
 
-        GrabaDetalleRecepcion(NumeroRecepcion, CodigoProducto, Cantidad, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, QQ)
+        FactorSacolb = CInt(Math.Ceiling(CantidadSacos * 0.5))
+        FactorSacokg = CInt(Math.Ceiling((CantidadSacos * 0.5)) * 0.453592)
+
+        PesoNetoLb = Peso - (Peso * FactorEstado) - FactorSacolb
+        PesoNetoKg = PesoNetoLb * 0.453592
+        PesoNetoKg = PesoKg - (PesoKg * FactorEstado) - FactorSacokg
+
+        GrabaDetalleRecepcion(NumeroRecepcion, CodigoProducto, Cantidad, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos)
         ActualizaDetalleRecepcion(NumeroRecepcion, FrmRecepcion.CboTipoPesada.Text)
 
         FrmRecepcion.TrueDBDetalleNP.Columns(1).Text = CodigoProducto
@@ -112,7 +113,7 @@ Module Funciones
         FrmRecepcion.TrueDBDetalleNP.Columns(7).Text = Tara
         FrmRecepcion.TrueDBDetalleNP.Columns(8).Text = PesoNetoLb
         FrmRecepcion.TrueDBDetalleNP.Columns(9).Text = PesoNetoKg
-        FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = QQ
+        FrmRecepcion.TrueDBDetalleNP.Columns(10).Text = CantidadSacos
         FrmRecepcion.TrueDBDetalleNP.Columns(11).Text = Precio
         FrmRecepcion.TrueDBDetalleNP.Columns(0).Text = Linea
         FrmRecepcion.TxtNumeroEnsamble.Text = NumeroRecepcion
@@ -184,7 +185,7 @@ Module Funciones
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, PesoNetoLb As Double
 
 
-        PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
+        'PesoNetoLb = Format((PesoNetoKg / 46) * 100, "##,##0.0000")
 
         'If FrmRecepcion.CboTipoDocumento.Text = "Recibo Bascula Manual" Then
         '    Fecha = Format(CDate(FrmRecepcion.DtpFechaManual.Text), "yyyy-MM-dd")
@@ -1650,8 +1651,6 @@ Module Funciones
         End If
 
     End Function
-
-
 
     Public Sub ExportToExcel(ByVal dtTemp As DataTable, ByVal filepath As String)
         Dim strFileName As String = filepath, Registros As Double
