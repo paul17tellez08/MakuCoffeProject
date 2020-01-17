@@ -112,7 +112,7 @@ Partial Class FrmConductor
         Me.LblCodigo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.LblCodigo.Location = New System.Drawing.Point(12, 72)
         Me.LblCodigo.Name = "LblCodigo"
-        Me.LblCodigo.Size = New System.Drawing.Size(52, 15)
+        Me.LblCodigo.Size = New System.Drawing.Size(53, 15)
         Me.LblCodigo.TabIndex = 260
         Me.LblCodigo.Text = "Codigo"
         '
@@ -151,7 +151,7 @@ Partial Class FrmConductor
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(11, 149)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 15)
+        Me.Label1.Size = New System.Drawing.Size(57, 15)
         Me.Label1.TabIndex = 270
         Me.Label1.Text = "Licencia"
         '
@@ -162,7 +162,7 @@ Partial Class FrmConductor
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label4.Location = New System.Drawing.Point(8, 203)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 30)
+        Me.Label4.Size = New System.Drawing.Size(80, 30)
         Me.Label4.TabIndex = 275
         Me.Label4.Text = "Motivo lista" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "negra"
         Me.Label4.Visible = False
@@ -293,7 +293,7 @@ Partial Class FrmConductor
         Me.CheckListaNegra.ForeColor = System.Drawing.Color.White
         Me.CheckListaNegra.Location = New System.Drawing.Point(266, 177)
         Me.CheckListaNegra.Name = "CheckListaNegra"
-        Me.CheckListaNegra.Size = New System.Drawing.Size(97, 19)
+        Me.CheckListaNegra.Size = New System.Drawing.Size(96, 19)
         Me.CheckListaNegra.TabIndex = 279
         Me.CheckListaNegra.Text = "Lista Negra"
         Me.CheckListaNegra.UseVisualStyleBackColor = True
