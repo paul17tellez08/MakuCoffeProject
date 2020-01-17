@@ -615,10 +615,6 @@ Public Class FrmRecepcion
         End If
     End Sub
 
-    Private Sub BbtnNew_Click(ByVal sender As System.Object, ByVal e As DevComponents.DotNetBar.ClickEventArgs)
-        LimpiaRecepcion()
-    End Sub
-
     Private Sub BtnNuevoRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNuevoRec.Click
         LimpiaRecepcion()
     End Sub
