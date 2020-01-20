@@ -82,9 +82,9 @@ Public Class FrmTeclado
 
     Private Sub C1Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1Button12.Click
         If Me.TxtNumero.Text = "" Then
-            Me.TxtNumero.Text = "+"
+            Me.TxtNumero.Text = "#"
         Else
-            Me.TxtNumero.Text = Me.TxtNumero.Text & "+"
+            Me.TxtNumero.Text = Me.TxtNumero.Text & "#"
         End If
     End Sub
 

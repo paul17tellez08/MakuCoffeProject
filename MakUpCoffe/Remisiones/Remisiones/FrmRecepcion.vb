@@ -1,6 +1,6 @@
 Public Class FrmRecepcion
     Public MiConexion As New SqlClient.SqlConnection(Conexion), Año As String, Mes As String, Dia As String, ConsecutivoFacturaSerie As Boolean = False
-    Public CodigoRecepcion As String
+    Public CodigoNotaPeso As String
     Delegate Sub delegado(ByVal data As String)
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -75,9 +75,9 @@ Public Class FrmRecepcion
             Me.BindingImperfeccion.DataSource = DataSet.Tables("Imperfecciones")
             Me.TDGImperfeccion.DataSource = Me.BindingImperfeccion
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
-            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Locked = False
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Locked = True
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Locked = False
+            Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Locked = True
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Width = 95
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(2).Visible = False
             Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
@@ -239,22 +239,6 @@ Public Class FrmRecepcion
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         Me.LblHora.Text = Date.Now.ToLongTimeString
-    End Sub
-
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        '////////////////////////////////////////////////////////////////////////////////////////////////////
-        '/////////////////////////////GRABO ENCABEZADO DE RECEPCION /////////////////////////////////////////////
-        '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
-        If Me.BindingDetalle.Count <> 0 Then
-            GrabaRecepcion(Me.TxtNumeroEnsamble.Text, False)
-            LimpiaRecepcion()
-        Else
-            MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")
-        End If
-
-        If Me.CboTipoPesada.Text = "RePesaje" Then
-            Me.Close()
-        End If
     End Sub
 
     Private Sub CboConductor_TextChanged_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboConductor.TextChanged
@@ -485,20 +469,13 @@ Public Class FrmRecepcion
 
     Private Sub sp_DataReceived(ByVal sender As System.Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles sp.DataReceived
         Dim s As String '= sp.ReadExisting, Pesada As Double
-
         Dim escribeport3 As New delegado(AddressOf Me.mostar)
-
-
-
         s = sp.ReadLine
-
-
         If Len(s) = 19 Then
             If Mid(s, 1, 5) <> "GROSS" Then
                 Exit Sub
             End If
         End If
-
         Select Case Mid(s, 1, 4)
             Case "TARA" : Exit Sub
             Case "NETO" : Exit Sub
@@ -509,21 +486,14 @@ Public Class FrmRecepcion
 
         If Len(s) > 5 Then
             s = SoloNumeros(s)
-
-
             If s = "2263-5025" Then  ''''SOBRE PASA EL " Then  SOLO EMTRIDES---
                 Exit Sub
             End If
-
-
             If s <> "" Then
                 Me.Invoke(escribeport3, s)
             End If
-
         End If
-
     End Sub
-
 
     Sub mostar(ByVal d As String)
         Dim Posicion As Double
@@ -569,44 +539,61 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Columns(6).Text = Pesada
         My.Application.DoEvents()
         GrabaLecturaPeso(Pesada, False)
+        GrabaImperfeccion()
         Me.TrueDBDetalleNP.Row = Posicion + 1
-
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 40
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
-        'Me.TrueDBDetalleNP.Columns(0).Caption = "Psda"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("Precio").Visible = False
-        'Me.TrueDBDetalleNP.Columns(1).Caption = "Código"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Button = False
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Width = 63
-        'Me.TrueDBDetalleNP.Columns(2).Caption = "Descripción"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 200
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
-        'Me.TrueDBDetalleNP.Columns(3).Caption = "Categ"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Width = 50
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(3).Locked = True
-        'Me.TrueDBDetalleNP.Columns(4).Caption = "Estado"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Width = 50
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(4).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 75
-        'Me.TrueDBDetalleNP.Columns(5).Caption = "PesoLb"
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("Cantidad").Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 85
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Button = False
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 75
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 75
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 75
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 50
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Locked = True
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 75
-        'Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Locked = True
     End Sub
+    Public Sub GrabaImperfeccion()
+        Dim count As Integer = Me.TDGImperfeccion.RowCount, i As Integer
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, StrSqlSelect As String
+        Dim StrSqlInsert As String, StrSqlUpdate As String, NumeroEnsamble As String
+        Dim ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBsquedaProductor.Click
+        If CmbSerie.Visible = True Then
+            NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
+        Else
+            NumeroEnsamble = Me.TxtNumeroEnsamble.Text
+        End If
+
+        StrSqlSelect = "SELECT IdDetalleImperfeccion, NumeroRecepcion, Imperfeccion, Porcentaje  FROM  DetalleImperfeccion  WHERE (NumeroRecepcion = N'" & NumeroEnsamble & "')"
+        DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
+        DataAdapter.Fill(DataSet, "DetalleImperfeccion")
+
+        i = 0
+        Do While count > i
+            If Not DataSet.Tables("DetalleImperfeccion").Rows.Count = 0 Then
+                StrSqlInsert = " INSERT INTO [dbo].[DetalleImperfeccion]([NumeroRecepcion],[Imperfeccion],[Porcentaje])" & _
+               " VALUES ('" & NumeroEnsamble & "','" & Me.TDGImperfeccion.Item(i)("Imperfeccion") & "', '" & Me.TDGImperfeccion.Item(i)("%") & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(StrSqlInsert, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+            Else
+                StrSqlUpdate = " UPDATE [dbo].[DetalleImperfeccion] SET [NumeroRecepcion] = '" & NumeroEnsamble & "' ,[Imperfeccion] = '" & Me.TDGImperfeccion.Item(i)("Imperfeccion") & "' ,[Porcentaje] ='" & Me.TDGImperfeccion.Item(i)("%") & "'  WHERE  (IdDetalleImperfeccion = '" & Me.TDGImperfeccion.Item(i)("IdDetalleImperfeccion") & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+            End If
+            i = i + 1
+        Loop
+
+        'Do While Registros > i
+        '    If Me.TDGridDetalleRecibos.Item(i)("Aplicar") = True Then
+        '        '____________________________________________
+        '        'CONTADOR PARA VER CUANTOS VERDADEROS SON 
+        '        '____________________________________________
+        '        ContaTrue = ContaTrue + 1
+
+        '        PesoBruto = Me.TDGridDetalleRecibos.Item(i)("PesoNeto") + PesoBruto
+        '        valorCor = Me.TDGridDetalleRecibos.Item(i)("ValorBrutoC$") + valorCor
+        '        ValorDol = Me.TDGridDetalleRecibos.Item(i)("ValorBruto$") + ValorDol
+        '        i = i + 1
+        '    Else
+        '        i = i + 1
+        '    End If
+        'Loop
+    End Sub
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Quien = "BusquedaProductor"
         My.Forms.FrmConsultas.Text = "Consulta Productor Recepción"
         My.Forms.FrmConsultas.ShowDialog()
@@ -620,17 +607,56 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub BtnGuardarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardarRec.Click
-        If Me.BindingDetalle.Count <> 0 Then
-            GrabaRecepcion(Me.TxtNumeroEnsamble.Text, False)
-            LimpiaRecepcion()
+        Dim NumeroEnsamble As String
+        If CmbSerie.Visible = True Then
+            NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
         Else
-            MsgBox("Seleccione Productos para poder Grabar", MsgBoxStyle.Critical, "Zeus Inventario")
+            NumeroEnsamble = Me.TxtNumeroEnsamble.Text
         End If
 
-        If Me.CboTipoPesada.Text = "RePesaje" Then
-            Me.Close()
+        If VerificacionNotasdePeso() = True Then
+            GrabaRecepcion(NumeroEnsamble, False, 1)
+            GrabaImperfeccion()
+            LimpiaRecepcion()
+        Else
+            Exit Sub
         End If
     End Sub
+    Public Function VerificacionNotasdePeso() As Boolean
+        If Me.CboPlaca.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione una Placa de vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboConductor.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Conductor del vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboProductor.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Productor", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboRecibimosde.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione o digite de quien Recibió el Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboFinca.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione una Finca", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboPlantillo.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Plantillo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboCalidad.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Calidad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboVariedad.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Variedad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.CboCodigoBodega.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Bodega", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.BindingDetalle.Count = 0 Then
+            MsgBox("Para poder continuar con la acción de guardado por favor debe Realizar Pesadas", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
     Private Sub BtnConectarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConectarRec.Click
         My.Forms.FrmPuertos.ShowDialog()
@@ -754,18 +780,30 @@ Public Class FrmRecepcion
         My.Forms.FrmConsultas.Text = "Consulta Recibo"
         My.Forms.FrmConsultas.ShowDialog()
         If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
-            CodigoRecepcion = FrmConsultas.Codigo
-            Me.TxtNumeroEnsamble.Text = CodigoRecepcion.Substring(2)
+            CodigoNotaPeso = FrmConsultas.Codigo
+            If CodigoNotaPeso.Length > 6 Then
+                Me.TxtNumeroEnsamble.Text = CodigoNotaPeso.Substring(2)
+                Me.CmbSerie.Text = CodigoNotaPeso.Substring(1, 1)
+            Else
+                Me.TxtNumeroEnsamble.Text = CodigoNotaPeso
+            End If
         End If
     End Sub
 
     Private Sub TxtNumeroEnsamble_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtNumeroEnsamble.TextChanged
         Dim StrSqlSelect As String, Sql As String, i As Integer, Numero As String
-        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, NumeroEnsamble As String
 
-        StrSqlSelect = "SELECT     NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado,   FechaHora, RecibimosDe, IdFinca, Calidad, Fermentado, Moho, Estado, Idvariedad, IdPlantillo, TipoPesada, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & Me.TxtNumeroEnsamble.Text & "')  "
+        If CmbSerie.Visible = True Then
+            NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
+        Else
+            NumeroEnsamble = Me.TxtNumeroEnsamble.Text
+        End If
+
+        StrSqlSelect = "SELECT     NumeroRecepcion, TipoRecepcion, Fecha, Cod_Proveedor, Cod_SubProveedor, Conductor, Id_identificacion, Id_Placa, Cod_Bodega, Observaciones, SubTotal, Telefono, Cancelar, Peso, Lote, Contabilizado,   FechaHora, RecibimosDe, IdFinca, Calidad, Fermentado, Moho, Estado, Idvariedad, IdPlantillo, TipoPesada, Seleccion, Activo FROM  Recepcion   WHERE (NumeroRecepcion = N'" & NumeroEnsamble & "')  "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "SeleccionRecep")
+
         If DataSet.Tables("SeleccionRecep").Rows.Count > 0 Then
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
                 CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
@@ -835,17 +873,30 @@ Public Class FrmRecepcion
                 Me.CboTipoPesada.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoPesada")
             End If
 
-
-
-
-
+            StrSqlSelect = "SELECT  IdDetalleImperfeccion, NumeroRecepcion, Imperfeccion, Porcentaje  FROM  DetalleImperfeccion   WHERE  (NumeroRecepcion = N'" & NumeroEnsamble & "')"
+            MiConexion.Close()
+            MiConexion.Open()
+            DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
+            DataAdapter.Fill(DataSet, "Imperfecciones")
+            If Not DataSet.Tables("Imperfecciones").Rows.Count = 0 Then
+                Me.BindingImperfeccion.DataSource = DataSet.Tables("Imperfecciones")
+                Me.TDGImperfeccion.DataSource = Me.BindingImperfeccion
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Visible = False
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(0).Locked = True
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Visible = False
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(1).Locked = True
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(2).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(2).Width = 95
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
+                Me.TDGImperfeccion.Splits.Item(0).DisplayColumns(3).Width = 63
+                Me.TDGImperfeccion.Columns(3).Caption = "%"
+            End If
+            MiConexion.Close()
         End If
-
-
-
     End Sub
 
     Private Sub BtnRecpSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnRecpSalir.Click
+
         Me.Close()
     End Sub
 
@@ -998,9 +1049,6 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub CboTipoPesada_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboTipoPesada.SelectedIndexChanged
-
-
-
         If Me.CboTipoPesada.Text = "PESADA BASCULA" Then
             Me.BtnPesada.Enabled = False
             Me.BtnPesada.Visible = False
@@ -1026,27 +1074,47 @@ Public Class FrmRecepcion
         End If
     End Sub
 
-    Private Sub TDGImperfeccion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TDGImperfeccion.Click
+    Private Sub TDGImperfeccion_ColEdit(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.ColEdit
+        Dim Posicion As Integer = Me.TDGImperfeccion.Row
 
+        If Me.TDGImperfeccion.Col <> 3 Then
+            Exit Sub
+        Else
+            FrmTeclado.ShowDialog()
+            If FrmTeclado.Numero > 100 Then
+                MsgBox("El número no puede ser mayor a 100%", MsgBoxStyle.Exclamation, "Notas de peso")
+                Me.TDGImperfeccion.Columns("%").Text = "0.00"
+                sumagriddistribucion()
+                Me.TDGImperfeccion.Row = Me.TDGImperfeccion.Row + 1
+            Else
+                Me.TDGImperfeccion.Columns("%").Text = FrmTeclado.Numero
+                sumagriddistribucion()
+                If CDbl(Me.TxtImperfec.Text) > 100 Then
+                    MsgBox("El número total de imperfeccion no puede ser mayor a 100%", MsgBoxStyle.Exclamation, "Notas de peso")
+                    Me.TDGImperfeccion.Columns("%").Text = "0.00"
+                    sumagriddistribucion()
+                End If
+            End If
+        End If
     End Sub
-
     Private Sub TDGImperfeccion_AfterColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.AfterColUpdate
         sumagriddistribucion()
     End Sub
+
     Public Sub sumagriddistribucion()
         Dim Registros As Double, TotalProcentaje As Double, i As Integer
-
         Registros = Me.TDGImperfeccion.RowCount
         i = 0
         Do While Registros > i
-            'VALIDAMOS EL NUMERO DE LIQUIDACION DE RECIBOS DIRECTOS AUTOMATICOS  
-            '__________________________________________________________________
-            If IsDBNull(Me.TDGImperfeccion.Item(i)(3)) = True Or Me.TDGImperfeccion.Item(i)(3).ToString().Trim(" ") = "" Then
+            If IsDBNull(Me.TDGImperfeccion.Item(i)(3)) = True Or Me.TDGImperfeccion.Item(i)(3).ToString().Trim() = "" Then
                 Me.TDGImperfeccion.Item(i)(3) = 0.0
             End If
             TotalProcentaje = Me.TDGImperfeccion.Item(i)(3) + TotalProcentaje
             i = i + 1
         Loop
         Me.TxtImperfec.Text = TotalProcentaje
+    End Sub
+
+    Private Sub TDGImperfeccion_BeforeColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.BeforeColUpdateEventArgs) Handles TDGImperfeccion.BeforeColUpdate
     End Sub
 End Class

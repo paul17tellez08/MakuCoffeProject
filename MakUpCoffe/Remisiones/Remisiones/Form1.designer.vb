@@ -255,6 +255,7 @@ Partial Class MDIParent1
         Me.Controls.Add(Me.C1StatusBar1)
         Me.Controls.Add(Me.C1Ribbon1)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.Name = "MDIParent1"
         Me.Text = "Sistema de Recepcion"

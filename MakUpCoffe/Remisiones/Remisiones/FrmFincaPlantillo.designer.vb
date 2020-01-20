@@ -120,7 +120,7 @@ Partial Class FrmFincaPlantillo
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(577, 238)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(188, 15)
+        Me.Label1.Size = New System.Drawing.Size(190, 15)
         Me.Label1.TabIndex = 218
         Me.Label1.Text = "Comarcas del municipio de : "
         Me.Label1.Visible = False
@@ -202,7 +202,7 @@ Partial Class FrmFincaPlantillo
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label8.Location = New System.Drawing.Point(572, 191)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(144, 15)
+        Me.Label8.Size = New System.Drawing.Size(146, 15)
         Me.Label8.TabIndex = 208
         Me.Label8.Text = "Nombre del Municipio"
         Me.Label8.Visible = False
@@ -214,7 +214,7 @@ Partial Class FrmFincaPlantillo
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(577, 295)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(98, 15)
+        Me.Label2.Size = New System.Drawing.Size(96, 15)
         Me.Label2.TabIndex = 209
         Me.Label2.Text = "Departamento"
         Me.Label2.Visible = False
@@ -326,7 +326,7 @@ Partial Class FrmFincaPlantillo
         Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label19.Location = New System.Drawing.Point(14, 29)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(78, 15)
+        Me.Label19.Size = New System.Drawing.Size(79, 15)
         Me.Label19.TabIndex = 219
         Me.Label19.Text = "Fincas       :"
         '
@@ -413,7 +413,7 @@ Partial Class FrmFincaPlantillo
         Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label18.Location = New System.Drawing.Point(8, 188)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(104, 15)
+        Me.Label18.Size = New System.Drawing.Size(103, 15)
         Me.Label18.TabIndex = 136
         Me.Label18.Text = "Notas de Cata :"
         '
@@ -432,7 +432,7 @@ Partial Class FrmFincaPlantillo
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label10.Location = New System.Drawing.Point(13, 157)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(74, 15)
+        Me.Label10.Size = New System.Drawing.Size(75, 15)
         Me.Label10.TabIndex = 130
         Me.Label10.Text = "Embalaje  :"
         '
@@ -451,7 +451,7 @@ Partial Class FrmFincaPlantillo
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label7.Location = New System.Drawing.Point(13, 125)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(76, 15)
+        Me.Label7.Size = New System.Drawing.Size(78, 15)
         Me.Label7.TabIndex = 128
         Me.Label7.Text = "Altitud      :"
         '
@@ -496,7 +496,7 @@ Partial Class FrmFincaPlantillo
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.Label3.Location = New System.Drawing.Point(13, 62)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(78, 15)
+        Me.Label3.Size = New System.Drawing.Size(76, 15)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Productor :"
         '
@@ -555,7 +555,7 @@ Partial Class FrmFincaPlantillo
         Me.LbPlantillo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.LbPlantillo.Location = New System.Drawing.Point(5, 8)
         Me.LbPlantillo.Name = "LbPlantillo"
-        Me.LbPlantillo.Size = New System.Drawing.Size(140, 15)
+        Me.LbPlantillo.Size = New System.Drawing.Size(144, 15)
         Me.LbPlantillo.TabIndex = 224
         Me.LbPlantillo.Text = "Plantillos de la Finca :"
         '

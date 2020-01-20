@@ -86,9 +86,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub RibbonButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton1.Click
-        Quien = "Calidad-Categoria"
-        'My.Forms.FrmRecepcion.MdiParent = Me
-        My.Forms.TestRibon.Show()
+         Me.Close()
     End Sub
 
     Private Sub RibbonButton30_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -129,5 +127,10 @@ Public Class MDIParent1
     Private Sub RibonUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibonUsuarios.Click
         My.Forms.FrmUsuarios().MdiParent = Me
         My.Forms.FrmUsuarios().Show()
+    End Sub
+
+    Private Sub RibbonButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton4.Click
+        Quien = "Calidad-Categoria"
+        My.Forms.FrmRecepcion.Show()
     End Sub
 End Class

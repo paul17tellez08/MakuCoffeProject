@@ -97,7 +97,6 @@ Partial Class FrmRecepcion
         Me.Label9 = New System.Windows.Forms.Label
         Me.TxtHumedad = New System.Windows.Forms.TextBox
         Me.Label10 = New System.Windows.Forms.Label
-        Me.BtnBsquedaProductor = New System.Windows.Forms.Button
         Me.TxtImperfec = New System.Windows.Forms.TextBox
         Me.CboCodigoBodega = New C1.Win.C1List.C1Combo
         Me.BtnPesada = New System.Windows.Forms.Button
@@ -1083,7 +1082,6 @@ Partial Class FrmRecepcion
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.TxtHumedad)
         Me.GroupBox1.Controls.Add(Me.Label10)
-        Me.GroupBox1.Controls.Add(Me.BtnBsquedaProductor)
         Me.GroupBox1.Controls.Add(Me.TxtImperfec)
         Me.GroupBox1.Controls.Add(Me.CboCodigoBodega)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -1202,20 +1200,6 @@ Partial Class FrmRecepcion
         Me.Label10.TabIndex = 254
         Me.Label10.Text = "% Total de Imperfección :"
         '
-        'BtnBsquedaProductor
-        '
-        Me.BtnBsquedaProductor.BackColor = System.Drawing.Color.Transparent
-        Me.BtnBsquedaProductor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(152, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(3, Byte), Integer))
-        Me.BtnBsquedaProductor.FlatAppearance.BorderSize = 0
-        Me.BtnBsquedaProductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBsquedaProductor.Image = Global.Remisiones.My.Resources.Resources.Lupa32
-        Me.BtnBsquedaProductor.Location = New System.Drawing.Point(648, 15)
-        Me.BtnBsquedaProductor.Name = "BtnBsquedaProductor"
-        Me.BtnBsquedaProductor.Size = New System.Drawing.Size(30, 30)
-        Me.BtnBsquedaProductor.TabIndex = 171
-        Me.BtnBsquedaProductor.UseVisualStyleBackColor = False
-        Me.BtnBsquedaProductor.Visible = False
-        '
         'TxtImperfec
         '
         Me.TxtImperfec.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1272,9 +1256,9 @@ Partial Class FrmRecepcion
         Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
         Me.BtnPesada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPesada.Location = New System.Drawing.Point(648, 47)
+        Me.BtnPesada.Location = New System.Drawing.Point(648, 19)
         Me.BtnPesada.Name = "BtnPesada"
-        Me.BtnPesada.Size = New System.Drawing.Size(151, 79)
+        Me.BtnPesada.Size = New System.Drawing.Size(151, 107)
         Me.BtnPesada.TabIndex = 245
         Me.BtnPesada.Text = " PESADA"
         Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1649,7 +1633,6 @@ Partial Class FrmRecepcion
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents BtnAgrePlantillo As System.Windows.Forms.Button
-    Friend WithEvents BtnBsquedaProductor As System.Windows.Forms.Button
     Friend WithEvents TxtColor As System.Windows.Forms.TextBox
     Friend WithEvents TxtModelo As System.Windows.Forms.TextBox
     Friend WithEvents TxtMarca As System.Windows.Forms.TextBox

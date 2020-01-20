@@ -59,7 +59,7 @@ Partial Class FrmEntrada
         Me.CboUsuario.EditorFont = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
         Me.CboUsuario.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.CboUsuario.EditorHeight = 21
-        Me.CboUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboUsuario.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboUsuario.Images.Add(CType(resources.GetObject("CboUsuario.Images"), System.Drawing.Image))
         Me.CboUsuario.ItemHeight = 15
         Me.CboUsuario.Location = New System.Drawing.Point(258, 78)
@@ -80,11 +80,11 @@ Partial Class FrmEntrada
         '
         Me.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPassword.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.txtPassword.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.txtPassword.Location = New System.Drawing.Point(258, 145)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
         Me.txtPassword.Size = New System.Drawing.Size(223, 26)
         Me.txtPassword.TabIndex = 1
         '
@@ -172,7 +172,7 @@ Partial Class FrmEntrada
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.White
         Me.PictureBox3.Image = Global.Remisiones.My.Resources.Resources.UseersLog
-        Me.PictureBox3.Location = New System.Drawing.Point(1, 55)
+        Me.PictureBox3.Location = New System.Drawing.Point(3, 55)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(157, 153)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
