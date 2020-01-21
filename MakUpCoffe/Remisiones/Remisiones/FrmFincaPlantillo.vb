@@ -125,10 +125,10 @@ Public Class FrmFincaPlantillo
     End Sub
 
     Private Sub ButtonGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonGuardar.Click
-        Dim Count As Integer = DgvPlantillos.Rows.Count, i As Integer = 1
+        Dim Count As Integer = DgvPlantillos.Rows.Count, i As Integer = 0, CodigoFinca As Integer
         Dim DataSet1 As New DataSet, DataAdapter1 As New SqlClient.SqlDataAdapter
 
-        StrSqlSelect = "SELECT  IdFinca, IdProductor, NomFinca, IdComarca, Altitud, NotasdeCata, Emblaje, FechaActualizacion FROM Finca WHERE (NomFinca = N'" & Me.CboFinca.Text & "')"
+        StrSqlSelect = "SELECT  IdFinca, IdProductor, NomFinca, IdComarca, Altitud, NotasdeCata, Emblaje, FechaActualizacion FROM Finca WHERE (IdFinca = N'" & Me.CboFinca.SelectedValue & "')"
         DataAdapter1 = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter1.Fill(DataSet1, "DatosFincas2")
 
@@ -138,10 +138,17 @@ Public Class FrmFincaPlantillo
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlInsert, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
+
             If iResultado = 1 Then
                 MsgBox("FINCA GUARDADA CON EXITO", MsgBoxStyle.Exclamation, "Finca")
-            Else
-                MsgBox("ALGO SALIO MAL ASEGURESE QUE LA INFORMACION ESTA CORRECTA, CONTACTESE CON SOPORTE", MsgBoxStyle.Exclamation, "Finca")
+                StrSqlSelect = "SELECT IdFinca, Activo   FROM Finca  WHERE (Activo = 1)ORDER BY IdFinca DESC"
+                DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
+                DataAdapter.Fill(DataSet, "ListaFincaDESC")
+                If Not DataSet1.Tables("ListaFincaDESC").Rows.Count = 0 Then
+                    CodigoFinca = DataSet.Tables("ListaFincaDESC").Rows(0)("IdFinca")
+                Else
+                    MsgBox("ALGO SALIO MAL ASEGURESE QUE LA INFORMACION ESTA CORRECTA, CONTACTESE CON SOPORTE", MsgBoxStyle.Exclamation, "Finca")
+                End If
             End If
             MiConexion.Close()
         Else
@@ -152,24 +159,23 @@ Public Class FrmFincaPlantillo
             MiConexion.Close()
             If iResultado = 1 Then
                 MsgBox("FINCA ACTULIZADA CON EXITO", MsgBoxStyle.Exclamation, "Finca")
+                CodigoFinca = Me.CboFinca.SelectedValue
             Else
                 MsgBox("ALGO SALIO MAL ASEGURESE QUE LA INFORMACION ESTA CORRECTA, CONTACTESE CON SOPORTE", MsgBoxStyle.Exclamation, "Finca")
             End If
         End If
 
-        StrSqlSelect = "SELECT IdFinca, IdProductor, NomFinca, IdComarca, Altitud, NotasdeCata, Emblaje, FechaActualizacion, Activo  FROM Finca  ORDER BY IdFinca DESC"
-        DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
-        DataAdapter.Fill(DataSet, "ListaFincaDESC")
+
         Do While Count > i
             If Me.DgvPlantillos.Rows(i).Cells(0).Value = 0 Then
                 StrSqlInsert = " INSERT INTO [dbo].[Plantillo]([Plantillo] ,[IdFinca],[IdVariedad],[Activo])" & _
-               " VALUES ('" & Me.DgvPlantillos.Rows(i).Cells(1).Value & "','" & DataSet.Tables("ListaFincaDESC").Rows(0)("IdFinca") & "',1,1)"
+               " VALUES ('" & Me.DgvPlantillos.Rows(i).Cells(1).Value & "','" & CodigoFinca & "',1,1)"
                 MiConexion.Open()
                 ComandoUpdate = New SqlClient.SqlCommand(StrSqlInsert, MiConexion)
                 iResultado = ComandoUpdate.ExecuteNonQuery
                 MiConexion.Close()
             Else
-                StrSqlUpdate = " UPDATE [dbo].[Plantillo] SET [Plantillo] ='" & Me.DgvPlantillos.Rows(i).Cells(1).Value & "'  ,[IdFinca] = '" & DataSet.Tables("ListaFincaDESC").Rows(0)("IdFinca") & "'  ,[IdVariedad] ='" & Me.DgvPlantillos.Rows(i).Cells(2).Value & "'  ,[Activo] = 1  WHERE  (IdPlantillo = '" & Me.DgvPlantillos.Rows(i).Cells(0).Value & "')"
+                StrSqlUpdate = " UPDATE [dbo].[Plantillo] SET [Plantillo] ='" & Me.DgvPlantillos.Rows(i).Cells(1).Value & "'  ,[IdFinca] = '" & CodigoFinca & "'  ,[IdVariedad] = 1  ,[Activo] = 1  WHERE  (IdPlantillo = '" & Me.DgvPlantillos.Rows(i).Cells(0).Value & "')"
                 MiConexion.Open()
                 ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
                 iResultado = ComandoUpdate.ExecuteNonQuery

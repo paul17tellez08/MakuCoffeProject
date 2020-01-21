@@ -61,7 +61,6 @@ Partial Class FrmRecepcion
         Me.CboTipoRecepcion = New System.Windows.Forms.ComboBox
         Me.lbltipo = New System.Windows.Forms.Label
         Me.LblSucursal = New System.Windows.Forms.Label
-        Me.LblPeso = New System.Windows.Forms.Label
         Me.txtsubtotal = New System.Windows.Forms.TextBox
         Me.sp = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -500,7 +499,7 @@ Partial Class FrmRecepcion
         Me.BtnAgreFinca.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
         Me.BtnAgreFinca.Location = New System.Drawing.Point(762, 66)
         Me.BtnAgreFinca.Name = "BtnAgreFinca"
-        Me.BtnAgreFinca.Size = New System.Drawing.Size(32, 30)
+        Me.BtnAgreFinca.Size = New System.Drawing.Size(30, 30)
         Me.BtnAgreFinca.TabIndex = 264
         Me.BtnAgreFinca.UseVisualStyleBackColor = True
         '
@@ -715,18 +714,6 @@ Partial Class FrmRecepcion
         Me.LblSucursal.Size = New System.Drawing.Size(181, 15)
         Me.LblSucursal.TabIndex = 185
         Me.LblSucursal.Text = "RECEPCION DE PRODUCTOS"
-        '
-        'LblPeso
-        '
-        Me.LblPeso.AutoSize = True
-        Me.LblPeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPeso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.LblPeso.Location = New System.Drawing.Point(997, 187)
-        Me.LblPeso.Name = "LblPeso"
-        Me.LblPeso.Size = New System.Drawing.Size(49, 24)
-        Me.LblPeso.TabIndex = 228
-        Me.LblPeso.Text = "0.00"
-        Me.LblPeso.Visible = False
         '
         'txtsubtotal
         '
@@ -1229,6 +1216,7 @@ Partial Class FrmRecepcion
         Me.CboCodigoBodega.EditorFont = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.CboCodigoBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.CboCodigoBodega.EditorHeight = 18
+        Me.CboCodigoBodega.Enabled = False
         Me.CboCodigoBodega.Images.Add(CType(resources.GetObject("CboCodigoBodega.Images"), System.Drawing.Image))
         Me.CboCodigoBodega.ItemHeight = 35
         Me.CboCodigoBodega.Location = New System.Drawing.Point(446, 19)
@@ -1255,13 +1243,12 @@ Partial Class FrmRecepcion
         Me.BtnPesada.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
-        Me.BtnPesada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnPesada.Location = New System.Drawing.Point(648, 19)
         Me.BtnPesada.Name = "BtnPesada"
         Me.BtnPesada.Size = New System.Drawing.Size(151, 107)
         Me.BtnPesada.TabIndex = 245
         Me.BtnPesada.Text = " PESADA"
-        Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnPesada.UseVisualStyleBackColor = True
         Me.BtnPesada.Visible = False
         '
@@ -1492,7 +1479,6 @@ Partial Class FrmRecepcion
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(997, 683)
         Me.Controls.Add(Me.GroupBox7)
-        Me.Controls.Add(Me.LblPeso)
         Me.Controls.Add(Me.CboTipoRecepcion)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.ChkTaraSaco)
@@ -1561,7 +1547,6 @@ Partial Class FrmRecepcion
     Friend WithEvents CboTipoPesada As System.Windows.Forms.ComboBox
     Friend WithEvents lbltipo As System.Windows.Forms.Label
     Friend WithEvents lblbdega As System.Windows.Forms.Label
-    Friend WithEvents LblPeso As System.Windows.Forms.Label
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents txtsubtotal As System.Windows.Forms.TextBox
     Friend WithEvents BindingDetalle As System.Windows.Forms.BindingSource

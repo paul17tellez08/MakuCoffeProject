@@ -63,7 +63,7 @@ Public Class FrmConductor
                 Me.TxtLicencia.Text = DataSet.Tables("Conductor").Rows(0)("Licencia")
             End If
 
-            CheckActivo.Checked = DataSet.Tables("Conductor").Rows(0)("ListaNegra")
+            CheckActivo.Checked = DataSet.Tables("Conductor").Rows(0)("Activo")
             CheckListaNegra.Checked = DataSet.Tables("Conductor").Rows(0)("ListaNegra")
 
             If Not IsDBNull(DataSet.Tables("Conductor").Rows(0)("RazonListaNegra")) Then

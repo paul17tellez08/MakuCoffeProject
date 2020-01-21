@@ -114,11 +114,11 @@ Partial Class FrmEntrada
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.White
-        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(12, 18)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(196, 18)
+        Me.Label2.Size = New System.Drawing.Size(256, 24)
         Me.Label2.TabIndex = 32
         Me.Label2.Text = "INGRESO DE USUARIOS"
         '
@@ -128,7 +128,7 @@ Partial Class FrmEntrada
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label4.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label4.Location = New System.Drawing.Point(400, 228)
+        Me.Label4.Location = New System.Drawing.Point(405, 212)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 16)
         Me.Label4.TabIndex = 35
@@ -140,7 +140,7 @@ Partial Class FrmEntrada
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label5.Location = New System.Drawing.Point(243, 229)
+        Me.Label5.Location = New System.Drawing.Point(266, 212)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(64, 16)
         Me.Label5.TabIndex = 36
@@ -150,9 +150,9 @@ Partial Class FrmEntrada
         '
         Me.PicSalir.BackColor = System.Drawing.Color.Transparent
         Me.PicSalir.Image = Global.Remisiones.My.Resources.Resources.buttonlog
-        Me.PicSalir.Location = New System.Drawing.Point(370, 214)
+        Me.PicSalir.Location = New System.Drawing.Point(374, 200)
         Me.PicSalir.Name = "PicSalir"
-        Me.PicSalir.Size = New System.Drawing.Size(120, 44)
+        Me.PicSalir.Size = New System.Drawing.Size(120, 40)
         Me.PicSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PicSalir.TabIndex = 34
         Me.PicSalir.TabStop = False
@@ -161,9 +161,9 @@ Partial Class FrmEntrada
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.Remisiones.My.Resources.Resources.buttonlog
-        Me.PictureBox1.Location = New System.Drawing.Point(216, 214)
+        Me.PictureBox1.Location = New System.Drawing.Point(239, 200)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(120, 44)
+        Me.PictureBox1.Size = New System.Drawing.Size(120, 40)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 33
         Me.PictureBox1.TabStop = False
@@ -172,9 +172,9 @@ Partial Class FrmEntrada
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.White
         Me.PictureBox3.Image = Global.Remisiones.My.Resources.Resources.UseersLog
-        Me.PictureBox3.Location = New System.Drawing.Point(3, 55)
+        Me.PictureBox3.Location = New System.Drawing.Point(13, 54)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(157, 153)
+        Me.PictureBox3.Size = New System.Drawing.Size(146, 141)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 31
         Me.PictureBox3.TabStop = False
@@ -183,9 +183,9 @@ Partial Class FrmEntrada
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Login
-        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox2.Location = New System.Drawing.Point(0, -1)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(481, 271)
+        Me.PictureBox2.Size = New System.Drawing.Size(481, 254)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 29
         Me.PictureBox2.TabStop = False
@@ -195,7 +195,7 @@ Partial Class FrmEntrada
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(500, 270)
+        Me.ClientSize = New System.Drawing.Size(509, 248)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.PicSalir)

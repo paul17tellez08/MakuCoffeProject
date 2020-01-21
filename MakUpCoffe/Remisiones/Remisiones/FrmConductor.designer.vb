@@ -271,9 +271,9 @@ Partial Class FrmConductor
         Me.C1Button2.FlatAppearance.BorderSize = 0
         Me.C1Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.C1Button2.Image = Global.Remisiones.My.Resources.Resources.Lupa323
-        Me.C1Button2.Location = New System.Drawing.Point(330, 61)
+        Me.C1Button2.Location = New System.Drawing.Point(323, 64)
         Me.C1Button2.Name = "C1Button2"
-        Me.C1Button2.Size = New System.Drawing.Size(32, 32)
+        Me.C1Button2.Size = New System.Drawing.Size(30, 30)
         Me.C1Button2.TabIndex = 263
         Me.C1Button2.UseVisualStyleBackColor = True
         '

@@ -329,6 +329,12 @@
     <Compile Include="Reportes\ArepRemision.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ArepTikectRecepcion.Designer.vb">
+      <DependentUpon>ArepTikectRecepcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ArepTikectRecepcion.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\SrpCertificado.Designer.vb">
       <DependentUpon>SrpCertificado.vb</DependentUpon>
     </Compile>
@@ -444,6 +450,10 @@
     <EmbeddedResource Include="Reportes\ArepRemision.resx">
       <DependentUpon>ArepRemision.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ArepTikectRecepcion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ArepTikectRecepcion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\SrpCertificado.resx">
       <DependentUpon>SrpCertificado.vb</DependentUpon>

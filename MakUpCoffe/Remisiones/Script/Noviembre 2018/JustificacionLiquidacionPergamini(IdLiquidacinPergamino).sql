@@ -1,1 +1,0 @@
-EXEC sp_RENAME 'JustificacionLiquidacionPergamino.IdLiquidacion' , 'IdLiquidacionPergamino', 'COLUMN'
