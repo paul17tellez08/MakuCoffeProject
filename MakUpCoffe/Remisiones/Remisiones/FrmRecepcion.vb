@@ -1,6 +1,6 @@
 Public Class FrmRecepcion
     Public MiConexion As New SqlClient.SqlConnection(Conexion), Año As String, Mes As String, Dia As String, ConsecutivoSerieActivo As Boolean = False
-    Public CodigoNotaPeso As String, IdProductor As Integer = 0, ActualizarSerie As Boolean = False
+    Public CodigoNotaPeso As String, IdProductor As Integer = 0, ActualizarSerie As Boolean = False, TotalPesoLb As Double, TotalPesoKG As Double
     Delegate Sub delegado(ByVal data As String)
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -59,7 +59,7 @@ Public Class FrmRecepcion
         'Me.CboRecibimosde.DataSource = DataSet.Tables("RecibimosDe")
 
         '///////////////////////////////CARGO EL DETALLE DE PESADAS/////////////////////////////////////////////////////
-        LimpiarGridPesada()
+        PegarGridPesada(-7878)
 
         Me.DTPFecha.Text = Format(Now, "dd/MM/yyyy")
         Año = Microsoft.VisualBasic.DateAndTime.Year(Now)
@@ -105,79 +105,7 @@ Public Class FrmRecepcion
         MiConexion.Close()
     End Sub
 
-    Private Sub LimpiarGridPesada()
-        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
-        Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
 
-        sql = "SELECT  id_Eventos As Linea,Cod_Productos, Descripcion_Producto, Calidad, Estado, QQ As Saco, Cantidad, PesoKg, Tara, PesoNetoLb, PesoNetoKg, Precio  FROM Detalle_Recepcion  WHERE (NumeroRecepcion = N'-100000')"
-        DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
-        DataAdapter.Fill(DataSet, "DetalleRecepcion")
-        Me.BindingDetalle.DataSource = DataSet.Tables("DetalleRecepcion")
-        Me.TrueDBDetalleNP.DataSource = Me.BindingDetalle
-
-        Me.TrueDBDetalleNP.Columns(0).Caption = "N°"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Width = 90
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(0).Locked = True
-
-        Me.TrueDBDetalleNP.Columns(1).Caption = "CODVARIEDAD"
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Button = True
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(1).Width = 63
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(1).Visible = False
-
-        Me.TrueDBDetalleNP.Columns(2).Caption = "VARIEDAD"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Width = 300
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(2).Locked = True
-
-        Me.TrueDBDetalleNP.Columns(3).Caption = "CALIDAD"
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Width = 50
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(3).Locked = True
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("CALIDAD").Visible = False
-
-        Me.TrueDBDetalleNP.Columns(4).Caption = "ESTADO"
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Width = 50
-        'Me.TxtNombreProducto.Splits.Item(0).DisplayColumns(4).Locked = True
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns("ESTADO").Visible = False
-
-        Me.TrueDBDetalleNP.Columns(5).Caption = "SACOS"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Width = 95
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(5).Locked = True
-
-
-        Me.TrueDBDetalleNP.Columns(6).Caption = "PESO/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Width = 95
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(6).Locked = True
-
-        Me.TrueDBDetalleNP.Columns(7).Caption = "PESO/kg"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Width = 94
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(7).Locked = True
-
-
-        Me.TrueDBDetalleNP.Columns(8).Caption = "TARA/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Width = 95
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(8).Locked = True
-
-        Me.TrueDBDetalleNP.Columns(9).Caption = "P.NETO/lb"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Width = 95
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(9).Locked = True
-
-        Me.TrueDBDetalleNP.Columns(10).Caption = "P.NETO/kg"
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Width = 95
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(10).Locked = True
-
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Width = 93
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Locked = True
-        Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Visible = False
-
-    End Sub
 
     Private Sub PegarGridPesada(ByVal NumeroNtPeso As String)
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -252,6 +180,7 @@ Public Class FrmRecepcion
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Locked = True
         Me.TrueDBDetalleNP.Splits.Item(0).DisplayColumns(11).Visible = False
 
+        SumaDetalleNotaPeso()
     End Sub
 
 
@@ -594,14 +523,22 @@ Public Class FrmRecepcion
     Private Sub CmdPesada_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPesada.Click
         Dim Pesada As Double, Posicion As Double
         Me.TrueDBDetalleNP.Row = Me.TrueDBDetalleNP.RowCount
-        FrmTeclado.ShowDialog()
-        Pesada = FrmTeclado.Numero
-        Me.TrueDBDetalleNP.Columns(6).Text = Pesada
-        My.Application.DoEvents()
-        GrabaLecturaPeso(Pesada, ConsecutivoSerieActivo)
-        Me.TrueDBDetalleNP.Row = Me.TrueDBDetalleNP.RowCount + 1
+        If VerificacionNotasdePeso(2) = True Then
+            FrmTeclado.ShowDialog()
+            Pesada = FrmTeclado.Numero
+            If Pesada <> 0 Then
+                Me.TrueDBDetalleNP.Columns(6).Text = Pesada
+                My.Application.DoEvents()
+                GrabaLecturaPeso(Pesada, ConsecutivoSerieActivo)
+                SumaDetalleNotaPeso()
+                Me.TrueDBDetalleNP.Row = Me.TrueDBDetalleNP.RowCount + 1
+            Else
+                MsgBox("El Peso no puede ser 0.00 ", MsgBoxStyle.Exclamation, "Notas de Peso")
+                Exit Sub
+            End If
+        End If
     End Sub
-   
+
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Quien = "BusquedaProductor"
         My.Forms.FrmConsultas.Text = "Consulta Productor Recepción"
@@ -614,7 +551,25 @@ Public Class FrmRecepcion
     Private Sub BtnNuevoRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNuevoRec.Click
         LimpiaRecepcion()
         LimpiarImperfeccion()
-        LimpiarGridPesada()
+        PegarGridPesada(-7878)
+    End Sub
+    Public Sub SumaDetalleNotaPeso()
+
+        Dim Registros As Double, i As Integer
+        Registros = Me.TrueDBDetalleNP.RowCount - 1
+        i = 0
+        Do While Registros > i
+            If IsDBNull(Me.TrueDBDetalleNP.Item(i)(9)) = True Or Me.TrueDBDetalleNP.Item(i)(9).ToString().Trim() = "" Then
+                Me.TDGImperfeccion.Item(i)(9) = 0.0
+            End If
+            If IsDBNull(Me.TrueDBDetalleNP.Item(i)(10)) = True Or Me.TrueDBDetalleNP.Item(i)(10).ToString().Trim() = "" Then
+                Me.TDGImperfeccion.Item(i)(10) = 0.0
+            End If
+            TotalPesoLb = Me.TDGImperfeccion.Item(i)(9) + TotalPesoLb
+            TotalPesoKG = Me.TDGImperfeccion.Item(i)(10) + TotalPesoKG
+            i = i + 1
+        Loop
+        Me.txtsubtotal.Text = TotalPesoLb
     End Sub
 
     Private Sub BtnGuardarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardarRec.Click
@@ -626,47 +581,53 @@ Public Class FrmRecepcion
             NumeroEnsamble = Me.TxtNumeroEnsamble.Text
         End If
 
-        If VerificacionNotasdePeso() = True Then
+        If VerificacionNotasdePeso(1) = True Then
             GrabaRecepcion(NumeroEnsamble, ActualizarSerie, 1)
             GrabaImperfeccion(NumeroEnsamble)
             LimpiaRecepcion()
             LimpiarImperfeccion()
-            LimpiarGridPesada()
+            PegarGridPesada(-7878)
         Else
             Exit Sub
         End If
     End Sub
-    Public Function VerificacionNotasdePeso() As Boolean
+    Public Function VerificacionNotasdePeso(ByVal Tipo As Integer) As Boolean
+        'tipo = 1 cuando se hace va a guardar desde el boton guardar 
+        'tipo = 2 cuando se guarda desde el boton pesada
         If Me.CboPlaca.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione una Placa de vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione una Placa de vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboConductor.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Conductor del vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione un Conductor del vehiculo", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboProductor.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Productor", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione un Productor", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboRecibimosde.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione o digite de quien Recibió el Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione o digite de quien Recibió el Café", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboFinca.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione una Finca", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione una Finca", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboPlantillo.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione un Plantillo", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione un Plantillo", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboCalidad.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Calidad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione la Calidad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboVariedad.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Variedad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione la Variedad del Café", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.CboCodigoBodega.Text.Trim() = "" Then
-            MsgBox("Para poder continuar con la acción de guardado por favor seleccione la Bodega", MsgBoxStyle.Exclamation, "Verificación de datos")
+            MsgBox("Para poder continuar con la acción por favor seleccione la Bodega", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
         ElseIf Me.BindingDetalle.Count = 0 Then
-            MsgBox("Para poder continuar con la acción de guardado por favor debe Realizar Pesadas", MsgBoxStyle.Exclamation, "Verificación de datos")
-            Return False
+            If Tipo = 1 Then
+                MsgBox("Para poder continuar con la acción por favor debe Realizar Pesadas", MsgBoxStyle.Exclamation, "Verificación de datos")
+                Return False
+            ElseIf Tipo = 2 Then
+                Return True
+            End If
         Else
             Return True
         End If
@@ -782,12 +743,19 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "ListaPlantillos")
         Me.CboPlantillo.DataSource = DataSet.Tables("ListaPlantillos")
+
+        If Not DataSet.Tables("ListaPlantillos").Rows.Count = 0 Then
+            If Not IsDBNull(DataSet.Tables("ListaPlantillos").Rows(0)("IdPlantillo")) Then
+                Me.CboPlantillo.SelectedValue = DataSet.Tables("ListaPlantillos").Rows(0)("IdPlantillo")
+            End If
+        End If
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(0).Visible = False
+        Me.CboPlantillo.Columns(1).Caption = "SELECCIONE UN PLANTILLO"
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(2).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(3).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(4).Visible = False
-        Me.CboPlantillo.Text = "SELECCIONAR"
     End Sub
+
 
     Private Sub BtnBuscarRecep_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBuscarRecep.Click
         Quien = "RecepcionBusqueda"
@@ -1112,24 +1080,24 @@ Public Class FrmRecepcion
             If FrmTeclado.Numero > 100 Then
                 MsgBox("El número no puede ser mayor a 100%", MsgBoxStyle.Exclamation, "Notas de peso")
                 Me.TDGImperfeccion.Columns("%").Text = "0.00"
-                sumagriddistribucion()
+                SumaGridImperfeccion()
                 Me.TDGImperfeccion.Row = Me.TDGImperfeccion.Row + 1
             Else
                 Me.TDGImperfeccion.Columns("%").Text = FrmTeclado.Numero
-                sumagriddistribucion()
+                SumaGridImperfeccion()
                 If CDbl(Me.TxtImperfec.Text) > 100 Then
                     MsgBox("El número total de imperfeccion no puede ser mayor a 100%", MsgBoxStyle.Exclamation, "Notas de peso")
                     Me.TDGImperfeccion.Columns("%").Text = "0.00"
-                    sumagriddistribucion()
+                    SumaGridImperfeccion()
                 End If
             End If
         End If
     End Sub
     Private Sub TDGImperfeccion_AfterColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.AfterColUpdate
-        sumagriddistribucion()
+        SumaGridImperfeccion()
     End Sub
 
-    Public Sub sumagriddistribucion()
+    Public Sub SumaGridImperfeccion()
         Dim Registros As Double, TotalProcentaje As Double, i As Integer
         Registros = Me.TDGImperfeccion.RowCount
         i = 0
@@ -1143,10 +1111,135 @@ Public Class FrmRecepcion
         Me.TxtImperfec.Text = TotalProcentaje
     End Sub
 
-    Private Sub TDGImperfeccion_BeforeColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.BeforeColUpdateEventArgs) Handles TDGImperfeccion.BeforeColUpdate
-    End Sub
-
     Private Sub BtnTikectRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnTikectRec.Click
+        Dim SQL As New DataDynamics.ActiveReports.DataSources.SqlDBDataSource, SqlString As String
+        Dim ArepBitacoraRecepcion As New ArepBitacoraRecepcion, Sqldatos As String, RutaLogo As String
+        Dim Fecha As String, Criterios As String = ""
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Posicion As Double = 0, DescripcionAnterior As String = ""
+
+        EqOreado = Me.TxtEqOreado.Text
+        EqReal = Me.TxtOreadoReal.Text
+
+        If Me.CboCodigoProveedor.Text = "00001" Then
+            If Me.TxtFinca.Text <> "" Then
+                Finca = Me.TxtFinca.Text
+            End If
+        Else
+            If Me.CboFinca.Text <> "" Then
+                Finca = Me.CboFinca.Text
+            End If
+        End If
+
+        If Me.TxtNumeroCedula.Text <> "" Then
+            Cedula = Me.TxtNumeroCedula.Text
+        End If
+
+        If Me.CboTipoIngresoBascula.Text = DescripcionTipoIngreso("BA") Then
+            NRecibo = Me.TxtIdLocalidad.Text & "-" & Me.TxtNumeroRecibo.Text
+            FechaRecibo = Me.DTPFecha.Text
+        Else
+            NRecibo = Me.TxtNumeroRecibo.Text
+            FechaRecibo = Format(Me.DtpFechaManual.Value, "dd/MM/yyyy")
+        End If
+
+
+        Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
+
+
+        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida, Calidad, Estado, Precio, PesoKg, PesoNetoKg,Calidad_Cafe, Tara, QQ  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "')"
+
+        Sqldatos = "SELECT * FROM DatosEmpresa"
+        DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
+        DataAdapter.Fill(DataSet, "DatosEmpresa")
+
+        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
+
+            ArepBitacoraRecepcion.LblEncabezado.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
+            ArepBitacoraRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
+
+            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")) Then
+                ArepBitacoraRecepcion.LblRuc.Text = "Numero RUC " & DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")
+            End If
+            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")) Then
+                RutaLogo = DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")
+                If Dir(RutaLogo) <> "" Then
+                    ArepBitacoraRecepcion.ImgLogo.Image = New System.Drawing.Bitmap(RutaLogo)
+                End If
+            End If
+        End If
+
+        ArepBitacoraRecepcion.LblLote.Text = Me.TxtAno.Text & "-" & Me.TxtMes.Text & "-" & Me.TxtDia.Text & "-" & Me.TxtProveedor.Text & "-" & Me.TxtOrigen.Text & "-" & Me.TxtPila.Text
+
+
+        ArepBitacoraRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
+
+        'ArepBitacoraRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
+        ArepBitacoraRecepcion.LblNombres.Text = Me.txtnombre.Text
+        'ArepBitacoraRecepcion.LblApellidos.Text = Me.txtapellido.Text
+        'ArepBitacoraRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
+        'ArepBitacoraRecepcion.LblPila.Text = Me.txtapellido.Text
+        'ArepBitacoraRecepcion.LblConductor.Text = Me.CboConductor.Text
+        'ArepBitacoraRecepcion.LblCedula.Text = Me.txtid.Text
+        'ArepBitacoraRecepcion.LblPlaca.Text = Me.txtplaca.Text
+
+        Hora = Me.LblHora.Text
+        TipoIngreso = Me.CboTipoIngresoBascula.Text
+        Pignorado = Me.CboPignorado.Text
+        Localidad = Me.CboLocalidad.Text
+        LocalidadLiquidar = Me.CboLiquidarLocalidad.Text
+        TipoCompra = Me.CboTipoCompra.Text
+        TipoCalidad = Me.CboTipoCalidad.Text
+        Categoria = Me.CboCategoria.Text
+        Estado = Me.CboEstado.Text
+        Daño = Me.CboDaño.Text
+        Humedad = Me.TxtHumedad.Text
+        Imperfeccion = Me.TxtImperfecion.Text
+        TipoCafe = Me.CboTipoCafe.Text
+
+
+        ArepBitacoraRecepcion.IdCosecha = IdCosecha
+        ArepBitacoraRecepcion.IdFinca = IdFinca
+        ArepBitacoraRecepcion.IdProductor = IdProductor
+
+        SQL.ConnectionString = Conexion
+        SQL.SQL = SqlString
+
+        Dim ViewerForm As New FrmViewer(), i As Integer
+        ViewerForm.arvMain.Document = ArepBitacoraRecepcion.Document
+        My.Application.DoEvents()
+        ArepBitacoraRecepcion.DataSource = SQL
+        'ArepBitacoraRecepcion.Run(False)
+
+        For i = 1 To 3
+            If i = 1 Then
+                ArepBitacoraRecepcion.LblOriginal.Visible = True
+                ArepBitacoraRecepcion.LblOriginal.Text = "O R I G I N A L"
+                ArepBitacoraRecepcion.Run(False)
+                ViewerForm.arvMain.Document.Print(False, False, False)
+                'ViewerForm.Show()
+                My.Application.DoEvents()
+            Else
+                ArepBitacoraRecepcion.LblOriginal.Visible = True
+                ArepBitacoraRecepcion.LblOriginal.Text = "C O P I A"
+                ArepBitacoraRecepcion.Run(False)
+                ViewerForm.arvMain.Document.Print(False, False, False)
+                'ViewerForm.Show()
+                My.Application.DoEvents()
+
+            End If
+
+            'ViewerForm.Show()
+
+            'ViewerForm.arvMain.Document.Print(False, False, False)
+
+            ' SI ESTA HABILITADO PARA GRABAR LO PERMITO GRABAR
+        Next
+
+        If Me.Button7.Enabled = True Then
+            Button7_Click(sender, e)
+        Else
+            LimpiaRecepcion()
+        End If
 
     End Sub
 End Class

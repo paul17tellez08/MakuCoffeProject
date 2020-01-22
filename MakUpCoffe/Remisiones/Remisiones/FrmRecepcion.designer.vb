@@ -246,7 +246,7 @@ Partial Class FrmRecepcion
         Me.GroupBox6.Location = New System.Drawing.Point(3, 343)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(805, 132)
-        Me.GroupBox6.TabIndex = 222
+        Me.GroupBox6.TabIndex = 2
         Me.GroupBox6.TabStop = False
         '
         'Button13
@@ -257,7 +257,7 @@ Partial Class FrmRecepcion
         Me.Button13.Location = New System.Drawing.Point(421, 44)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(32, 30)
-        Me.Button13.TabIndex = 271
+        Me.Button13.TabIndex = 5
         Me.Button13.UseVisualStyleBackColor = True
         '
         'BtnAgreProductor
@@ -268,7 +268,7 @@ Partial Class FrmRecepcion
         Me.BtnAgreProductor.Location = New System.Drawing.Point(421, 11)
         Me.BtnAgreProductor.Name = "BtnAgreProductor"
         Me.BtnAgreProductor.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgreProductor.TabIndex = 273
+        Me.BtnAgreProductor.TabIndex = 4
         Me.BtnAgreProductor.UseVisualStyleBackColor = True
         '
         'BtnAgrePlantillo
@@ -280,7 +280,7 @@ Partial Class FrmRecepcion
         Me.BtnAgrePlantillo.Location = New System.Drawing.Point(762, 96)
         Me.BtnAgrePlantillo.Name = "BtnAgrePlantillo"
         Me.BtnAgrePlantillo.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgrePlantillo.TabIndex = 270
+        Me.BtnAgrePlantillo.TabIndex = 11
         Me.BtnAgrePlantillo.UseVisualStyleBackColor = True
         Me.BtnAgrePlantillo.Visible = False
         '
@@ -313,7 +313,7 @@ Partial Class FrmRecepcion
         Me.CboFinca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboFinca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboFinca.Size = New System.Drawing.Size(190, 24)
-        Me.CboFinca.TabIndex = 188
+        Me.CboFinca.TabIndex = 8
         Me.CboFinca.ValueMember = "IdFinca"
         Me.CboFinca.PropBag = resources.GetString("CboFinca.PropBag")
         '
@@ -368,7 +368,7 @@ Partial Class FrmRecepcion
         Me.CboPlantillo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboPlantillo.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboPlantillo.Size = New System.Drawing.Size(190, 24)
-        Me.CboPlantillo.TabIndex = 189
+        Me.CboPlantillo.TabIndex = 9
         Me.CboPlantillo.ValueMember = "IdPlantillo"
         Me.CboPlantillo.PropBag = resources.GetString("CboPlantillo.PropBag")
         '
@@ -377,8 +377,9 @@ Partial Class FrmRecepcion
         Me.TxtCodProductor.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtCodProductor.Location = New System.Drawing.Point(115, 47)
         Me.TxtCodProductor.Name = "TxtCodProductor"
+        Me.TxtCodProductor.ReadOnly = True
         Me.TxtCodProductor.Size = New System.Drawing.Size(300, 23)
-        Me.TxtCodProductor.TabIndex = 256
+        Me.TxtCodProductor.TabIndex = 1
         Me.TxtCodProductor.Text = " "
         '
         'Label12
@@ -423,7 +424,7 @@ Partial Class FrmRecepcion
         Me.CboRecibimosde.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboRecibimosde.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboRecibimosde.Size = New System.Drawing.Size(300, 24)
-        Me.CboRecibimosde.TabIndex = 265
+        Me.CboRecibimosde.TabIndex = 3
         Me.CboRecibimosde.PropBag = resources.GetString("CboRecibimosde.PropBag")
         '
         'Label21
@@ -469,7 +470,7 @@ Partial Class FrmRecepcion
         Me.CboProductor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboProductor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboProductor.Size = New System.Drawing.Size(300, 24)
-        Me.CboProductor.TabIndex = 271
+        Me.CboProductor.TabIndex = 0
         Me.CboProductor.ValueMember = "Cod_Proveedor"
         Me.CboProductor.PropBag = resources.GetString("CboProductor.PropBag")
         '
@@ -478,8 +479,9 @@ Partial Class FrmRecepcion
         Me.TxtCedulaProductor.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtCedulaProductor.Location = New System.Drawing.Point(115, 75)
         Me.TxtCedulaProductor.Name = "TxtCedulaProductor"
+        Me.TxtCedulaProductor.ReadOnly = True
         Me.TxtCedulaProductor.Size = New System.Drawing.Size(300, 23)
-        Me.TxtCedulaProductor.TabIndex = 271
+        Me.TxtCedulaProductor.TabIndex = 2
         '
         'Label20
         '
@@ -500,7 +502,7 @@ Partial Class FrmRecepcion
         Me.BtnAgreFinca.Location = New System.Drawing.Point(762, 66)
         Me.BtnAgreFinca.Name = "BtnAgreFinca"
         Me.BtnAgreFinca.Size = New System.Drawing.Size(30, 30)
-        Me.BtnAgreFinca.TabIndex = 264
+        Me.BtnAgreFinca.TabIndex = 10
         Me.BtnAgreFinca.UseVisualStyleBackColor = True
         '
         'TxtRemision
@@ -509,7 +511,7 @@ Partial Class FrmRecepcion
         Me.TxtRemision.Location = New System.Drawing.Point(566, 17)
         Me.TxtRemision.Name = "TxtRemision"
         Me.TxtRemision.Size = New System.Drawing.Size(190, 23)
-        Me.TxtRemision.TabIndex = 269
+        Me.TxtRemision.TabIndex = 6
         '
         'lblproveedor
         '
@@ -539,7 +541,7 @@ Partial Class FrmRecepcion
         Me.TxtRConacafe.Location = New System.Drawing.Point(566, 45)
         Me.TxtRConacafe.Name = "TxtRConacafe"
         Me.TxtRConacafe.Size = New System.Drawing.Size(190, 23)
-        Me.TxtRConacafe.TabIndex = 178
+        Me.TxtRConacafe.TabIndex = 7
         '
         'lblnombre
         '
@@ -576,7 +578,7 @@ Partial Class FrmRecepcion
         Me.BtnBuscarCodProv.Location = New System.Drawing.Point(216, -2)
         Me.BtnBuscarCodProv.Name = "BtnBuscarCodProv"
         Me.BtnBuscarCodProv.Size = New System.Drawing.Size(775, 42)
-        Me.BtnBuscarCodProv.TabIndex = 221
+        Me.BtnBuscarCodProv.TabIndex = 0
         Me.BtnBuscarCodProv.TabStop = False
         '
         'lblbdega
@@ -587,7 +589,7 @@ Partial Class FrmRecepcion
         Me.lblbdega.Location = New System.Drawing.Point(307, 16)
         Me.lblbdega.Name = "lblbdega"
         Me.lblbdega.Size = New System.Drawing.Size(90, 15)
-        Me.lblbdega.TabIndex = 12
+        Me.lblbdega.TabIndex = 6
         Me.lblbdega.Text = "Nota Peso # :"
         '
         'CmbSerie
@@ -619,7 +621,7 @@ Partial Class FrmRecepcion
         Me.CmbSerie.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CmbSerie.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CmbSerie.Size = New System.Drawing.Size(53, 21)
-        Me.CmbSerie.TabIndex = 212
+        Me.CmbSerie.TabIndex = 3
         Me.CmbSerie.Visible = False
         Me.CmbSerie.PropBag = resources.GetString("CmbSerie.PropBag")
         '
@@ -631,7 +633,7 @@ Partial Class FrmRecepcion
         Me.BtnBuscarRecep.Location = New System.Drawing.Point(588, 8)
         Me.BtnBuscarRecep.Name = "BtnBuscarRecep"
         Me.BtnBuscarRecep.Size = New System.Drawing.Size(36, 30)
-        Me.BtnBuscarRecep.TabIndex = 180
+        Me.BtnBuscarRecep.TabIndex = 5
         Me.BtnBuscarRecep.UseVisualStyleBackColor = True
         '
         'TxtNumeroEnsamble
@@ -640,7 +642,7 @@ Partial Class FrmRecepcion
         Me.TxtNumeroEnsamble.Location = New System.Drawing.Point(474, 14)
         Me.TxtNumeroEnsamble.Name = "TxtNumeroEnsamble"
         Me.TxtNumeroEnsamble.Size = New System.Drawing.Size(103, 20)
-        Me.TxtNumeroEnsamble.TabIndex = 177
+        Me.TxtNumeroEnsamble.TabIndex = 4
         Me.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -"
         Me.TxtNumeroEnsamble.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -676,7 +678,7 @@ Partial Class FrmRecepcion
         Me.CboTipoPesada.Location = New System.Drawing.Point(120, 11)
         Me.CboTipoPesada.Name = "CboTipoPesada"
         Me.CboTipoPesada.Size = New System.Drawing.Size(171, 23)
-        Me.CboTipoPesada.TabIndex = 179
+        Me.CboTipoPesada.TabIndex = 1
         '
         'CboTipoRecepcion
         '
@@ -738,9 +740,10 @@ Partial Class FrmRecepcion
         Me.txtobservaciones.BackColor = System.Drawing.Color.White
         Me.txtobservaciones.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.txtobservaciones.Location = New System.Drawing.Point(121, 103)
+        Me.txtobservaciones.Multiline = True
         Me.txtobservaciones.Name = "txtobservaciones"
         Me.txtobservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtobservaciones.Size = New System.Drawing.Size(521, 23)
+        Me.txtobservaciones.Size = New System.Drawing.Size(521, 24)
         Me.txtobservaciones.TabIndex = 183
         Me.txtobservaciones.Text = " "
         '
@@ -778,7 +781,7 @@ Partial Class FrmRecepcion
         Me.GroupBox2.Location = New System.Drawing.Point(3, 268)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(988, 77)
-        Me.GroupBox2.TabIndex = 237
+        Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '
         'TxtColor
@@ -788,7 +791,7 @@ Partial Class FrmRecepcion
         Me.TxtColor.Name = "TxtColor"
         Me.TxtColor.ReadOnly = True
         Me.TxtColor.Size = New System.Drawing.Size(174, 23)
-        Me.TxtColor.TabIndex = 272
+        Me.TxtColor.TabIndex = 6
         '
         'TxtModelo
         '
@@ -797,7 +800,7 @@ Partial Class FrmRecepcion
         Me.TxtModelo.Name = "TxtModelo"
         Me.TxtModelo.ReadOnly = True
         Me.TxtModelo.Size = New System.Drawing.Size(174, 23)
-        Me.TxtModelo.TabIndex = 271
+        Me.TxtModelo.TabIndex = 5
         '
         'BtnAgreConductor
         '
@@ -807,7 +810,7 @@ Partial Class FrmRecepcion
         Me.BtnAgreConductor.Location = New System.Drawing.Point(913, 12)
         Me.BtnAgreConductor.Name = "BtnAgreConductor"
         Me.BtnAgreConductor.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgreConductor.TabIndex = 270
+        Me.BtnAgreConductor.TabIndex = 9
         Me.BtnAgreConductor.UseVisualStyleBackColor = True
         '
         'Label17
@@ -840,7 +843,7 @@ Partial Class FrmRecepcion
         Me.BtnVehiculoAgre.Location = New System.Drawing.Point(283, 12)
         Me.BtnVehiculoAgre.Name = "BtnVehiculoAgre"
         Me.BtnVehiculoAgre.Size = New System.Drawing.Size(32, 30)
-        Me.BtnVehiculoAgre.TabIndex = 257
+        Me.BtnVehiculoAgre.TabIndex = 3
         Me.BtnVehiculoAgre.UseVisualStyleBackColor = True
         '
         'BtnBusConductor
@@ -851,7 +854,7 @@ Partial Class FrmRecepcion
         Me.BtnBusConductor.Location = New System.Drawing.Point(949, 13)
         Me.BtnBusConductor.Name = "BtnBusConductor"
         Me.BtnBusConductor.Size = New System.Drawing.Size(36, 30)
-        Me.BtnBusConductor.TabIndex = 256
+        Me.BtnBusConductor.TabIndex = 10
         Me.BtnBusConductor.UseVisualStyleBackColor = True
         '
         'BtnBusPlaca
@@ -862,7 +865,7 @@ Partial Class FrmRecepcion
         Me.BtnBusPlaca.Location = New System.Drawing.Point(321, 12)
         Me.BtnBusPlaca.Name = "BtnBusPlaca"
         Me.BtnBusPlaca.Size = New System.Drawing.Size(32, 30)
-        Me.BtnBusPlaca.TabIndex = 257
+        Me.BtnBusPlaca.TabIndex = 4
         Me.BtnBusPlaca.UseVisualStyleBackColor = True
         '
         'Label8
@@ -895,7 +898,7 @@ Partial Class FrmRecepcion
         Me.Label3.Location = New System.Drawing.Point(6, 21)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 15)
-        Me.Label3.TabIndex = 247
+        Me.Label3.TabIndex = 16
         Me.Label3.Text = "Placa         :"
         '
         'TxtMarca
@@ -905,7 +908,7 @@ Partial Class FrmRecepcion
         Me.TxtMarca.Name = "TxtMarca"
         Me.TxtMarca.ReadOnly = True
         Me.TxtMarca.Size = New System.Drawing.Size(174, 23)
-        Me.TxtMarca.TabIndex = 244
+        Me.TxtMarca.TabIndex = 2
         '
         'CboPlaca
         '
@@ -938,7 +941,7 @@ Partial Class FrmRecepcion
         Me.CboPlaca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboPlaca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboPlaca.Size = New System.Drawing.Size(174, 24)
-        Me.CboPlaca.TabIndex = 243
+        Me.CboPlaca.TabIndex = 1
         Me.CboPlaca.ValueMember = "IdVehiculo"
         Me.CboPlaca.PropBag = resources.GetString("CboPlaca.PropBag")
         '
@@ -960,7 +963,7 @@ Partial Class FrmRecepcion
         Me.TxtCedulaConductor.Name = "TxtCedulaConductor"
         Me.TxtCedulaConductor.ReadOnly = True
         Me.TxtCedulaConductor.Size = New System.Drawing.Size(216, 26)
-        Me.TxtCedulaConductor.TabIndex = 241
+        Me.TxtCedulaConductor.TabIndex = 8
         '
         'CboConductor
         '
@@ -993,7 +996,7 @@ Partial Class FrmRecepcion
         Me.CboConductor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboConductor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.CboConductor.Size = New System.Drawing.Size(216, 24)
-        Me.CboConductor.TabIndex = 240
+        Me.CboConductor.TabIndex = 7
         Me.CboConductor.ValueMember = "Codigo"
         Me.CboConductor.PropBag = resources.GetString("CboConductor.PropBag")
         '
@@ -1081,7 +1084,7 @@ Partial Class FrmRecepcion
         Me.GroupBox1.Location = New System.Drawing.Point(3, 474)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(805, 133)
-        Me.GroupBox1.TabIndex = 240
+        Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         '
         'CboEstado
@@ -1091,10 +1094,10 @@ Partial Class FrmRecepcion
         Me.CboEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.CboEstado.FormattingEnabled = True
         Me.CboEstado.Items.AddRange(New Object() {"OREADO", "MOJADO", "HUMEDO"})
-        Me.CboEstado.Location = New System.Drawing.Point(447, 48)
+        Me.CboEstado.Location = New System.Drawing.Point(430, 48)
         Me.CboEstado.Name = "CboEstado"
-        Me.CboEstado.Size = New System.Drawing.Size(142, 23)
-        Me.CboEstado.TabIndex = 276
+        Me.CboEstado.Size = New System.Drawing.Size(159, 23)
+        Me.CboEstado.TabIndex = 3
         '
         'CboCalidad
         '
@@ -1105,8 +1108,8 @@ Partial Class FrmRecepcion
         Me.CboCalidad.Items.AddRange(New Object() {"PRIMERA PERGAMINO", "SEGUNDA PERGAMINO", "OTRO"})
         Me.CboCalidad.Location = New System.Drawing.Point(121, 19)
         Me.CboCalidad.Name = "CboCalidad"
-        Me.CboCalidad.Size = New System.Drawing.Size(197, 23)
-        Me.CboCalidad.TabIndex = 275
+        Me.CboCalidad.Size = New System.Drawing.Size(231, 23)
+        Me.CboCalidad.TabIndex = 0
         '
         'Label22
         '
@@ -1149,8 +1152,8 @@ Partial Class FrmRecepcion
         Me.CboVariedad.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboVariedad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboVariedad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.CboVariedad.Size = New System.Drawing.Size(197, 24)
-        Me.CboVariedad.TabIndex = 271
+        Me.CboVariedad.Size = New System.Drawing.Size(231, 24)
+        Me.CboVariedad.TabIndex = 1
         Me.CboVariedad.Text = " "
         Me.CboVariedad.ValueMember = "IdVariedad"
         Me.CboVariedad.PropBag = resources.GetString("CboVariedad.PropBag")
@@ -1173,7 +1176,7 @@ Partial Class FrmRecepcion
         Me.TxtHumedad.Name = "TxtHumedad"
         Me.TxtHumedad.ReadOnly = True
         Me.TxtHumedad.Size = New System.Drawing.Size(49, 25)
-        Me.TxtHumedad.TabIndex = 252
+        Me.TxtHumedad.TabIndex = 4
         Me.TxtHumedad.Text = " 0.00"
         '
         'Label10
@@ -1181,7 +1184,7 @@ Partial Class FrmRecepcion
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
-        Me.Label10.Location = New System.Drawing.Point(361, 80)
+        Me.Label10.Location = New System.Drawing.Point(362, 80)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(165, 15)
         Me.Label10.TabIndex = 254
@@ -1190,11 +1193,11 @@ Partial Class FrmRecepcion
         'TxtImperfec
         '
         Me.TxtImperfec.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtImperfec.Location = New System.Drawing.Point(593, 75)
+        Me.TxtImperfec.Location = New System.Drawing.Point(533, 75)
         Me.TxtImperfec.Name = "TxtImperfec"
         Me.TxtImperfec.ReadOnly = True
-        Me.TxtImperfec.Size = New System.Drawing.Size(49, 25)
-        Me.TxtImperfec.TabIndex = 251
+        Me.TxtImperfec.Size = New System.Drawing.Size(109, 25)
+        Me.TxtImperfec.TabIndex = 5
         Me.TxtImperfec.Text = " 0.00"
         '
         'CboCodigoBodega
@@ -1219,7 +1222,7 @@ Partial Class FrmRecepcion
         Me.CboCodigoBodega.Enabled = False
         Me.CboCodigoBodega.Images.Add(CType(resources.GetObject("CboCodigoBodega.Images"), System.Drawing.Image))
         Me.CboCodigoBodega.ItemHeight = 35
-        Me.CboCodigoBodega.Location = New System.Drawing.Point(446, 19)
+        Me.CboCodigoBodega.Location = New System.Drawing.Point(429, 19)
         Me.CboCodigoBodega.MatchEntryTimeout = CType(2000, Long)
         Me.CboCodigoBodega.MaxDropDownItems = CType(5, Short)
         Me.CboCodigoBodega.MaxLength = 32767
@@ -1228,8 +1231,8 @@ Partial Class FrmRecepcion
         Me.CboCodigoBodega.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboCodigoBodega.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboCodigoBodega.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.CboCodigoBodega.Size = New System.Drawing.Size(197, 24)
-        Me.CboCodigoBodega.TabIndex = 250
+        Me.CboCodigoBodega.Size = New System.Drawing.Size(214, 24)
+        Me.CboCodigoBodega.TabIndex = 2
         Me.CboCodigoBodega.Text = " "
         Me.CboCodigoBodega.ValueMember = "Cod_Bodega"
         Me.CboCodigoBodega.PropBag = resources.GetString("CboCodigoBodega.PropBag")
@@ -1239,14 +1242,15 @@ Partial Class FrmRecepcion
         Me.BtnPesada.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnPesada.Enabled = False
         Me.BtnPesada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnPesada.FlatAppearance.BorderSize = 3
         Me.BtnPesada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnPesada.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPesada.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
         Me.BtnPesada.Location = New System.Drawing.Point(648, 19)
         Me.BtnPesada.Name = "BtnPesada"
         Me.BtnPesada.Size = New System.Drawing.Size(151, 107)
-        Me.BtnPesada.TabIndex = 245
+        Me.BtnPesada.TabIndex = 6
         Me.BtnPesada.Text = " PESADA"
         Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnPesada.UseVisualStyleBackColor = True
@@ -1265,7 +1269,7 @@ Partial Class FrmRecepcion
         Me.GroupBox5.Location = New System.Drawing.Point(2, 606)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(989, 76)
-        Me.GroupBox5.TabIndex = 240
+        Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         '
         'BtnNuevoRec
@@ -1279,7 +1283,7 @@ Partial Class FrmRecepcion
         Me.BtnNuevoRec.Location = New System.Drawing.Point(8, 7)
         Me.BtnNuevoRec.Name = "BtnNuevoRec"
         Me.BtnNuevoRec.Size = New System.Drawing.Size(75, 66)
-        Me.BtnNuevoRec.TabIndex = 246
+        Me.BtnNuevoRec.TabIndex = 0
         Me.BtnNuevoRec.Text = "Nuevo"
         Me.BtnNuevoRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnNuevoRec.UseVisualStyleBackColor = True
@@ -1295,7 +1299,7 @@ Partial Class FrmRecepcion
         Me.BtnTikectRec.Location = New System.Drawing.Point(614, 7)
         Me.BtnTikectRec.Name = "BtnTikectRec"
         Me.BtnTikectRec.Size = New System.Drawing.Size(75, 66)
-        Me.BtnTikectRec.TabIndex = 252
+        Me.BtnTikectRec.TabIndex = 4
         Me.BtnTikectRec.Text = "Ticket"
         Me.BtnTikectRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnTikectRec.UseVisualStyleBackColor = True
@@ -1311,7 +1315,7 @@ Partial Class FrmRecepcion
         Me.BtnGuardarRec.Location = New System.Drawing.Point(158, 7)
         Me.BtnGuardarRec.Name = "BtnGuardarRec"
         Me.BtnGuardarRec.Size = New System.Drawing.Size(75, 66)
-        Me.BtnGuardarRec.TabIndex = 247
+        Me.BtnGuardarRec.TabIndex = 1
         Me.BtnGuardarRec.Text = "Guardar"
         Me.BtnGuardarRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnGuardarRec.UseVisualStyleBackColor = True
@@ -1327,7 +1331,7 @@ Partial Class FrmRecepcion
         Me.BtnRecpSalir.Location = New System.Drawing.Point(901, 7)
         Me.BtnRecpSalir.Name = "BtnRecpSalir"
         Me.BtnRecpSalir.Size = New System.Drawing.Size(75, 66)
-        Me.BtnRecpSalir.TabIndex = 251
+        Me.BtnRecpSalir.TabIndex = 6
         Me.BtnRecpSalir.Text = "Salir"
         Me.BtnRecpSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnRecpSalir.UseVisualStyleBackColor = True
@@ -1343,7 +1347,7 @@ Partial Class FrmRecepcion
         Me.BtnDisconectRec.Location = New System.Drawing.Point(443, 7)
         Me.BtnDisconectRec.Name = "BtnDisconectRec"
         Me.BtnDisconectRec.Size = New System.Drawing.Size(106, 66)
-        Me.BtnDisconectRec.TabIndex = 248
+        Me.BtnDisconectRec.TabIndex = 3
         Me.BtnDisconectRec.Text = "Desconectar"
         Me.BtnDisconectRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnDisconectRec.UseVisualStyleBackColor = True
@@ -1359,7 +1363,7 @@ Partial Class FrmRecepcion
         Me.BtnImpriRec.Location = New System.Drawing.Point(762, 7)
         Me.BtnImpriRec.Name = "BtnImpriRec"
         Me.BtnImpriRec.Size = New System.Drawing.Size(75, 65)
-        Me.BtnImpriRec.TabIndex = 250
+        Me.BtnImpriRec.TabIndex = 5
         Me.BtnImpriRec.Text = "Imprimir"
         Me.BtnImpriRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnImpriRec.UseVisualStyleBackColor = True
@@ -1375,7 +1379,7 @@ Partial Class FrmRecepcion
         Me.BtnConectarRec.Location = New System.Drawing.Point(309, 7)
         Me.BtnConectarRec.Name = "BtnConectarRec"
         Me.BtnConectarRec.Size = New System.Drawing.Size(75, 66)
-        Me.BtnConectarRec.TabIndex = 249
+        Me.BtnConectarRec.TabIndex = 2
         Me.BtnConectarRec.Text = "Conectar"
         Me.BtnConectarRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnConectarRec.UseVisualStyleBackColor = True
@@ -1420,7 +1424,7 @@ Partial Class FrmRecepcion
         Me.TrueDBDetalleNP.PreviewInfo.ZoomFactor = 75
         Me.TrueDBDetalleNP.PrintInfo.PageSettings = CType(resources.GetObject("TrueDBDetalleNP.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.TrueDBDetalleNP.Size = New System.Drawing.Size(987, 185)
-        Me.TrueDBDetalleNP.TabIndex = 224
+        Me.TrueDBDetalleNP.TabIndex = 0
         Me.TrueDBDetalleNP.Text = "C1TrueDBGrid1"
         Me.TrueDBDetalleNP.PropBag = resources.GetString("TrueDBDetalleNP.PropBag")
         '
@@ -1432,7 +1436,7 @@ Partial Class FrmRecepcion
         Me.CheckMohoso.Location = New System.Drawing.Point(8, 37)
         Me.CheckMohoso.Name = "CheckMohoso"
         Me.CheckMohoso.Size = New System.Drawing.Size(61, 19)
-        Me.CheckMohoso.TabIndex = 267
+        Me.CheckMohoso.TabIndex = 0
         Me.CheckMohoso.Text = "Moho"
         Me.CheckMohoso.UseVisualStyleBackColor = True
         '
@@ -1444,7 +1448,7 @@ Partial Class FrmRecepcion
         Me.CheckFermento.Location = New System.Drawing.Point(87, 37)
         Me.CheckFermento.Name = "CheckFermento"
         Me.CheckFermento.Size = New System.Drawing.Size(85, 19)
-        Me.CheckFermento.TabIndex = 268
+        Me.CheckFermento.TabIndex = 1
         Me.CheckFermento.Text = "Fermento"
         Me.CheckFermento.UseVisualStyleBackColor = True
         '
@@ -1457,7 +1461,7 @@ Partial Class FrmRecepcion
         Me.GroupBox7.Location = New System.Drawing.Point(810, 537)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(181, 69)
-        Me.GroupBox7.TabIndex = 255
+        Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
         '
         'Label13
@@ -1497,7 +1501,7 @@ Partial Class FrmRecepcion
         Me.MinimizeBox = False
         Me.Name = "FrmRecepcion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Nota de peso oficial"
+        Me.Text = "Notas de peso"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()

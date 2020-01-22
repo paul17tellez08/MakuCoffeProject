@@ -86,7 +86,7 @@ Module Funciones
         PesoNetoKg = PesoNetoLb * 0.453592
         PesoNetoKg = PesoKg - (PesoKg * FactorEstado) - FactorSacokg
 
-        GrabaDetalleRecepcion(NumeroNotaPeso, FrmRecepcion.CboVariedad.SelectedValue, Peso, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos, Fecha)
+        GrabaDetalleRecepcion(NumeroNotaPeso, FrmRecepcion.CboVariedad.SelectedValue, Peso, Linea, Descripcion, Calidad, Estado, Precio, PesoKg, FrmRecepcion.CboTipoRecepcion.Text, Tara, PesoNetoKg, CantidadSacos, Fecha, PesoNetoLb)
         '  ActualizaDetalleRecepcion(NumeroRecepcion, Fecha)
 
         FrmRecepcion.TrueDBDetalleNP.Columns(0).Text = Linea
@@ -164,10 +164,10 @@ Module Funciones
         End If
     End Sub
 
-    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoNotaPesa As String, ByVal CodigoProducto As String, ByVal Peso As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Taralb As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double, ByVal Fecha As Date)
+    Public Sub GrabaDetalleRecepcion(ByVal ConsecutivoNotaPesa As String, ByVal CodigoProducto As String, ByVal Peso As Double, ByVal Linea As Double, ByVal Descripcion As String, ByVal Calidad As String, ByVal Estado As String, ByVal Precio As Double, ByVal PesoKg As Double, ByVal TipoRecepcion As String, ByVal Taralb As Double, ByVal PesoNetoKg As Double, ByVal QQ As Double, ByVal Fecha As Date, ByVal PesoNetoLb As Double)
         Dim Sqldetalle As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
         Dim MiConexion As New SqlClient.SqlConnection(Conexion), SqlUpdate As String
-        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, PesoNetoLb As Double
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
         Sqldetalle = "SELECT Detalle_Recepcion.* FROM Detalle_Recepcion " & _
                      "WHERE (id_Eventos = " & Linea & ") AND (NumeroRecepcion = '" & ConsecutivoNotaPesa & "') AND (Fecha = CONVERT(DATETIME, '" & Format(CDate(Fecha), "yyyy-MM-dd") & "', 102))"
