@@ -489,6 +489,7 @@
   <ItemGroup>
     <Content Include="list_edit.ico" />
     <Content Include="logoMakupCoffe1.ico" />
+    <None Include="Resources\trolley-48d.png" />
     <None Include="Resources\buttonpress.png" />
     <None Include="Resources\buttonlog.png" />
     <None Include="Resources\UseersLog.png" />

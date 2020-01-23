@@ -93,6 +93,7 @@ Partial Class FrmRecepcion
         Me.CheckFermento = New System.Windows.Forms.CheckBox
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
         Me.Label13 = New System.Windows.Forms.Label
+        Me.BtnEnviarPatio = New System.Windows.Forms.Button
         Me.BtnNuevoRec = New System.Windows.Forms.Button
         Me.BtnTikectRec = New System.Windows.Forms.Button
         Me.BtnGuardarRec = New System.Windows.Forms.Button
@@ -115,6 +116,7 @@ Partial Class FrmRecepcion
         Me.BtnBuscarRecep = New System.Windows.Forms.Button
         Me.BindingDetalle = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingImperfeccion = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox6.SuspendLayout()
         CType(Me.CboFinca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CboPlantillo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -603,11 +605,11 @@ Partial Class FrmRecepcion
         'LblEstado
         '
         Me.LblEstado.AutoSize = True
-        Me.LblEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.LblEstado.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblEstado.ForeColor = System.Drawing.Color.BlanchedAlmond
         Me.LblEstado.Location = New System.Drawing.Point(650, 16)
         Me.LblEstado.Name = "LblEstado"
-        Me.LblEstado.Size = New System.Drawing.Size(113, 15)
+        Me.LblEstado.Size = New System.Drawing.Size(119, 15)
         Me.LblEstado.TabIndex = 238
         Me.LblEstado.Text = "DESCONECTADO"
         '
@@ -1123,6 +1125,8 @@ Partial Class FrmRecepcion
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.GroupBox5.Controls.Add(Me.Button1)
+        Me.GroupBox5.Controls.Add(Me.BtnEnviarPatio)
         Me.GroupBox5.Controls.Add(Me.BtnNuevoRec)
         Me.GroupBox5.Controls.Add(Me.BtnTikectRec)
         Me.GroupBox5.Controls.Add(Me.BtnGuardarRec)
@@ -1184,6 +1188,22 @@ Partial Class FrmRecepcion
         Me.Label13.TabIndex = 273
         Me.Label13.Text = "              Daño             "
         '
+        'BtnEnviarPatio
+        '
+        Me.BtnEnviarPatio.FlatAppearance.BorderSize = 0
+        Me.BtnEnviarPatio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnEnviarPatio.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnEnviarPatio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.BtnEnviarPatio.Image = Global.Remisiones.My.Resources.Resources.trolley_48d
+        Me.BtnEnviarPatio.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnEnviarPatio.Location = New System.Drawing.Point(761, 8)
+        Me.BtnEnviarPatio.Name = "BtnEnviarPatio"
+        Me.BtnEnviarPatio.Size = New System.Drawing.Size(112, 66)
+        Me.BtnEnviarPatio.TabIndex = 7
+        Me.BtnEnviarPatio.Text = "Transladar"
+        Me.BtnEnviarPatio.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnEnviarPatio.UseVisualStyleBackColor = True
+        '
         'BtnNuevoRec
         '
         Me.BtnNuevoRec.FlatAppearance.BorderSize = 0
@@ -1202,13 +1222,14 @@ Partial Class FrmRecepcion
         '
         'BtnTikectRec
         '
+        Me.BtnTikectRec.Enabled = False
         Me.BtnTikectRec.FlatAppearance.BorderSize = 0
         Me.BtnTikectRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnTikectRec.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnTikectRec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnTikectRec.Image = Global.Remisiones.My.Resources.Resources.Tikect48
         Me.BtnTikectRec.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnTikectRec.Location = New System.Drawing.Point(614, 7)
+        Me.BtnTikectRec.Location = New System.Drawing.Point(457, 7)
         Me.BtnTikectRec.Name = "BtnTikectRec"
         Me.BtnTikectRec.Size = New System.Drawing.Size(75, 66)
         Me.BtnTikectRec.TabIndex = 4
@@ -1224,7 +1245,7 @@ Partial Class FrmRecepcion
         Me.BtnGuardarRec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnGuardarRec.Image = Global.Remisiones.My.Resources.Resources.Save4811
         Me.BtnGuardarRec.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnGuardarRec.Location = New System.Drawing.Point(158, 7)
+        Me.BtnGuardarRec.Location = New System.Drawing.Point(110, 8)
         Me.BtnGuardarRec.Name = "BtnGuardarRec"
         Me.BtnGuardarRec.Size = New System.Drawing.Size(75, 66)
         Me.BtnGuardarRec.TabIndex = 1
@@ -1240,7 +1261,7 @@ Partial Class FrmRecepcion
         Me.BtnRecpSalir.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnRecpSalir.Image = Global.Remisiones.My.Resources.Resources.exit48
         Me.BtnRecpSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnRecpSalir.Location = New System.Drawing.Point(901, 7)
+        Me.BtnRecpSalir.Location = New System.Drawing.Point(891, 8)
         Me.BtnRecpSalir.Name = "BtnRecpSalir"
         Me.BtnRecpSalir.Size = New System.Drawing.Size(75, 66)
         Me.BtnRecpSalir.TabIndex = 6
@@ -1250,15 +1271,16 @@ Partial Class FrmRecepcion
         '
         'BtnDisconectRec
         '
+        Me.BtnDisconectRec.Enabled = False
         Me.BtnDisconectRec.FlatAppearance.BorderSize = 0
         Me.BtnDisconectRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnDisconectRec.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnDisconectRec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnDisconectRec.Image = Global.Remisiones.My.Resources.Resources.disconexion48
         Me.BtnDisconectRec.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnDisconectRec.Location = New System.Drawing.Point(443, 7)
+        Me.BtnDisconectRec.Location = New System.Drawing.Point(321, 8)
         Me.BtnDisconectRec.Name = "BtnDisconectRec"
-        Me.BtnDisconectRec.Size = New System.Drawing.Size(106, 66)
+        Me.BtnDisconectRec.Size = New System.Drawing.Size(108, 66)
         Me.BtnDisconectRec.TabIndex = 3
         Me.BtnDisconectRec.Text = "Desconectar"
         Me.BtnDisconectRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1272,23 +1294,24 @@ Partial Class FrmRecepcion
         Me.BtnImpriRec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnImpriRec.Image = Global.Remisiones.My.Resources.Resources.Print48
         Me.BtnImpriRec.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnImpriRec.Location = New System.Drawing.Point(762, 7)
+        Me.BtnImpriRec.Location = New System.Drawing.Point(667, 8)
         Me.BtnImpriRec.Name = "BtnImpriRec"
         Me.BtnImpriRec.Size = New System.Drawing.Size(75, 65)
         Me.BtnImpriRec.TabIndex = 5
-        Me.BtnImpriRec.Text = "Imprimir"
+        Me.BtnImpriRec.Text = "Reporte"
         Me.BtnImpriRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnImpriRec.UseVisualStyleBackColor = True
         '
         'BtnConectarRec
         '
+        Me.BtnConectarRec.Enabled = False
         Me.BtnConectarRec.FlatAppearance.BorderSize = 0
         Me.BtnConectarRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnConectarRec.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnConectarRec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
         Me.BtnConectarRec.Image = Global.Remisiones.My.Resources.Resources.conexion48
         Me.BtnConectarRec.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnConectarRec.Location = New System.Drawing.Point(309, 7)
+        Me.BtnConectarRec.Location = New System.Drawing.Point(220, 7)
         Me.BtnConectarRec.Name = "BtnConectarRec"
         Me.BtnConectarRec.Size = New System.Drawing.Size(75, 66)
         Me.BtnConectarRec.TabIndex = 2
@@ -1476,6 +1499,23 @@ Partial Class FrmRecepcion
         Me.BtnBuscarRecep.TabIndex = 5
         Me.BtnBuscarRecep.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Enabled = False
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.up
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(561, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 66)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Procesar"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrmRecepcion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1629,4 +1669,6 @@ Partial Class FrmRecepcion
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents CboCalidad As System.Windows.Forms.ComboBox
     Friend WithEvents CboEstado As System.Windows.Forms.ComboBox
+    Friend WithEvents BtnEnviarPatio As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

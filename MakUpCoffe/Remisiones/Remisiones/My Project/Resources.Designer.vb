@@ -571,6 +571,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property trolley_48d() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("trolley-48d", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property up() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("up", resourceCulture)

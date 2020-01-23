@@ -124,11 +124,11 @@
   <data name="Save4811" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save481.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonpress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buttonpress.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="farm-with-silo-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\farm-with-silo-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-coffee-beans-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-coffee-beans-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-búsqueda-de-propiedad-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-búsqueda-de-propiedad-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,14 +148,11 @@
   <data name="Eliminar45" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Eliminar45.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Lupa323" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Lupa32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Opera-glasses-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Opera-glasses-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Recepcion-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Recepcion-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="disconexion68" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disconexion68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-user-account-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-user-account-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,14 +163,17 @@
   <data name="Tikect68" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tikect68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save482" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Eliminar42" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eliminar42.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoMakupCoffesinfondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoMakupCoffesinfondo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="farmer-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\farmer-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Búsqueda48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Búsqueda48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BorrarFila28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BorrarFila28.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exit68" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exit68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -183,6 +183,15 @@
   </data>
   <data name="productor100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\productor100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lupa321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lupa32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BorrarFila40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BorrarFila40.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Security01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Security01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-user-shield-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-user-shield-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,17 +208,11 @@
   <data name="Save48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Close01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Pesaje32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pesaje32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-farm-with-silo-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-farm-with-silo-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="llave021" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\llave02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttonlog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +229,8 @@
   <data name="Carro52" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Carro52.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BorrarFila28" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BorrarFila28.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-coffee-beans-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-coffee-beans-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,8 +241,8 @@
   <data name="CirculoPlus48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CirculoPlus48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CirculPlus68" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CirculPlus68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Lupa323" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lupa32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Conductor100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Conductor100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,8 +265,8 @@
   <data name="llave01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\llave01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UseersLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UseersLog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="disconexion68" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disconexion68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,20 +274,17 @@
   <data name="CirculoPlus481" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CirculoPlus48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-paste-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-paste-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Carro64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Carro64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Carro100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Carro100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Makusplas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Makusplas.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Save481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-driver-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-driver-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,17 +295,17 @@
   <data name="Save68" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-plus-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-plus-36.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="disconexion681" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disconexion68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CirculPlus68" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CirculPlus68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="conexion68" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\conexion68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Lupa321" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Lupa32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-plus-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-plus-36.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Teclado32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Teclado32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -313,37 +313,40 @@
   <data name="icons8paste-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8paste-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Eliminar42" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Eliminar42.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="llave02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\llave02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Security01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Security01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Save482" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="disconexion681" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disconexion68.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imprimir48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imprimir48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logoMakupCoffesinfondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoMakupCoffesinfondo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Búsqueda48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Búsqueda48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tikect48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tikect48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Carro64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Carro64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Opera-glasses-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Opera-glasses-100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="llave021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\llave02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UseersLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UseersLog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Lupa322" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Lupa32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BorrarFila40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BorrarFila40.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="llave02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\llave02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="buttonpress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\buttonpress.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="trolley-48d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trolley-48d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -198,6 +198,24 @@
   <data name="TextBox3.OutputFormat" xml:space="preserve">
     <value />
   </data>
+  <data name="TextBox4.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox7.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox8.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArepTxtObservaciones.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox5.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox6.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

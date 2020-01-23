@@ -18,7 +18,6 @@ Partial Public Class ArepTikectRecepcion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(ArepTikectRecepcion))
-        Dim OleDBDataSource1 As DataDynamics.ActiveReports.DataSources.OleDBDataSource = New DataDynamics.ActiveReports.DataSources.OleDBDataSource
         Me.PageHeader1 = New DataDynamics.ActiveReports.PageHeader
         Me.ArepTxtNombreEmpresa = New DataDynamics.ActiveReports.TextBox
         Me.ImgLogo = New DataDynamics.ActiveReports.Picture
@@ -27,7 +26,7 @@ Partial Public Class ArepTikectRecepcion
         Me.Label5 = New DataDynamics.ActiveReports.Label
         Me.ArepTextNumEmsamble = New DataDynamics.ActiveReports.TextBox
         Me.ArepTxtMarca = New DataDynamics.ActiveReports.TextBox
-        Me.ArepLblCosecha = New DataDynamics.ActiveReports.Label
+        Me.ArepLblTipo = New DataDynamics.ActiveReports.Label
         Me.Label8 = New DataDynamics.ActiveReports.Label
         Me.ArepTextFecha = New DataDynamics.ActiveReports.TextBox
         Me.Label9 = New DataDynamics.ActiveReports.Label
@@ -75,8 +74,6 @@ Partial Public Class ArepTikectRecepcion
         Me.Label31 = New DataDynamics.ActiveReports.Label
         Me.ArepTxtVariedad = New DataDynamics.ActiveReports.TextBox
         Me.Label33 = New DataDynamics.ActiveReports.Label
-        Me.Detail1 = New DataDynamics.ActiveReports.Detail
-        Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter
         Me.Label2 = New DataDynamics.ActiveReports.Label
         Me.ArepTxtImperfeccion = New DataDynamics.ActiveReports.TextBox
         Me.CheckMoho = New DataDynamics.ActiveReports.CheckBox
@@ -85,10 +82,20 @@ Partial Public Class ArepTikectRecepcion
         Me.Label10 = New DataDynamics.ActiveReports.Label
         Me.Label11 = New DataDynamics.ActiveReports.Label
         Me.Label32 = New DataDynamics.ActiveReports.Label
+        Me.Detail1 = New DataDynamics.ActiveReports.Detail
         Me.TextBox1 = New DataDynamics.ActiveReports.TextBox
         Me.TextBox2 = New DataDynamics.ActiveReports.TextBox
         Me.TextBox3 = New DataDynamics.ActiveReports.TextBox
-        Me.ArepLblTipo = New DataDynamics.ActiveReports.Label
+        Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter
+        Me.ArepTxtObservaciones = New DataDynamics.ActiveReports.TextBox
+        Me.Label34 = New DataDynamics.ActiveReports.Label
+        Me.TextBox5 = New DataDynamics.ActiveReports.TextBox
+        Me.Label35 = New DataDynamics.ActiveReports.Label
+        Me.TextBox6 = New DataDynamics.ActiveReports.TextBox
+        Me.Label36 = New DataDynamics.ActiveReports.Label
+        Me.TextBox4 = New DataDynamics.ActiveReports.TextBox
+        Me.TextBox7 = New DataDynamics.ActiveReports.TextBox
+        Me.TextBox8 = New DataDynamics.ActiveReports.TextBox
         CType(Me.ArepTxtNombreEmpresa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,7 +103,7 @@ Partial Public Class ArepTikectRecepcion
         CType(Me.Label5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArepTextNumEmsamble, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArepTxtMarca, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ArepLblCosecha, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArepLblTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArepTextFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -155,13 +162,21 @@ Partial Public Class ArepTikectRecepcion
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ArepLblTipo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArepTxtObservaciones, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label34, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label35, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label36, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'PageHeader1
         '
-        Me.PageHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.ArepTxtNombreEmpresa, Me.ImgLogo, Me.Label3, Me.Label4, Me.Label5, Me.ArepTextNumEmsamble, Me.ArepTxtMarca, Me.ArepLblCosecha, Me.Label8, Me.ArepTextFecha, Me.Label9, Me.ArepTxtPlaca, Me.Label1, Me.ArepTxtColor, Me.Label6, Me.ArepTxtChofer, Me.Label7, Me.ArepTxtRemision, Me.Label12, Me.Label13, Me.ArepTxtConacafe, Me.Label14, Me.ArepTxtFinca, Me.Label15, Me.ArepTxtPlantillo, Me.Label16, Me.ArepTxtDepartam, Me.ArepTxtMunicipo, Me.Label17, Me.Label19, Me.Label20, Me.ArepTxtComarca, Me.Label21, Me.ArepTxtRecibimos, Me.Label18, Me.ArepTxtPorCuenta, Me.Label22, Me.ArepTxtCedula, Me.Label23, Me.Label24, Me.Label25, Me.ArepTxtPesoBruto, Me.ArepTxtTara, Me.Label26, Me.Label27, Me.ArepTxtPesoNeto, Me.Label28, Me.ArepTxtCantidadSacos, Me.Label29, Me.ArepTxtCalidad, Me.Label30, Me.ArepTxtHumedad, Me.Label31, Me.ArepTxtVariedad, Me.Label33, Me.Label2, Me.ArepTxtImperfeccion, Me.CheckMoho, Me.ArepTxtFermento, Me.lblProductName, Me.Label10, Me.Label11, Me.Label32})
-        Me.PageHeader1.Height = 7.395833!
+        Me.PageHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.ArepTxtNombreEmpresa, Me.ImgLogo, Me.Label3, Me.Label4, Me.Label5, Me.ArepTextNumEmsamble, Me.ArepTxtMarca, Me.ArepLblTipo, Me.Label8, Me.ArepTextFecha, Me.Label9, Me.ArepTxtPlaca, Me.Label1, Me.ArepTxtColor, Me.Label6, Me.ArepTxtChofer, Me.Label7, Me.ArepTxtRemision, Me.Label12, Me.Label13, Me.ArepTxtConacafe, Me.Label14, Me.ArepTxtFinca, Me.Label15, Me.ArepTxtPlantillo, Me.Label16, Me.ArepTxtDepartam, Me.ArepTxtMunicipo, Me.Label17, Me.Label19, Me.Label20, Me.ArepTxtComarca, Me.Label21, Me.ArepTxtRecibimos, Me.Label18, Me.ArepTxtPorCuenta, Me.Label22, Me.ArepTxtCedula, Me.Label23, Me.Label24, Me.Label25, Me.ArepTxtPesoBruto, Me.ArepTxtTara, Me.Label26, Me.Label27, Me.ArepTxtPesoNeto, Me.Label28, Me.ArepTxtCantidadSacos, Me.Label29, Me.ArepTxtCalidad, Me.Label30, Me.ArepTxtHumedad, Me.Label31, Me.ArepTxtVariedad, Me.Label33, Me.Label2, Me.ArepTxtImperfeccion, Me.CheckMoho, Me.ArepTxtFermento, Me.lblProductName, Me.Label10, Me.Label11, Me.Label32})
+        Me.PageHeader1.Height = 7.291667!
         Me.PageHeader1.Name = "PageHeader1"
         '
         'ArepTxtNombreEmpresa
@@ -178,10 +193,10 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtNombreEmpresa.Left = 0.125!
         Me.ArepTxtNombreEmpresa.Name = "ArepTxtNombreEmpresa"
         Me.ArepTxtNombreEmpresa.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 9.75pt; font-f" & _
-            "amily: Times New Roman; "
+            "amily: Arial; "
         Me.ArepTxtNombreEmpresa.Text = "Systems And Solutions"
-        Me.ArepTxtNombreEmpresa.Top = 0.6875!
-        Me.ArepTxtNombreEmpresa.Width = 2.375!
+        Me.ArepTxtNombreEmpresa.Top = 0.625!
+        Me.ArepTxtNombreEmpresa.Width = 2.5625!
         '
         'ImgLogo
         '
@@ -196,11 +211,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ImgLogo.Height = 0.5625!
         Me.ImgLogo.Image = Nothing
         Me.ImgLogo.ImageData = Nothing
-        Me.ImgLogo.Left = 0.5625!
+        Me.ImgLogo.Left = 0.6875!
         Me.ImgLogo.LineWeight = 0.0!
         Me.ImgLogo.Name = "ImgLogo"
         Me.ImgLogo.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
-        Me.ImgLogo.Top = 0.0625!
+        Me.ImgLogo.Top = 0.0!
         Me.ImgLogo.Width = 1.4375!
         '
         'Label3
@@ -217,9 +232,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label3.HyperLink = Nothing
         Me.Label3.Left = 0.125!
         Me.Label3.Name = "Label3"
-        Me.Label3.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
-        Me.Label3.Text = "Fecha          :"
-        Me.Label3.Top = 1.4375!
+        Me.Label3.Style = "ddo-char-set: 1; font-weight: bold; font-size: 7.9pt; font-family: Tahoma; "
+        Me.Label3.Text = "Fecha             :"
+        Me.Label3.Top = 1.375!
         Me.Label3.Width = 0.8125!
         '
         'Label4
@@ -238,8 +253,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label4.Name = "Label4"
         Me.Label4.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
         Me.Label4.Text = "NOTA DE PESO OFICIAL"
-        Me.Label4.Top = 0.875!
-        Me.Label4.Width = 2.375!
+        Me.Label4.Top = 0.8125!
+        Me.Label4.Width = 2.5625!
         '
         'Label5
         '
@@ -256,10 +271,10 @@ Partial Public Class ArepTikectRecepcion
         Me.Label5.Left = 0.125!
         Me.Label5.Name = "Label5"
         Me.Label5.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
         Me.Label5.Text = "DATOS DEL VEHICULO"
         Me.Label5.Top = 1.625!
-        Me.Label5.Width = 2.375!
+        Me.Label5.Width = 2.5625!
         '
         'ArepTextNumEmsamble
         '
@@ -276,10 +291,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTextNumEmsamble.Left = 0.9375!
         Me.ArepTextNumEmsamble.Name = "ArepTextNumEmsamble"
         Me.ArepTextNumEmsamble.OutputFormat = resources.GetString("ArepTextNumEmsamble.OutputFormat")
-        Me.ArepTextNumEmsamble.Style = "ddo-char-set: 0; font-size: 8.25pt; "
+        Me.ArepTextNumEmsamble.Style = "ddo-char-set: 1; text-align: center; font-size: 8.25pt; font-family: Microsoft Sa" & _
+            "ns Serif; "
         Me.ArepTextNumEmsamble.Text = Nothing
-        Me.ArepTextNumEmsamble.Top = 1.25!
-        Me.ArepTextNumEmsamble.Width = 1.5625!
+        Me.ArepTextNumEmsamble.Top = 1.1875!
+        Me.ArepTextNumEmsamble.Width = 1.75!
         '
         'ArepTxtMarca
         '
@@ -296,30 +312,31 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtMarca.Left = 0.75!
         Me.ArepTxtMarca.Name = "ArepTxtMarca"
         Me.ArepTxtMarca.OutputFormat = resources.GetString("ArepTxtMarca.OutputFormat")
-        Me.ArepTxtMarca.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtMarca.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtMarca.Text = Nothing
         Me.ArepTxtMarca.Top = 2.0!
-        Me.ArepTxtMarca.Width = 1.75!
+        Me.ArepTxtMarca.Width = 1.9375!
         '
-        'ArepLblCosecha
+        'ArepLblTipo
         '
-        Me.ArepLblCosecha.Border.BottomColor = System.Drawing.Color.Black
-        Me.ArepLblCosecha.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblCosecha.Border.LeftColor = System.Drawing.Color.Black
-        Me.ArepLblCosecha.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblCosecha.Border.RightColor = System.Drawing.Color.Black
-        Me.ArepLblCosecha.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblCosecha.Border.TopColor = System.Drawing.Color.Black
-        Me.ArepLblCosecha.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblCosecha.Height = 0.1875!
-        Me.ArepLblCosecha.HyperLink = Nothing
-        Me.ArepLblCosecha.Left = 0.125!
-        Me.ArepLblCosecha.Name = "ArepLblCosecha"
-        Me.ArepLblCosecha.Style = "text-align: center; font-weight: bold; font-size: 8.25pt; "
-        Me.ArepLblCosecha.Text = "Cosecha: 2015-2016"
-        Me.ArepLblCosecha.Top = 1.0625!
-        Me.ArepLblCosecha.Visible = False
-        Me.ArepLblCosecha.Width = 2.375!
+        Me.ArepLblTipo.Border.BottomColor = System.Drawing.Color.Black
+        Me.ArepLblTipo.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.ArepLblTipo.Border.LeftColor = System.Drawing.Color.Black
+        Me.ArepLblTipo.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.ArepLblTipo.Border.RightColor = System.Drawing.Color.Black
+        Me.ArepLblTipo.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.ArepLblTipo.Border.TopColor = System.Drawing.Color.Black
+        Me.ArepLblTipo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.ArepLblTipo.Height = 0.1875!
+        Me.ArepLblTipo.HyperLink = Nothing
+        Me.ArepLblTipo.Left = 0.125!
+        Me.ArepLblTipo.Name = "ArepLblTipo"
+        Me.ArepLblTipo.Style = "text-align: center; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepLblTipo.Text = "O R I G I N A L"
+        Me.ArepLblTipo.Top = 1.0!
+        Me.ArepLblTipo.Visible = False
+        Me.ArepLblTipo.Width = 2.5625!
         '
         'Label8
         '
@@ -335,9 +352,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label8.HyperLink = Nothing
         Me.Label8.Left = 0.125!
         Me.Label8.Name = "Label8"
-        Me.Label8.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
-        Me.Label8.Text = "Nota Peso #:"
-        Me.Label8.Top = 1.25!
+        Me.Label8.Style = "ddo-char-set: 1; font-weight: bold; font-size: 7.9pt; font-family: Tahoma; "
+        Me.Label8.Text = "Nota Peso #  :"
+        Me.Label8.Top = 1.1875!
         Me.Label8.Width = 0.8125!
         '
         'ArepTextFecha
@@ -355,10 +372,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTextFecha.Left = 0.9375!
         Me.ArepTextFecha.Name = "ArepTextFecha"
         Me.ArepTextFecha.OutputFormat = resources.GetString("ArepTextFecha.OutputFormat")
-        Me.ArepTextFecha.Style = "ddo-char-set: 0; font-size: 8.25pt; "
+        Me.ArepTextFecha.Style = "ddo-char-set: 1; text-align: center; font-size: 8.25pt; font-family: Microsoft Sa" & _
+            "ns Serif; "
         Me.ArepTextFecha.Text = Nothing
-        Me.ArepTextFecha.Top = 1.4375!
-        Me.ArepTextFecha.Width = 1.5625!
+        Me.ArepTextFecha.Top = 1.375!
+        Me.ArepTextFecha.Width = 1.75!
         '
         'Label9
         '
@@ -374,8 +392,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label9.HyperLink = Nothing
         Me.Label9.Left = 0.125!
         Me.Label9.Name = "Label9"
-        Me.Label9.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label9.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
         Me.Label9.Text = "Marca    :"
         Me.Label9.Top = 2.0!
         Me.Label9.Width = 0.625!
@@ -395,10 +413,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtPlaca.Left = 0.75!
         Me.ArepTxtPlaca.Name = "ArepTxtPlaca"
         Me.ArepTxtPlaca.OutputFormat = resources.GetString("ArepTxtPlaca.OutputFormat")
-        Me.ArepTxtPlaca.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtPlaca.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtPlaca.Text = Nothing
         Me.ArepTxtPlaca.Top = 1.8125!
-        Me.ArepTxtPlaca.Width = 1.75!
+        Me.ArepTxtPlaca.Width = 1.9375!
         '
         'Label1
         '
@@ -414,8 +433,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label1.HyperLink = Nothing
         Me.Label1.Left = 0.125!
         Me.Label1.Name = "Label1"
-        Me.Label1.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label1.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
         Me.Label1.Text = "Placa     :"
         Me.Label1.Top = 1.8125!
         Me.Label1.Width = 0.625!
@@ -435,10 +454,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtColor.Left = 0.75!
         Me.ArepTxtColor.Name = "ArepTxtColor"
         Me.ArepTxtColor.OutputFormat = resources.GetString("ArepTxtColor.OutputFormat")
-        Me.ArepTxtColor.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtColor.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtColor.Text = Nothing
         Me.ArepTxtColor.Top = 2.1875!
-        Me.ArepTxtColor.Width = 1.75!
+        Me.ArepTxtColor.Width = 1.9375!
         '
         'Label6
         '
@@ -454,9 +474,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label6.HyperLink = Nothing
         Me.Label6.Left = 0.125!
         Me.Label6.Name = "Label6"
-        Me.Label6.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label6.Text = "Color  :"
+        Me.Label6.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label6.Text = "Color     :"
         Me.Label6.Top = 2.1875!
         Me.Label6.Width = 0.625!
         '
@@ -475,10 +495,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtChofer.Left = 0.75!
         Me.ArepTxtChofer.Name = "ArepTxtChofer"
         Me.ArepTxtChofer.OutputFormat = resources.GetString("ArepTxtChofer.OutputFormat")
-        Me.ArepTxtChofer.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtChofer.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtChofer.Text = Nothing
         Me.ArepTxtChofer.Top = 2.375!
-        Me.ArepTxtChofer.Width = 1.75!
+        Me.ArepTxtChofer.Width = 1.9375!
         '
         'Label7
         '
@@ -494,9 +515,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label7.HyperLink = Nothing
         Me.Label7.Left = 0.125!
         Me.Label7.Name = "Label7"
-        Me.Label7.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label7.Text = "Chofer :"
+        Me.Label7.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label7.Text = "Chofer   :"
         Me.Label7.Top = 2.375!
         Me.Label7.Width = 0.625!
         '
@@ -512,13 +533,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtRemision.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtRemision.DataField = "Codigo"
         Me.ArepTxtRemision.Height = 0.1875!
-        Me.ArepTxtRemision.Left = 0.9375!
+        Me.ArepTxtRemision.Left = 1.0625!
         Me.ArepTxtRemision.Name = "ArepTxtRemision"
         Me.ArepTxtRemision.OutputFormat = resources.GetString("ArepTxtRemision.OutputFormat")
-        Me.ArepTxtRemision.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtRemision.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtRemision.Text = Nothing
         Me.ArepTxtRemision.Top = 2.75!
-        Me.ArepTxtRemision.Width = 1.5625!
+        Me.ArepTxtRemision.Width = 1.625!
         '
         'Label12
         '
@@ -534,11 +556,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label12.HyperLink = Nothing
         Me.Label12.Left = 0.125!
         Me.Label12.Name = "Label12"
-        Me.Label12.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label12.Text = "Remision No :"
+        Me.Label12.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label12.Text = "Remision No    :"
         Me.Label12.Top = 2.75!
-        Me.Label12.Width = 0.8125!
+        Me.Label12.Width = 0.9375!
         '
         'Label13
         '
@@ -555,10 +577,10 @@ Partial Public Class ArepTikectRecepcion
         Me.Label13.Left = 0.125!
         Me.Label13.Name = "Label13"
         Me.Label13.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
         Me.Label13.Text = "INFORMACIÓN DE ORIGEN"
         Me.Label13.Top = 2.5625!
-        Me.Label13.Width = 2.375!
+        Me.Label13.Width = 2.5625!
         '
         'ArepTxtConacafe
         '
@@ -572,13 +594,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtConacafe.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtConacafe.DataField = "Codigo"
         Me.ArepTxtConacafe.Height = 0.1875!
-        Me.ArepTxtConacafe.Left = 0.9375!
+        Me.ArepTxtConacafe.Left = 1.0625!
         Me.ArepTxtConacafe.Name = "ArepTxtConacafe"
         Me.ArepTxtConacafe.OutputFormat = resources.GetString("ArepTxtConacafe.OutputFormat")
-        Me.ArepTxtConacafe.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtConacafe.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtConacafe.Text = Nothing
         Me.ArepTxtConacafe.Top = 2.9375!
-        Me.ArepTxtConacafe.Width = 1.5625!
+        Me.ArepTxtConacafe.Width = 1.625!
         '
         'Label14
         '
@@ -594,11 +617,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label14.HyperLink = Nothing
         Me.Label14.Left = 0.125!
         Me.Label14.Name = "Label14"
-        Me.Label14.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label14.Text = "R. Concacafe:"
+        Me.Label14.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label14.Text = "R. Concacafe    :"
         Me.Label14.Top = 2.9375!
-        Me.Label14.Width = 0.8125!
+        Me.Label14.Width = 0.9375!
         '
         'ArepTxtFinca
         '
@@ -612,13 +635,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtFinca.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtFinca.DataField = "Codigo"
         Me.ArepTxtFinca.Height = 0.1875!
-        Me.ArepTxtFinca.Left = 0.9375!
+        Me.ArepTxtFinca.Left = 1.0625!
         Me.ArepTxtFinca.Name = "ArepTxtFinca"
         Me.ArepTxtFinca.OutputFormat = resources.GetString("ArepTxtFinca.OutputFormat")
-        Me.ArepTxtFinca.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtFinca.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtFinca.Text = Nothing
         Me.ArepTxtFinca.Top = 3.125!
-        Me.ArepTxtFinca.Width = 1.5625!
+        Me.ArepTxtFinca.Width = 1.625!
         '
         'Label15
         '
@@ -634,11 +658,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label15.HyperLink = Nothing
         Me.Label15.Left = 0.125!
         Me.Label15.Name = "Label15"
-        Me.Label15.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label15.Text = "Finca :"
+        Me.Label15.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label15.Text = "Finca                 :"
         Me.Label15.Top = 3.125!
-        Me.Label15.Width = 0.8125!
+        Me.Label15.Width = 0.9375!
         '
         'ArepTxtPlantillo
         '
@@ -652,13 +676,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtPlantillo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtPlantillo.DataField = "Codigo"
         Me.ArepTxtPlantillo.Height = 0.1875!
-        Me.ArepTxtPlantillo.Left = 0.9375!
+        Me.ArepTxtPlantillo.Left = 1.0625!
         Me.ArepTxtPlantillo.Name = "ArepTxtPlantillo"
         Me.ArepTxtPlantillo.OutputFormat = resources.GetString("ArepTxtPlantillo.OutputFormat")
-        Me.ArepTxtPlantillo.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtPlantillo.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtPlantillo.Text = Nothing
         Me.ArepTxtPlantillo.Top = 3.3125!
-        Me.ArepTxtPlantillo.Width = 1.5625!
+        Me.ArepTxtPlantillo.Width = 1.625!
         '
         'Label16
         '
@@ -674,11 +699,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label16.HyperLink = Nothing
         Me.Label16.Left = 0.125!
         Me.Label16.Name = "Label16"
-        Me.Label16.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label16.Text = "Lote en Finca:"
+        Me.Label16.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label16.Text = "Lote en Finca   :"
         Me.Label16.Top = 3.3125!
-        Me.Label16.Width = 0.8125!
+        Me.Label16.Width = 0.9375!
         '
         'ArepTxtDepartam
         '
@@ -692,13 +717,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtDepartam.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtDepartam.DataField = "Codigo"
         Me.ArepTxtDepartam.Height = 0.1875!
-        Me.ArepTxtDepartam.Left = 0.9375!
+        Me.ArepTxtDepartam.Left = 1.0625!
         Me.ArepTxtDepartam.Name = "ArepTxtDepartam"
         Me.ArepTxtDepartam.OutputFormat = resources.GetString("ArepTxtDepartam.OutputFormat")
-        Me.ArepTxtDepartam.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtDepartam.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtDepartam.Text = Nothing
         Me.ArepTxtDepartam.Top = 3.5!
-        Me.ArepTxtDepartam.Width = 1.5625!
+        Me.ArepTxtDepartam.Width = 1.625!
         '
         'ArepTxtMunicipo
         '
@@ -712,13 +738,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtMunicipo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtMunicipo.DataField = "Codigo"
         Me.ArepTxtMunicipo.Height = 0.1875!
-        Me.ArepTxtMunicipo.Left = 0.9375!
+        Me.ArepTxtMunicipo.Left = 1.0625!
         Me.ArepTxtMunicipo.Name = "ArepTxtMunicipo"
         Me.ArepTxtMunicipo.OutputFormat = resources.GetString("ArepTxtMunicipo.OutputFormat")
-        Me.ArepTxtMunicipo.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtMunicipo.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtMunicipo.Text = Nothing
         Me.ArepTxtMunicipo.Top = 3.6875!
-        Me.ArepTxtMunicipo.Width = 1.5625!
+        Me.ArepTxtMunicipo.Width = 1.625!
         '
         'Label17
         '
@@ -734,11 +761,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label17.HyperLink = Nothing
         Me.Label17.Left = 0.125!
         Me.Label17.Name = "Label17"
-        Me.Label17.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label17.Text = "Departamento"
+        Me.Label17.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label17.Text = "Departamento :"
         Me.Label17.Top = 3.5!
-        Me.Label17.Width = 0.8125!
+        Me.Label17.Width = 0.9375!
         '
         'Label19
         '
@@ -754,11 +781,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label19.HyperLink = Nothing
         Me.Label19.Left = 0.125!
         Me.Label19.Name = "Label19"
-        Me.Label19.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label19.Text = "Municipio      :"
+        Me.Label19.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label19.Text = "Municipio         :"
         Me.Label19.Top = 3.6875!
-        Me.Label19.Width = 0.8125!
+        Me.Label19.Width = 0.9375!
         '
         'Label20
         '
@@ -774,11 +801,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label20.HyperLink = Nothing
         Me.Label20.Left = 0.125!
         Me.Label20.Name = "Label20"
-        Me.Label20.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label20.Text = "Comarca :"
+        Me.Label20.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label20.Text = "Comarca           :"
         Me.Label20.Top = 3.875!
-        Me.Label20.Width = 0.8125!
+        Me.Label20.Width = 0.9375!
         '
         'ArepTxtComarca
         '
@@ -792,13 +819,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtComarca.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtComarca.DataField = "Codigo"
         Me.ArepTxtComarca.Height = 0.1875!
-        Me.ArepTxtComarca.Left = 0.9375!
+        Me.ArepTxtComarca.Left = 1.0625!
         Me.ArepTxtComarca.Name = "ArepTxtComarca"
         Me.ArepTxtComarca.OutputFormat = resources.GetString("ArepTxtComarca.OutputFormat")
-        Me.ArepTxtComarca.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtComarca.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtComarca.Text = Nothing
         Me.ArepTxtComarca.Top = 3.875!
-        Me.ArepTxtComarca.Width = 1.5625!
+        Me.ArepTxtComarca.Width = 1.625!
         '
         'Label21
         '
@@ -815,10 +843,10 @@ Partial Public Class ArepTikectRecepcion
         Me.Label21.Left = 0.125!
         Me.Label21.Name = "Label21"
         Me.Label21.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
         Me.Label21.Text = "INFORMACIÓN DE PRODUCTOR "
         Me.Label21.Top = 4.0625!
-        Me.Label21.Width = 2.375!
+        Me.Label21.Width = 2.5625!
         '
         'ArepTxtRecibimos
         '
@@ -835,10 +863,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtRecibimos.Left = 0.9375!
         Me.ArepTxtRecibimos.Name = "ArepTxtRecibimos"
         Me.ArepTxtRecibimos.OutputFormat = resources.GetString("ArepTxtRecibimos.OutputFormat")
-        Me.ArepTxtRecibimos.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtRecibimos.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtRecibimos.Text = Nothing
         Me.ArepTxtRecibimos.Top = 4.25!
-        Me.ArepTxtRecibimos.Width = 1.5625!
+        Me.ArepTxtRecibimos.Width = 1.75!
         '
         'Label18
         '
@@ -854,8 +883,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label18.HyperLink = Nothing
         Me.Label18.Left = 0.125!
         Me.Label18.Name = "Label18"
-        Me.Label18.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label18.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
         Me.Label18.Text = "Recibimos de:"
         Me.Label18.Top = 4.25!
         Me.Label18.Width = 0.8125!
@@ -872,13 +901,14 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtPorCuenta.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtPorCuenta.DataField = "Codigo"
         Me.ArepTxtPorCuenta.Height = 0.1875!
-        Me.ArepTxtPorCuenta.Left = 0.9375!
+        Me.ArepTxtPorCuenta.Left = 1.0!
         Me.ArepTxtPorCuenta.Name = "ArepTxtPorCuenta"
         Me.ArepTxtPorCuenta.OutputFormat = resources.GetString("ArepTxtPorCuenta.OutputFormat")
-        Me.ArepTxtPorCuenta.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtPorCuenta.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtPorCuenta.Text = Nothing
         Me.ArepTxtPorCuenta.Top = 4.625!
-        Me.ArepTxtPorCuenta.Width = 1.5625!
+        Me.ArepTxtPorCuenta.Width = 1.6875!
         '
         'Label22
         '
@@ -894,11 +924,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label22.HyperLink = Nothing
         Me.Label22.Left = 0.125!
         Me.Label22.Name = "Label22"
-        Me.Label22.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label22.Text = "Por Cuenta de"
+        Me.Label22.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label22.Text = "Por Cuenta de:"
         Me.Label22.Top = 4.625!
-        Me.Label22.Width = 0.8125!
+        Me.Label22.Width = 0.875!
         '
         'ArepTxtCedula
         '
@@ -915,10 +945,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtCedula.Left = 0.9375!
         Me.ArepTxtCedula.Name = "ArepTxtCedula"
         Me.ArepTxtCedula.OutputFormat = resources.GetString("ArepTxtCedula.OutputFormat")
-        Me.ArepTxtCedula.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtCedula.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtCedula.Text = Nothing
         Me.ArepTxtCedula.Top = 4.4375!
-        Me.ArepTxtCedula.Width = 1.5625!
+        Me.ArepTxtCedula.Width = 1.75!
         '
         'Label23
         '
@@ -934,8 +965,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label23.HyperLink = Nothing
         Me.Label23.Left = 0.125!
         Me.Label23.Name = "Label23"
-        Me.Label23.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label23.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
         Me.Label23.Text = "Cédula           :"
         Me.Label23.Top = 4.4375!
         Me.Label23.Width = 0.8125!
@@ -955,10 +986,10 @@ Partial Public Class ArepTikectRecepcion
         Me.Label24.Left = 0.125!
         Me.Label24.Name = "Label24"
         Me.Label24.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
         Me.Label24.Text = "INFORMACIÓN PESADA"
         Me.Label24.Top = 4.8125!
-        Me.Label24.Width = 2.375!
+        Me.Label24.Width = 2.5625!
         '
         'Label25
         '
@@ -974,9 +1005,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label25.HyperLink = Nothing
         Me.Label25.Left = 0.125!
         Me.Label25.Name = "Label25"
-        Me.Label25.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label25.Text = "Tara      :"
+        Me.Label25.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label25.Text = "Tara                       :"
         Me.Label25.Top = 5.375!
         Me.Label25.Width = 1.0625!
         '
@@ -995,10 +1026,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtPesoBruto.Left = 1.1875!
         Me.ArepTxtPesoBruto.Name = "ArepTxtPesoBruto"
         Me.ArepTxtPesoBruto.OutputFormat = resources.GetString("ArepTxtPesoBruto.OutputFormat")
-        Me.ArepTxtPesoBruto.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtPesoBruto.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtPesoBruto.Text = Nothing
         Me.ArepTxtPesoBruto.Top = 5.0!
-        Me.ArepTxtPesoBruto.Width = 1.3125!
+        Me.ArepTxtPesoBruto.Width = 1.5!
         '
         'ArepTxtTara
         '
@@ -1015,10 +1047,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtTara.Left = 1.1875!
         Me.ArepTxtTara.Name = "ArepTxtTara"
         Me.ArepTxtTara.OutputFormat = resources.GetString("ArepTxtTara.OutputFormat")
-        Me.ArepTxtTara.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtTara.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtTara.Text = Nothing
         Me.ArepTxtTara.Top = 5.375!
-        Me.ArepTxtTara.Width = 1.3125!
+        Me.ArepTxtTara.Width = 1.5!
         '
         'Label26
         '
@@ -1034,9 +1067,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label26.HyperLink = Nothing
         Me.Label26.Left = 0.125!
         Me.Label26.Name = "Label26"
-        Me.Label26.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label26.Text = "Peso Bruto(QQ) :"
+        Me.Label26.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label26.Text = "Peso Bruto(QQ)   :"
         Me.Label26.Top = 5.0!
         Me.Label26.Width = 1.0625!
         '
@@ -1054,9 +1087,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label27.HyperLink = Nothing
         Me.Label27.Left = 0.125!
         Me.Label27.Name = "Label27"
-        Me.Label27.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label27.Text = "Peso Neto(QQ) :"
+        Me.Label27.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label27.Text = "Peso Neto(QQ)     :"
         Me.Label27.Top = 5.5625!
         Me.Label27.Width = 1.0625!
         '
@@ -1075,10 +1108,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtPesoNeto.Left = 1.1875!
         Me.ArepTxtPesoNeto.Name = "ArepTxtPesoNeto"
         Me.ArepTxtPesoNeto.OutputFormat = resources.GetString("ArepTxtPesoNeto.OutputFormat")
-        Me.ArepTxtPesoNeto.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtPesoNeto.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtPesoNeto.Text = Nothing
         Me.ArepTxtPesoNeto.Top = 5.5625!
-        Me.ArepTxtPesoNeto.Width = 1.3125!
+        Me.ArepTxtPesoNeto.Width = 1.5!
         '
         'Label28
         '
@@ -1094,9 +1128,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label28.HyperLink = Nothing
         Me.Label28.Left = 0.125!
         Me.Label28.Name = "Label28"
-        Me.Label28.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label28.Text = "Cantidad Sacos:"
+        Me.Label28.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label28.Text = "Cantidad Sacos    :"
         Me.Label28.Top = 5.75!
         Me.Label28.Width = 1.0625!
         '
@@ -1115,10 +1149,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtCantidadSacos.Left = 1.1875!
         Me.ArepTxtCantidadSacos.Name = "ArepTxtCantidadSacos"
         Me.ArepTxtCantidadSacos.OutputFormat = resources.GetString("ArepTxtCantidadSacos.OutputFormat")
-        Me.ArepTxtCantidadSacos.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtCantidadSacos.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtCantidadSacos.Text = Nothing
         Me.ArepTxtCantidadSacos.Top = 5.75!
-        Me.ArepTxtCantidadSacos.Width = 1.3125!
+        Me.ArepTxtCantidadSacos.Width = 1.5!
         '
         'Label29
         '
@@ -1134,9 +1169,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label29.HyperLink = Nothing
         Me.Label29.Left = 0.125!
         Me.Label29.Name = "Label29"
-        Me.Label29.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label29.Text = "Calidad   :"
+        Me.Label29.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label29.Text = "Calidad                  :"
         Me.Label29.Top = 6.125!
         Me.Label29.Width = 1.0625!
         '
@@ -1155,10 +1190,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtCalidad.Left = 1.1875!
         Me.ArepTxtCalidad.Name = "ArepTxtCalidad"
         Me.ArepTxtCalidad.OutputFormat = resources.GetString("ArepTxtCalidad.OutputFormat")
-        Me.ArepTxtCalidad.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtCalidad.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtCalidad.Text = Nothing
         Me.ArepTxtCalidad.Top = 6.125!
-        Me.ArepTxtCalidad.Width = 1.3125!
+        Me.ArepTxtCalidad.Width = 1.5!
         '
         'Label30
         '
@@ -1174,9 +1210,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label30.HyperLink = Nothing
         Me.Label30.Left = 0.125!
         Me.Label30.Name = "Label30"
-        Me.Label30.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label30.Text = "%Humedad :"
+        Me.Label30.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label30.Text = "%Humedad          :"
         Me.Label30.Top = 5.1875!
         Me.Label30.Width = 1.0625!
         '
@@ -1195,10 +1231,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtHumedad.Left = 1.1875!
         Me.ArepTxtHumedad.Name = "ArepTxtHumedad"
         Me.ArepTxtHumedad.OutputFormat = resources.GetString("ArepTxtHumedad.OutputFormat")
-        Me.ArepTxtHumedad.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtHumedad.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtHumedad.Text = Nothing
         Me.ArepTxtHumedad.Top = 5.1875!
-        Me.ArepTxtHumedad.Width = 1.3125!
+        Me.ArepTxtHumedad.Width = 1.5!
         '
         'Label31
         '
@@ -1215,10 +1252,10 @@ Partial Public Class ArepTikectRecepcion
         Me.Label31.Left = 0.125!
         Me.Label31.Name = "Label31"
         Me.Label31.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
         Me.Label31.Text = "CALIDAD DE CAFÉ RECIBIDO"
         Me.Label31.Top = 5.9375!
-        Me.Label31.Width = 2.375!
+        Me.Label31.Width = 2.5625!
         '
         'ArepTxtVariedad
         '
@@ -1235,10 +1272,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtVariedad.Left = 1.1875!
         Me.ArepTxtVariedad.Name = "ArepTxtVariedad"
         Me.ArepTxtVariedad.OutputFormat = resources.GetString("ArepTxtVariedad.OutputFormat")
-        Me.ArepTxtVariedad.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtVariedad.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtVariedad.Text = Nothing
         Me.ArepTxtVariedad.Top = 6.3125!
-        Me.ArepTxtVariedad.Width = 1.3125!
+        Me.ArepTxtVariedad.Width = 1.5!
         '
         'Label33
         '
@@ -1254,24 +1292,11 @@ Partial Public Class ArepTikectRecepcion
         Me.Label33.HyperLink = Nothing
         Me.Label33.Left = 0.125!
         Me.Label33.Name = "Label33"
-        Me.Label33.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label33.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
         Me.Label33.Text = "Variedad  de café :"
         Me.Label33.Top = 6.3125!
         Me.Label33.Width = 1.0625!
-        '
-        'Detail1
-        '
-        Me.Detail1.ColumnSpacing = 0.0!
-        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.TextBox1, Me.TextBox2, Me.TextBox3})
-        Me.Detail1.Height = 0.4375!
-        Me.Detail1.Name = "Detail1"
-        '
-        'PageFooter1
-        '
-        Me.PageFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.ArepLblTipo})
-        Me.PageFooter1.Height = 0.4166667!
-        Me.PageFooter1.Name = "PageFooter1"
         '
         'Label2
         '
@@ -1287,9 +1312,9 @@ Partial Public Class ArepTikectRecepcion
         Me.Label2.HyperLink = Nothing
         Me.Label2.Left = 0.125!
         Me.Label2.Name = "Label2"
-        Me.Label2.Style = "color: Black; ddo-char-set: 0; text-align: left; font-weight: bold; background-co" & _
-            "lor: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label2.Text = "%Imperfección:"
+        Me.Label2.Style = "color: Black; ddo-char-set: 1; text-align: left; font-weight: bold; background-co" & _
+            "lor: White; font-size: 7.9pt; font-family: Tahoma; vertical-align: middle; "
+        Me.Label2.Text = "%Imperfección    :"
         Me.Label2.Top = 6.5!
         Me.Label2.Width = 1.0625!
         '
@@ -1308,10 +1333,11 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtImperfeccion.Left = 1.1875!
         Me.ArepTxtImperfeccion.Name = "ArepTxtImperfeccion"
         Me.ArepTxtImperfeccion.OutputFormat = resources.GetString("ArepTxtImperfeccion.OutputFormat")
-        Me.ArepTxtImperfeccion.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtImperfeccion.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
         Me.ArepTxtImperfeccion.Text = Nothing
         Me.ArepTxtImperfeccion.Top = 6.5!
-        Me.ArepTxtImperfeccion.Width = 1.3125!
+        Me.ArepTxtImperfeccion.Width = 1.5!
         '
         'CheckMoho
         '
@@ -1324,12 +1350,12 @@ Partial Public Class ArepTikectRecepcion
         Me.CheckMoho.Border.TopColor = System.Drawing.Color.Black
         Me.CheckMoho.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.CheckMoho.Height = 0.1875!
-        Me.CheckMoho.Left = 0.1875!
+        Me.CheckMoho.Left = 0.4375!
         Me.CheckMoho.Name = "CheckMoho"
         Me.CheckMoho.Style = ""
         Me.CheckMoho.Text = "Moho"
-        Me.CheckMoho.Top = 6.6875!
-        Me.CheckMoho.Width = 1.125!
+        Me.CheckMoho.Top = 6.75!
+        Me.CheckMoho.Width = 0.875!
         '
         'ArepTxtFermento
         '
@@ -1342,12 +1368,12 @@ Partial Public Class ArepTikectRecepcion
         Me.ArepTxtFermento.Border.TopColor = System.Drawing.Color.Black
         Me.ArepTxtFermento.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ArepTxtFermento.Height = 0.1875!
-        Me.ArepTxtFermento.Left = 1.375!
+        Me.ArepTxtFermento.Left = 1.3125!
         Me.ArepTxtFermento.Name = "ArepTxtFermento"
         Me.ArepTxtFermento.Style = ""
         Me.ArepTxtFermento.Text = "Fermentado"
-        Me.ArepTxtFermento.Top = 6.6875!
-        Me.ArepTxtFermento.Width = 1.125!
+        Me.ArepTxtFermento.Top = 6.75!
+        Me.ArepTxtFermento.Width = 1.0625!
         '
         'lblProductName
         '
@@ -1366,7 +1392,7 @@ Partial Public Class ArepTikectRecepcion
         Me.lblProductName.Style = "color: #000040; text-align: center; font-weight: bold; background-color: White; f" & _
             "ont-size: 8.5pt; "
         Me.lblProductName.Text = "No"
-        Me.lblProductName.Top = 7.1875!
+        Me.lblProductName.Top = 7.125!
         Me.lblProductName.Width = 0.625!
         '
         'Label10
@@ -1386,7 +1412,7 @@ Partial Public Class ArepTikectRecepcion
         Me.Label10.Style = "color: #000040; text-align: center; font-weight: bold; background-color: White; f" & _
             "ont-size: 8.5pt; "
         Me.Label10.Text = "Sacos"
-        Me.Label10.Top = 7.1875!
+        Me.Label10.Top = 7.125!
         Me.Label10.Width = 0.875!
         '
         'Label11
@@ -1406,8 +1432,8 @@ Partial Public Class ArepTikectRecepcion
         Me.Label11.Style = "color: #000040; text-align: center; font-weight: bold; background-color: White; f" & _
             "ont-size: 8.5pt; "
         Me.Label11.Text = "Lbs/QQ"
-        Me.Label11.Top = 7.1875!
-        Me.Label11.Width = 0.875!
+        Me.Label11.Top = 7.125!
+        Me.Label11.Width = 1.0625!
         '
         'Label32
         '
@@ -1424,27 +1450,34 @@ Partial Public Class ArepTikectRecepcion
         Me.Label32.Left = 0.125!
         Me.Label32.Name = "Label32"
         Me.Label32.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: Black; font-size: 8.25pt; vertical-align: middle; "
-        Me.Label32.Text = "CALIDAD DE CAFÉ RECIBIDO"
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label32.Text = "DETALLE PESADAS"
         Me.Label32.Top = 6.9375!
-        Me.Label32.Width = 2.375!
+        Me.Label32.Width = 2.5625!
+        '
+        'Detail1
+        '
+        Me.Detail1.ColumnSpacing = 0.0!
+        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.TextBox1, Me.TextBox2, Me.TextBox3, Me.TextBox4, Me.TextBox7, Me.TextBox8})
+        Me.Detail1.Height = 0.1979167!
+        Me.Detail1.Name = "Detail1"
         '
         'TextBox1
         '
         Me.TextBox1.Border.BottomColor = System.Drawing.Color.Black
-        Me.TextBox1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox1.Border.LeftColor = System.Drawing.Color.Black
-        Me.TextBox1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox1.Border.RightColor = System.Drawing.Color.Black
-        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox1.Border.TopColor = System.Drawing.Color.Black
-        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.TextBox1.DataField = "Codigo"
+        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox1.DataField = "Linea"
         Me.TextBox1.Height = 0.1875!
         Me.TextBox1.Left = 0.125!
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.OutputFormat = resources.GetString("TextBox1.OutputFormat")
-        Me.TextBox1.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.TextBox1.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
         Me.TextBox1.Text = Nothing
         Me.TextBox1.Top = 0.0!
         Me.TextBox1.Width = 0.625!
@@ -1452,19 +1485,19 @@ Partial Public Class ArepTikectRecepcion
         'TextBox2
         '
         Me.TextBox2.Border.BottomColor = System.Drawing.Color.Black
-        Me.TextBox2.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox2.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox2.Border.LeftColor = System.Drawing.Color.Black
-        Me.TextBox2.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox2.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox2.Border.RightColor = System.Drawing.Color.Black
-        Me.TextBox2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox2.Border.TopColor = System.Drawing.Color.Black
-        Me.TextBox2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.TextBox2.DataField = "Codigo"
+        Me.TextBox2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox2.DataField = "Saco"
         Me.TextBox2.Height = 0.1875!
         Me.TextBox2.Left = 0.75!
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.OutputFormat = resources.GetString("TextBox2.OutputFormat")
-        Me.TextBox2.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.TextBox2.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
         Me.TextBox2.Text = Nothing
         Me.TextBox2.Top = 0.0!
         Me.TextBox2.Width = 0.875!
@@ -1472,54 +1505,215 @@ Partial Public Class ArepTikectRecepcion
         'TextBox3
         '
         Me.TextBox3.Border.BottomColor = System.Drawing.Color.Black
-        Me.TextBox3.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox3.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox3.Border.LeftColor = System.Drawing.Color.Black
-        Me.TextBox3.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox3.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox3.Border.RightColor = System.Drawing.Color.Black
-        Me.TextBox3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.TextBox3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox3.Border.TopColor = System.Drawing.Color.Black
-        Me.TextBox3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.TextBox3.DataField = "Codigo"
+        Me.TextBox3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox3.DataField = "PesoNetoLb"
         Me.TextBox3.Height = 0.1875!
         Me.TextBox3.Left = 1.625!
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.OutputFormat = resources.GetString("TextBox3.OutputFormat")
-        Me.TextBox3.Style = "ddo-char-set: 0; font-weight: bold; font-size: 8.25pt; "
+        Me.TextBox3.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
         Me.TextBox3.Text = Nothing
         Me.TextBox3.Top = 0.0!
-        Me.TextBox3.Width = 0.875!
+        Me.TextBox3.Width = 1.0625!
         '
-        'ArepLblTipo
+        'PageFooter1
         '
-        Me.ArepLblTipo.Border.BottomColor = System.Drawing.Color.Black
-        Me.ArepLblTipo.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblTipo.Border.LeftColor = System.Drawing.Color.Black
-        Me.ArepLblTipo.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblTipo.Border.RightColor = System.Drawing.Color.Black
-        Me.ArepLblTipo.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblTipo.Border.TopColor = System.Drawing.Color.Black
-        Me.ArepLblTipo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ArepLblTipo.Height = 0.1875!
-        Me.ArepLblTipo.HyperLink = Nothing
-        Me.ArepLblTipo.Left = 0.6875!
-        Me.ArepLblTipo.Name = "ArepLblTipo"
-        Me.ArepLblTipo.Style = "color: Black; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
-            "color: White; font-size: 8.25pt; vertical-align: middle; "
-        Me.ArepLblTipo.Text = "ORIGINAL"
-        Me.ArepLblTipo.Top = 0.125!
-        Me.ArepLblTipo.Width = 1.0625!
+        Me.PageFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.ArepTxtObservaciones, Me.Label34, Me.TextBox5, Me.Label35, Me.TextBox6, Me.Label36})
+        Me.PageFooter1.Height = 1.270833!
+        Me.PageFooter1.Name = "PageFooter1"
+        '
+        'ArepTxtObservaciones
+        '
+        Me.ArepTxtObservaciones.Border.BottomColor = System.Drawing.Color.Black
+        Me.ArepTxtObservaciones.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.ArepTxtObservaciones.Border.LeftColor = System.Drawing.Color.Black
+        Me.ArepTxtObservaciones.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.ArepTxtObservaciones.Border.RightColor = System.Drawing.Color.Black
+        Me.ArepTxtObservaciones.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.ArepTxtObservaciones.Border.TopColor = System.Drawing.Color.Black
+        Me.ArepTxtObservaciones.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.ArepTxtObservaciones.Height = 0.4375!
+        Me.ArepTxtObservaciones.Left = 0.125!
+        Me.ArepTxtObservaciones.Name = "ArepTxtObservaciones"
+        Me.ArepTxtObservaciones.OutputFormat = resources.GetString("ArepTxtObservaciones.OutputFormat")
+        Me.ArepTxtObservaciones.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
+        Me.ArepTxtObservaciones.Text = Nothing
+        Me.ArepTxtObservaciones.Top = 0.1875!
+        Me.ArepTxtObservaciones.Width = 2.5625!
+        '
+        'Label34
+        '
+        Me.Label34.Border.BottomColor = System.Drawing.Color.Black
+        Me.Label34.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Label34.Border.LeftColor = System.Drawing.Color.Black
+        Me.Label34.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Label34.Border.RightColor = System.Drawing.Color.Black
+        Me.Label34.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Label34.Border.TopColor = System.Drawing.Color.Black
+        Me.Label34.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Label34.Height = 0.188!
+        Me.Label34.HyperLink = Nothing
+        Me.Label34.Left = 0.125!
+        Me.Label34.Name = "Label34"
+        Me.Label34.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label34.Text = "OBSERVACIONES"
+        Me.Label34.Top = 0.0!
+        Me.Label34.Width = 2.565!
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Border.BottomColor = System.Drawing.Color.Black
+        Me.TextBox5.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox5.Border.LeftColor = System.Drawing.Color.Black
+        Me.TextBox5.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox5.Border.RightColor = System.Drawing.Color.Black
+        Me.TextBox5.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox5.Border.TopColor = System.Drawing.Color.Black
+        Me.TextBox5.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox5.Height = 0.4375!
+        Me.TextBox5.Left = 0.125!
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.OutputFormat = resources.GetString("TextBox5.OutputFormat")
+        Me.TextBox5.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
+        Me.TextBox5.Text = Nothing
+        Me.TextBox5.Top = 0.8125!
+        Me.TextBox5.Width = 1.25!
+        '
+        'Label35
+        '
+        Me.Label35.Border.BottomColor = System.Drawing.Color.Black
+        Me.Label35.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label35.Border.LeftColor = System.Drawing.Color.Black
+        Me.Label35.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label35.Border.RightColor = System.Drawing.Color.Black
+        Me.Label35.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label35.Border.TopColor = System.Drawing.Color.Black
+        Me.Label35.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label35.Height = 0.1875!
+        Me.Label35.HyperLink = Nothing
+        Me.Label35.Left = 0.125!
+        Me.Label35.Name = "Label35"
+        Me.Label35.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label35.Text = "FRIMA PRODUCTOR"
+        Me.Label35.Top = 0.625!
+        Me.Label35.Width = 1.25!
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Border.BottomColor = System.Drawing.Color.Black
+        Me.TextBox6.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.Border.LeftColor = System.Drawing.Color.Black
+        Me.TextBox6.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.Border.RightColor = System.Drawing.Color.Black
+        Me.TextBox6.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.Border.TopColor = System.Drawing.Color.Black
+        Me.TextBox6.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.Height = 0.4375!
+        Me.TextBox6.Left = 1.375!
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.OutputFormat = resources.GetString("TextBox6.OutputFormat")
+        Me.TextBox6.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; "
+        Me.TextBox6.Text = Nothing
+        Me.TextBox6.Top = 0.8125!
+        Me.TextBox6.Width = 1.3125!
+        '
+        'Label36
+        '
+        Me.Label36.Border.BottomColor = System.Drawing.Color.Black
+        Me.Label36.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label36.Border.LeftColor = System.Drawing.Color.Black
+        Me.Label36.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label36.Border.RightColor = System.Drawing.Color.Black
+        Me.Label36.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label36.Border.TopColor = System.Drawing.Color.Black
+        Me.Label36.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.Label36.Height = 0.1875!
+        Me.Label36.HyperLink = Nothing
+        Me.Label36.Left = 1.375!
+        Me.Label36.Name = "Label36"
+        Me.Label36.Style = "color: White; ddo-char-set: 0; text-align: center; font-weight: bold; background-" & _
+            "color: #404040; font-size: 8.25pt; vertical-align: middle; "
+        Me.Label36.Text = "FIRMA RECIBIDOR"
+        Me.Label36.Top = 0.625!
+        Me.Label36.Width = 1.3125!
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Border.BottomColor = System.Drawing.Color.Black
+        Me.TextBox4.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox4.Border.LeftColor = System.Drawing.Color.Black
+        Me.TextBox4.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox4.Border.RightColor = System.Drawing.Color.Black
+        Me.TextBox4.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox4.Border.TopColor = System.Drawing.Color.Black
+        Me.TextBox4.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox4.DataField = "Linea"
+        Me.TextBox4.Height = 0.1875!
+        Me.TextBox4.Left = 0.125!
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.OutputFormat = resources.GetString("TextBox4.OutputFormat")
+        Me.TextBox4.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
+        Me.TextBox4.Text = Nothing
+        Me.TextBox4.Top = 0.0!
+        Me.TextBox4.Width = 0.625!
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Border.BottomColor = System.Drawing.Color.Black
+        Me.TextBox7.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.Border.LeftColor = System.Drawing.Color.Black
+        Me.TextBox7.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.Border.RightColor = System.Drawing.Color.Black
+        Me.TextBox7.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.Border.TopColor = System.Drawing.Color.Black
+        Me.TextBox7.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.DataField = "Saco"
+        Me.TextBox7.Height = 0.1875!
+        Me.TextBox7.Left = 0.75!
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.OutputFormat = resources.GetString("TextBox7.OutputFormat")
+        Me.TextBox7.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
+        Me.TextBox7.Text = Nothing
+        Me.TextBox7.Top = 0.0!
+        Me.TextBox7.Width = 0.875!
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Border.BottomColor = System.Drawing.Color.Black
+        Me.TextBox8.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox8.Border.LeftColor = System.Drawing.Color.Black
+        Me.TextBox8.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox8.Border.RightColor = System.Drawing.Color.Black
+        Me.TextBox8.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox8.Border.TopColor = System.Drawing.Color.Black
+        Me.TextBox8.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox8.DataField = "PesoNetoLb"
+        Me.TextBox8.Height = 0.1875!
+        Me.TextBox8.Left = 1.625!
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.OutputFormat = resources.GetString("TextBox8.OutputFormat")
+        Me.TextBox8.Style = "ddo-char-set: 1; text-align: center; font-weight: normal; font-size: 8.25pt; font" & _
+            "-family: Microsoft Sans Serif; "
+        Me.TextBox8.Text = Nothing
+        Me.TextBox8.Top = 0.0!
+        Me.TextBox8.Width = 1.0625!
         '
         'ArepTikectRecepcion
         '
         Me.MasterReport = False
-        OleDBDataSource1.ConnectionString = "Provider=SQLOLEDB.1;Password=P@ssword;Persist Security Info=True;User ID=sa;Initi" & _
-            "al Catalog=SistemaInvenario;Data Source=JUAN\SQL2012"
-        OleDBDataSource1.SQL = "SELECT  id_Eventos As Linea, QQ As Saco,PesoNetoLb FROM Detalle_Recepcion  WHERE " & _
-            "(NumeroRecepcion = N'1')"
-        Me.DataSource = OleDBDataSource1
         Me.PageSettings.PaperHeight = 11.0!
         Me.PageSettings.PaperWidth = 8.5!
-        Me.PrintWidth = 2.65625!
+        Me.PrintWidth = 2.770833!
         Me.Sections.Add(Me.PageHeader1)
         Me.Sections.Add(Me.Detail1)
         Me.Sections.Add(Me.PageFooter1)
@@ -1536,7 +1730,7 @@ Partial Public Class ArepTikectRecepcion
         CType(Me.Label5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArepTextNumEmsamble, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArepTxtMarca, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ArepLblCosecha, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArepLblTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArepTextFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1595,7 +1789,15 @@ Partial Public Class ArepTikectRecepcion
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ArepLblTipo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArepTxtObservaciones, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label34, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label35, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label36, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1606,7 +1808,7 @@ Partial Public Class ArepTikectRecepcion
     Friend WithEvents Label5 As DataDynamics.ActiveReports.Label
     Friend WithEvents ArepTextNumEmsamble As DataDynamics.ActiveReports.TextBox
     Friend WithEvents ArepTxtMarca As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents ArepLblCosecha As DataDynamics.ActiveReports.Label
+    Friend WithEvents ArepLblTipo As DataDynamics.ActiveReports.Label
     Friend WithEvents Label8 As DataDynamics.ActiveReports.Label
     Friend WithEvents ArepTextFecha As DataDynamics.ActiveReports.TextBox
     Friend WithEvents Label9 As DataDynamics.ActiveReports.Label
@@ -1665,5 +1867,13 @@ Partial Public Class ArepTikectRecepcion
     Friend WithEvents TextBox1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents TextBox2 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents TextBox3 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents ArepLblTipo As DataDynamics.ActiveReports.Label
+    Friend WithEvents ArepTxtObservaciones As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents Label34 As DataDynamics.ActiveReports.Label
+    Friend WithEvents TextBox5 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents Label35 As DataDynamics.ActiveReports.Label
+    Friend WithEvents TextBox6 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents Label36 As DataDynamics.ActiveReports.Label
+    Friend WithEvents TextBox4 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents TextBox7 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents TextBox8 As DataDynamics.ActiveReports.TextBox
 End Class
