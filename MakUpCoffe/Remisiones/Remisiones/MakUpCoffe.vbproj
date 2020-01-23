@@ -205,6 +205,12 @@
     <Compile Include="FrmFincaPlantillo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmPatio.Designer.vb">
+      <DependentUpon>FrmPatio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmProductos.Designer.vb">
       <DependentUpon>FrmProductos.vb</DependentUpon>
     </Compile>
@@ -377,6 +383,10 @@
     <EmbeddedResource Include="FrmFincaPlantillo.resx">
       <DependentUpon>FrmFincaPlantillo.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatio.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPatio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductos.resx">
       <DependentUpon>FrmProductos.vb</DependentUpon>
