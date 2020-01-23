@@ -10,7 +10,7 @@ Public Class FrmUsuarios
         Dim SqlUsuarios As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-        SqlUsuarios = "SELECT Usuario,Tipo FROM Usuarios WHERE (Usuario = '" & NombreUsuario & "')"
+        SqlUsuarios = "SELECT Usuario FROM Usuarios WHERE (Usuario = '" & NombreUsuario & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlUsuarios, MiConexion)
         DataAdapter.Fill(DataSet, "ListaUsuarios")
         If Not DataSet.Tables("ListaUsuarios").Rows.Count = 0 Then

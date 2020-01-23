@@ -1,1 +1,0 @@
-EXEC sp_RENAME 'DeduccionDano.IdDaño' , 'IdDano', 'COLUMN'
