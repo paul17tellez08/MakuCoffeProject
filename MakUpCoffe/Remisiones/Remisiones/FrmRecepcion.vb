@@ -386,12 +386,12 @@ Public Class FrmRecepcion
         End If
 
         ArepRecepcion.LblHora.Text = Me.Año & "-" & Me.Mes & "-" & Me.Dia & "-" & Me.TxtCodProductor.Text
-        ArepRecepcion.LblNotas.Text = Me.txtobservaciones.Text
+        ' ArepRecepcion.LblNotas.Text = Me.txtobservaciones.Text
         ArepRecepcion.LblOrden.Text = Me.TxtNumeroEnsamble.Text
         ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
         ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
         'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
-        ArepRecepcion.LblNombres.Text = Me.TxtRConacafe.Text
+        'ArepRecepcion.LblNombres.Text = Me.TxtRConacafe.Text
         'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
         'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
         'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
