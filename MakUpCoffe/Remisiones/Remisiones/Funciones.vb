@@ -1410,6 +1410,18 @@ Module Funciones
         FrmRecepcion.CheckFermento.Checked = False
         FrmRecepcion.CboRecibimosde.Text = ""
         FrmRecepcion.CboFinca.Text = ""
+        FrmRecepcion.Departamento = ""
+        FrmRecepcion.Municipio = ""
+        FrmRecepcion.Comarca = ""
+        FrmRecepcion.CodigoNotaPeso = 0
+        FrmRecepcion.IdProductor = "0"
+        FrmRecepcion.ActualizarSerie = False
+        FrmRecepcion.TotalPesoLb = 0.0
+        FrmRecepcion.TotalPesoKG = 0.0
+        FrmRecepcion.PesoBrutoLb = 0.0
+        FrmRecepcion.TaraLb = 0.0
+        FrmRecepcion.CantidaSacos = 0.0
+
     End Sub
 
     Public Function TotalRecepcion(ByVal NumeroRecepcion As String, ByVal FechaRecepcion As Date, ByVal TipoRecepcion As String) As Double

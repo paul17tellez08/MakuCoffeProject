@@ -1,6 +1,8 @@
 Public Class FrmRecepcion
     Public MiConexion As New SqlClient.SqlConnection(Conexion), Año As String, Mes As String, Dia As String, ConsecutivoSerieActivo As Boolean = False
+    '/////////////VARIABLES A LIMPIAR/////////////
     Public CodigoNotaPeso As String, IdProductor As Integer = 0, ActualizarSerie As Boolean = False, TotalPesoLb As Double, TotalPesoKG As Double
+    Public Departamento As String, Municipio As String, Comarca As String, PesoBrutoLb As Double = 0, TaraLb As Double = 0, CantidaSacos As Integer
     Delegate Sub delegado(ByVal data As String)
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -9,7 +11,7 @@ Public Class FrmRecepcion
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
 
         DataSet.Reset()
-        '*CARGO LOS DATOS DE LA EMPRESA
+        'CARGO LOS DATOS DE LA EMPRESA
         sql = "SELECT * FROM DatosEmpresa"
         DataAdapter = New SqlClient.SqlDataAdapter(sql, MiConexion)
         DataAdapter.Fill(DataSet, "DatosEmpresa")
@@ -560,13 +562,30 @@ Public Class FrmRecepcion
         i = 0
         Do While Registros > i
             If IsDBNull(Me.TrueDBDetalleNP.Item(i)(9)) = True Or Me.TrueDBDetalleNP.Item(i)(9).ToString().Trim() = "" Then
-                Me.TDGImperfeccion.Item(i)(9) = 0.0
+                Me.TrueDBDetalleNP.Item(i)(9) = 0.0
             End If
+
             If IsDBNull(Me.TrueDBDetalleNP.Item(i)(10)) = True Or Me.TrueDBDetalleNP.Item(i)(10).ToString().Trim() = "" Then
-                Me.TDGImperfeccion.Item(i)(10) = 0.0
+                Me.TrueDBDetalleNP.Item(i)(10) = 0.0
             End If
-            TotalPesoLb = Me.TDGImperfeccion.Item(i)(9) + TotalPesoLb
-            TotalPesoKG = Me.TDGImperfeccion.Item(i)(10) + TotalPesoKG
+
+            If IsDBNull(Me.TrueDBDetalleNP.Item(i)(6)) = True Or Me.TrueDBDetalleNP.Item(i)(6).ToString().Trim() = "" Then
+                Me.TrueDBDetalleNP.Item(i)(6) = 0.0
+            End If
+    
+            If IsDBNull(Me.TrueDBDetalleNP.Item(i)(8)) = True Or Me.TrueDBDetalleNP.Item(i)(8).ToString().Trim() = "" Then
+                Me.TrueDBDetalleNP.Item(i)(8) = 0.0
+            End If
+
+            If IsDBNull(Me.TrueDBDetalleNP.Item(i)(5)) = True Or Me.TrueDBDetalleNP.Item(i)(5).ToString().Trim() = "" Then
+                Me.TrueDBDetalleNP.Item(i)(5) = 0.0
+            End If
+
+            PesoBrutoLb = Me.TrueDBDetalleNP.Item(i)(6) + PesoBrutoLb
+            TaraLb = Me.TrueDBDetalleNP.Item(i)(8) + TaraLb
+            TotalPesoLb = Me.TrueDBDetalleNP.Item(i)(9) + TotalPesoLb
+            TotalPesoKG = Me.TrueDBDetalleNP.Item(i)(10) + TotalPesoKG
+            CantidaSacos = Me.TrueDBDetalleNP.Item(i)(5) + CantidaSacos
             i = i + 1
         Loop
         Me.txtsubtotal.Text = TotalPesoLb
@@ -739,7 +758,7 @@ Public Class FrmRecepcion
         Dim StrSqlSelect As String, Sql As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
 
-        StrSqlSelect = "SELECT  IdPlantillo, Plantillo, IdFinca, IdVariedad, Activo   FROM    Plantillo   WHERE     (IdFinca = '" & Me.CboFinca.SelectedValue & "')"
+        StrSqlSelect = "SELECT    Plantillo.IdPlantillo, Plantillo.Plantillo, Plantillo.IdFinca, Plantillo.IdVariedad, Plantillo.Activo, Departamentos.Departamento, Municipio.Municipio, Comarca.Comarca FROM    Municipio INNER JOIN     Comarca ON Municipio.IdMunicipio = Comarca.IdMunicipio INNER JOIN     Plantillo INNER JOIN      Finca ON Plantillo.IdFinca = Finca.IdFinca ON Comarca.IdComarca = Finca.IdComarca INNER JOIN    Departamentos ON Municipio.IdDepartamento = Departamentos.IdDepartamento WHERE  (Plantillo.IdFinca = '" & Me.CboFinca.SelectedValue & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "ListaPlantillos")
         Me.CboPlantillo.DataSource = DataSet.Tables("ListaPlantillos")
@@ -748,7 +767,17 @@ Public Class FrmRecepcion
             If Not IsDBNull(DataSet.Tables("ListaPlantillos").Rows(0)("IdPlantillo")) Then
                 Me.CboPlantillo.SelectedValue = DataSet.Tables("ListaPlantillos").Rows(0)("IdPlantillo")
             End If
+            If Not IsDBNull(DataSet.Tables("ListaPlantillos").Rows(0)("Departamento")) Then
+                Departamento = DataSet.Tables("ListaPlantillos").Rows(0)("Departamento")
+            End If
+            If Not IsDBNull(DataSet.Tables("ListaPlantillos").Rows(0)("Municipio")) Then
+                Municipio = DataSet.Tables("ListaPlantillos").Rows(0)("Municipio")
+            End If
+            If Not IsDBNull(DataSet.Tables("ListaPlantillos").Rows(0)("Comarca")) Then
+                Comarca = DataSet.Tables("ListaPlantillos").Rows(0)("Comarca")
+            End If
         End If
+
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(0).Visible = False
         Me.CboPlantillo.Columns(1).Caption = "SELECCIONE UN PLANTILLO"
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(2).Visible = False
@@ -1112,134 +1141,99 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub BtnTikectRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnTikectRec.Click
-        Dim SQL As New DataDynamics.ActiveReports.DataSources.SqlDBDataSource, SqlString As String
-        Dim ArepBitacoraRecepcion As New ArepBitacoraRecepcion, Sqldatos As String, RutaLogo As String
-        Dim Fecha As String, Criterios As String = ""
+        Dim SQL As New DataDynamics.ActiveReports.DataSources.SqlDBDataSource, SqlString As String, Sqldatos As String
+        Dim ArepTikectRecepcion As New ArepTikectRecepcion, NumeroNotaPes As String, RutaLogo As String
+        Dim Fecha As String, Criterios As String = "", StrImperfeccion As String, ArepSubReporte As New ArepSubReporte
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Posicion As Double = 0, DescripcionAnterior As String = ""
 
-        EqOreado = Me.TxtEqOreado.Text
-        EqReal = Me.TxtOreadoReal.Text
+        If Not TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -" Then
 
-        If Me.CboCodigoProveedor.Text = "00001" Then
-            If Me.TxtFinca.Text <> "" Then
-                Finca = Me.TxtFinca.Text
-            End If
-        Else
-            If Me.CboFinca.Text <> "" Then
-                Finca = Me.CboFinca.Text
-            End If
-        End If
+            Sqldatos = "SELECT * FROM DatosEmpresa"
+            DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
+            DataAdapter.Fill(DataSet, "DatosEmpresa")
+            If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
 
-        If Me.TxtNumeroCedula.Text <> "" Then
-            Cedula = Me.TxtNumeroCedula.Text
-        End If
-
-        If Me.CboTipoIngresoBascula.Text = DescripcionTipoIngreso("BA") Then
-            NRecibo = Me.TxtIdLocalidad.Text & "-" & Me.TxtNumeroRecibo.Text
-            FechaRecibo = Me.DTPFecha.Text
-        Else
-            NRecibo = Me.TxtNumeroRecibo.Text
-            FechaRecibo = Format(Me.DtpFechaManual.Value, "dd/MM/yyyy")
-        End If
-
-
-        Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
-
-
-        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida, Calidad, Estado, Precio, PesoKg, PesoNetoKg,Calidad_Cafe, Tara, QQ  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoRecepcion.Text & "')"
-
-        Sqldatos = "SELECT * FROM DatosEmpresa"
-        DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
-        DataAdapter.Fill(DataSet, "DatosEmpresa")
-
-        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-
-            ArepBitacoraRecepcion.LblEncabezado.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
-            ArepBitacoraRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
-
-            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")) Then
-                ArepBitacoraRecepcion.LblRuc.Text = "Numero RUC " & DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")
-            End If
-            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")) Then
-                RutaLogo = DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")
-                If Dir(RutaLogo) <> "" Then
-                    ArepBitacoraRecepcion.ImgLogo.Image = New System.Drawing.Bitmap(RutaLogo)
+                If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")) Then
+                    ArepTikectRecepcion.ArepTxtNombreEmpresa.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
+                End If
+                If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")) Then
+                    RutaLogo = DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")
+                    If Dir(RutaLogo) <> "" Then
+                        ArepTikectRecepcion.ImgLogo.Image = New System.Drawing.Bitmap(RutaLogo)
+                    End If
                 End If
             End If
-        End If
-
-        ArepBitacoraRecepcion.LblLote.Text = Me.TxtAno.Text & "-" & Me.TxtMes.Text & "-" & Me.TxtDia.Text & "-" & Me.TxtProveedor.Text & "-" & Me.TxtOrigen.Text & "-" & Me.TxtPila.Text
-
-
-        ArepBitacoraRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
-
-        'ArepBitacoraRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
-        ArepBitacoraRecepcion.LblNombres.Text = Me.txtnombre.Text
-        'ArepBitacoraRecepcion.LblApellidos.Text = Me.txtapellido.Text
-        'ArepBitacoraRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
-        'ArepBitacoraRecepcion.LblPila.Text = Me.txtapellido.Text
-        'ArepBitacoraRecepcion.LblConductor.Text = Me.CboConductor.Text
-        'ArepBitacoraRecepcion.LblCedula.Text = Me.txtid.Text
-        'ArepBitacoraRecepcion.LblPlaca.Text = Me.txtplaca.Text
-
-        Hora = Me.LblHora.Text
-        TipoIngreso = Me.CboTipoIngresoBascula.Text
-        Pignorado = Me.CboPignorado.Text
-        Localidad = Me.CboLocalidad.Text
-        LocalidadLiquidar = Me.CboLiquidarLocalidad.Text
-        TipoCompra = Me.CboTipoCompra.Text
-        TipoCalidad = Me.CboTipoCalidad.Text
-        Categoria = Me.CboCategoria.Text
-        Estado = Me.CboEstado.Text
-        Daño = Me.CboDaño.Text
-        Humedad = Me.TxtHumedad.Text
-        Imperfeccion = Me.TxtImperfecion.Text
-        TipoCafe = Me.CboTipoCafe.Text
-
-
-        ArepBitacoraRecepcion.IdCosecha = IdCosecha
-        ArepBitacoraRecepcion.IdFinca = IdFinca
-        ArepBitacoraRecepcion.IdProductor = IdProductor
-
-        SQL.ConnectionString = Conexion
-        SQL.SQL = SqlString
-
-        Dim ViewerForm As New FrmViewer(), i As Integer
-        ViewerForm.arvMain.Document = ArepBitacoraRecepcion.Document
-        My.Application.DoEvents()
-        ArepBitacoraRecepcion.DataSource = SQL
-        'ArepBitacoraRecepcion.Run(False)
-
-        For i = 1 To 3
-            If i = 1 Then
-                ArepBitacoraRecepcion.LblOriginal.Visible = True
-                ArepBitacoraRecepcion.LblOriginal.Text = "O R I G I N A L"
-                ArepBitacoraRecepcion.Run(False)
-                ViewerForm.arvMain.Document.Print(False, False, False)
-                'ViewerForm.Show()
-                My.Application.DoEvents()
+            Fecha = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy") & " " & Me.LblHora.Text
+            If ConsecutivoSerieActivo = True Then
+                NumeroNotaPes = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
+                ConsecutivoSerieActivo = True
             Else
-                ArepBitacoraRecepcion.LblOriginal.Visible = True
-                ArepBitacoraRecepcion.LblOriginal.Text = "C O P I A"
-                ArepBitacoraRecepcion.Run(False)
-                ViewerForm.arvMain.Document.Print(False, False, False)
-                'ViewerForm.Show()
-                My.Application.DoEvents()
-
+                NumeroNotaPes = Me.TxtNumeroEnsamble.Text
             End If
+            ArepTikectRecepcion.ArepTextNumEmsamble.Text = NumeroNotaPes
+            ArepTikectRecepcion.ArepTextFecha.Text = Fecha
+            ArepTikectRecepcion.ArepTxtPlaca.Text = Me.CboPlaca.Text
+            ArepTikectRecepcion.ArepTxtMarca.Text = Me.TxtMarca.Text
+            ArepTikectRecepcion.ArepTxtColor.Text = Me.TxtColor.Text
+            ArepTikectRecepcion.ArepTxtChofer.Text = Me.CboConductor.Text
+            ArepTikectRecepcion.ArepTxtRemision.Text = Me.TxtRemision.Text
+            ArepTikectRecepcion.ArepTxtConacafe.Text = Me.TxtRConacafe.Text
+            ArepTikectRecepcion.ArepTxtFinca.Text = Me.CboFinca.Text
+            ArepTikectRecepcion.ArepTxtPlantillo.Text = Me.CboPlantillo.Text
+            ArepTikectRecepcion.ArepTxtDepartam.Text = Departamento
+            ArepTikectRecepcion.ArepTxtMunicipo.Text = Municipio
+            ArepTikectRecepcion.ArepTxtComarca.Text = Comarca
+            ArepTikectRecepcion.ArepTxtRecibimos.Text = Me.TxtRemision.Text
+            ArepTikectRecepcion.ArepTxtConacafe.Text = Me.TxtRConacafe.Text
+            ArepTikectRecepcion.ArepTxtRecibimos.Text = Me.CboRecibimosde.Text
+            ArepTikectRecepcion.ArepTxtCedula.Text = Me.TxtCedulaProductor.Text
+            ArepTikectRecepcion.ArepTxtPorCuenta.Text = Me.CboProductor.Text
+            ArepTikectRecepcion.ArepTxtPesoBruto.Text = PesoBrutoLb
+            ArepTikectRecepcion.ArepTxtHumedad.Text = Me.TxtHumedad.Text
+            ArepTikectRecepcion.ArepTxtTara.Text = TaraLb
+            ArepTikectRecepcion.ArepTxtPesoNeto.Text = TotalPesoLb
+            ArepTikectRecepcion.ArepTxtCantidadSacos.Text = CantidaSacos
+            ArepTikectRecepcion.ArepTxtCalidad.Text = Me.CboCalidad.Text
+            ArepTikectRecepcion.ArepTxtVariedad.Text = Me.CboVariedad.Text
+            ArepTikectRecepcion.ArepTxtImperfeccion.Text = Me.TxtImperfec.Text
+            ArepTikectRecepcion.CheckMoho.Checked = Me.CheckMohoso.Checked
+            ArepTikectRecepcion.ArepTxtFermento.Checked = Me.CheckFermento.Checked
 
-            'ViewerForm.Show()
 
-            'ViewerForm.arvMain.Document.Print(False, False, False)
+            StrImperfeccion = "SELECT  id_Eventos As Linea, QQ As Saco,PesoNetoLb FROM Detalle_Recepcion  WHERE (NumeroRecepcion = N'" & NumeroNotaPes & "')"
+            SQL.ConnectionString = Conexion
+            SQL.SQL = StrImperfeccion
 
-            ' SI ESTA HABILITADO PARA GRABAR LO PERMITO GRABAR
-        Next
+            Dim ViewerForm As New FrmViewer(), i As Integer
+            ViewerForm.arvMain.Document = ArepTikectRecepcion.Document
+            My.Application.DoEvents()
+            ArepTikectRecepcion.DataSource = SQL
+            'ArepBitacoraRecepcion.Run(False)
 
-        If Me.Button7.Enabled = True Then
-            Button7_Click(sender, e)
-        Else
-            LimpiaRecepcion()
+            For i = 1 To 3
+
+                If i = 1 Then
+                    ArepTikectRecepcion.ArepLblTipo.Visible = True
+                    ArepTikectRecepcion.ArepLblTipo.Text = "O R I G I N A L"
+                    ArepTikectRecepcion.Run(False)
+                    ' ViewerForm.arvMain.Document.Print(False, False, False)
+                    ViewerForm.Show()
+                    My.Application.DoEvents()
+                Else
+                    ArepTikectRecepcion.ArepLblTipo.Visible = True
+                    ArepTikectRecepcion.ArepLblTipo.Text = "C O P I A"
+                    ArepTikectRecepcion.Run(False)
+                    ' ViewerForm.arvMain.Document.Print(False, False, False)
+                    ViewerForm.Show()
+                    My.Application.DoEvents()
+                End If
+            Next
         End If
+       
+
+    End Sub
+
+    Private Sub CboFinca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboFinca.TextChanged
 
     End Sub
 End Class
