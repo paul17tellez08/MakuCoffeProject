@@ -362,13 +362,11 @@ Public Class FrmRecepcion
             i = i + 1
         Loop
 
-
         Sqldatos = "SELECT * FROM DatosEmpresa"
         DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
         DataAdapter.Fill(DataSet, "DatosEmpresa")
 
         If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-
 
             ArepRecepcion.ArepLblNombreEmpresa.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
             ArepRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
@@ -1230,5 +1228,9 @@ Public Class FrmRecepcion
 
     Private Sub CboFinca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboFinca.TextChanged
 
+    End Sub
+
+    Private Sub BtnEnviarPatio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEnviarPatio.Click
+        My.Forms.FrmTranslado.ShowDialog()
     End Sub
 End Class

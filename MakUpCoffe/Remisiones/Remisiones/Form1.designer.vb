@@ -47,6 +47,7 @@ Partial Class MDIParent1
         Me.RibonUsuarios = New C1.Win.C1Ribbon.RibbonButton
         Me.C1StatusBar1 = New C1.Win.C1Ribbon.C1StatusBar
         Me.RibbonLabel1 = New C1.Win.C1Ribbon.RibbonLabel
+        Me.RibbonButton5 = New C1.Win.C1Ribbon.RibbonButton
         CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1StatusBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -181,6 +182,7 @@ Partial Class MDIParent1
         Me.RibbonGroup1.Items.Add(Me.RibbonButton3)
         Me.RibbonGroup1.Items.Add(Me.RibbonButton2)
         Me.RibbonGroup1.Items.Add(Me.RibonUsuarios)
+        Me.RibbonGroup1.Items.Add(Me.RibbonButton5)
         Me.RibbonGroup1.Text = "Catálogo"
         '
         'RbtnVehiculo
@@ -244,6 +246,13 @@ Partial Class MDIParent1
         Me.RibbonLabel1.ID = "RibbonLabel1"
         Me.RibbonLabel1.Text = "Version  1.01"
         '
+        'RibbonButton5
+        '
+        Me.RibbonButton5.ID = "RibbonButton5"
+        Me.RibbonButton5.SmallImage = CType(resources.GetObject("RibbonButton5.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton5.Text = "Camas"
+        Me.RibbonButton5.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
         'MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -294,5 +303,6 @@ Partial Class MDIParent1
     Friend WithEvents RibbonButton3 As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibbonButton4 As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibonUsuarios As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibbonButton5 As C1.Win.C1Ribbon.RibbonButton
 
 End Class

@@ -77,6 +77,17 @@ Public Class FrmConsultas
                 Me.TrueDBGridConsultas.DataSource = Me.BindingConsultas
                 ' Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(0).Visible = False
                 MiConexion.Close()
+            Case "CamaBusqueda"
+                SQlProductos = "SELECT IdCama as Codigo, NombreCama, Niveles, Activa   FROM  Cama ORDER BY IdCama DESC"
+                MiConexion.Open()
+                DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
+                DataSet.Reset()
+                DataAdapter.Fill(DataSet, "Consultas")
+                Me.BindingConsultas.DataSource = DataSet.Tables("Consultas")
+                Me.TrueDBGridConsultas.DataSource = Me.BindingConsultas
+                ' Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(0).Visible = False
+                MiConexion.Close()
+
         End Select
     End Sub
 
@@ -100,6 +111,10 @@ Public Class FrmConsultas
             Case "ConsultaConductorRecepcion"
                 Posicion = Me.BindingConsultas.Position
                 Codigo = Me.BindingConsultas.Item(Posicion)("Codigo")
+            Case "CamaBusqueda"
+                Posicion = Me.BindingConsultas.Position
+                Codigo = Me.BindingConsultas.Item(Posicion)("Codigo")
+
         End Select
         If Codigo = "- - - - - 0 - - - - -" Then
             MsgBox("Seleccione un resgitro para continuar", MsgBoxStyle.Critical, "MakuCoffe")

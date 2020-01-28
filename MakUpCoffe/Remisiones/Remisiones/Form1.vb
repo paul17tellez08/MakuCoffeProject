@@ -133,4 +133,9 @@ Public Class MDIParent1
         Quien = "Calidad-Categoria"
         My.Forms.FrmRecepcion.Show()
     End Sub
+
+    Private Sub RibbonButton5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton5.Click
+        My.Forms.FrmCama().MdiParent = Me
+        My.Forms.FrmCama().Show()
+    End Sub
 End Class

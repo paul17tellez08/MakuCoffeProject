@@ -31,7 +31,6 @@ Public Class FrmUsuarios
             Exit Sub
         End If
 
-
         'If Me.ChkAdministrador.Checked = True Then
         '    Tipo = "Administrador"
         'Else
@@ -49,7 +48,6 @@ Public Class FrmUsuarios
         If Me.TxtContraseña.Text = "" Then
             MsgBox("La Contraseña no puede quedar Vacia", MsgBoxStyle.Critical, "Sistema de Facturacion")
             Exit Sub
-
         End If
 
         strusuario = "Select * FROM Usuarios Where Usuario= '" & Me.CboUsuario.Text & "'"

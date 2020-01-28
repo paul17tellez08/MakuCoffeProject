@@ -27,7 +27,6 @@ Partial Class FrmUsuarios
         Me.Label9 = New System.Windows.Forms.Label
         Me.TxtConfirmar = New System.Windows.Forms.TextBox
         Me.LblConfirmar = New System.Windows.Forms.Label
-        Me.TxtContraseña = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
@@ -39,6 +38,7 @@ Partial Class FrmUsuarios
         Me.Button2 = New System.Windows.Forms.Button
         Me.CmdGrabar = New System.Windows.Forms.Button
         Me.Button1 = New System.Windows.Forms.Button
+        Me.TxtContraseña = New System.Windows.Forms.TextBox
         CType(Me.CboUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,15 +87,6 @@ Partial Class FrmUsuarios
         Me.LblConfirmar.TabIndex = 78
         Me.LblConfirmar.Text = "Confirmar"
         Me.LblConfirmar.Visible = False
-        '
-        'TxtContraseña
-        '
-        Me.TxtContraseña.Font = New System.Drawing.Font("Lucida Sans", 12.0!)
-        Me.TxtContraseña.Location = New System.Drawing.Point(144, 158)
-        Me.TxtContraseña.Name = "TxtContraseña"
-        Me.TxtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
-        Me.TxtContraseña.Size = New System.Drawing.Size(203, 26)
-        Me.TxtContraseña.TabIndex = 75
         '
         'Label3
         '
@@ -256,6 +247,15 @@ Partial Class FrmUsuarios
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'TxtContraseña
+        '
+        Me.TxtContraseña.Font = New System.Drawing.Font("Lucida Sans", 12.0!)
+        Me.TxtContraseña.Location = New System.Drawing.Point(144, 158)
+        Me.TxtContraseña.Name = "TxtContraseña"
+        Me.TxtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
+        Me.TxtContraseña.Size = New System.Drawing.Size(203, 26)
+        Me.TxtContraseña.TabIndex = 75
+        '
         'FrmUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -297,11 +297,11 @@ Partial Class FrmUsuarios
     Friend WithEvents LblConfirmar As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents CmdGrabar As System.Windows.Forms.Button
-    Friend WithEvents TxtContraseña As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents CboUsuario As C1.Win.C1List.C1Combo
     Friend WithEvents ChkAdministrador As System.Windows.Forms.CheckBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents TxtContraseña As System.Windows.Forms.TextBox
 End Class
