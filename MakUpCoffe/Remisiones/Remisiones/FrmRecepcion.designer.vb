@@ -29,6 +29,9 @@ Partial Class FrmRecepcion
         Me.DTPFecha = New System.Windows.Forms.Label
         Me.LblHora = New System.Windows.Forms.Label
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
+        Me.Button13 = New System.Windows.Forms.Button
+        Me.BtnAgreProductor = New System.Windows.Forms.Button
+        Me.BtnAgrePlantillo = New System.Windows.Forms.Button
         Me.CboFinca = New C1.Win.C1List.C1Combo
         Me.Label19 = New System.Windows.Forms.Label
         Me.Label11 = New System.Windows.Forms.Label
@@ -40,6 +43,7 @@ Partial Class FrmRecepcion
         Me.CboProductor = New C1.Win.C1List.C1Combo
         Me.TxtCedulaProductor = New System.Windows.Forms.TextBox
         Me.Label20 = New System.Windows.Forms.Label
+        Me.BtnAgreFinca = New System.Windows.Forms.Button
         Me.TxtRemision = New System.Windows.Forms.TextBox
         Me.lblproveedor = New System.Windows.Forms.Label
         Me.Label18 = New System.Windows.Forms.Label
@@ -49,6 +53,7 @@ Partial Class FrmRecepcion
         Me.BtnBuscarCodProv = New System.Windows.Forms.GroupBox
         Me.lblbdega = New System.Windows.Forms.Label
         Me.CmbSerie = New C1.Win.C1List.C1Combo
+        Me.BtnBuscarRecep = New System.Windows.Forms.Button
         Me.TxtNumeroEnsamble = New System.Windows.Forms.TextBox
         Me.Label15 = New System.Windows.Forms.Label
         Me.LblEstado = New System.Windows.Forms.Label
@@ -64,8 +69,12 @@ Partial Class FrmRecepcion
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.TxtColor = New System.Windows.Forms.TextBox
         Me.TxtModelo = New System.Windows.Forms.TextBox
+        Me.BtnAgreConductor = New System.Windows.Forms.Button
         Me.Label17 = New System.Windows.Forms.Label
         Me.Label16 = New System.Windows.Forms.Label
+        Me.BtnVehiculoAgre = New System.Windows.Forms.Button
+        Me.BtnBusConductor = New System.Windows.Forms.Button
+        Me.BtnBusPlaca = New System.Windows.Forms.Button
         Me.Label8 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -78,6 +87,7 @@ Partial Class FrmRecepcion
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.Label14 = New System.Windows.Forms.Label
+        Me.Button6 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.CboEstado = New System.Windows.Forms.ComboBox
         Me.CboCalidad = New System.Windows.Forms.ComboBox
@@ -88,11 +98,9 @@ Partial Class FrmRecepcion
         Me.Label10 = New System.Windows.Forms.Label
         Me.TxtImperfec = New System.Windows.Forms.TextBox
         Me.CboCodigoBodega = New C1.Win.C1List.C1Combo
+        Me.BtnPesada = New System.Windows.Forms.Button
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.CheckMohoso = New System.Windows.Forms.CheckBox
-        Me.CheckFermento = New System.Windows.Forms.CheckBox
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox
-        Me.Label13 = New System.Windows.Forms.Label
+        Me.Button1 = New System.Windows.Forms.Button
         Me.BtnEnviarPatio = New System.Windows.Forms.Button
         Me.BtnNuevoRec = New System.Windows.Forms.Button
         Me.BtnTikectRec = New System.Windows.Forms.Button
@@ -101,22 +109,14 @@ Partial Class FrmRecepcion
         Me.BtnDisconectRec = New System.Windows.Forms.Button
         Me.BtnImpriRec = New System.Windows.Forms.Button
         Me.BtnConectarRec = New System.Windows.Forms.Button
-        Me.BtnPesada = New System.Windows.Forms.Button
+        Me.CheckMohoso = New System.Windows.Forms.CheckBox
+        Me.CheckFermento = New System.Windows.Forms.CheckBox
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox
+        Me.Label13 = New System.Windows.Forms.Label
         Me.TDGImperfeccion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.Button6 = New System.Windows.Forms.Button
-        Me.BtnAgreConductor = New System.Windows.Forms.Button
-        Me.BtnVehiculoAgre = New System.Windows.Forms.Button
-        Me.BtnBusConductor = New System.Windows.Forms.Button
-        Me.BtnBusPlaca = New System.Windows.Forms.Button
         Me.TrueDBDetalleNP = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.Button13 = New System.Windows.Forms.Button
-        Me.BtnAgreProductor = New System.Windows.Forms.Button
-        Me.BtnAgrePlantillo = New System.Windows.Forms.Button
-        Me.BtnAgreFinca = New System.Windows.Forms.Button
-        Me.BtnBuscarRecep = New System.Windows.Forms.Button
         Me.BindingDetalle = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingImperfeccion = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox6.SuspendLayout()
         CType(Me.CboFinca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CboPlantillo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,11 +193,11 @@ Partial Class FrmRecepcion
         Me.lbldatosre.AutoSize = True
         Me.lbldatosre.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbldatosre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
-        Me.lbldatosre.Location = New System.Drawing.Point(22, 4)
+        Me.lbldatosre.Location = New System.Drawing.Point(44, 4)
         Me.lbldatosre.Name = "lbldatosre"
-        Me.lbldatosre.Size = New System.Drawing.Size(156, 15)
+        Me.lbldatosre.Size = New System.Drawing.Size(108, 15)
         Me.lbldatosre.TabIndex = 176
-        Me.lbldatosre.Text = "DATOS DE RECEPCIÓN"
+        Me.lbldatosre.Text = "FECHA Y HORA"
         '
         'DTPFecha
         '
@@ -250,6 +250,41 @@ Partial Class FrmRecepcion
         Me.GroupBox6.Size = New System.Drawing.Size(805, 132)
         Me.GroupBox6.TabIndex = 2
         Me.GroupBox6.TabStop = False
+        '
+        'Button13
+        '
+        Me.Button13.FlatAppearance.BorderSize = 0
+        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button13.Image = Global.Remisiones.My.Resources.Resources.Lupa321
+        Me.Button13.Location = New System.Drawing.Point(421, 44)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(32, 30)
+        Me.Button13.TabIndex = 5
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'BtnAgreProductor
+        '
+        Me.BtnAgreProductor.FlatAppearance.BorderSize = 0
+        Me.BtnAgreProductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAgreProductor.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnAgreProductor.Location = New System.Drawing.Point(421, 11)
+        Me.BtnAgreProductor.Name = "BtnAgreProductor"
+        Me.BtnAgreProductor.Size = New System.Drawing.Size(32, 30)
+        Me.BtnAgreProductor.TabIndex = 4
+        Me.BtnAgreProductor.UseVisualStyleBackColor = True
+        '
+        'BtnAgrePlantillo
+        '
+        Me.BtnAgrePlantillo.Enabled = False
+        Me.BtnAgrePlantillo.FlatAppearance.BorderSize = 0
+        Me.BtnAgrePlantillo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAgrePlantillo.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnAgrePlantillo.Location = New System.Drawing.Point(762, 96)
+        Me.BtnAgrePlantillo.Name = "BtnAgrePlantillo"
+        Me.BtnAgrePlantillo.Size = New System.Drawing.Size(32, 30)
+        Me.BtnAgrePlantillo.TabIndex = 11
+        Me.BtnAgrePlantillo.UseVisualStyleBackColor = True
+        Me.BtnAgrePlantillo.Visible = False
         '
         'CboFinca
         '
@@ -461,6 +496,17 @@ Partial Class FrmRecepcion
         Me.Label20.TabIndex = 270
         Me.Label20.Text = "Por Cuenta de :"
         '
+        'BtnAgreFinca
+        '
+        Me.BtnAgreFinca.FlatAppearance.BorderSize = 0
+        Me.BtnAgreFinca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAgreFinca.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnAgreFinca.Location = New System.Drawing.Point(762, 66)
+        Me.BtnAgreFinca.Name = "BtnAgreFinca"
+        Me.BtnAgreFinca.Size = New System.Drawing.Size(30, 30)
+        Me.BtnAgreFinca.TabIndex = 10
+        Me.BtnAgreFinca.UseVisualStyleBackColor = True
+        '
         'TxtRemision
         '
         Me.TxtRemision.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
@@ -580,6 +626,17 @@ Partial Class FrmRecepcion
         Me.CmbSerie.TabIndex = 3
         Me.CmbSerie.Visible = False
         Me.CmbSerie.PropBag = resources.GetString("CmbSerie.PropBag")
+        '
+        'BtnBuscarRecep
+        '
+        Me.BtnBuscarRecep.FlatAppearance.BorderSize = 0
+        Me.BtnBuscarRecep.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnBuscarRecep.Image = Global.Remisiones.My.Resources.Resources.Lupa321
+        Me.BtnBuscarRecep.Location = New System.Drawing.Point(588, 8)
+        Me.BtnBuscarRecep.Name = "BtnBuscarRecep"
+        Me.BtnBuscarRecep.Size = New System.Drawing.Size(36, 30)
+        Me.BtnBuscarRecep.TabIndex = 5
+        Me.BtnBuscarRecep.UseVisualStyleBackColor = True
         '
         'TxtNumeroEnsamble
         '
@@ -747,6 +804,17 @@ Partial Class FrmRecepcion
         Me.TxtModelo.Size = New System.Drawing.Size(174, 23)
         Me.TxtModelo.TabIndex = 5
         '
+        'BtnAgreConductor
+        '
+        Me.BtnAgreConductor.FlatAppearance.BorderSize = 0
+        Me.BtnAgreConductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAgreConductor.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnAgreConductor.Location = New System.Drawing.Point(913, 12)
+        Me.BtnAgreConductor.Name = "BtnAgreConductor"
+        Me.BtnAgreConductor.Size = New System.Drawing.Size(32, 30)
+        Me.BtnAgreConductor.TabIndex = 9
+        Me.BtnAgreConductor.UseVisualStyleBackColor = True
+        '
         'Label17
         '
         Me.Label17.AutoSize = True
@@ -768,6 +836,39 @@ Partial Class FrmRecepcion
         Me.Label16.Size = New System.Drawing.Size(61, 15)
         Me.Label16.TabIndex = 260
         Me.Label16.Text = "Modelo :"
+        '
+        'BtnVehiculoAgre
+        '
+        Me.BtnVehiculoAgre.FlatAppearance.BorderSize = 0
+        Me.BtnVehiculoAgre.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnVehiculoAgre.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
+        Me.BtnVehiculoAgre.Location = New System.Drawing.Point(283, 12)
+        Me.BtnVehiculoAgre.Name = "BtnVehiculoAgre"
+        Me.BtnVehiculoAgre.Size = New System.Drawing.Size(32, 30)
+        Me.BtnVehiculoAgre.TabIndex = 3
+        Me.BtnVehiculoAgre.UseVisualStyleBackColor = True
+        '
+        'BtnBusConductor
+        '
+        Me.BtnBusConductor.FlatAppearance.BorderSize = 0
+        Me.BtnBusConductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnBusConductor.Image = Global.Remisiones.My.Resources.Resources.Lupa321
+        Me.BtnBusConductor.Location = New System.Drawing.Point(949, 13)
+        Me.BtnBusConductor.Name = "BtnBusConductor"
+        Me.BtnBusConductor.Size = New System.Drawing.Size(36, 30)
+        Me.BtnBusConductor.TabIndex = 10
+        Me.BtnBusConductor.UseVisualStyleBackColor = True
+        '
+        'BtnBusPlaca
+        '
+        Me.BtnBusPlaca.FlatAppearance.BorderSize = 0
+        Me.BtnBusPlaca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnBusPlaca.Image = Global.Remisiones.My.Resources.Resources.Lupa321
+        Me.BtnBusPlaca.Location = New System.Drawing.Point(321, 12)
+        Me.BtnBusPlaca.Name = "BtnBusPlaca"
+        Me.BtnBusPlaca.Size = New System.Drawing.Size(32, 30)
+        Me.BtnBusPlaca.TabIndex = 4
+        Me.BtnBusPlaca.UseVisualStyleBackColor = True
         '
         'Label8
         '
@@ -947,6 +1048,22 @@ Partial Class FrmRecepcion
         Me.Label14.TabIndex = 267
         Me.Label14.Text = "PESO NETO (APO) :"
         '
+        'Button6
+        '
+        Me.Button6.FlatAppearance.BorderSize = 0
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.Button6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Button6.Image = Global.Remisiones.My.Resources.Resources.BorrarFila28
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.Location = New System.Drawing.Point(6, 9)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(140, 30)
+        Me.Button6.TabIndex = 227
+        Me.Button6.Text = "ELIMINAR FILA"
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
@@ -1122,6 +1239,25 @@ Partial Class FrmRecepcion
         Me.CboCodigoBodega.ValueMember = "Cod_Bodega"
         Me.CboCodigoBodega.PropBag = resources.GetString("CboCodigoBodega.PropBag")
         '
+        'BtnPesada
+        '
+        Me.BtnPesada.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnPesada.Enabled = False
+        Me.BtnPesada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnPesada.FlatAppearance.BorderSize = 3
+        Me.BtnPesada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnPesada.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
+        Me.BtnPesada.Location = New System.Drawing.Point(648, 19)
+        Me.BtnPesada.Name = "BtnPesada"
+        Me.BtnPesada.Size = New System.Drawing.Size(151, 107)
+        Me.BtnPesada.TabIndex = 6
+        Me.BtnPesada.Text = " PESADA"
+        Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnPesada.UseVisualStyleBackColor = True
+        Me.BtnPesada.Visible = False
+        '
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
@@ -1140,53 +1276,22 @@ Partial Class FrmRecepcion
         Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         '
-        'CheckMohoso
+        'Button1
         '
-        Me.CheckMohoso.AutoSize = True
-        Me.CheckMohoso.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CheckMohoso.ForeColor = System.Drawing.Color.White
-        Me.CheckMohoso.Location = New System.Drawing.Point(8, 37)
-        Me.CheckMohoso.Name = "CheckMohoso"
-        Me.CheckMohoso.Size = New System.Drawing.Size(61, 19)
-        Me.CheckMohoso.TabIndex = 0
-        Me.CheckMohoso.Text = "Moho"
-        Me.CheckMohoso.UseVisualStyleBackColor = True
-        '
-        'CheckFermento
-        '
-        Me.CheckFermento.AutoSize = True
-        Me.CheckFermento.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.CheckFermento.ForeColor = System.Drawing.Color.White
-        Me.CheckFermento.Location = New System.Drawing.Point(87, 37)
-        Me.CheckFermento.Name = "CheckFermento"
-        Me.CheckFermento.Size = New System.Drawing.Size(85, 19)
-        Me.CheckFermento.TabIndex = 1
-        Me.CheckFermento.Text = "Fermento"
-        Me.CheckFermento.UseVisualStyleBackColor = True
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.GroupBox7.Controls.Add(Me.Label13)
-        Me.GroupBox7.Controls.Add(Me.CheckMohoso)
-        Me.GroupBox7.Controls.Add(Me.CheckFermento)
-        Me.GroupBox7.Location = New System.Drawing.Point(810, 537)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(181, 69)
-        Me.GroupBox7.TabIndex = 4
-        Me.GroupBox7.TabStop = False
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.White
-        Me.Label13.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(2, 8)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(180, 17)
-        Me.Label13.TabIndex = 273
-        Me.Label13.Text = "              Daño             "
+        Me.Button1.Enabled = False
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.up
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(561, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 66)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Procesar"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'BtnEnviarPatio
         '
@@ -1319,24 +1424,53 @@ Partial Class FrmRecepcion
         Me.BtnConectarRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnConectarRec.UseVisualStyleBackColor = True
         '
-        'BtnPesada
+        'CheckMohoso
         '
-        Me.BtnPesada.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnPesada.Enabled = False
-        Me.BtnPesada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnPesada.FlatAppearance.BorderSize = 3
-        Me.BtnPesada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnPesada.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnPesada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.BtnPesada.Image = Global.Remisiones.My.Resources.Resources.Pesaje32
-        Me.BtnPesada.Location = New System.Drawing.Point(648, 19)
-        Me.BtnPesada.Name = "BtnPesada"
-        Me.BtnPesada.Size = New System.Drawing.Size(151, 107)
-        Me.BtnPesada.TabIndex = 6
-        Me.BtnPesada.Text = " PESADA"
-        Me.BtnPesada.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnPesada.UseVisualStyleBackColor = True
-        Me.BtnPesada.Visible = False
+        Me.CheckMohoso.AutoSize = True
+        Me.CheckMohoso.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CheckMohoso.ForeColor = System.Drawing.Color.White
+        Me.CheckMohoso.Location = New System.Drawing.Point(8, 37)
+        Me.CheckMohoso.Name = "CheckMohoso"
+        Me.CheckMohoso.Size = New System.Drawing.Size(61, 19)
+        Me.CheckMohoso.TabIndex = 0
+        Me.CheckMohoso.Text = "Moho"
+        Me.CheckMohoso.UseVisualStyleBackColor = True
+        '
+        'CheckFermento
+        '
+        Me.CheckFermento.AutoSize = True
+        Me.CheckFermento.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
+        Me.CheckFermento.ForeColor = System.Drawing.Color.White
+        Me.CheckFermento.Location = New System.Drawing.Point(87, 37)
+        Me.CheckFermento.Name = "CheckFermento"
+        Me.CheckFermento.Size = New System.Drawing.Size(85, 19)
+        Me.CheckFermento.TabIndex = 1
+        Me.CheckFermento.Text = "Fermento"
+        Me.CheckFermento.UseVisualStyleBackColor = True
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.GroupBox7.Controls.Add(Me.Label13)
+        Me.GroupBox7.Controls.Add(Me.CheckMohoso)
+        Me.GroupBox7.Controls.Add(Me.CheckFermento)
+        Me.GroupBox7.Location = New System.Drawing.Point(810, 537)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(181, 69)
+        Me.GroupBox7.TabIndex = 4
+        Me.GroupBox7.TabStop = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.White
+        Me.Label13.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.Black
+        Me.Label13.Location = New System.Drawing.Point(2, 8)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(180, 17)
+        Me.Label13.TabIndex = 273
+        Me.Label13.Text = "              Daño             "
         '
         'TDGImperfeccion
         '
@@ -1360,66 +1494,6 @@ Partial Class FrmRecepcion
         Me.TDGImperfeccion.Text = "C1TrueDBGrid1"
         Me.TDGImperfeccion.PropBag = resources.GetString("TDGImperfeccion.PropBag")
         '
-        'Button6
-        '
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
-        Me.Button6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Button6.Image = Global.Remisiones.My.Resources.Resources.BorrarFila28
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(6, 9)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(140, 30)
-        Me.Button6.TabIndex = 227
-        Me.Button6.Text = "ELIMINAR FILA"
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'BtnAgreConductor
-        '
-        Me.BtnAgreConductor.FlatAppearance.BorderSize = 0
-        Me.BtnAgreConductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAgreConductor.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
-        Me.BtnAgreConductor.Location = New System.Drawing.Point(913, 12)
-        Me.BtnAgreConductor.Name = "BtnAgreConductor"
-        Me.BtnAgreConductor.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgreConductor.TabIndex = 9
-        Me.BtnAgreConductor.UseVisualStyleBackColor = True
-        '
-        'BtnVehiculoAgre
-        '
-        Me.BtnVehiculoAgre.FlatAppearance.BorderSize = 0
-        Me.BtnVehiculoAgre.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnVehiculoAgre.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
-        Me.BtnVehiculoAgre.Location = New System.Drawing.Point(283, 12)
-        Me.BtnVehiculoAgre.Name = "BtnVehiculoAgre"
-        Me.BtnVehiculoAgre.Size = New System.Drawing.Size(32, 30)
-        Me.BtnVehiculoAgre.TabIndex = 3
-        Me.BtnVehiculoAgre.UseVisualStyleBackColor = True
-        '
-        'BtnBusConductor
-        '
-        Me.BtnBusConductor.FlatAppearance.BorderSize = 0
-        Me.BtnBusConductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBusConductor.Image = Global.Remisiones.My.Resources.Resources.Lupa321
-        Me.BtnBusConductor.Location = New System.Drawing.Point(949, 13)
-        Me.BtnBusConductor.Name = "BtnBusConductor"
-        Me.BtnBusConductor.Size = New System.Drawing.Size(36, 30)
-        Me.BtnBusConductor.TabIndex = 10
-        Me.BtnBusConductor.UseVisualStyleBackColor = True
-        '
-        'BtnBusPlaca
-        '
-        Me.BtnBusPlaca.FlatAppearance.BorderSize = 0
-        Me.BtnBusPlaca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBusPlaca.Image = Global.Remisiones.My.Resources.Resources.Lupa321
-        Me.BtnBusPlaca.Location = New System.Drawing.Point(321, 12)
-        Me.BtnBusPlaca.Name = "BtnBusPlaca"
-        Me.BtnBusPlaca.Size = New System.Drawing.Size(32, 30)
-        Me.BtnBusPlaca.TabIndex = 4
-        Me.BtnBusPlaca.UseVisualStyleBackColor = True
-        '
         'TrueDBDetalleNP
         '
         Me.TrueDBDetalleNP.AllowAddNew = True
@@ -1441,80 +1515,6 @@ Partial Class FrmRecepcion
         Me.TrueDBDetalleNP.TabIndex = 0
         Me.TrueDBDetalleNP.Text = "C1TrueDBGrid1"
         Me.TrueDBDetalleNP.PropBag = resources.GetString("TrueDBDetalleNP.PropBag")
-        '
-        'Button13
-        '
-        Me.Button13.FlatAppearance.BorderSize = 0
-        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Image = Global.Remisiones.My.Resources.Resources.Lupa321
-        Me.Button13.Location = New System.Drawing.Point(421, 44)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(32, 30)
-        Me.Button13.TabIndex = 5
-        Me.Button13.UseVisualStyleBackColor = True
-        '
-        'BtnAgreProductor
-        '
-        Me.BtnAgreProductor.FlatAppearance.BorderSize = 0
-        Me.BtnAgreProductor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAgreProductor.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
-        Me.BtnAgreProductor.Location = New System.Drawing.Point(421, 11)
-        Me.BtnAgreProductor.Name = "BtnAgreProductor"
-        Me.BtnAgreProductor.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgreProductor.TabIndex = 4
-        Me.BtnAgreProductor.UseVisualStyleBackColor = True
-        '
-        'BtnAgrePlantillo
-        '
-        Me.BtnAgrePlantillo.Enabled = False
-        Me.BtnAgrePlantillo.FlatAppearance.BorderSize = 0
-        Me.BtnAgrePlantillo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAgrePlantillo.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
-        Me.BtnAgrePlantillo.Location = New System.Drawing.Point(762, 96)
-        Me.BtnAgrePlantillo.Name = "BtnAgrePlantillo"
-        Me.BtnAgrePlantillo.Size = New System.Drawing.Size(32, 30)
-        Me.BtnAgrePlantillo.TabIndex = 11
-        Me.BtnAgrePlantillo.UseVisualStyleBackColor = True
-        Me.BtnAgrePlantillo.Visible = False
-        '
-        'BtnAgreFinca
-        '
-        Me.BtnAgreFinca.FlatAppearance.BorderSize = 0
-        Me.BtnAgreFinca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAgreFinca.Image = Global.Remisiones.My.Resources.Resources.icons8_plus_36
-        Me.BtnAgreFinca.Location = New System.Drawing.Point(762, 66)
-        Me.BtnAgreFinca.Name = "BtnAgreFinca"
-        Me.BtnAgreFinca.Size = New System.Drawing.Size(30, 30)
-        Me.BtnAgreFinca.TabIndex = 10
-        Me.BtnAgreFinca.UseVisualStyleBackColor = True
-        '
-        'BtnBuscarRecep
-        '
-        Me.BtnBuscarRecep.FlatAppearance.BorderSize = 0
-        Me.BtnBuscarRecep.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBuscarRecep.Image = Global.Remisiones.My.Resources.Resources.Lupa321
-        Me.BtnBuscarRecep.Location = New System.Drawing.Point(588, 8)
-        Me.BtnBuscarRecep.Name = "BtnBuscarRecep"
-        Me.BtnBuscarRecep.Size = New System.Drawing.Size(36, 30)
-        Me.BtnBuscarRecep.TabIndex = 5
-        Me.BtnBuscarRecep.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Enabled = False
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.Button1.Image = Global.Remisiones.My.Resources.Resources.up
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(561, 8)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 66)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Procesar"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmRecepcion
         '

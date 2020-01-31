@@ -362,13 +362,11 @@ Public Class FrmRecepcion
             i = i + 1
         Loop
 
-
         Sqldatos = "SELECT * FROM DatosEmpresa"
         DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
         DataAdapter.Fill(DataSet, "DatosEmpresa")
 
         If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-
 
             ArepRecepcion.ArepLblNombreEmpresa.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
             ArepRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
@@ -793,9 +791,6 @@ Public Class FrmRecepcion
         DataAdapter.Fill(DataSet, "SeleccionRecep")
 
         If DataSet.Tables("SeleccionRecep").Rows.Count > 0 Then
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
-                CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
-            End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
                 CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
             End If
@@ -1230,5 +1225,16 @@ Public Class FrmRecepcion
 
     Private Sub CboFinca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboFinca.TextChanged
 
+    End Sub
+
+    Private Sub BtnEnviarPatio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEnviarPatio.Click
+        If Me.TxtNumeroEnsamble.Text <> "- - - - - 0 - - - - -" Then
+            Quien = "Transladar-Recepcion-Patio"
+            My.Forms.FrmTranslado.CodigoNotaPeso = Me.TxtNumeroEnsamble.Text
+            My.Forms.FrmTranslado.ShowDialog()
+        Else
+            MsgBox("Para transaladar a patio primero debe de seleccionar una nota de peso", MsgBoxStyle.Information, "Nota de Peso")
+            Exit Sub
+        End If
     End Sub
 End Class

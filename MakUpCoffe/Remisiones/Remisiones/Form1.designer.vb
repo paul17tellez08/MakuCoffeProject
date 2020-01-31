@@ -45,8 +45,11 @@ Partial Class MDIParent1
         Me.RibbonButton3 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonButton2 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibonUsuarios = New C1.Win.C1Ribbon.RibbonButton
+        Me.RibbonButton5 = New C1.Win.C1Ribbon.RibbonButton
         Me.C1StatusBar1 = New C1.Win.C1Ribbon.C1StatusBar
         Me.RibbonLabel1 = New C1.Win.C1Ribbon.RibbonLabel
+        Me.RibbonButton6 = New C1.Win.C1Ribbon.RibbonButton
+        Me.RibbonButton7 = New C1.Win.C1Ribbon.RibbonButton
         CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1StatusBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -155,6 +158,8 @@ Partial Class MDIParent1
         '
         Me.RibbonGroup6.ID = "RibbonGroup6"
         Me.RibbonGroup6.Items.Add(Me.RbtonRecepción)
+        Me.RibbonGroup6.Items.Add(Me.RibbonButton6)
+        Me.RibbonGroup6.Items.Add(Me.RibbonButton7)
         Me.RibbonGroup6.Text = "Recepción"
         '
         'RbtonRecepción
@@ -181,6 +186,7 @@ Partial Class MDIParent1
         Me.RibbonGroup1.Items.Add(Me.RibbonButton3)
         Me.RibbonGroup1.Items.Add(Me.RibbonButton2)
         Me.RibbonGroup1.Items.Add(Me.RibonUsuarios)
+        Me.RibbonGroup1.Items.Add(Me.RibbonButton5)
         Me.RibbonGroup1.Text = "Catálogo"
         '
         'RbtnVehiculo
@@ -231,6 +237,13 @@ Partial Class MDIParent1
         Me.RibonUsuarios.Text = "Usuarios"
         Me.RibonUsuarios.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
+        'RibbonButton5
+        '
+        Me.RibbonButton5.ID = "RibbonButton5"
+        Me.RibbonButton5.SmallImage = CType(resources.GetObject("RibbonButton5.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton5.Text = "Camas"
+        Me.RibbonButton5.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
         'C1StatusBar1
         '
         Me.C1StatusBar1.Location = New System.Drawing.Point(0, 518)
@@ -243,6 +256,20 @@ Partial Class MDIParent1
         '
         Me.RibbonLabel1.ID = "RibbonLabel1"
         Me.RibbonLabel1.Text = "Version  1.01"
+        '
+        'RibbonButton6
+        '
+        Me.RibbonButton6.ID = "RibbonButton6"
+        Me.RibbonButton6.SmallImage = CType(resources.GetObject("RibbonButton6.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton6.Text = "Nivel_Camas"
+        Me.RibbonButton6.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
+        'RibbonButton7
+        '
+        Me.RibbonButton7.ID = "RibbonButton7"
+        Me.RibbonButton7.SmallImage = CType(resources.GetObject("RibbonButton7.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton7.Text = "Cambio_Bodegas"
+        Me.RibbonButton7.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'MDIParent1
         '
@@ -294,5 +321,8 @@ Partial Class MDIParent1
     Friend WithEvents RibbonButton3 As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibbonButton4 As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibonUsuarios As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibbonButton5 As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibbonButton6 As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents RibbonButton7 As C1.Win.C1Ribbon.RibbonButton
 
 End Class

@@ -181,6 +181,12 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmCama.Designer.vb">
+      <DependentUpon>FrmCama.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCama.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmComarMunici.Designer.vb">
       <DependentUpon>FrmComarMunici.vb</DependentUpon>
     </Compile>
@@ -203,12 +209,6 @@
       <DependentUpon>FrmFincaPlantillo.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmFincaPlantillo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPatio.Designer.vb">
-      <DependentUpon>FrmPatio.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPatio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmProductos.Designer.vb">
@@ -269,6 +269,12 @@
       <DependentUpon>FrmTecladoLetras.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmTecladoLetras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTranslado.Designer.vb">
+      <DependentUpon>FrmTranslado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTranslado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmV.Designer.vb">
@@ -368,6 +374,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCama.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmCama.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmComarMunici.resx">
       <DependentUpon>FrmComarMunici.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -383,10 +393,6 @@
     <EmbeddedResource Include="FrmFincaPlantillo.resx">
       <DependentUpon>FrmFincaPlantillo.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPatio.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FrmPatio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductos.resx">
       <DependentUpon>FrmProductos.vb</DependentUpon>
@@ -427,6 +433,10 @@
     <EmbeddedResource Include="FrmTecladoLetras.resx">
       <DependentUpon>FrmTecladoLetras.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTranslado.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTranslado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmV.resx">
       <SubType>Designer</SubType>
