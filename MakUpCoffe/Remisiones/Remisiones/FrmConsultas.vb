@@ -35,7 +35,7 @@ Public Class FrmConsultas
                 MiConexion.Close()
 
 
-            Case "RecepcionBusquedaTrans"
+            Case "RecepcionBusquedaCama"
                 MiConexion.Close()
                 SQlProductos = "SELECT Recepcion.NumeroRecepcion as Número, Recepcion.Fecha,Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor as productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa,Recepcion.Observaciones, Recepcion.Peso FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.Cod_Proveedor WHERE (Recepcion.Activo = 1) AND (Recepcion.Cod_Bodega = N'02')"
                 MiConexion.Open()
@@ -133,7 +133,9 @@ Public Class FrmConsultas
             Case "CamaBusqueda"
                 Posicion = Me.BindingConsultas.Position
                 Codigo = Me.BindingConsultas.Item(Posicion)("Codigo")
-
+            Case "RecepcionBusquedaCama"
+                Posicion = Me.BindingConsultas.Position
+                Codigo = Me.BindingConsultas.Item(Posicion)("Número")
         End Select
         If Codigo = "- - - - - 0 - - - - -" Then
             MsgBox("Seleccione un resgitro para continuar", MsgBoxStyle.Critical, "MakuCoffe")

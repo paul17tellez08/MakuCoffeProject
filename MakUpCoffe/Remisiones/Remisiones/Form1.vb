@@ -138,4 +138,16 @@ Public Class MDIParent1
         My.Forms.FrmCama().MdiParent = Me
         My.Forms.FrmCama().Show()
     End Sub
+
+    Private Sub RibbonButton6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton6.Click
+        Quien = "Cama"
+        My.Forms.FrmTranslado().MdiParent = Me
+        My.Forms.FrmTranslado().Show()
+    End Sub
+
+    Private Sub RibbonButton7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RibbonButton7.Click
+        Quien = "Translado"
+        My.Forms.FrmTranslado().MdiParent = Me
+        My.Forms.FrmTranslado().Show()
+    End Sub
 End Class

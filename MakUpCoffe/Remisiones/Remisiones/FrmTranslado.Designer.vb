@@ -567,6 +567,7 @@ Partial Class FrmTranslado
         Me.TxtNumeroEnsamble.Enabled = False
         Me.TxtNumeroEnsamble.Location = New System.Drawing.Point(106, 14)
         Me.TxtNumeroEnsamble.Name = "TxtNumeroEnsamble"
+        Me.TxtNumeroEnsamble.ReadOnly = True
         Me.TxtNumeroEnsamble.Size = New System.Drawing.Size(128, 20)
         Me.TxtNumeroEnsamble.TabIndex = 272
         Me.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -"

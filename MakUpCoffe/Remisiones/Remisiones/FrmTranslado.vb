@@ -33,11 +33,13 @@ Public Class FrmTranslado
             CboBodegaOrigen.SelectedIndex = 0
             CboBodegaDestino.SelectedIndex = 1
             Me.TxtNumeroEnsamble.Text = CodigoNotaPeso
+        ElseIf Quien = "Cama" Then
+           
         End If
     End Sub
 
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConsulta.Click
-        Quien = "RecepcionBusquedaTrans"
+        Quien = "RecepcionBusquedaCama"
         My.Forms.FrmConsultas.Text = "Consulta Translado"
         My.Forms.FrmConsultas.ShowDialog()
         If My.Forms.FrmConsultas.Codigo <> "- - - - - 0 - - - - -" Then
@@ -202,12 +204,12 @@ Public Class FrmTranslado
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
 
-        SqlString = "SELECT Cod_Bodega, Nombre_Bodega  FROM  Bodegas WHERE (NOT (Cod_Bodega = N'" & Me.CboBodegaOrigen.Text & "'))  "
+        SqlString = "SELECT Cod_Bodega, Nombre_Bodega  FROM  Bodegas WHERE (NOT (Nombre_Bodega = N'" & Me.CboBodegaOrigen.Text & "'))  "
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Bodegas")
-        Me.CboBodegaDestino.DataSource = DataSet.Tables("Bodegas")
-        If Not DataSet.Tables("Bodegas").Rows.Count = 0 Then
-            Me.CboBodegaDestino.Text = DataSet.Tables("Bodegas").Rows(0)("Cod_Bodega")
+        DataAdapter.Fill(DataSet, "Bodegas1")
+        Me.CboBodegaDestino.DataSource = DataSet.Tables("Bodegas1")
+        If Not DataSet.Tables("Bodegas1").Rows.Count = 0 Then
+            Me.CboBodegaDestino.Text = DataSet.Tables("Bodegas1").Rows(1)("Nombre_Bodega")
         End If
     End Sub
 
@@ -264,26 +266,37 @@ Public Class FrmTranslado
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, NumeroEnsamble As String
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
 
-        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "dd/MM/yyyy") & " " & FrmRecepcion.LblHora.Text
+        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "dd/MM/yyyy") & " " & Format(CDate(FrmRecepcion.LblHora.Text).Now, "HH:mm:ss")
         StrSqlSelect = "SELECT  IdDetalleCama, NumeroRecepcion, IdCama, FechaHora, CodProveedor, NumeroTraza, Nivel, PesoEnviado  FROM    DetalleCama WHERE (NumeroRecepcion = N'" & Me.TxtNumeroEnsamble.Text & "') AND (IdCama = '" & Me.CboCama.SelectedValue & "') AND (Nivel = '" & Me.TxtNivelActual.Text & "')  ORDER BY FechaHora DESC "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleCamaGuardar")
 
-        If Not DataSet.Tables("DetalleCamaGuardar").Rows.Count = 0 Then
+        If DataSet.Tables("DetalleCamaGuardar").Rows.Count = 0 Then
             SqlString = "INSERT INTO [dbo].[DetalleCama]([NumeroRecepcion],[IdCama],[FechaHora],[CodProveedor],[NumeroTraza],[Nivel],[PesoEnviado])" & _
-                        "VALUES ('" & Me.TxtNumeroEnsamble.Text & "', '" & Me.CboCama.SelectedValue & "', '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & Me.LblConductor.Text & "','" & Me.LblConductor.Text & "-E" & CStr(Me.CmbNivel.SelectedIndex + 1) & "' , '" & Me.CmbNivel.Text & "','" & Me.TxtPesoTransladar.Text & "' )"
-            ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+                        "VALUES ('" & Me.TxtNumeroEnsamble.Text & "', '" & Me.CboCama.SelectedValue & "', '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & Me.LblCodigo.Text & "','" & Me.LblCodigo.Text & "-E" & CStr(Me.CmbNivel.SelectedIndex + 1) & "' , '" & Me.CmbNivel.Text & "','" & Me.TxtPesoTransladar.Text & "' )"
+            MiConexion.Open()
+            ComandoUpdate = New SqlClient.SqlCommand(SqlString, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
             If iResultado = 1 Then
                 MsgBox("Transaladado con exito", MsgBoxStyle.Information, "Camas")
+                MiConexion.Close()
                 If Quien = "Transladar-Recepcion-Patio" Then
-
+                    ActualizarNotaPeso()
+                    Me.Close()
+                    Exit Sub
+                ElseIf Quien = "Cama" Then
                     Me.Close()
                     Exit Sub
                 End If
+                MiConexion.Close()
                 Limpiar()
             End If
-            MiConexion.Close()
+        Else
+            If Quien = "Translado" Then
+                ActualizarNotaPeso()
+                Me.Close()
+                Exit Sub
+            End If
         End If
     End Sub
     Public Sub ActualizarNotaPeso()
@@ -291,14 +304,13 @@ Public Class FrmTranslado
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, NumeroEnsamble As String
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
 
-        Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "dd/MM/yyyy") & " " & FrmRecepcion.LblHora.Text
-        StrSqlUpdate = "UPDATE [dbo].[Recepcion]SET [TipoRecepcion] ='Recepcion' ,[Fecha] ='" & Format(CDate(Fecha), "dd/MM/yyyy") & "',[Cod_Proveedor] ='" & My.Forms.FrmRecepcion.CboProductor.SelectedValue & "',[Cod_SubProveedor] ='Ninguno' ,[Conductor] ='" & My.Forms.FrmRecepcion.CboConductor.Text & "' ,[Id_identificacion] ='-9999991' ,[Id_Placa] ='" & My.Forms.FrmRecepcion.CboPlaca.Text & "'  ,[Cod_Bodega] ='" & My.Forms.FrmRecepcion.CboCodigoBodega.SelectedValue & "' ,[Observaciones] = '" & My.Forms.FrmRecepcion.txtobservaciones.Text & "',[SubTotal] = '" & CDbl(FrmRecepcion.txtsubtotal.Text) & "' ,[Telefono] ='12345678' ,[Cancelar] = '0' ,[Peso] ='0'  ,[Lote] ='Ninguno'  ,[Contabilizado] = '0' ,[FechaHora] ='" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "' ,[RecibimosDe] = '" & My.Forms.FrmRecepcion.CboRecibimosde.Text & "',[IdFinca] = '" & My.Forms.FrmRecepcion.CboFinca.SelectedValue & "',[Calidad] ='" & My.Forms.FrmRecepcion.CboCalidad.Text & "' ,[Fermentado] ='" & My.Forms.FrmRecepcion.CheckFermento.Checked & "' ,[Moho] = '" & My.Forms.FrmRecepcion.CheckMohoso.Checked & "',[Estado] ='" & My.Forms.FrmRecepcion.CboEstado.Text & "' ,[Idvariedad] ='" & My.Forms.FrmRecepcion.CboVariedad.SelectedValue & "' ,[IdPlantillo]= '" & My.Forms.FrmRecepcion.CboPlantillo.SelectedValue & "' ,[TipoPesada] ='" & My.Forms.FrmRecepcion.CboTipoPesada.Text & "' ,[Seleccion] ='0', [CodRemision]='" & FrmRecepcion.TxtRemision.Text & "',[CodConacafe]='" & FrmRecepcion.TxtRConacafe.Text & "' ,[Activo] = '" & Activo & "' " & _
-                               "WHERE (NumeroRecepcion = '" & ConsecutivoRecepcion() & "')"
+        StrSqlUpdate = "UPDATE [dbo].[Recepcion]SET [Cod_Bodega] ='" & Me.CboBodegaDestino.SelectedValue & "'" & _
+                               "WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "')"
+        MiConexion.Close()
         MiConexion.Open()
         ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
         iResultado = ComandoUpdate.ExecuteNonQuery
         MiConexion.Close()
-
     End Sub
 
     Public Sub Limpiar()
