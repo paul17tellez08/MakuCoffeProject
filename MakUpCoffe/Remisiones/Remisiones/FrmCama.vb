@@ -63,7 +63,6 @@ Public Class FrmCama
         If Not DataSet.Tables("ListaCama").Rows.Count = 0 Then
             Me.CboCodigoCama.DataSource = DataSet.Tables("ListaCama")
         End If
-
         Me.CboCodigoCama.Text = ""
         Me.TxtCama.Text = ""
         Me.TxtNiveles.Text = ""
@@ -139,7 +138,6 @@ Public Class FrmCama
             End If
             MiConexion.Close()
         End If
-
         SqlUsuarios = "SELECT IdCama, NombreCama, Niveles, Activa  FROM Cama"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlUsuarios, MiConexion)
         DataAdapter.Fill(DataSet, "ListaCama")

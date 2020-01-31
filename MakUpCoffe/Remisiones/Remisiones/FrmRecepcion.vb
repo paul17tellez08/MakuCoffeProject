@@ -794,9 +794,6 @@ Public Class FrmRecepcion
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
                 CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
             End If
-            If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")) Then
-                CboTipoRecepcion.Text = DataSet.Tables("SeleccionRecep").Rows(0)("TipoRecepcion")
-            End If
             If Not IsDBNull(DataSet.Tables("SeleccionRecep").Rows(0)("Fecha")) Then
                 DTPFecha.Text = DataSet.Tables("SeleccionRecep").Rows(0)("Fecha")
             End If
@@ -1231,6 +1228,13 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub BtnEnviarPatio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEnviarPatio.Click
-        My.Forms.FrmTranslado.ShowDialog()
+        If Me.TxtNumeroEnsamble.Text <> "- - - - - 0 - - - - -" Then
+            Quien = "Transladar-Recepcion-Patio"
+            My.Forms.FrmTranslado.CodigoNotaPeso = Me.TxtNumeroEnsamble.Text
+            My.Forms.FrmTranslado.ShowDialog()
+        Else
+            MsgBox("Para transaladar a patio primero debe de seleccionar una nota de peso", MsgBoxStyle.Information, "Nota de Peso")
+            Exit Sub
+        End If
     End Sub
 End Class

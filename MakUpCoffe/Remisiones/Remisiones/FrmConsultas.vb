@@ -13,7 +13,7 @@ Public Class FrmConsultas
         Select Case Quien
             Case "RecepcionBusqueda"
                 MiConexion.Close()
-                SQlProductos = "SELECT Recepcion.NumeroRecepcion as Número, Recepcion.Fecha,Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor as productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa,Recepcion.Observaciones, Recepcion.Peso FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.Cod_Proveedor WHERE (Recepcion.Activo = 1) "
+                SQlProductos = "SELECT Recepcion.NumeroRecepcion as Número, Recepcion.Fecha,Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor as productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa,Recepcion.Observaciones, Recepcion.Peso FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.Cod_Proveedor WHERE (Recepcion.Activo = 1) AND (Recepcion.Cod_Bodega = N'01')"
                 MiConexion.Open()
                 DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
                 DataSet.Reset()
@@ -29,12 +29,31 @@ Public Class FrmConsultas
                 Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(5).Width = 120
                 Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(6).Width = 75
                 Me.TrueDBGridConsultas.Columns(6).Caption = "Peso total / Lb"
-
-
-
-
                 'Me.TrueDBGridConsultas.Columns(0).Caption = "Còdigo"
-               
+                Me.Size = New System.Drawing.Size(830, 488)
+
+                MiConexion.Close()
+
+
+            Case "RecepcionBusquedaTrans"
+                MiConexion.Close()
+                SQlProductos = "SELECT Recepcion.NumeroRecepcion as Número, Recepcion.Fecha,Proveedor.Nombre_Proveedor + '' + Proveedor.Apellido_Proveedor as productor, Recepcion.Conductor, Recepcion.Id_Placa AS Placa,Recepcion.Observaciones, Recepcion.Peso FROM Recepcion INNER JOIN Proveedor ON Recepcion.Cod_Proveedor = Proveedor.Cod_Proveedor WHERE (Recepcion.Activo = 1) AND (Recepcion.Cod_Bodega = N'02')"
+                MiConexion.Open()
+                DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
+                DataSet.Reset()
+                DataAdapter.Fill(DataSet, "Consultas")
+                Me.BindingConsultas.DataSource = DataSet.Tables("Consultas")
+                Me.TrueDBGridConsultas.DataSource = Me.BindingConsultas
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(0).Width = 68
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(1).Width = 80
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(2).Width = 200
+                Me.TrueDBGridConsultas.Columns(2).Caption = "Por cuenta de"
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(3).Width = 175
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(4).Width = 75
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(5).Width = 120
+                Me.TrueDBGridConsultas.Splits.Item(0).DisplayColumns(6).Width = 75
+                Me.TrueDBGridConsultas.Columns(6).Caption = "Peso total / Lb"
+                'Me.TrueDBGridConsultas.Columns(0).Caption = "Còdigo"
                 Me.Size = New System.Drawing.Size(830, 488)
 
                 MiConexion.Close()
