@@ -142,9 +142,9 @@ Partial Class FrmEntrada
         Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Label5.Location = New System.Drawing.Point(266, 212)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 16)
+        Me.Label5.Size = New System.Drawing.Size(69, 16)
         Me.Label5.TabIndex = 36
-        Me.Label5.Text = "INICIAR"
+        Me.Label5.Text = "INICIARl"
         '
         'PicSalir
         '

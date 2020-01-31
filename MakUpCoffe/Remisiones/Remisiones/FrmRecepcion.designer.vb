@@ -158,7 +158,7 @@ Partial Class FrmRecepcion
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label6.Location = New System.Drawing.Point(4, 25)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(110, 15)
+        Me.Label6.Size = New System.Drawing.Size(108, 15)
         Me.Label6.TabIndex = 182
         Me.Label6.Text = "Calidad             :"
         '
@@ -169,7 +169,7 @@ Partial Class FrmRecepcion
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(358, 23)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 15)
+        Me.Label2.Size = New System.Drawing.Size(71, 15)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Bodega   :"
         '
@@ -206,7 +206,7 @@ Partial Class FrmRecepcion
         Me.DTPFecha.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.DTPFecha.Location = New System.Drawing.Point(7, 23)
         Me.DTPFecha.Name = "DTPFecha"
-        Me.DTPFecha.Size = New System.Drawing.Size(85, 15)
+        Me.DTPFecha.Size = New System.Drawing.Size(83, 15)
         Me.DTPFecha.TabIndex = 182
         Me.DTPFecha.Text = "20/10/2017"
         '
@@ -217,7 +217,7 @@ Partial Class FrmRecepcion
         Me.LblHora.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.LblHora.Location = New System.Drawing.Point(106, 23)
         Me.LblHora.Name = "LblHora"
-        Me.LblHora.Size = New System.Drawing.Size(95, 15)
+        Me.LblHora.Size = New System.Drawing.Size(94, 15)
         Me.LblHora.TabIndex = 181
         Me.LblHora.Text = "10:23:55 p.m."
         '
@@ -326,7 +326,7 @@ Partial Class FrmRecepcion
         Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label19.Location = New System.Drawing.Point(4, 110)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(103, 15)
+        Me.Label19.Size = New System.Drawing.Size(104, 15)
         Me.Label19.TabIndex = 264
         Me.Label19.Text = "Recibimos de  :"
         '
@@ -337,7 +337,7 @@ Partial Class FrmRecepcion
         Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label11.Location = New System.Drawing.Point(466, 77)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(92, 15)
+        Me.Label11.Size = New System.Drawing.Size(91, 15)
         Me.Label11.TabIndex = 187
         Me.Label11.Text = "Finca            :"
         '
@@ -391,7 +391,7 @@ Partial Class FrmRecepcion
         Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label12.Location = New System.Drawing.Point(466, 106)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(90, 15)
+        Me.Label12.Size = New System.Drawing.Size(87, 15)
         Me.Label12.TabIndex = 190
         Me.Label12.Text = "Plantillo       :"
         '
@@ -492,7 +492,7 @@ Partial Class FrmRecepcion
         Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label20.Location = New System.Drawing.Point(5, 22)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(102, 15)
+        Me.Label20.Size = New System.Drawing.Size(105, 15)
         Me.Label20.TabIndex = 270
         Me.Label20.Text = "Por Cuenta de :"
         '
@@ -522,7 +522,7 @@ Partial Class FrmRecepcion
         Me.lblproveedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.lblproveedor.Location = New System.Drawing.Point(6, 49)
         Me.lblproveedor.Name = "lblproveedor"
-        Me.lblproveedor.Size = New System.Drawing.Size(104, 15)
+        Me.lblproveedor.Size = New System.Drawing.Size(105, 15)
         Me.lblproveedor.TabIndex = 2
         Me.lblproveedor.Text = "Código           : "
         '
@@ -552,7 +552,7 @@ Partial Class FrmRecepcion
         Me.lblnombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.lblnombre.Location = New System.Drawing.Point(464, 47)
         Me.lblnombre.Name = "lblnombre"
-        Me.lblnombre.Size = New System.Drawing.Size(93, 15)
+        Me.lblnombre.Size = New System.Drawing.Size(95, 15)
         Me.lblnombre.TabIndex = 174
         Me.lblnombre.Text = "R. Conacafe  :"
         '
@@ -563,7 +563,7 @@ Partial Class FrmRecepcion
         Me.datosprov.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.datosprov.Location = New System.Drawing.Point(5, 1)
         Me.datosprov.Name = "datosprov"
-        Me.datosprov.Size = New System.Drawing.Size(160, 15)
+        Me.datosprov.Size = New System.Drawing.Size(157, 15)
         Me.datosprov.TabIndex = 25
         Me.datosprov.Text = "INFORMACIÓN GENERAL"
         '
@@ -590,7 +590,7 @@ Partial Class FrmRecepcion
         Me.lblbdega.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.lblbdega.Location = New System.Drawing.Point(307, 16)
         Me.lblbdega.Name = "lblbdega"
-        Me.lblbdega.Size = New System.Drawing.Size(90, 15)
+        Me.lblbdega.Size = New System.Drawing.Size(93, 15)
         Me.lblbdega.TabIndex = 6
         Me.lblbdega.Text = "Nota Peso # :"
         '
@@ -655,7 +655,7 @@ Partial Class FrmRecepcion
         Me.Label15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label15.Location = New System.Drawing.Point(7, 16)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(110, 15)
+        Me.Label15.Size = New System.Drawing.Size(111, 15)
         Me.Label15.TabIndex = 265
         Me.Label15.Text = "Tipo de pesada :"
         '
@@ -666,7 +666,7 @@ Partial Class FrmRecepcion
         Me.LblEstado.ForeColor = System.Drawing.Color.BlanchedAlmond
         Me.LblEstado.Location = New System.Drawing.Point(650, 16)
         Me.LblEstado.Name = "LblEstado"
-        Me.LblEstado.Size = New System.Drawing.Size(119, 15)
+        Me.LblEstado.Size = New System.Drawing.Size(118, 15)
         Me.LblEstado.TabIndex = 238
         Me.LblEstado.Text = "DESCONECTADO"
         '
@@ -756,7 +756,7 @@ Partial Class FrmRecepcion
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(4, 107)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 15)
+        Me.Label1.Size = New System.Drawing.Size(114, 15)
         Me.Label1.TabIndex = 184
         Me.Label1.Text = "Observación      :"
         '
@@ -822,7 +822,7 @@ Partial Class FrmRecepcion
         Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label17.Location = New System.Drawing.Point(366, 51)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(49, 15)
+        Me.Label17.Size = New System.Drawing.Size(50, 15)
         Me.Label17.TabIndex = 262
         Me.Label17.Text = "Color :"
         '
@@ -833,7 +833,7 @@ Partial Class FrmRecepcion
         Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label16.Location = New System.Drawing.Point(362, 23)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(61, 15)
+        Me.Label16.Size = New System.Drawing.Size(63, 15)
         Me.Label16.TabIndex = 260
         Me.Label16.Text = "Modelo :"
         '
@@ -877,7 +877,7 @@ Partial Class FrmRecepcion
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label8.Location = New System.Drawing.Point(11, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(148, 15)
+        Me.Label8.Size = New System.Drawing.Size(146, 15)
         Me.Label8.TabIndex = 246
         Me.Label8.Text = "DATOS DEL VEHICULO"
         '
@@ -899,7 +899,7 @@ Partial Class FrmRecepcion
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label3.Location = New System.Drawing.Point(6, 21)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 15)
+        Me.Label3.Size = New System.Drawing.Size(78, 15)
         Me.Label3.TabIndex = 16
         Me.Label3.Text = "Placa         :"
         '
@@ -1009,7 +1009,7 @@ Partial Class FrmRecepcion
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label4.Location = New System.Drawing.Point(608, 23)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 15)
+        Me.Label4.Size = New System.Drawing.Size(83, 15)
         Me.Label4.TabIndex = 239
         Me.Label4.Text = "Conductor :"
         '
@@ -1044,7 +1044,7 @@ Partial Class FrmRecepcion
         Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label14.Location = New System.Drawing.Point(700, 16)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(123, 15)
+        Me.Label14.Size = New System.Drawing.Size(122, 15)
         Me.Label14.TabIndex = 267
         Me.Label14.Text = "PESO NETO (APO) :"
         '
@@ -1120,7 +1120,7 @@ Partial Class FrmRecepcion
         Me.Label22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label22.Location = New System.Drawing.Point(7, 4)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(160, 15)
+        Me.Label22.Size = New System.Drawing.Size(157, 15)
         Me.Label22.TabIndex = 274
         Me.Label22.Text = "INFORMACIÓN GENERAL"
         '
@@ -1167,7 +1167,7 @@ Partial Class FrmRecepcion
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label9.Location = New System.Drawing.Point(359, 52)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(65, 15)
+        Me.Label9.Size = New System.Drawing.Size(66, 15)
         Me.Label9.TabIndex = 253
         Me.Label9.Text = "Estado   :"
         '
@@ -1188,7 +1188,7 @@ Partial Class FrmRecepcion
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Label10.Location = New System.Drawing.Point(362, 80)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(165, 15)
+        Me.Label10.Size = New System.Drawing.Size(163, 15)
         Me.Label10.TabIndex = 254
         Me.Label10.Text = "% Total de Imperfección :"
         '

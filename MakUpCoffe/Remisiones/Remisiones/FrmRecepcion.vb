@@ -4,6 +4,274 @@ Public Class FrmRecepcion
     Public CodigoNotaPeso As String, IdProductor As Integer = 0, ActualizarSerie As Boolean = False, TotalPesoLb As Double, TotalPesoKG As Double
     Public Departamento As String, Municipio As String, Comarca As String, PesoBrutoLb As Double = 0, TaraLb As Double = 0, CantidaSacos As Integer
     Delegate Sub delegado(ByVal data As String)
+    Private Sub Compra()
+
+        Dim ComandoUpdate As New SqlClient.SqlCommand
+        Dim ConsecutivoCompra As Double, NumeroCompra As String, iPosicion As Double, Registros As Double
+        Dim CodigoProducto As String, PrecioUnitario As Double, Descuento As Double, PrecioFOB As Double, PrecioCosto As Double, Cantidad As Double
+        Dim PrecioNeto As Double, Importe As Double
+        Dim StrSqlUpdate As String, iResultado As Integer, SqlString As String
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim Fecha As String, MontoIva As Double, Sql As String
+
+
+
+
+        ConsecutivoCompra = BuscaConsecutivo("Compra")
+        NumeroCompra = Format(ConsecutivoCompra, "0000#")
+        Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
+
+
+        '////////////////////////////////////////////////////////////////////////////////////////////////////
+        '/////////////////////////////GRABO EL ENCABEZADO DE LA COMPRA /////////////////////////////////////////////
+        '//////////////////////////////////////////////////////////////////////////////////////////////////////////7
+        GrabaEncabezadoCompras(NumeroCompra, CDate(Me.DTPFecha.Text), "Mercancia Recibida", Me.TxtCodProductor.Text, Me.CboCodigoBodega.Text, Me.CboProductor.Text, "-", CDate(Me.DTPFecha.Text), 0, 0, 0, 0, "Cordobas", "Procesado por Bascula " & Me.TxtNumeroEnsamble.Text)
+
+
+        '////////////////////////////////////////////////////////////////////////////////////////////////////
+        '/////////////////////////////GRABO EL DETALLE DE LA COMPRA /////////////////////////////////////////////
+        '//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Sql = "SELECT  Cod_Productos, Descripcion_Producto, SUM(Cantidad) AS Cantidad, SUM(Precio) AS Precio, SUM(PesoKg) AS PesoKg, SUM(Tara) AS Tara, SUM(PesoNetoLb) AS PesoNetoLb, SUM(PesoNetoKg) AS PesoNetoKg, SUM(QQ) AS QQ  FROM Detalle_Recepcion GROUP BY NumeroRecepcion, TipoRecepcion, Cod_Productos, Descripcion_Producto " & _
+              "HAVING (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (TipoRecepcion = 'Recepcion')"
+        DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
+        DataAdapter.Fill(DataSet, "DetalleRecepcion")
+
+
+        Registros = DataSet.Tables("DetalleRecepcion").Rows.Count
+        iPosicion = 0
+
+        Do While iPosicion < Registros
+            CodigoProducto = DataSet.Tables("DetalleRecepcion").Rows(iPosicion)("Cod_Productos")
+
+            'If Not IsDBNull(Me.BindingDetalle.Item(iPosicion)("Descuento")) Then
+            '    Descuento = Me.BindingDetalle.Item(iPosicion)("Descuento")
+            'End If
+            PrecioFOB = 0 'Me.BindingDetalle.Item(iPosicion)("FOB")
+            PrecioCosto = 0 'Me.BindingDetalle.Item(iPosicion)("Precio_Costo")
+            Descuento = 0
+            If Not IsDBNull(DataSet.Tables("DetalleRecepcion").Rows(iPosicion)("PesoNetoKg")) Then
+                Cantidad = DataSet.Tables("DetalleRecepcion").Rows(iPosicion)("PesoNetoKg")
+                PrecioUnitario = 0 'PrecioCosto / Cantidad
+            End If
+            PrecioNeto = PrecioUnitario * Cantidad
+            Importe = PrecioCosto - Descuento
+
+            GrabaDetalleCompraLiquidacion(NumeroCompra, CodigoProducto, PrecioUnitario, Descuento, PrecioUnitario, Importe, Cantidad, "Cordobas", CDate(Me.DTPFecha.Text))
+            ExistenciasCostos(CodigoProducto, Cantidad, PrecioUnitario, "Mercancia Recibida", Me.CboCodigoBodega.Text, CDate(Me.DTPFecha.Text), "Cordobas")
+
+
+            iPosicion = iPosicion + 1
+        Loop
+
+        MiConexion.Close()
+
+        StrSqlUpdate = "UPDATE [Recepcion] SET [Numero_Compra] = '" & NumeroCompra & "' ,[Tipo_Compra] = 'Mercancia Recibida' ,[Fecha_Compra] = '" & CDate(Me.DTPFecha.Text) & "' ,[Procesado] = 1 WHERE  (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (TipoRecepcion = 'Recepcion')"
+        MiConexion.Open()
+        ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+        iResultado = ComandoUpdate.ExecuteNonQuery
+        MiConexion.Close()
+
+        MsgBox("Se ha Procesado con la Compra " & NumeroCompra, MsgBoxStyle.Information, "Zeus Facturacion")
+
+
+
+    End Sub
+    Public Sub ExistenciasCostos(ByVal CodigoProductos As String, ByVal CantidadCompra As Double, ByVal PrecioCompra As Double, ByVal Tipo As String, ByVal CodBodega As String, ByVal Fecha As Date, ByVal TipoMoneda As String)
+        Dim SqlString As String, DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, CodigoBodega As String, iPosicionFila As Double
+        Dim MiConexion As New SqlClient.SqlConnection(Conexion), Existencia As Double, CostoPromedio As Double, Costo As Double
+        Dim SqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, ExistenciaBodega As Double, ExistenciaTotal As Double
+        Dim TasaCambio As String, CostoPromedioDolar As Double
+
+        DataSet.Reset()
+        'SqlString = "SELECT *  FROM Productos WHERE (Cod_Productos = '" & CodigoProductos & "')"
+        SqlString = "SELECT SUM(Cantidad) AS Cantidad, AVG(Precio_Neto) AS PrecioNeto, SUM(Cantidad * Precio_Neto) AS Costo_Promedio, Cod_Producto FROM Detalle_Compras GROUP BY Cod_Producto  " & _
+                    "HAVING  (Cod_Producto = '" & CodigoProductos & "')"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Consulta")
+        Existencia = 0
+        Costo = 0
+        If Not DataSet.Tables("Consulta").Rows.Count = 0 Then
+            'If Not IsDBNull(DataSet.Tables("Consulta").Rows(0)("Existencia_Unidades")) Then
+            '    'Existencia = DataSet.Tables("Consulta").Rows(0)("Existencia_Unidades")
+            'End If
+            If Not IsDBNull(DataSet.Tables("Consulta").Rows(0)("Costo_Promedio")) Then
+                Costo = DataSet.Tables("Consulta").Rows(0)("Costo_Promedio")
+            End If
+        End If
+
+
+
+        DataSet.Tables("Consulta").Clear()
+        'SqlString = "SELECT Cod_Bodegas, Cod_Productos, Existencia  FROM DetalleBodegas WHERE (Cod_Bodegas = '" & CodBodega & "') AND (Cod_Productos = '" & CodigoProductos & "')"
+        SqlString = "SELECT Cod_Bodegas, Cod_Productos, Existencia  FROM DetalleBodegas WHERE (Cod_Productos = '" & CodigoProductos & "')"
+        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
+        DataAdapter.Fill(DataSet, "Consulta")
+
+        'If Not DataSet.Tables("Consulta").Rows.Count = 0 Then
+        '    If Not IsDBNull(DataSet.Tables("Consulta").Rows(0)("Existencia")) Then
+        '        'ExistenciaBodega = DataSet.Tables("Consulta").Rows(0)("Existencia")
+        '    End If
+        'End If
+        Existencia = 0
+        iPosicionFila = 0
+        Do While iPosicionFila < (DataSet.Tables("Consulta").Rows.Count)
+            My.Application.DoEvents()
+            CodigoBodega = DataSet.Tables("Consulta").Rows(iPosicionFila)("Cod_Bodegas")
+            Existencia = Existencia + BuscaExistenciaBodega(CodigoProductos, CodigoBodega)
+
+            iPosicionFila = iPosicionFila + 1
+        Loop
+
+        '////////////////////777LA EXISTENCIA YA TIENE ACUMULADO TODO INCLUSIVE LA COMPRA O VENTA/////////////////
+        ExistenciaBodega = BuscaExistenciaBodega(CodigoProductos, CodBodega)
+
+
+        Select Case Tipo
+            Case "Mercancia Recibida"
+                '///////////////////////////FORMULA DE COMPRA PROMEDIO////////////////////////////////////////////////////////////////
+                ' CostoPromedio= ((Existencia*Costo)+(PrecioCompra*CantidadCompra))/(Existencia+CantidadComprada)
+                '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                '///////////////////LA VARIABLE EXISTENCIA TIENE TAMBIEN ACUMULADA LA COMPRA ACTUAL////////////////////////////////////
+                'Existencia + CantidadCompra
+                Existencia = Math.Abs(Existencia - CantidadCompra)
+                TasaCambio = BuscaTasaCambio(Fecha)
+
+                If TasaCambio = 0 Then
+                    MsgBox("la Tasa de Cambio es Cero", MsgBoxStyle.Critical, "Zeus Facturacion")
+                End If
+
+                If (Existencia + CantidadCompra) <> 0 Then
+                    If TipoMoneda = "Cordobas" Then
+                        'CostoPromedio = Format(((Existencia * Costo) + (PrecioCompra * CantidadCompra)) / (Existencia + CantidadCompra), "##,##0.00")
+                        CostoPromedio = (Costo / (Existencia + CantidadCompra))
+                        CostoPromedioDolar = Format(CostoPromedio / TasaCambio, "##,##0.00")
+                    Else
+                        CostoPromedioDolar = Format(((Existencia * Costo) + (PrecioCompra * CantidadCompra)) / (Existencia + CantidadCompra), "##,##0.000")
+                        CostoPromedio = Format(CostoPromedioDolar * TasaCambio, "##,##0.00")
+                    End If
+                End If
+
+                ExistenciaTotal = Existencia + CantidadCompra
+
+
+
+                '///////////////////////////////////////ACTUALIZO LA EXISTENCIA DE PRODUCTOS////////////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [Productos] SET [Existencia_Unidades] = " & ExistenciaTotal & ",[Costo_Promedio] = " & CostoPromedio & " ,[Costo_Promedio_Dolar] = " & CostoPromedioDolar & ", [Ultimo_Precio_Compra] = " & PrecioCompra & " ,[Existencia_Dinero] = " & ExistenciaTotal * CostoPromedio & ",[Existencia_DineroDolar] = " & ExistenciaTotal * CostoPromedioDolar & " " & _
+                            "WHERE (Cod_Productos = '" & CodigoProductos & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+
+                '////////////////////////////////////////////ACTUALIZO LA EXISTENCIA DE LA BODEGA////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [DetalleBodegas] SET [Existencia] = " & ExistenciaBodega & " " & _
+                            "WHERE (Cod_Bodegas = '" & CodBodega & "') AND (Cod_Productos = '" & CodigoProductos & "') "
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+
+
+            Case "Devolucion de Compra"
+                '///////////////////////////FORMULA DE COMPRA PROMEDIO////////////////////////////////////////////////////////////////
+                ' CostoPromedio= ((Existencia*Costo)+(PrecioCompra*CantidadCompra))/(Existencia+CantidadComprada)
+                '//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                '///////////////////LA VARIABLE EXISTENCIA TIENE TAMBIEN ACUMULADA LA DEVOLUCION ACTUAL////////////////////////////////////
+                'Existencia + CantidadCompra
+                Existencia = Math.Abs(Existencia + CantidadCompra)
+
+                If (Existencia - CantidadCompra) <> 0 Then
+                    CostoPromedio = Format(((Existencia * Costo) - (PrecioCompra * CantidadCompra)) / (Existencia - CantidadCompra), "##,##0.00")
+                Else
+                    CostoPromedio = 0
+                End If
+
+                ExistenciaTotal = Existencia - CantidadCompra
+                '///////////////////////////////////////ACTUALIZO LA EXISTENCIA DE PRODUCTOS////////////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [Productos] SET [Existencia_Unidades] = " & ExistenciaTotal & ",[Costo_Promedio] = " & CostoPromedio & " ,[Ultimo_Precio_Compra] = " & PrecioCompra & " ,[Existencia_Dinero] = " & ExistenciaTotal * CostoPromedio & " " & _
+                            "WHERE (Cod_Productos = '" & CodigoProductos & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+
+                '////////////////////////////////////////////ACTUALIZO LA EXISTENCIA DE LA BODEGA////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [DetalleBodegas] SET [Existencia] = " & ExistenciaBodega & " " & _
+                            "WHERE (Cod_Bodegas = '" & CodBodega & "') AND (Cod_Productos = '" & CodigoProductos & "') "
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+            Case "Factura"
+
+                '///////////////////LA VARIABLE EXISTENCIA TIENE TAMBIEN ACUMULADA LA FACTURA ACTUAL////////////////////////////////////
+                'Existencia + CantidadCompra
+                Existencia = Math.Abs(Existencia + CantidadCompra)
+
+                ExistenciaTotal = Existencia - CantidadCompra
+
+
+
+                '///////////////////////////////////////ACTUALIZO LA EXISTENCIA DE PRODUCTOS////////////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [Productos] SET [Existencia_Unidades] = " & ExistenciaTotal & " ,[Ultimo_Precio_Venta] = " & PrecioCompra & " ,[Existencia_Dinero] = " & ExistenciaTotal * Costo & " " & _
+                            "WHERE (Cod_Productos = '" & CodigoProductos & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+
+                '////////////////////////////////////////////ACTUALIZO LA EXISTENCIA DE LA BODEGA////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [DetalleBodegas] SET [Existencia] = " & ExistenciaBodega & " " & _
+                            "WHERE (Cod_Bodegas = '" & CodBodega & "') AND (Cod_Productos = '" & CodigoProductos & "') "
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+            Case "Devolucion de Venta"
+                '///////////////////LA VARIABLE EXISTENCIA TIENE TAMBIEN ACUMULADA LA FACTURA ACTUAL////////////////////////////////////
+                'Existencia + CantidadCompra
+                Existencia = Math.Abs(Existencia - CantidadCompra)
+
+                ExistenciaTotal = Existencia + CantidadCompra
+
+
+
+                '///////////////////////////////////////ACTUALIZO LA EXISTENCIA DE PRODUCTOS////////////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [Productos] SET [Existencia_Unidades] = " & ExistenciaTotal & " ,[Ultimo_Precio_Venta] = " & PrecioCompra & " ,[Existencia_Dinero] = " & ExistenciaTotal * Costo & " " & _
+                            "WHERE (Cod_Productos = '" & CodigoProductos & "')"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+
+
+                '////////////////////////////////////////////ACTUALIZO LA EXISTENCIA DE LA BODEGA////////////////////////////////////////////////////////
+                SqlUpdate = "UPDATE [DetalleBodegas] SET [Existencia] = " & ExistenciaBodega & " " & _
+                            "WHERE (Cod_Bodegas = '" & CodBodega & "') AND (Cod_Productos = '" & CodigoProductos & "') "
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(SqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+        End Select
+
+
+
+    End Sub
+
+
+
+
+
+
+
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -1219,12 +1487,12 @@ Public Class FrmRecepcion
                 End If
             Next
         End If
-       
+
 
     End Sub
 
-    Private Sub CboFinca_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboFinca.TextChanged
-
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Compra()
     End Sub
 
     Private Sub BtnEnviarPatio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEnviarPatio.Click
