@@ -2,6 +2,9 @@ Public Class FrmTeclado
     Public Numero As String
     Private Sub FrmTeclado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.TxtNumero.Text = ""
+        If Quien = "TecladoSinNumeral" Then
+            Me.C1Button12.Visible = True
+        End If
     End Sub
 
     Private Sub C1Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -117,10 +120,29 @@ Public Class FrmTeclado
     End Sub
 
     Private Sub BtnPunto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPunto.Click
-        If Me.TxtNumero.Text = "" Then
-            Me.TxtNumero.Text = "0."
-        Else
-            Me.TxtNumero.Text = Me.TxtNumero.Text & "."
+        If ValidaciondePunto() Then
+            If Me.TxtNumero.Text = "" Then
+                Me.TxtNumero.Text = "0."
+            Else
+                Me.TxtNumero.Text = Me.TxtNumero.Text & "."
+            End If
         End If
     End Sub
+
+    Public Function ValidaciondePunto() As Boolean
+        If Me.TxtNumero.Text.Contains(".") Then
+            Return False
+        Else
+            Return True
+        End If
+        ' for (int i = 0; i < frase.Length; i++)
+        '{        '    char caracter = frase[i];
+        '    nombre = nombre + caracter;
+        '    if (nombre.Contains(palabra) || nombre.Contains(palabra2))
+        '    {
+        '        cont++;
+        '        nombre = "";
+        '    }
+        '}
+    End Function
 End Class

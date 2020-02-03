@@ -52,13 +52,13 @@ Partial Class FrmEntrada
         Me.CboUsuario.ColumnCaptionHeight = 17
         Me.CboUsuario.ColumnFooterHeight = 17
         Me.CboUsuario.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.CboUsuario.ContentHeight = 21
+        Me.CboUsuario.ContentHeight = 20
         Me.CboUsuario.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.CboUsuario.DefColWidth = 179
+        Me.CboUsuario.DefColWidth = 223
         Me.CboUsuario.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.CboUsuario.EditorFont = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.CboUsuario.EditorFont = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboUsuario.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.CboUsuario.EditorHeight = 21
+        Me.CboUsuario.EditorHeight = 20
         Me.CboUsuario.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboUsuario.Images.Add(CType(resources.GetObject("CboUsuario.Images"), System.Drawing.Image))
         Me.CboUsuario.ItemHeight = 15
@@ -71,8 +71,9 @@ Partial Class FrmEntrada
         Me.CboUsuario.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.CboUsuario.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.CboUsuario.RowSubDividerColor = System.Drawing.Color.Black
-        Me.CboUsuario.Size = New System.Drawing.Size(223, 27)
+        Me.CboUsuario.Size = New System.Drawing.Size(223, 26)
         Me.CboUsuario.TabIndex = 0
+        Me.CboUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.CboUsuario.VisualStyle = C1.Win.C1List.VisualStyle.System
         Me.CboUsuario.PropBag = resources.GetString("CboUsuario.PropBag")
         '
@@ -82,31 +83,32 @@ Partial Class FrmEntrada
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPassword.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.txtPassword.Location = New System.Drawing.Point(258, 145)
+        Me.txtPassword.Location = New System.Drawing.Point(258, 133)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
         Me.txtPassword.Size = New System.Drawing.Size(223, 26)
         Me.txtPassword.TabIndex = 1
+        Me.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label1.Location = New System.Drawing.Point(337, 54)
+        Me.Label1.Location = New System.Drawing.Point(337, 56)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 16)
+        Me.Label1.Size = New System.Drawing.Size(68, 15)
         Me.Label1.TabIndex = 22
         Me.Label1.Text = "USUARIO"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(320, 124)
+        Me.Label3.Location = New System.Drawing.Point(320, 113)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(108, 16)
+        Me.Label3.Size = New System.Drawing.Size(100, 15)
         Me.Label3.TabIndex = 23
         Me.Label3.Text = "CONTRASEÑA"
         '
@@ -114,11 +116,11 @@ Partial Class FrmEntrada
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.White
-        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(12, 18)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(256, 24)
+        Me.Label2.Size = New System.Drawing.Size(233, 22)
         Me.Label2.TabIndex = 32
         Me.Label2.Text = "INGRESO DE USUARIOS"
         '
@@ -126,11 +128,11 @@ Partial Class FrmEntrada
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label4.Location = New System.Drawing.Point(405, 212)
+        Me.Label4.Location = New System.Drawing.Point(405, 188)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 16)
+        Me.Label4.Size = New System.Drawing.Size(61, 15)
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "CANCEL"
         '
@@ -138,19 +140,19 @@ Partial Class FrmEntrada
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label5.Location = New System.Drawing.Point(266, 212)
+        Me.Label5.Location = New System.Drawing.Point(267, 188)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(69, 16)
+        Me.Label5.Size = New System.Drawing.Size(57, 15)
         Me.Label5.TabIndex = 36
-        Me.Label5.Text = "INICIARl"
+        Me.Label5.Text = "INICIAR"
         '
         'PicSalir
         '
         Me.PicSalir.BackColor = System.Drawing.Color.Transparent
         Me.PicSalir.Image = Global.Remisiones.My.Resources.Resources.buttonlog
-        Me.PicSalir.Location = New System.Drawing.Point(374, 200)
+        Me.PicSalir.Location = New System.Drawing.Point(374, 175)
         Me.PicSalir.Name = "PicSalir"
         Me.PicSalir.Size = New System.Drawing.Size(120, 40)
         Me.PicSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -161,7 +163,7 @@ Partial Class FrmEntrada
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.Remisiones.My.Resources.Resources.buttonlog
-        Me.PictureBox1.Location = New System.Drawing.Point(239, 200)
+        Me.PictureBox1.Location = New System.Drawing.Point(239, 175)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(120, 40)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -185,7 +187,7 @@ Partial Class FrmEntrada
         Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Login
         Me.PictureBox2.Location = New System.Drawing.Point(0, -1)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(481, 254)
+        Me.PictureBox2.Size = New System.Drawing.Size(481, 262)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 29
         Me.PictureBox2.TabStop = False
@@ -195,7 +197,7 @@ Partial Class FrmEntrada
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(509, 248)
+        Me.ClientSize = New System.Drawing.Size(500, 222)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.PicSalir)

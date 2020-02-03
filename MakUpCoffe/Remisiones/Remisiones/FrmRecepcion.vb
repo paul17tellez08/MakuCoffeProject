@@ -242,8 +242,6 @@ Public Class FrmRecepcion
 
                 ExistenciaTotal = Existencia + CantidadCompra
 
-
-
                 '///////////////////////////////////////ACTUALIZO LA EXISTENCIA DE PRODUCTOS////////////////////////////////////////////////////////////////
                 SqlUpdate = "UPDATE [Productos] SET [Existencia_Unidades] = " & ExistenciaTotal & " ,[Ultimo_Precio_Venta] = " & PrecioCompra & " ,[Existencia_Dinero] = " & ExistenciaTotal * Costo & " " & _
                             "WHERE (Cod_Productos = '" & CodigoProductos & "')"
@@ -265,11 +263,6 @@ Public Class FrmRecepcion
 
 
     End Sub
-
-
-
-
-
 
 
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -347,7 +340,9 @@ Public Class FrmRecepcion
         DataAdapter.Fill(DataSet, "Variedades")
         If Not DataSet.Tables("Variedades").Rows.Count = 0 Then
             Me.CboVariedad.DataSource = DataSet.Tables("Variedades")
+            Me.CboVariedad.Text = DataSet.Tables("Variedades").Rows(0)("Variedad")
         End If
+        Me.CboVariedad.Splits.Item(0).DisplayColumns(0).Visible = False
         MiConexion.Close()
     End Sub
     Private Sub LimpiarImperfeccion()
@@ -464,8 +459,8 @@ Public Class FrmRecepcion
         If Not DataSet.Tables("Vehiculo").Rows.Count = 0 Then
             Me.CboPlaca.DataSource = DataSet.Tables("Vehiculo")
             Me.CboPlaca.Text = DataSet.Tables("Vehiculo").Rows(DataSet.Tables("Vehiculo").Rows.Count - 1)("Placa")
+            Me.CboPlaca.Splits.Item(0).DisplayColumns(0).Visible = False
         End If
-
     End Sub
     Private Sub CargarProductor()
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
@@ -491,7 +486,7 @@ Public Class FrmRecepcion
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim sql As String, SqlProductos As String, SqlString As String
 
-        SqlString = "SELECT Codigo, Nombre, Cedula, Licencia, Activo, ListaNegra, RazonListaNegra  FROM  Conductor  WHERE (Activo = 1) ORDER BY Codigo DESC"
+        SqlString = "SELECT Codigo, Nombre, Cedula, Licencia, RazonListaNegra  FROM  Conductor  WHERE (Activo = 1) AND (ListaNegra = 0) ORDER BY Codigo DESC"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Conductor")
         Me.CboConductor.DataSource = DataSet.Tables("Conductor")
@@ -502,7 +497,10 @@ Public Class FrmRecepcion
         Else
             Me.CboConductor.Text = ""
         End If
-        Me.CboConductor.Columns(0).Caption = "Codigo"
+        Me.CboConductor.Splits.Item(0).DisplayColumns(0).Visible = False
+        Me.CboConductor.Splits.Item(0).DisplayColumns(2).Visible = False
+        Me.CboConductor.Splits.Item(0).DisplayColumns(3).Visible = False
+        Me.CboConductor.Splits.Item(0).DisplayColumns(4).Visible = False
     End Sub
     Private Sub Siguiente()
         If Me.TrueDBDetalleNP.RowCount <> 0 Then
@@ -685,44 +683,46 @@ Public Class FrmRecepcion
         Dim SQLProveedor As String, Sql As String
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
-        Dim Resultado As String, Posicion As Double, CodigoLinea As String = "", NumeroEnsamble As String
+        Dim Resultado As String, Posicion As Double, CodigoLinea As String = "0", NumeroEnsamble As String
         Dim CodigoIngreso As String = "", SqlString As String = "", Fecha As String
 
-        Resultado = MsgBox("¿Esta Seguro de Eliminar el Ingreso?", MsgBoxStyle.YesNo, "Sistema de Facturacion")
+        If Me.BindingDetalle.Count > 0 Then
+            Resultado = MsgBox("¿Esta Seguro de Eliminar el Ingreso?", MsgBoxStyle.YesNo, "Sistema de Facturacion")
+            If Resultado <> 6 Then
+                Exit Sub
+            End If
 
-        If Resultado <> 6 Then
-            Exit Sub
-        End If
+            If ConsecutivoSerieActivo = True Then
+                NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
+                ConsecutivoSerieActivo = True
+            Else
+                NumeroEnsamble = Me.TxtNumeroEnsamble.Text
+            End If
 
-        If ConsecutivoSerieActivo = True Then
-            NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
-            ConsecutivoSerieActivo = True
+            Posicion = Me.BindingDetalle.Position
+            If Not IsDBNull(Me.BindingDetalle.Item(Posicion)("Linea")) Then
+                CodigoLinea = Me.BindingDetalle.Item(Posicion)("Linea")
+            End If
+
+            Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
+
+            SQLProveedor = "SELECT  *  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (id_Eventos = " & CodigoLinea & ")"
+            DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
+            DataAdapter.Fill(DataSet, "Deducciones")
+            If Not DataSet.Tables("Deducciones").Rows.Count = 0 Then
+                '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
+                MiConexion.Close()
+                StrSqlUpdate = "DELETE FROM [Detalle_Recepcion] WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102))  AND (id_Eventos = " & CodigoLinea & ")"
+                MiConexion.Open()
+                ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
+                iResultado = ComandoUpdate.ExecuteNonQuery
+                MiConexion.Close()
+            End If
+            '///////////////////////////////CARGO EL DETALLE DE COMPRAS////////////////////////
+            PegarGridPesada(NumeroEnsamble)
         Else
-            NumeroEnsamble = Me.TxtNumeroEnsamble.Text
+            MsgBox("No tiene registros para borrar", MsgBoxStyle.Exclamation, "Nota de Peso")
         End If
-
-        Posicion = Me.BindingDetalle.Position
-        If Not IsDBNull(Me.BindingDetalle.Item(Posicion)("Linea")) Then
-            CodigoLinea = Me.BindingDetalle.Item(Posicion)("Linea")
-        End If
-
-        Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
-
-        SQLProveedor = "SELECT  *  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (id_Eventos = " & CodigoLinea & ")"
-        DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
-        DataAdapter.Fill(DataSet, "Deducciones")
-        If Not DataSet.Tables("Deducciones").Rows.Count = 0 Then
-            '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
-            MiConexion.Close()
-            StrSqlUpdate = "DELETE FROM [Detalle_Recepcion] WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102))  AND (id_Eventos = " & CodigoLinea & ")"
-            MiConexion.Open()
-            ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
-            iResultado = ComandoUpdate.ExecuteNonQuery
-            MiConexion.Close()
-        End If
-
-        '///////////////////////////////CARGO EL DETALLE DE COMPRAS////////////////////////
-        PegarGridPesada(NumeroEnsamble)
     End Sub
 
     Private Sub sp_DataReceived(ByVal sender As System.Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles sp.DataReceived
@@ -913,6 +913,12 @@ Public Class FrmRecepcion
         ElseIf Me.CboCodigoBodega.Text.Trim() = "" Then
             MsgBox("Para poder continuar con la acción por favor seleccione la Bodega", MsgBoxStyle.Exclamation, "Verificación de datos")
             Return False
+        ElseIf Me.TxtRemision.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción por favor escriba un numero de remision", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
+        ElseIf Me.TxtRConacafe.Text.Trim() = "" Then
+            MsgBox("Para poder continuar con la acción por favor digite el numero de recibo Conacafe", MsgBoxStyle.Exclamation, "Verificación de datos")
+            Return False
         ElseIf Me.BindingDetalle.Count = 0 Then
             If Tipo = 1 Then
                 MsgBox("Para poder continuar con la acción por favor debe Realizar Pesadas", MsgBoxStyle.Exclamation, "Verificación de datos")
@@ -926,6 +932,11 @@ Public Class FrmRecepcion
     End Function
 
     Private Sub BtnConectarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConectarRec.Click
+        Me.CboTipoPesada.Text = "PESADA BASCULA"
+        Me.BtnPesada.Enabled = False
+        Me.BtnPesada.Visible = False
+        Me.BtnConectarRec.Enabled = False
+        Me.BtnDisconectRec.Enabled = True
         My.Forms.FrmPuertos.ShowDialog()
     End Sub
 
@@ -941,8 +952,6 @@ Public Class FrmRecepcion
         Dim TPesoneto As Double = 0, TTara As Double = 0, TPBruto As Double = 0
         Dim oDataRow As DataRow, Fecha As String, Registros As Double, i As Double, Buscar_Fila() As DataRow, Criterios As String = ""
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Posicion As Double = 0, DescripcionAnterior As String = ""
-
-
         '*******************************************************************************************************************************
         '/////////////////////////AGREGO UNA CONSULTA QUE NUNCA TENDRA REGISTROS PARA PODER AGREGARLOS /////////////////////////////////
         '*******************************************************************************************************************************
@@ -1021,10 +1030,13 @@ Public Class FrmRecepcion
         End If
 
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(0).Visible = False
-        Me.CboPlantillo.Columns(1).Caption = "SELECCIONE UN PLANTILLO"
+        Me.CboPlantillo.Columns(1).Caption = "PLANTILLO"
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(2).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(3).Visible = False
         Me.CboPlantillo.Splits.Item(0).DisplayColumns(4).Visible = False
+        Me.CboPlantillo.Splits.Item(0).DisplayColumns(5).Visible = False
+        Me.CboPlantillo.Splits.Item(0).DisplayColumns(6).Visible = False
+        Me.CboPlantillo.Splits.Item(0).DisplayColumns(7).Visible = False
     End Sub
 
 
@@ -1318,6 +1330,7 @@ Public Class FrmRecepcion
             Me.BtnPesada.Visible = False
             Me.BtnConectarRec.Enabled = False
             Me.BtnDisconectRec.Enabled = True
+            My.Forms.FrmPuertos.ShowDialog()
         ElseIf Me.CboTipoPesada.Text = "PESADA MANUAL" Then
             Me.BtnPesada.Enabled = True
             Me.BtnPesada.Visible = True
@@ -1344,10 +1357,10 @@ Public Class FrmRecepcion
 
     Private Sub TDGImperfeccion_ColEdit(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.ColEdit
         Dim Posicion As Integer = Me.TDGImperfeccion.Row
-
         If Me.TDGImperfeccion.Col <> 3 Then
             Exit Sub
         Else
+            Quien = "TecladoSinNumeral"
             FrmTeclado.ShowDialog()
             If FrmTeclado.Numero > 100 Then
                 MsgBox("El número no puede ser mayor a 100%", MsgBoxStyle.Exclamation, "Notas de peso")
@@ -1368,7 +1381,6 @@ Public Class FrmRecepcion
     Private Sub TDGImperfeccion_AfterColUpdate(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles TDGImperfeccion.AfterColUpdate
         SumaGridImperfeccion()
     End Sub
-
     Public Sub SumaGridImperfeccion()
         Dim Registros As Double, TotalProcentaje As Double, i As Integer
         Registros = Me.TDGImperfeccion.RowCount
@@ -1504,5 +1516,63 @@ Public Class FrmRecepcion
             MsgBox("Para transaladar a patio primero debe de seleccionar una nota de peso", MsgBoxStyle.Information, "Nota de Peso")
             Exit Sub
         End If
+    End Sub
+
+    Private Sub CboPlaca_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboPlaca.Click
+        Me.CboPlaca.BackColor = Color.Yellow
+    End Sub
+
+    Private Sub CboTipoPesada_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles CboTipoPesada.DrawItem
+        e.DrawBackground()
+        Dim text As String = DirectCast(sender, ComboBox).Items(e.Index).ToString()  ' Texto del elemento del combo
+        Dim brush As Brush
+        ' Aquí pones la condición que quieras:
+        For Each Item As String In CboTipoPesada.Items
+            If e.Index Mod 2 = 0 Then
+                brush = Brushes.Black   ' Color del texto
+                e.Graphics.FillRectangle(New SolidBrush(Color.Bisque), e.Bounds)   ' Fondo
+            Else
+                brush = Brushes.Black
+                e.Graphics.FillRectangle(New SolidBrush(Color.White), e.Bounds)
+            End If
+            ' Dibujo el texto con los colores elegidos
+            e.Graphics.DrawString(text, DirectCast(sender, Control).Font, brush, e.Bounds.X, e.Bounds.Y)
+        Next
+    End Sub
+
+    Private Sub CboCalidad_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles CboCalidad.DrawItem
+        e.DrawBackground()
+        Dim text As String = DirectCast(sender, ComboBox).Items(e.Index).ToString()  ' Texto del elemento del combo
+        Dim brush As Brush
+        ' Aquí pones la condición que quieras:
+        For Each Item As String In CboCalidad.Items
+            If e.Index Mod 2 = 0 Then
+                brush = Brushes.Black   ' Color del texto
+                e.Graphics.FillRectangle(New SolidBrush(Color.Bisque), e.Bounds)   ' Fondo
+            Else
+                brush = Brushes.Black
+                e.Graphics.FillRectangle(New SolidBrush(Color.White), e.Bounds)
+            End If
+            ' Dibujo el texto con los colores elegidos
+            e.Graphics.DrawString(text, DirectCast(sender, Control).Font, brush, e.Bounds.X, e.Bounds.Y)
+        Next
+    End Sub
+
+    Private Sub CboEstado_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles CboEstado.DrawItem
+        e.DrawBackground()
+        Dim text As String = DirectCast(sender, ComboBox).Items(e.Index).ToString()  ' Texto del elemento del combo
+        Dim brush As Brush
+        ' Aquí pones la condición que quieras:
+        For Each Item As String In CboEstado.Items
+            If e.Index Mod 2 = 0 Then
+                brush = Brushes.Black   ' Color del texto
+                e.Graphics.FillRectangle(New SolidBrush(Color.Bisque), e.Bounds)   ' Fondo
+            Else
+                brush = Brushes.Black
+                e.Graphics.FillRectangle(New SolidBrush(Color.White), e.Bounds)
+            End If
+            ' Dibujo el texto con los colores elegidos
+            e.Graphics.DrawString(text, DirectCast(sender, Control).Font, brush, e.Bounds.X, e.Bounds.Y)
+        Next
     End Sub
 End Class

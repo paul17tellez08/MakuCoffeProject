@@ -121,27 +121,29 @@ Public Class FrmTranslado
             DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
             DataAdapter.Fill(DataSet, "Totales")
 
-            If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("PesoBruto")) Then
-                Me.LblPesoBruto.Text = DataSet.Tables("Totales").Rows(0)("PesoBruto")
-            Else
-                Me.LblPesoBruto.Text = "-----------"
-            End If
-            If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Tara")) Then
-                Me.LblTara.Text = DataSet.Tables("Totales").Rows(0)("Tara")
-            Else
-                Me.LblTara.Text = "-----------"
-            End If
-            If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Pesoneto")) Then
-                PesoNeto = DataSet.Tables("Totales").Rows(0)("Pesoneto")
-                Me.LblPesoNeto.Text = DataSet.Tables("Totales").Rows(0)("Pesoneto")
-                Me.TxtPesoTransladar.Text = PesoNeto
-            Else
-                Me.LblPesoNeto.Text = "-----------"
-            End If
-            If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Sacos")) Then
-                Me.LblTotalSaco.Text = DataSet.Tables("Totales").Rows(0)("Sacos")
-            Else
-                Me.LblTotalSaco.Text = "-----------"
+            If DataSet.Tables("Totales").Rows.Count > 0 Then
+                If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("PesoBruto")) Then
+                    Me.LblPesoBruto.Text = DataSet.Tables("Totales").Rows(0)("PesoBruto")
+                Else
+                    Me.LblPesoBruto.Text = "-----------"
+                End If
+                If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Tara")) Then
+                    Me.LblTara.Text = DataSet.Tables("Totales").Rows(0)("Tara")
+                Else
+                    Me.LblTara.Text = "-----------"
+                End If
+                If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Pesoneto")) Then
+                    PesoNeto = DataSet.Tables("Totales").Rows(0)("Pesoneto")
+                    Me.LblPesoNeto.Text = DataSet.Tables("Totales").Rows(0)("Pesoneto")
+                    Me.TxtPesoTransladar.Text = PesoNeto
+                Else
+                    Me.LblPesoNeto.Text = "-----------"
+                End If
+                If Not IsDBNull(DataSet.Tables("Totales").Rows(0)("Sacos")) Then
+                    Me.LblTotalSaco.Text = DataSet.Tables("Totales").Rows(0)("Sacos")
+                Else
+                    Me.LblTotalSaco.Text = "-----------"
+                End If
             End If
         Else
             Me.LblFechaHora.Text = "-----------"

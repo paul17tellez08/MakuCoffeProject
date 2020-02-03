@@ -60,6 +60,13 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property Bodegas() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Bodegas", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property BorrarFila28() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("BorrarFila28", resourceCulture)
@@ -91,6 +98,27 @@ Namespace My.Resources
         Friend ReadOnly Property buttonpress() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("buttonpress", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property Camas() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Camas", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property CamasLevel() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CamasLevel", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property CamasLevls() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CamasLevls", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -322,6 +350,13 @@ Namespace My.Resources
         Friend ReadOnly Property icons8_user_shield_100() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icons8-user-shield-100", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icons8_warehouse_48() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icons8-warehouse-48", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

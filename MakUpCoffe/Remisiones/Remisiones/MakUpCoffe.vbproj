@@ -353,6 +353,12 @@
     <Compile Include="Reportes\ArepTikectRecepcion.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ArepTrazabilidad.Designer.vb">
+      <DependentUpon>ArepTrazabilidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ArepTrazabilidad.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\SrpCertificado.Designer.vb">
       <DependentUpon>SrpCertificado.vb</DependentUpon>
     </Compile>
@@ -485,6 +491,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>ArepTikectRecepcion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ArepTrazabilidad.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ArepTrazabilidad.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\SrpCertificado.resx">
       <DependentUpon>SrpCertificado.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -509,6 +519,11 @@
   <ItemGroup>
     <Content Include="list_edit.ico" />
     <Content Include="logoMakupCoffe1.ico" />
+    <None Include="Resources\icons8-warehouse-48.png" />
+    <None Include="Resources\CamasLevls.png" />
+    <None Include="Resources\CamasLevel.png" />
+    <None Include="Resources\Camas.png" />
+    <None Include="Resources\Bodegas.png" />
     <None Include="Resources\trolley-48d.png" />
     <None Include="Resources\buttonpress.png" />
     <None Include="Resources\buttonlog.png" />

@@ -37,6 +37,8 @@ Partial Class MDIParent1
         Me.RibbonTab2 = New C1.Win.C1Ribbon.RibbonTab
         Me.RibbonGroup6 = New C1.Win.C1Ribbon.RibbonGroup
         Me.RbtonRecepción = New C1.Win.C1Ribbon.RibbonButton
+        Me.RibbonButton6 = New C1.Win.C1Ribbon.RibbonButton
+        Me.RibbonButton7 = New C1.Win.C1Ribbon.RibbonButton
         Me.RibbonTab3 = New C1.Win.C1Ribbon.RibbonTab
         Me.RibbonGroup1 = New C1.Win.C1Ribbon.RibbonGroup
         Me.RbtnVehiculo = New C1.Win.C1Ribbon.RibbonButton
@@ -48,8 +50,6 @@ Partial Class MDIParent1
         Me.RibbonButton5 = New C1.Win.C1Ribbon.RibbonButton
         Me.C1StatusBar1 = New C1.Win.C1Ribbon.C1StatusBar
         Me.RibbonLabel1 = New C1.Win.C1Ribbon.RibbonLabel
-        Me.RibbonButton6 = New C1.Win.C1Ribbon.RibbonButton
-        Me.RibbonButton7 = New C1.Win.C1Ribbon.RibbonButton
         CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1StatusBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -170,6 +170,22 @@ Partial Class MDIParent1
         Me.RbtonRecepción.Text = "Notas_de_peso"
         Me.RbtonRecepción.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
+        'RibbonButton6
+        '
+        Me.RibbonButton6.ID = "RibbonButton6"
+        Me.RibbonButton6.LargeImage = Global.Remisiones.My.Resources.Resources.CamasLevls
+        Me.RibbonButton6.SmallImage = CType(resources.GetObject("RibbonButton6.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton6.Text = "Nivel_Camas"
+        Me.RibbonButton6.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
+        'RibbonButton7
+        '
+        Me.RibbonButton7.ID = "RibbonButton7"
+        Me.RibbonButton7.LargeImage = Global.Remisiones.My.Resources.Resources.icons8_warehouse_48
+        Me.RibbonButton7.SmallImage = CType(resources.GetObject("RibbonButton7.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton7.Text = "Cambio_Bodegas"
+        Me.RibbonButton7.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
+        '
         'RibbonTab3
         '
         Me.RibbonTab3.Groups.Add(Me.RibbonGroup1)
@@ -256,20 +272,6 @@ Partial Class MDIParent1
         '
         Me.RibbonLabel1.ID = "RibbonLabel1"
         Me.RibbonLabel1.Text = "Version  1.01"
-        '
-        'RibbonButton6
-        '
-        Me.RibbonButton6.ID = "RibbonButton6"
-        Me.RibbonButton6.SmallImage = CType(resources.GetObject("RibbonButton6.SmallImage"), System.Drawing.Image)
-        Me.RibbonButton6.Text = "Nivel_Camas"
-        Me.RibbonButton6.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
-        '
-        'RibbonButton7
-        '
-        Me.RibbonButton7.ID = "RibbonButton7"
-        Me.RibbonButton7.SmallImage = CType(resources.GetObject("RibbonButton7.SmallImage"), System.Drawing.Image)
-        Me.RibbonButton7.Text = "Cambio_Bodegas"
-        Me.RibbonButton7.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText
         '
         'MDIParent1
         '
