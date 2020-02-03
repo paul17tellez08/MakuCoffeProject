@@ -3,7 +3,7 @@ Public Class FrmTeclado
     Private Sub FrmTeclado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.TxtNumero.Text = ""
         If Quien = "TecladoSinNumeral" Then
-            Me.C1Button12.Visible = True
+            Me.C1Button12.Visible = False
         End If
     End Sub
 

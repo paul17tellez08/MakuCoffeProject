@@ -254,6 +254,8 @@ Partial Class FrmTeclado
         Me.Controls.Add(Me.CmdBoton7)
         Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(398, 427)
+        Me.MinimumSize = New System.Drawing.Size(398, 427)
         Me.Name = "FrmTeclado"
         Me.Opacity = 0.9
         Me.Text = "TECLADO NÚMERICO"
