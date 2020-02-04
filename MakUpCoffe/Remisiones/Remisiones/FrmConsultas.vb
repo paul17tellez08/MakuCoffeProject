@@ -10,6 +10,7 @@ Public Class FrmConsultas
 
     Private Sub FrmConsultas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim DataAdapter As New SqlClient.SqlDataAdapter, SQlProductos As String
+        Codigo = "- - - - - 0 - - - - -"
         Select Case Quien
             Case "RecepcionBusqueda"
                 MiConexion.Close()

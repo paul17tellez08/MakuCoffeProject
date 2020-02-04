@@ -3,6 +3,7 @@ Public Class FrmRecepcion
     '/////////////VARIABLES A LIMPIAR/////////////
     Public CodigoNotaPeso As String, IdProductor As Integer = 0, ActualizarSerie As Boolean = False, TotalPesoLb As Double, TotalPesoKG As Double
     Public Departamento As String, Municipio As String, Comarca As String, PesoBrutoLb As Double = 0, TaraLb As Double = 0, CantidaSacos As Integer
+    Dim Iniciar As Boolean = True
     Delegate Sub delegado(ByVal data As String)
     Private Sub Compra()
 
@@ -14,13 +15,9 @@ Public Class FrmRecepcion
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim Fecha As String, MontoIva As Double, Sql As String
 
-
-
-
         ConsecutivoCompra = BuscaConsecutivo("Compra")
         NumeroCompra = Format(ConsecutivoCompra, "0000#")
         Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
-
 
         '////////////////////////////////////////////////////////////////////////////////////////////////////
         '/////////////////////////////GRABO EL ENCABEZADO DE LA COMPRA /////////////////////////////////////////////
@@ -266,7 +263,7 @@ Public Class FrmRecepcion
 
 
     Private Sub FrmRecepcion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Iniciar = False
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
@@ -578,103 +575,6 @@ Public Class FrmRecepcion
         Me.LblEstado.ForeColor = Color.Black
     End Sub
 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim SQL As New DataDynamics.ActiveReports.DataSources.SqlDBDataSource, SqlString As String
-        Dim ArepRecepcion As New ArepRecepcion, CodigoProducto As String, Sqldatos As String, RutaLogo As String
-        Dim oDataRow As DataRow, Fecha As String, Registros As Double, i As Double, Buscar_Fila() As DataRow, Criterios As String = ""
-        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter, Posicion As Double = 0, DescripcionAnterior As String = ""
-
-        Fecha = Format(CDate(Me.DTPFecha.Text), "yyyy-MM-dd")
-
-        '*******************************************************************************************************************************
-        '/////////////////////////AGREGO UNA CONSULTA QUE NUNCA TENDRA REGISTROS PARA PODER AGREGARLOS /////////////////////////////////
-        '*******************************************************************************************************************************
-        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '-100000') AND (Fecha = CONVERT(DATETIME, '2013-10-12 00:00:00', 102)) AND (TipoRecepcion = N'Recepcion') ORDER BY Cantidad"
-        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Reporte")
-
-        SqlString = "SELECT  id_Eventos, NumeroRecepcion, Fecha, TipoRecepcion, Cod_Productos, Descripcion_Producto, Codigo_Beams, Cantidad, Unidad_Medida  FROM Detalle_Recepcion WHERE (NumeroRecepcion = '" & Me.TxtNumeroEnsamble.Text & "') AND (Fecha = CONVERT(DATETIME, '" & Fecha & "', 102)) AND (TipoRecepcion = '" & Me.CboTipoPesada.Text & "') ORDER BY Cod_Productos DESC"
-        DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
-        DataAdapter.Fill(DataSet, "Recepcion")
-        Registros = DataSet.Tables("Recepcion").Rows.Count
-        i = 0
-
-        Do While Registros > i
-
-            CodigoProducto = DataSet.Tables("Recepcion").Rows(i)("Cod_Productos")
-
-            '//////////////////////////////////////////BUSCO SI NO EXISTE PARA AGREGAR UNO NUEVO ///////////////////////////
-            Criterios = "Cod_Productos= '" & CodigoProducto & "'"
-            Buscar_Fila = DataSet.Tables("Reporte").Select(Criterios)
-            If Buscar_Fila.Length = 0 Then
-                oDataRow = DataSet.Tables("Reporte").NewRow
-                oDataRow("id_Eventos") = DataSet.Tables("Recepcion").Rows(i)("id_Eventos")
-                oDataRow("NumeroRecepcion") = DataSet.Tables("Recepcion").Rows(i)("NumeroRecepcion")
-                oDataRow("Fecha") = DataSet.Tables("Recepcion").Rows(i)("Fecha")
-                oDataRow("TipoRecepcion") = DataSet.Tables("Recepcion").Rows(i)("TipoRecepcion")
-                oDataRow("Cod_Productos") = DataSet.Tables("Recepcion").Rows(i)("Cod_Productos")
-                oDataRow("Descripcion_Producto") = DataSet.Tables("Recepcion").Rows(i)("Descripcion_Producto")
-                oDataRow("Codigo_Beams") = DataSet.Tables("Recepcion").Rows(i)("Codigo_Beams")
-                oDataRow("Cantidad") = DataSet.Tables("Recepcion").Rows(i)("Cantidad")
-                oDataRow("Unidad_Medida") = DataSet.Tables("Recepcion").Rows(i)("id_Eventos") & "-" & DataSet.Tables("Recepcion").Rows(i)("Cantidad") & "Lb"
-                DataSet.Tables("Reporte").Rows.Add(oDataRow)
-            Else
-                Posicion = DataSet.Tables("Reporte").Rows.IndexOf(Buscar_Fila(0))
-                DescripcionAnterior = DataSet.Tables("Reporte").Rows(Posicion)("Unidad_Medida")
-                DataSet.Tables("Reporte").Rows(Posicion)("Unidad_Medida") = DescripcionAnterior & " , " & DataSet.Tables("Recepcion").Rows(i)("id_Eventos") & "-" & DataSet.Tables("Recepcion").Rows(i)("Cantidad") & "Lb"
-                DataSet.Tables("Reporte").Rows(Posicion)("Cantidad") = DataSet.Tables("Reporte").Rows(Posicion)("Cantidad") + DataSet.Tables("Recepcion").Rows(i)("Cantidad")
-            End If
-
-            i = i + 1
-        Loop
-
-        Sqldatos = "SELECT * FROM DatosEmpresa"
-        DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
-        DataAdapter.Fill(DataSet, "DatosEmpresa")
-
-        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-
-            ArepRecepcion.ArepLblNombreEmpresa.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
-            ArepRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
-
-            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")) Then
-                ArepRecepcion.LblRuc.Text = "Numero RUC " & DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")
-            End If
-            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")) Then
-                RutaLogo = DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")
-                If Dir(RutaLogo) <> "" Then
-                    ArepRecepcion.ImgLogo.Image = New System.Drawing.Bitmap(RutaLogo)
-                End If
-
-            End If
-        End If
-
-        ArepRecepcion.LblHora.Text = Me.Año & "-" & Me.Mes & "-" & Me.Dia & "-" & Me.TxtCodProductor.Text
-        ' ArepRecepcion.LblNotas.Text = Me.txtobservaciones.Text
-        ArepRecepcion.LblOrden.Text = Me.TxtNumeroEnsamble.Text
-        ArepRecepcion.LblFechaOrden.Text = Format(CDate(Me.DTPFecha.Text), "dd/MM/yyyy")
-        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
-        'ArepRecepcion.LblCodProveedor.Text = Me.CboCodigoProveedor.Text
-        'ArepRecepcion.LblNombres.Text = Me.TxtRConacafe.Text
-        'ArepRecepcion.LblApellidos.Text = Me.txtapellido.Text
-        'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
-        'ArepRecepcion.LblNombres.Text = Me.txtnombre.Text
-        'ArepRecepcion.LblBodegas.Text = Me.CboCodigoBodega.Columns(0).Text + " " + Me.CboCodigoBodega.Columns(1).Text
-        'ArepRecepcion.LblPila.Text = Me.txtapellido.Text
-        'ArepRecepcion.LblConductor.Text = Me.CboConductor.Text
-        'ArepRecepcion.LblCedula.Text = Me.txtid.Text
-        'ArepRecepcion.LblPlaca.Text = Me.txtplaca.Text
-
-        Dim ViewerForm As New FrmViewer()
-        ViewerForm.arvMain.Document = ArepRecepcion.Document
-        My.Application.DoEvents()
-
-        ArepRecepcion.DataSource = DataSet.Tables("Reporte")
-        ArepRecepcion.Run(False)
-        ViewerForm.Show()
-
-    End Sub
-
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
@@ -955,16 +855,17 @@ Public Class FrmRecepcion
         '*******************************************************************************************************************************
         '/////////////////////////AGREGO UNA CONSULTA QUE NUNCA TENDRA REGISTROS PARA PODER AGREGARLOS /////////////////////////////////
         '*******************************************************************************************************************************
+
         Sqldatos = "SELECT * FROM DatosEmpresa"
         DataAdapter = New SqlClient.SqlDataAdapter(Sqldatos, MiConexion)
         DataAdapter.Fill(DataSet, "DatosEmpresa")
 
+        Fecha = Format(CDate(Now), "yyyy-MM-dd")
+        Hora = Format(CDate(Date.Now.ToLongTimeString), "HH:mm:ss")
+
         If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
-
             ArepRecepcion.ArepLblNombreEmpresa.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Nombre_Empresa")
-
             ArepRecepcion.LblDireccion.Text = DataSet.Tables("DatosEmpresa").Rows(0)("Direccion_Empresa")
-
             If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")) Then
                 ArepRecepcion.LblRuc.Text = "Numero RUC " & DataSet.Tables("DatosEmpresa").Rows(0)("Numero_Ruc")
             End If
@@ -983,18 +884,15 @@ Public Class FrmRecepcion
         Registros = DataSet.Tables("Reporte").Rows.Count
         i = 0
         Do While Registros > i
-            TPesoneto = DataSet.Tables("Recepcion").Rows(i)("Fecha") + TPesoneto
-            TTara = DataSet.Tables("Recepcion").Rows(i)("Fecha") + TTara
-            TPBruto = DataSet.Tables("Recepcion").Rows(i)("Fecha") + TPBruto
+            TPesoneto = DataSet.Tables("Reporte").Rows(i)("Pesoneto") + TPesoneto
+            'TTara = DataSet.Tables("Recepcion").Rows(i)("Fecha") + TTara
+            'TPBruto = DataSet.Tables("Recepcion").Rows(i)("Fecha") + TPBruto
+            i = i + 1
         Loop
-
-        Fecha = Format(CDate(Now), "dd/MM/yyyy")
-        Hora = Format(CDate(Date.Now.ToLongTimeString), "HH:mm:ss")
-
+        ArepRecepcion.ArepPesoTotal.Text = TPesoneto
         ArepRecepcion.LblHora.Text = Hora
         ArepRecepcion.LblFechaOrden.Text = Fecha
-        ArepRecepcion.LblOrden.Text = Me.TxtNumeroEnsamble.Text
-        ArepRecepcion.LblTipoCompra.Text = Me.CboTipoPesada.Text
+        ArepRecepcion.ArepLblUsuario.Text = NombreUsuario
 
         Dim ViewerForm As New FrmViewer()
         ViewerForm.arvMain.Document = ArepRecepcion.Document
@@ -1052,6 +950,8 @@ Public Class FrmRecepcion
             Else
                 Me.TxtNumeroEnsamble.Text = CodigoNotaPeso
             End If
+        Else
+            Me.TxtNumeroEnsamble.Text = My.Forms.FrmConsultas.Codigo
         End If
     End Sub
 
@@ -1162,6 +1062,12 @@ Public Class FrmRecepcion
             End If
             MiConexion.Close()
             PegarGridPesada(NumeroEnsamble)
+        Else
+            If Iniciar = False Then
+                LimpiaRecepcion()
+                LimpiarImperfeccion()
+                PegarGridPesada(-7878)
+            End If
         End If
     End Sub
 
@@ -1512,6 +1418,11 @@ Public Class FrmRecepcion
             Quien = "Transladar-Recepcion-Patio"
             My.Forms.FrmTranslado.CodigoNotaPeso = Me.TxtNumeroEnsamble.Text
             My.Forms.FrmTranslado.ShowDialog()
+            If My.Forms.FrmTranslado.LimpiarNota Then
+                LimpiaRecepcion()
+                LimpiarImperfeccion()
+                PegarGridPesada(-7878)
+            End If
         Else
             MsgBox("Para transaladar a patio primero debe de seleccionar una nota de peso", MsgBoxStyle.Information, "Nota de Peso")
             Exit Sub

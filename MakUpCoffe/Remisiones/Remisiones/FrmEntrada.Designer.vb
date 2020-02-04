@@ -62,7 +62,7 @@ Partial Class FrmEntrada
         Me.CboUsuario.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboUsuario.Images.Add(CType(resources.GetObject("CboUsuario.Images"), System.Drawing.Image))
         Me.CboUsuario.ItemHeight = 15
-        Me.CboUsuario.Location = New System.Drawing.Point(258, 78)
+        Me.CboUsuario.Location = New System.Drawing.Point(256, 78)
         Me.CboUsuario.MatchEntryTimeout = CType(2000, Long)
         Me.CboUsuario.MaxDropDownItems = CType(5, Short)
         Me.CboUsuario.MaxLength = 32767
@@ -83,7 +83,7 @@ Partial Class FrmEntrada
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPassword.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.txtPassword.Location = New System.Drawing.Point(258, 133)
+        Me.txtPassword.Location = New System.Drawing.Point(256, 133)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
         Me.txtPassword.Size = New System.Drawing.Size(223, 26)
@@ -95,7 +95,7 @@ Partial Class FrmEntrada
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label1.Location = New System.Drawing.Point(337, 56)
+        Me.Label1.Location = New System.Drawing.Point(335, 56)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(68, 15)
         Me.Label1.TabIndex = 22
@@ -106,7 +106,7 @@ Partial Class FrmEntrada
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(320, 113)
+        Me.Label3.Location = New System.Drawing.Point(318, 113)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 15)
         Me.Label3.TabIndex = 23
@@ -118,7 +118,7 @@ Partial Class FrmEntrada
         Me.Label2.BackColor = System.Drawing.Color.White
         Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(12, 18)
+        Me.Label2.Location = New System.Drawing.Point(7, 18)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(233, 22)
         Me.Label2.TabIndex = 32
@@ -142,7 +142,7 @@ Partial Class FrmEntrada
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label5.Location = New System.Drawing.Point(267, 188)
+        Me.Label5.Location = New System.Drawing.Point(269, 188)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(57, 15)
         Me.Label5.TabIndex = 36
@@ -174,7 +174,7 @@ Partial Class FrmEntrada
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.White
         Me.PictureBox3.Image = Global.Remisiones.My.Resources.Resources.UseersLog
-        Me.PictureBox3.Location = New System.Drawing.Point(13, 54)
+        Me.PictureBox3.Location = New System.Drawing.Point(8, 54)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(146, 141)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -187,7 +187,7 @@ Partial Class FrmEntrada
         Me.PictureBox2.Image = Global.Remisiones.My.Resources.Resources.Login
         Me.PictureBox2.Location = New System.Drawing.Point(0, -1)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(481, 262)
+        Me.PictureBox2.Size = New System.Drawing.Size(481, 246)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 29
         Me.PictureBox2.TabStop = False

@@ -60,7 +60,7 @@ Partial Class FrmTranslado
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.GBBodegas = New System.Windows.Forms.GroupBox
         Me.lblbdega = New System.Windows.Forms.Label
         Me.TxtNumeroEnsamble = New System.Windows.Forms.TextBox
         Me.GbEncabezado = New System.Windows.Forms.GroupBox
@@ -82,7 +82,7 @@ Partial Class FrmTranslado
         Me.BtnRecpSalir = New System.Windows.Forms.Button
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GbinfoNota.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
+        Me.GBBodegas.SuspendLayout()
         Me.GbEncabezado.SuspendLayout()
         Me.GbCamaInfo.SuspendLayout()
         CType(Me.CboCama, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -538,18 +538,18 @@ Partial Class FrmTranslado
         Me.Label2.TabIndex = 274
         Me.Label2.Text = "DATOS NOTA DE PESO"
         '
-        'GroupBox1
+        'GBBodegas
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.GroupBox1.Controls.Add(Me.CboBodegaOrigen)
-        Me.GroupBox1.Controls.Add(Me.CboBodegaDestino)
-        Me.GroupBox1.Controls.Add(Me.Label15)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 39)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(618, 58)
-        Me.GroupBox1.TabIndex = 271
-        Me.GroupBox1.TabStop = False
+        Me.GBBodegas.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.GBBodegas.Controls.Add(Me.CboBodegaOrigen)
+        Me.GBBodegas.Controls.Add(Me.CboBodegaDestino)
+        Me.GBBodegas.Controls.Add(Me.Label15)
+        Me.GBBodegas.Controls.Add(Me.Label1)
+        Me.GBBodegas.Location = New System.Drawing.Point(3, 39)
+        Me.GBBodegas.Name = "GBBodegas"
+        Me.GBBodegas.Size = New System.Drawing.Size(618, 58)
+        Me.GBBodegas.TabIndex = 271
+        Me.GBBodegas.TabStop = False
         '
         'lblbdega
         '
@@ -821,7 +821,7 @@ Partial Class FrmTranslado
         Me.Controls.Add(Me.BtnRecpSalir)
         Me.Controls.Add(Me.GbCamaInfo)
         Me.Controls.Add(Me.GbEncabezado)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.GBBodegas)
         Me.Controls.Add(Me.GbinfoNota)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(647, 450)
@@ -830,8 +830,8 @@ Partial Class FrmTranslado
         Me.Text = "FrmTranslado"
         Me.GbinfoNota.ResumeLayout(False)
         Me.GbinfoNota.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GBBodegas.ResumeLayout(False)
+        Me.GBBodegas.PerformLayout()
         Me.GbEncabezado.ResumeLayout(False)
         Me.GbEncabezado.PerformLayout()
         Me.GbCamaInfo.ResumeLayout(False)
@@ -845,7 +845,7 @@ Partial Class FrmTranslado
     Friend WithEvents CboBodegaDestino As System.Windows.Forms.ComboBox
     Friend WithEvents CboBodegaOrigen As System.Windows.Forms.ComboBox
     Friend WithEvents GbinfoNota As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents GBBodegas As System.Windows.Forms.GroupBox
     Friend WithEvents lblbdega As System.Windows.Forms.Label
     Friend WithEvents TxtNumeroEnsamble As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label

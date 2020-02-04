@@ -1,5 +1,5 @@
 Public Class FrmTranslado
-    Public CodigoNotaPeso As String, PesoNeto As Double, CodigoTraza As String
+    Public CodigoNotaPeso As String, PesoNeto As Double, CodigoTraza As String, LimpiarNota As Boolean
     Public MiConexion As New SqlClient.SqlConnection(Conexion)
     Private Sub FrmTranslado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -30,11 +30,15 @@ Public Class FrmTranslado
             Me.TxtNumeroEnsamble.Enabled = False
             Me.BtnConsulta.Enabled = False
             Me.BtnConsulta.Visible = False
-            CboBodegaOrigen.SelectedIndex = 0
-            CboBodegaDestino.SelectedIndex = 1
             Me.TxtNumeroEnsamble.Text = CodigoNotaPeso
         ElseIf Quien = "Cama" Then
-           
+            GBBodegas.Visible = False
+            'Me.Label1.Visible = False
+            'Me.CboBodegaOrigen.Visible = False
+            'Me.CboBodegaDestino.Visible = False
+            'Me.Label15.Visible = False
+        ElseIf Quien = "Translado" Then
+            GbCamaInfo.Visible = False
         End If
     End Sub
 
@@ -206,17 +210,21 @@ Public Class FrmTranslado
         Dim sql As String, ComandoUpdate As New SqlClient.SqlCommand
         Dim SqlProductos As String, SqlString As String, Ruta As String, LeeArchivo As String, i As Integer
 
-        SqlString = "SELECT Cod_Bodega, Nombre_Bodega  FROM  Bodegas WHERE (NOT (Nombre_Bodega = N'" & Me.CboBodegaOrigen.Text & "'))  "
+        SqlString = "SELECT Cod_Bodega, Nombre_Bodega  FROM  Bodegas WHERE (NOT (Nombre_Bodega = N'" & Me.CboBodegaOrigen.Text & "'))"
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Bodegas1")
         Me.CboBodegaDestino.DataSource = DataSet.Tables("Bodegas1")
         If Not DataSet.Tables("Bodegas1").Rows.Count = 0 Then
-            Me.CboBodegaDestino.Text = DataSet.Tables("Bodegas1").Rows(1)("Nombre_Bodega")
+            If Quien = "Transladar-Recepcion-Patio" Then
+                Me.CboBodegaDestino.SelectedValue = DataSet.Tables("Bodegas1").Rows(0)("Cod_Bodega")
+            ElseIf Quien = "Cama" Then
+                Me.CboBodegaDestino.SelectedValue = DataSet.Tables("Bodegas1").Rows(1)("Cod_Bodega")
+            End If
         End If
     End Sub
 
     Private Sub CboCama_ValueMemberChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CboCama.ValueMemberChanged
-       
+
     End Sub
 
     Private Sub BtnNuevoRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNuevoRec.Click
@@ -284,6 +292,8 @@ Public Class FrmTranslado
                 MiConexion.Close()
                 If Quien = "Transladar-Recepcion-Patio" Then
                     ActualizarNotaPeso()
+                    ImprimirTikect()
+                    LimpiarNota = True
                     Me.Close()
                     Exit Sub
                 ElseIf Quien = "Cama" Then
@@ -319,5 +329,43 @@ Public Class FrmTranslado
         TxtNumeroEnsamble.Text = ""
         TxtPesoTransladar.Text = "0.00"
         TxtNivelActual.Text = ""
+    End Sub
+
+
+    Public Sub ImprimirTikect()
+        Dim StrSqlSelect As String, Sql As String, RutaLogo As String
+        Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
+        Dim ArepTrazabilidad As New ArepTrazabilidad
+
+        Sql = "SELECT * FROM DatosEmpresa"
+        DataAdapter = New SqlClient.SqlDataAdapter(Sql, MiConexion)
+        DataAdapter.Fill(DataSet, "DatosEmpresa")
+
+        'Fecha = Format(CDate(Now), "yyyy-MM-dd")
+        'Hora = Format(CDate(Date.Now.ToLongTimeString), "HH:mm:ss")
+
+        If Not DataSet.Tables("DatosEmpresa").Rows.Count = 0 Then
+            If Not IsDBNull(DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")) Then
+                RutaLogo = DataSet.Tables("DatosEmpresa").Rows(0)("Ruta_Logo")
+                If Dir(RutaLogo) <> "" Then
+                    ArepTrazabilidad.ImgLogo.Image = New System.Drawing.Bitmap(RutaLogo)
+                End If
+            End If
+        End If
+        ArepTrazabilidad.ArepLblFecha.Text = Me.DTPFecha.Text & " " & Me.LblHora.Text
+        ArepTrazabilidad.ArepLblVariedad.Text = Me.LblVariedad.Text
+        ArepTrazabilidad.ArepLblCodigoTraza.Text = Me.CodigoTraza
+        ArepTrazabilidad.ArepLblPesoNeto.Text = Me.TxtPesoTransladar.Text
+        ArepTrazabilidad.ArepLblCama.Text = Me.CboCama.Text
+        ArepTrazabilidad.ArepLblNivel.Text = Me.CmbNivel.Text
+       
+        Dim ViewerForm As New FrmViewer()
+        ViewerForm.arvMain.Document = ArepTrazabilidad.Document
+        My.Application.DoEvents()
+
+        'ArepTrazabilidad.DataSource = DataSet.Tables("Reporte")
+        ArepTrazabilidad.Run(False)
+        ViewerForm.Show()
+
     End Sub
 End Class
