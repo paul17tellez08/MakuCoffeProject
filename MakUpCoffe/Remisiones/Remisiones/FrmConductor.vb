@@ -93,7 +93,6 @@ Public Class FrmConductor
         DataAdapter = New SqlClient.SqlDataAdapter(SQLString, MiConexion)
         DataAdapter.Fill(DataSet, "Clientes")
         If Not DataSet.Tables("Clientes").Rows.Count = 0 Then
-
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
             StrSqlUpdate = "UPDATE [Conductor]  SET [Nombre] = '" & Me.TxtNombre.Text & "',[Cedula] = '" & Me.TxtCedula.Text & "',[Licencia] = '" & Me.TxtLicencia.Text & "'  ,[Activo] = '" & CheckActivo.Checked & "',[ListaNegra] = '" & CheckListaNegra.Checked & "',[RazonListaNegra]= '" & Me.TxtMotivo.Text & "'  WHERE (Activo = 1) AND (Codigo = '" & Me.CboCodigoConductor.Text & "')"
             MiConexion.Open()
@@ -111,7 +110,7 @@ Public Class FrmConductor
             MiConexion.Close()
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
-            StrSqlUpdate = "INSERT INTO [dbo].[Conductor]([Nombre],[Cedula],[Licencia],[Activo],[ListaNegra],[RazonListaNegra]) VALUES ('" & Me.TxtNombre.Text & "' ,'" & Me.TxtCedula.Text & "', '" & Me.TxtLicencia.Text & "', '" & CheckActivo.Checked & "','" & CheckActivo.Checked & "', '" & Me.TxtMotivo.Text & "') "
+            StrSqlUpdate = "INSERT INTO [dbo].[Conductor]([Nombre],[Cedula],[Licencia],[Activo],[ListaNegra],[RazonListaNegra]) VALUES ('" & Me.TxtNombre.Text & "' ,'" & Me.TxtCedula.Text & "', '" & Me.TxtLicencia.Text & "', '" & CheckActivo.Checked & "','" & CheckListaNegra.Checked & "', '" & Me.TxtMotivo.Text & "') "
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery

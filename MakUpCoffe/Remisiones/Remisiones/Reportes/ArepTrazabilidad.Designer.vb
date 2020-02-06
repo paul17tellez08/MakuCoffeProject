@@ -19,8 +19,7 @@ Partial Public Class ArepTrazabilidad
     Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(ArepTrazabilidad))
         Me.PageHeader1 = New DataDynamics.ActiveReports.PageHeader
-        Me.Detail1 = New DataDynamics.ActiveReports.Detail
-        Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter
+        Me.Shape1 = New DataDynamics.ActiveReports.Shape
         Me.ImgLogo = New DataDynamics.ActiveReports.Picture
         Me.Label1 = New DataDynamics.ActiveReports.Label
         Me.Barcode1 = New DataDynamics.ActiveReports.Barcode
@@ -30,13 +29,14 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblFecha = New DataDynamics.ActiveReports.Label
         Me.Label6 = New DataDynamics.ActiveReports.Label
         Me.Label7 = New DataDynamics.ActiveReports.Label
-        Me.Shape1 = New DataDynamics.ActiveReports.Shape
         Me.Label8 = New DataDynamics.ActiveReports.Label
         Me.ArepLblCodigoTraza = New DataDynamics.ActiveReports.Label
         Me.ArepLblVariedad = New DataDynamics.ActiveReports.Label
         Me.ArepLblPesoNeto = New DataDynamics.ActiveReports.Label
         Me.ArepLblCama = New DataDynamics.ActiveReports.Label
         Me.ArepLblNivel = New DataDynamics.ActiveReports.Label
+        Me.Detail1 = New DataDynamics.ActiveReports.Detail
+        Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter
         CType(Me.ImgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,19 +56,26 @@ Partial Public Class ArepTrazabilidad
         'PageHeader1
         '
         Me.PageHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Shape1, Me.ImgLogo, Me.Label1, Me.Barcode1, Me.Label2, Me.Label3, Me.Label4, Me.ArepLblFecha, Me.Label6, Me.Label7, Me.Label8, Me.ArepLblCodigoTraza, Me.ArepLblVariedad, Me.ArepLblPesoNeto, Me.ArepLblCama, Me.ArepLblNivel})
-        Me.PageHeader1.Height = 2.03125!
+        Me.PageHeader1.Height = 2.46875!
         Me.PageHeader1.Name = "PageHeader1"
         '
-        'Detail1
+        'Shape1
         '
-        Me.Detail1.ColumnSpacing = 0.0!
-        Me.Detail1.Height = 0.0!
-        Me.Detail1.Name = "Detail1"
-        '
-        'PageFooter1
-        '
-        Me.PageFooter1.Height = 0.25!
-        Me.PageFooter1.Name = "PageFooter1"
+        Me.Shape1.Border.BottomColor = System.Drawing.Color.Black
+        Me.Shape1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Shape1.Border.LeftColor = System.Drawing.Color.Black
+        Me.Shape1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Shape1.Border.RightColor = System.Drawing.Color.Black
+        Me.Shape1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Shape1.Border.TopColor = System.Drawing.Color.Black
+        Me.Shape1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.Shape1.Height = 0.4375!
+        Me.Shape1.Left = 0.0!
+        Me.Shape1.Name = "Shape1"
+        Me.Shape1.RoundingRadius = 9.999999!
+        Me.Shape1.Style = DataDynamics.ActiveReports.ShapeType.RoundRect
+        Me.Shape1.Top = 1.5625!
+        Me.Shape1.Width = 3.8125!
         '
         'ImgLogo
         '
@@ -80,14 +87,15 @@ Partial Public Class ArepTrazabilidad
         Me.ImgLogo.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.ImgLogo.Border.TopColor = System.Drawing.Color.Black
         Me.ImgLogo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.ImgLogo.Height = 0.4375!
+        Me.ImgLogo.Height = 0.5!
         Me.ImgLogo.Image = Nothing
         Me.ImgLogo.ImageData = Nothing
         Me.ImgLogo.Left = 0.0!
         Me.ImgLogo.LineWeight = 0.0!
         Me.ImgLogo.Name = "ImgLogo"
+        Me.ImgLogo.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
         Me.ImgLogo.Top = 0.0625!
-        Me.ImgLogo.Width = 1.1875!
+        Me.ImgLogo.Width = 1.3125!
         '
         'Label1
         '
@@ -119,14 +127,13 @@ Partial Public Class ArepTrazabilidad
         Me.Barcode1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.Barcode1.Border.TopColor = System.Drawing.Color.Black
         Me.Barcode1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Barcode1.Direction = DataDynamics.ActiveReports.BarCodeDirection.TopToBottom
         Me.Barcode1.Font = New System.Drawing.Font("Courier New", 8.0!)
-        Me.Barcode1.Height = 1.9375!
-        Me.Barcode1.Left = 3.875!
+        Me.Barcode1.Height = 0.375!
+        Me.Barcode1.Left = 0.0!
         Me.Barcode1.Name = "Barcode1"
         Me.Barcode1.Text = "Barcode1"
-        Me.Barcode1.Top = 0.0625!
-        Me.Barcode1.Width = 0.375!
+        Me.Barcode1.Top = 2.0625!
+        Me.Barcode1.Width = 3.8125!
         '
         'Label2
         '
@@ -205,7 +212,7 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblFecha.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 8.25pt; font-f" & _
             "amily: Lucida Sans; "
         Me.ArepLblFecha.Text = "Fecha y Hora"
-        Me.ArepLblFecha.Top = 0.3125!
+        Me.ArepLblFecha.Top = 0.375!
         Me.ArepLblFecha.Width = 2.125!
         '
         'Label6
@@ -248,24 +255,6 @@ Partial Public Class ArepTrazabilidad
         Me.Label7.Top = 1.75!
         Me.Label7.Width = 0.5!
         '
-        'Shape1
-        '
-        Me.Shape1.Border.BottomColor = System.Drawing.Color.Black
-        Me.Shape1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Shape1.Border.LeftColor = System.Drawing.Color.Black
-        Me.Shape1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Shape1.Border.RightColor = System.Drawing.Color.Black
-        Me.Shape1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Shape1.Border.TopColor = System.Drawing.Color.Black
-        Me.Shape1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Shape1.Height = 0.4375!
-        Me.Shape1.Left = 0.0!
-        Me.Shape1.Name = "Shape1"
-        Me.Shape1.RoundingRadius = 10.0!
-        Me.Shape1.Style = DataDynamics.ActiveReports.ShapeType.RoundRect
-        Me.Shape1.Top = 1.5625!
-        Me.Shape1.Width = 3.8125!
-        '
         'Label8
         '
         Me.Label8.Border.BottomColor = System.Drawing.Color.Black
@@ -303,7 +292,7 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblCodigoTraza.Style = "ddo-char-set: 0; font-size: 9pt; font-family: Lucida Sans; "
         Me.ArepLblCodigoTraza.Text = ""
         Me.ArepLblCodigoTraza.Top = 0.75!
-        Me.ArepLblCodigoTraza.Width = 2.5!
+        Me.ArepLblCodigoTraza.Width = 2.6875!
         '
         'ArepLblVariedad
         '
@@ -322,7 +311,7 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblVariedad.Style = "ddo-char-set: 0; font-size: 9pt; font-family: Lucida Sans; "
         Me.ArepLblVariedad.Text = ""
         Me.ArepLblVariedad.Top = 1.0!
-        Me.ArepLblVariedad.Width = 2.5!
+        Me.ArepLblVariedad.Width = 2.6875!
         '
         'ArepLblPesoNeto
         '
@@ -341,7 +330,7 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblPesoNeto.Style = "ddo-char-set: 0; font-size: 9pt; font-family: Lucida Sans; "
         Me.ArepLblPesoNeto.Text = ""
         Me.ArepLblPesoNeto.Top = 1.25!
-        Me.ArepLblPesoNeto.Width = 2.5!
+        Me.ArepLblPesoNeto.Width = 2.6875!
         '
         'ArepLblCama
         '
@@ -381,12 +370,23 @@ Partial Public Class ArepTrazabilidad
         Me.ArepLblNivel.Top = 1.75!
         Me.ArepLblNivel.Width = 0.8125!
         '
+        'Detail1
+        '
+        Me.Detail1.ColumnSpacing = 0.0!
+        Me.Detail1.Height = 0.0!
+        Me.Detail1.Name = "Detail1"
+        '
+        'PageFooter1
+        '
+        Me.PageFooter1.Height = 0.25!
+        Me.PageFooter1.Name = "PageFooter1"
+        '
         'ArepTrazabilidad
         '
         Me.MasterReport = False
         Me.PageSettings.PaperHeight = 11.0!
         Me.PageSettings.PaperWidth = 8.5!
-        Me.PrintWidth = 4.322917!
+        Me.PrintWidth = 3.927084!
         Me.Sections.Add(Me.PageHeader1)
         Me.Sections.Add(Me.Detail1)
         Me.Sections.Add(Me.PageFooter1)

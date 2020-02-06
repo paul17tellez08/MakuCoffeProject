@@ -64,7 +64,6 @@ Partial Class FrmTranslado
         Me.lblbdega = New System.Windows.Forms.Label
         Me.TxtNumeroEnsamble = New System.Windows.Forms.TextBox
         Me.GbEncabezado = New System.Windows.Forms.GroupBox
-        Me.BtnConsulta = New System.Windows.Forms.Button
         Me.DTPFecha = New System.Windows.Forms.Label
         Me.LblHora = New System.Windows.Forms.Label
         Me.GbCamaInfo = New System.Windows.Forms.GroupBox
@@ -77,15 +76,19 @@ Partial Class FrmTranslado
         Me.CboCama = New C1.Win.C1List.C1Combo
         Me.Label20 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.BtnNuevoRec = New System.Windows.Forms.Button
-        Me.BtnEnviarPatio = New System.Windows.Forms.Button
-        Me.BtnRecpSalir = New System.Windows.Forms.Button
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.BtnEnviarPatio = New System.Windows.Forms.Button
+        Me.BtnNivelCama = New System.Windows.Forms.Button
+        Me.BtnNuevoRec = New System.Windows.Forms.Button
+        Me.BtnRecpSalir = New System.Windows.Forms.Button
+        Me.BtnConsulta = New System.Windows.Forms.Button
         Me.GbinfoNota.SuspendLayout()
         Me.GBBodegas.SuspendLayout()
         Me.GbEncabezado.SuspendLayout()
         Me.GbCamaInfo.SuspendLayout()
         CType(Me.CboCama, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label15
@@ -556,19 +559,19 @@ Partial Class FrmTranslado
         Me.lblbdega.AutoSize = True
         Me.lblbdega.Font = New System.Drawing.Font("Lucida Sans", 9.75!)
         Me.lblbdega.ForeColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
-        Me.lblbdega.Location = New System.Drawing.Point(7, 16)
+        Me.lblbdega.Location = New System.Drawing.Point(4, 9)
         Me.lblbdega.Name = "lblbdega"
-        Me.lblbdega.Size = New System.Drawing.Size(90, 15)
+        Me.lblbdega.Size = New System.Drawing.Size(141, 30)
         Me.lblbdega.TabIndex = 273
-        Me.lblbdega.Text = "Nota Peso # :"
+        Me.lblbdega.Text = "Nota Peso #  ó " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Codigo Trazabilidad :"
         '
         'TxtNumeroEnsamble
         '
         Me.TxtNumeroEnsamble.Enabled = False
-        Me.TxtNumeroEnsamble.Location = New System.Drawing.Point(106, 14)
+        Me.TxtNumeroEnsamble.Location = New System.Drawing.Point(151, 14)
         Me.TxtNumeroEnsamble.Name = "TxtNumeroEnsamble"
         Me.TxtNumeroEnsamble.ReadOnly = True
-        Me.TxtNumeroEnsamble.Size = New System.Drawing.Size(128, 20)
+        Me.TxtNumeroEnsamble.Size = New System.Drawing.Size(215, 20)
         Me.TxtNumeroEnsamble.TabIndex = 272
         Me.TxtNumeroEnsamble.Text = "- - - - - 0 - - - - -"
         Me.TxtNumeroEnsamble.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -586,17 +589,6 @@ Partial Class FrmTranslado
         Me.GbEncabezado.Size = New System.Drawing.Size(619, 42)
         Me.GbEncabezado.TabIndex = 275
         Me.GbEncabezado.TabStop = False
-        '
-        'BtnConsulta
-        '
-        Me.BtnConsulta.FlatAppearance.BorderSize = 0
-        Me.BtnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnConsulta.Image = Global.Remisiones.My.Resources.Resources.Lupa321
-        Me.BtnConsulta.Location = New System.Drawing.Point(240, 8)
-        Me.BtnConsulta.Name = "BtnConsulta"
-        Me.BtnConsulta.Size = New System.Drawing.Size(32, 30)
-        Me.BtnConsulta.TabIndex = 274
-        Me.BtnConsulta.UseVisualStyleBackColor = True
         '
         'DTPFecha
         '
@@ -759,6 +751,53 @@ Partial Class FrmTranslado
         Me.Label3.TabIndex = 274
         Me.Label3.Text = "DATOS CAMA"
         '
+        'Timer1
+        '
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.BtnEnviarPatio)
+        Me.Panel1.Controls.Add(Me.BtnNivelCama)
+        Me.Panel1.Location = New System.Drawing.Point(333, 336)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(207, 66)
+        Me.Panel1.TabIndex = 280
+        '
+        'BtnEnviarPatio
+        '
+        Me.BtnEnviarPatio.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnEnviarPatio.FlatAppearance.BorderSize = 0
+        Me.BtnEnviarPatio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnEnviarPatio.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnEnviarPatio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.BtnEnviarPatio.Image = Global.Remisiones.My.Resources.Resources.trolley_48d
+        Me.BtnEnviarPatio.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnEnviarPatio.Location = New System.Drawing.Point(4, 0)
+        Me.BtnEnviarPatio.Name = "BtnEnviarPatio"
+        Me.BtnEnviarPatio.Size = New System.Drawing.Size(87, 66)
+        Me.BtnEnviarPatio.TabIndex = 277
+        Me.BtnEnviarPatio.Text = "Translado"
+        Me.BtnEnviarPatio.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnEnviarPatio.UseVisualStyleBackColor = True
+        '
+        'BtnNivelCama
+        '
+        Me.BtnNivelCama.Dock = System.Windows.Forms.DockStyle.Right
+        Me.BtnNivelCama.FlatAppearance.BorderSize = 0
+        Me.BtnNivelCama.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnNivelCama.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnNivelCama.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.BtnNivelCama.Image = Global.Remisiones.My.Resources.Resources.Camas
+        Me.BtnNivelCama.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnNivelCama.Location = New System.Drawing.Point(91, 0)
+        Me.BtnNivelCama.Name = "BtnNivelCama"
+        Me.BtnNivelCama.Size = New System.Drawing.Size(116, 66)
+        Me.BtnNivelCama.TabIndex = 279
+        Me.BtnNivelCama.Text = "Cambiar nivel"
+        Me.BtnNivelCama.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnNivelCama.UseVisualStyleBackColor = True
+        Me.BtnNivelCama.Visible = False
+        '
         'BtnNuevoRec
         '
         Me.BtnNuevoRec.FlatAppearance.BorderSize = 0
@@ -774,22 +813,6 @@ Partial Class FrmTranslado
         Me.BtnNuevoRec.Text = "Nuevo"
         Me.BtnNuevoRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnNuevoRec.UseVisualStyleBackColor = True
-        '
-        'BtnEnviarPatio
-        '
-        Me.BtnEnviarPatio.FlatAppearance.BorderSize = 0
-        Me.BtnEnviarPatio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnEnviarPatio.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEnviarPatio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.BtnEnviarPatio.Image = Global.Remisiones.My.Resources.Resources.trolley_48d
-        Me.BtnEnviarPatio.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnEnviarPatio.Location = New System.Drawing.Point(422, 336)
-        Me.BtnEnviarPatio.Name = "BtnEnviarPatio"
-        Me.BtnEnviarPatio.Size = New System.Drawing.Size(87, 66)
-        Me.BtnEnviarPatio.TabIndex = 277
-        Me.BtnEnviarPatio.Text = "Translado"
-        Me.BtnEnviarPatio.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnEnviarPatio.UseVisualStyleBackColor = True
         '
         'BtnRecpSalir
         '
@@ -807,8 +830,16 @@ Partial Class FrmTranslado
         Me.BtnRecpSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnRecpSalir.UseVisualStyleBackColor = True
         '
-        'Timer1
+        'BtnConsulta
         '
+        Me.BtnConsulta.FlatAppearance.BorderSize = 0
+        Me.BtnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnConsulta.Image = Global.Remisiones.My.Resources.Resources.Lupa321
+        Me.BtnConsulta.Location = New System.Drawing.Point(372, 8)
+        Me.BtnConsulta.Name = "BtnConsulta"
+        Me.BtnConsulta.Size = New System.Drawing.Size(32, 30)
+        Me.BtnConsulta.TabIndex = 274
+        Me.BtnConsulta.UseVisualStyleBackColor = True
         '
         'FrmTranslado
         '
@@ -816,8 +847,8 @@ Partial Class FrmTranslado
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(61, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(631, 411)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.BtnNuevoRec)
-        Me.Controls.Add(Me.BtnEnviarPatio)
         Me.Controls.Add(Me.BtnRecpSalir)
         Me.Controls.Add(Me.GbCamaInfo)
         Me.Controls.Add(Me.GbEncabezado)
@@ -827,7 +858,7 @@ Partial Class FrmTranslado
         Me.MaximumSize = New System.Drawing.Size(647, 450)
         Me.MinimumSize = New System.Drawing.Size(647, 450)
         Me.Name = "FrmTranslado"
-        Me.Text = "FrmTranslado"
+        Me.Text = "Transladar"
         Me.GbinfoNota.ResumeLayout(False)
         Me.GbinfoNota.PerformLayout()
         Me.GBBodegas.ResumeLayout(False)
@@ -837,6 +868,7 @@ Partial Class FrmTranslado
         Me.GbCamaInfo.ResumeLayout(False)
         Me.GbCamaInfo.PerformLayout()
         CType(Me.CboCama, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -897,4 +929,6 @@ Partial Class FrmTranslado
     Friend WithEvents CmbNivel As System.Windows.Forms.ComboBox
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents TxtNivelActual As System.Windows.Forms.TextBox
+    Friend WithEvents BtnNivelCama As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class

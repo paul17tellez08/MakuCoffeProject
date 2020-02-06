@@ -24,33 +24,20 @@ Public Class FrmProveedores
         Dim DataSet As New DataSet, DataAdapter As New SqlClient.SqlDataAdapter
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer, Reintegro As Double, Exonerado As Double, Exclusivo As Double
 
-        If Me.ChkReintegro.Checked = True Then
-            Reintegro = 1
-        Else
-            Reintegro = 0
-        End If
-
-        If Me.ChkExonerado.Checked = True Then
-            Exonerado = 1
-        Else
-            Exonerado = 0
-        End If
-
-        If Me.ChkExclusivo.Checked = True Then
-            Exclusivo = 1
-        Else
-            Exclusivo = 0
-        End If
-        SQLProveedor = "SELECT TOP (1) PERCENT dbo.Proveedor.* FROM Proveedor WHERE (Cod_Proveedor = '" & Me.CboCodigoProveedor.Text & "') ORDER BY Cod_Proveedor"
-         DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
+        SQLProveedor = "SELECT  * FROM  Proveedor WHERE (Cod_Proveedor = '" & Me.CboCodigoProveedor.Text & "')"
+        DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
         DataAdapter.Fill(DataSet, "Proveedores")
         If Not DataSet.Tables("Proveedores").Rows.Count = 0 Then
             '///////////SI EXISTE EL USUARIO LO ACTUALIZO////////////////
             StrSqlUpdate = "UPDATE [Proveedor] SET [Nombre_Proveedor] = '" & Me.TxtNombre.Text & "',[Apellido_Proveedor] = '" & Me.TxtApellido.Text & "',[Direccion_Proveedor] = '" & Me.TxtDireccion.Text & "',[Telefono] = '" & Me.TxtTelefono.Text & "',[Cod_Cuenta_Pagar] = '" & Me.TxtCtaxPagar.Text & "',[Cod_Cuenta_Cobrar] = '" & Me.TxtCtaxPagar.Text & "',[Merma] = '" & Me.TxtMerma.Text & "',[CedulaProveedor]= '" & Me.txtCedula.Text & "' WHERE Cod_Proveedor= '" & Me.CboCodigoProveedor.Text & "'"
-
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
+            If iResultado = 1 Then
+                MsgBox("PRODUCTOR ACTUALIZADO CON EXITO", MsgBoxStyle.Exclamation, "PRODUCTOR")
+                MiConexion.Close()
+                CmdNuevo_Click(sender, e)
+            End If
             MiConexion.Close()
         Else
             '/////////SI NO EXISTE LO AGREGO COMO NUEVO/////////////////
@@ -59,12 +46,17 @@ Public Class FrmProveedores
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(StrSqlUpdate, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
-            If Llamada = "RecepcionProductores" Then
-                Me.Close()
+            If iResultado = 1 Then
+                MsgBox("PRODUCTOR GUARDADO CON EXITO", MsgBoxStyle.Exclamation, "PRODUCTOR")
+                MiConexion.Close()
+                If Llamada = "RecepcionProductores" Then
+                    Me.Close()
+                End If
+                CmdNuevo_Click(sender, e)
             End If
             MiConexion.Close()
         End If
-        SQLProveedor = "SELECT TOP (100) PERCENT dbo.Proveedor.* FROM Proveedor"
+        SQLProveedor = "SELECT        Cod_Proveedor, Nombre_Proveedor + ' ' + Apellido_Proveedor AS Nombre  FROM            Proveedor"
         DataAdapter = New SqlClient.SqlDataAdapter(SQLProveedor, MiConexion)
         DataAdapter.Fill(DataSet, "ListaProveedores")
         If Not DataSet.Tables("ListaProveedores").Rows.Count = 0 Then

@@ -960,10 +960,11 @@ Module Funciones
         Dim ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
         Dim MiConexion As New SqlClient.SqlConnection(Conexion)
         MiConexion.Close()
+
         StrSqlSelect = "SELECT IdDetalleImperfeccion, NumeroRecepcion, Imperfeccion, Porcentaje  FROM  DetalleImperfeccion  WHERE (NumeroRecepcion = N'" & NumeroNotaPeso & "')"
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleImperfeccion")
-
+        ' DataSet.Tables("DetalleImperfeccion").Reset()
         i = 0
         Do While count > i
             If DataSet.Tables("DetalleImperfeccion").Rows.Count = 0 Then
@@ -2061,6 +2062,7 @@ Module Funciones
         FrmRecepcion.PesoBrutoLb = 0.0
         FrmRecepcion.TaraLb = 0.0
         FrmRecepcion.CantidaSacos = 0.0
+        FrmRecepcion.TxtImperfec.Text = "0.00"
 
     End Sub
 

@@ -468,11 +468,11 @@ Public Class FrmRecepcion
         DataAdapter = New SqlClient.SqlDataAdapter(SqlString, MiConexion)
         DataAdapter.Fill(DataSet, "Productores")
         Me.CboProductor.DataSource = DataSet.Tables("Productores")
-        If DataSet.Tables("Productores").Rows.Count = 0 Then
+        If Not DataSet.Tables("Productores").Rows.Count = 0 Then
             If Not IsDBNull(DataSet.Tables("Productores").Rows(0)("Nombre")) Then
                 Me.CboProductor.Text = DataSet.Tables("Productores").Rows(0)("Nombre")
-                Me.CboProductor.DisplayMember = "IdProductor"
-                Me.CboProductor.SelectedValue = "Nombre"
+                Me.CboProductor.DisplayMember = "Nombre"
+                Me.CboProductor.SelectedValue = "Cod_Proveedor"
             End If
         End If
         Me.CboProductor.Splits.Item(0).DisplayColumns(0).Visible = False
@@ -587,7 +587,7 @@ Public Class FrmRecepcion
         Dim CodigoIngreso As String = "", SqlString As String = "", Fecha As String
 
         If Me.BindingDetalle.Count > 0 Then
-            Resultado = MsgBox("¿Esta Seguro de Eliminar el Ingreso?", MsgBoxStyle.YesNo, "Sistema de Facturacion")
+            Resultado = MsgBox("¿Esta Seguro de Eliminar el Ingreso?", MsgBoxStyle.YesNo, "Notas de Peso")
             If Resultado <> 6 Then
                 Exit Sub
             End If
@@ -765,20 +765,30 @@ Public Class FrmRecepcion
     End Sub
 
     Private Sub BtnGuardarRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGuardarRec.Click
-        Dim NumeroEnsamble As String
+        Dim NumeroEnsamble As String, Resultado As Integer
         If ConsecutivoSerieActivo = True Then
             NumeroEnsamble = Me.CmbSerie.Text & "-" & Me.TxtNumeroEnsamble.Text
             ConsecutivoSerieActivo = True
         Else
             NumeroEnsamble = Me.TxtNumeroEnsamble.Text
         End If
-
         If VerificacionNotasdePeso(1) = True Then
             GrabaRecepcion(NumeroEnsamble, ActualizarSerie, 1)
             GrabaImperfeccion(NumeroEnsamble)
-            LimpiaRecepcion()
-            LimpiarImperfeccion()
-            PegarGridPesada(-7878)
+            Me.BtnTikectRec.Enabled = True
+            Resultado = MsgBox("¿Desea Imprimir Tikect Nota de Peso?", MsgBoxStyle.YesNo, "Nota de Peso")
+            If Resultado <> 6 Then
+                LimpiaRecepcion()
+                LimpiarImperfeccion()
+                PegarGridPesada(-7878)
+                Exit Sub
+            Else
+                BtnTikectRec_Click(sender, e)
+                LimpiaRecepcion()
+                LimpiarImperfeccion()
+                PegarGridPesada(-7878)
+            End If
+
         Else
             Exit Sub
         End If
@@ -1061,6 +1071,7 @@ Public Class FrmRecepcion
                 Me.TDGImperfeccion.Columns(3).Caption = "%"
             End If
             MiConexion.Close()
+            SumaGridImperfeccion()
             PegarGridPesada(NumeroEnsamble)
         Else
             If Iniciar = False Then
@@ -1364,7 +1375,6 @@ Public Class FrmRecepcion
             StrImperfeccion = "SELECT  id_Eventos As Linea, QQ As Saco,PesoNetoLb FROM Detalle_Recepcion  WHERE (NumeroRecepcion = N'" & NumeroNotaPes & "')"
             'DataAdapter = New SqlClient.SqlDataAdapter(StrImperfeccion, MiConexion)
             'DataAdapter.Fill(DataSet, "DatosPesada")
-
             SQL.ConnectionString = Conexion
             SQL.SQL = StrImperfeccion
 
@@ -1405,8 +1415,6 @@ Public Class FrmRecepcion
                 End If
             Next
         End If
-
-
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

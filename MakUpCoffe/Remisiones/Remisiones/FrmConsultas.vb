@@ -59,7 +59,7 @@ Public Class FrmConsultas
 
                 MiConexion.Close()
             Case "BusquedaProductor"
-                SQlProductos = "SELECT Cod_Proveedor, Nombre_Proveedor+' '+Apellido_Proveedor AS Nombre, Direccion_Proveedor, Telefono, Cod_Cuenta_Proveedor, Cod_Cuenta_Pagar, Cod_Cuenta_Cobrar, Merma, InventarioFisico, IdProductor  FROM      Proveedor"
+                SQlProductos = "SELECT Cod_Proveedor, Nombre_Proveedor+' '+Apellido_Proveedor AS Nombre, Direccion_Proveedor, Telefono  FROM      Proveedor"
                 MiConexion.Open()
                 DataAdapter = New SqlClient.SqlDataAdapter(SQlProductos, MiConexion)
                 DataSet.Reset()

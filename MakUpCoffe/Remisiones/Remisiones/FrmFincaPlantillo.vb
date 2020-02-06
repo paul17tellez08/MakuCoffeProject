@@ -144,7 +144,7 @@ Public Class FrmFincaPlantillo
                 StrSqlSelect = "SELECT IdFinca, Activo   FROM Finca  WHERE (Activo = 1)ORDER BY IdFinca DESC"
                 DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
                 DataAdapter.Fill(DataSet, "ListaFincaDESC")
-                If Not DataSet1.Tables("ListaFincaDESC").Rows.Count = 0 Then
+                If Not DataSet.Tables("ListaFincaDESC").Rows.Count = 0 Then
                     CodigoFinca = DataSet.Tables("ListaFincaDESC").Rows(0)("IdFinca")
                 Else
                     MsgBox("ALGO SALIO MAL ASEGURESE QUE LA INFORMACION ESTA CORRECTA, CONTACTESE CON SOPORTE", MsgBoxStyle.Exclamation, "Finca")

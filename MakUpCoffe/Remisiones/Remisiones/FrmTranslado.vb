@@ -277,13 +277,15 @@ Public Class FrmTranslado
         Dim StrSqlUpdate As String, ComandoUpdate As New SqlClient.SqlCommand, iResultado As Integer
 
         Fecha = Format(CDate(FrmRecepcion.DTPFecha.Text), "dd/MM/yyyy") & " " & Format(CDate(FrmRecepcion.LblHora.Text).Now, "HH:mm:ss")
-        StrSqlSelect = "SELECT  IdDetalleCama, NumeroRecepcion, IdCama, FechaHora, CodProveedor, NumeroTraza, Nivel, PesoEnviado  FROM    DetalleCama WHERE (NumeroRecepcion = N'" & Me.TxtNumeroEnsamble.Text & "') AND (IdCama = '" & Me.CboCama.SelectedValue & "') AND (Nivel = '" & Me.TxtNivelActual.Text & "')  ORDER BY FechaHora DESC "
+        CodigoTraza = Me.LblCodigo.Text & "-E" & CStr(Me.CmbNivel.SelectedIndex + 1)
+
+        StrSqlSelect = "SELECT  IdDetalleCama, NumeroRecepcion, IdCama, FechaHora, CodProveedor, NumeroTraza, Nivel, PesoEnviado  FROM    DetalleCama WHERE (NumeroRecepcion = N'" & Me.TxtNumeroEnsamble.Text & "') AND (IdCama = '" & Me.CboCama.SelectedValue & "') AND (Nivel = '" & Me.CmbNivel.Text & "')  ORDER BY FechaHora DESC "
         DataAdapter = New SqlClient.SqlDataAdapter(StrSqlSelect, MiConexion)
         DataAdapter.Fill(DataSet, "DetalleCamaGuardar")
 
         If DataSet.Tables("DetalleCamaGuardar").Rows.Count = 0 Then
             SqlString = "INSERT INTO [dbo].[DetalleCama]([NumeroRecepcion],[IdCama],[FechaHora],[CodProveedor],[NumeroTraza],[Nivel],[PesoEnviado])" & _
-                        "VALUES ('" & Me.TxtNumeroEnsamble.Text & "', '" & Me.CboCama.SelectedValue & "', '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & Me.LblCodigo.Text & "','" & Me.LblCodigo.Text & "-E" & CStr(Me.CmbNivel.SelectedIndex + 1) & "' , '" & Me.CmbNivel.Text & "','" & Me.TxtPesoTransladar.Text & "' )"
+                        "VALUES ('" & Me.TxtNumeroEnsamble.Text & "', '" & Me.CboCama.SelectedValue & "', '" & Format(CDate(Fecha), "dd/MM/yyyy HH:mm:ss") & "','" & Me.LblCodigo.Text & "','" & CodigoTraza & "' , '" & Me.CmbNivel.Text & "','" & Me.TxtPesoTransladar.Text & "' )"
             MiConexion.Open()
             ComandoUpdate = New SqlClient.SqlCommand(SqlString, MiConexion)
             iResultado = ComandoUpdate.ExecuteNonQuery
@@ -296,7 +298,8 @@ Public Class FrmTranslado
                     LimpiarNota = True
                     Me.Close()
                     Exit Sub
-                ElseIf Quien = "Cama" Then
+                ElseIf Quien = "RecepcionBusquedaCama" Then
+                    ImprimirTikect()
                     Me.Close()
                     Exit Sub
                 End If
@@ -355,6 +358,7 @@ Public Class FrmTranslado
         ArepTrazabilidad.ArepLblFecha.Text = Me.DTPFecha.Text & " " & Me.LblHora.Text
         ArepTrazabilidad.ArepLblVariedad.Text = Me.LblVariedad.Text
         ArepTrazabilidad.ArepLblCodigoTraza.Text = Me.CodigoTraza
+        ArepTrazabilidad.Barcode1.Text = Me.CodigoTraza
         ArepTrazabilidad.ArepLblPesoNeto.Text = Me.TxtPesoTransladar.Text
         ArepTrazabilidad.ArepLblCama.Text = Me.CboCama.Text
         ArepTrazabilidad.ArepLblNivel.Text = Me.CmbNivel.Text
